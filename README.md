@@ -1,3 +1,3 @@
-Một số phương pháp tham khảo thực nghiệm LLMs: Zero-Shot, CoT, Cumulative Reasoning
-
-Solver FOL: Prover9
+Idea: chỉ lấy những obj của premises xuất hiện trong conclusion \\
+Giải quyết ổn cho dạng Yes. No và Uncertain chưa ổn lắm \\
+Khoa làm tiếp về multiple choice .

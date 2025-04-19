@@ -34,35 +34,106 @@ prover9_tool = Prover9Tool()
 # Q2  "According to the above premises, is the following statement true?
 #      Statement: If all Python projects are well‑structured, then all Python projects are optimized."
 # ]
+############################################### Ví dụ trả về Yes#####################################
+# premises_fol =  [
+#             "∀x (WT(x) → O(x))", 
+#             "∀x (¬PEP8(x) → ¬WT(x))",
+#             "∀x (EM(x))",
+#             "∀x (WT(x))",
+#             "∀x (PEP8(x) → EM(x))",
+#             "∀x (WT(x) → PEP8(x))",
+#             "∀x (WS(x) → O(x))",      #                 
+#             "∀x (EM(x) → WT(x))",
+#             "∀x (O(x) -> CR(x))",
+#             "∀x (WS(x))",               #           
+#             "∀x (CR(x))",
+#             "∃x (BP(x))",
+#             "∃x (O(x))",
+#             "∀x (¬WS(x) → ¬PEP8(x))"]               
 
-premises_fol =  ["∀x (WT(x) → O(x))",
-            "∀x (¬PEP8(x) → ¬WT(x))",
-            "∀x (EM(x))",
-            "∀x (WT(x))",
-            "∀x (PEP8(x) → EM(x))",
-            "∀x (WT(x) → PEP8(x))",
-            "∀x (WS(x) → O(x))",
-            "∀x (EM(x) → WT(x))",
-            "∀x (O(x) -> CR(x))",
-            "∀x (WS(x))",
-            "∀x (CR(x))",
-            "∃x (BP(x))",
-            "∃x (O(x))",
-            "∀x (¬WS(x) → ¬PEP8(x))"]
-# Yes / No question
-yesno_fol = "(all x WS(x)) -> (all x O(x))."
+# yesno_fol = "(all x WS(x)) -> (all x O(x))."
 
-choices_fol = {
-    "A": "all x (-OPT(x) -> -WT(x)).",
-    "B": "(all x OPT(x)) -> (all x WS(x)).",
-    "C": "all x (WT(x) -> CR(x)).",
-    "D": "all x (-OPT(x) -> -PEP8(x))."
-}
+# choices_fol = {
+#     "A": "all x (-OPT(x) -> -WT(x)).",
+#     "B": "(all x OPT(x)) -> (all x WS(x)).",
+#     "C": "all x (WT(x) -> CR(x)).",
+#     "D": "all x (-OPT(x) -> -PEP8(x))."
+# }
 
-# Yes / No question
-yesno_fol = "(all x WS(x)) -> (all x O(x))."
+
+#########################################################Ví dụ trả về No###################################
+
+
+# premises_fol = [
+#             "∃x (HasBothCertifications(x))",
+#             "∀x (¬RegisteredSeminar(x) → ¬AllowedSubmitReport(x))",
+#             "∀x (RegisteredSeminar(x) → CompletedRequirements(x))",
+#             "∀x (¬SubmittedReport(x) → ¬AllowedSubmitReport(x))",
+#             "∀x (EligibleSeminar(x) → HasBothCertifications(x))"
+#         ]
+
+# # Yes / No question
+# yesno_fol = "exists x ( RegisteredSeminar(x) & -CompletedRequirements(x) )"
+
+
+
+#################################################Ví dụ trả về Uncertain#######################################
+
+premises_fol =  [
+            "Exists(x, ParticipatesResearch(x))",
+            "ForAll(x, Student(x) → EncouragedIndependentStudy(x))",
+            "ForAll(x, PublishesResearch(x) → GainsAcademicRecognition(x))",
+            "ForAll(x, ¬PublishesResearch(x) → ¬ReceivesResearchGrant(x))",
+            "ForAll(x, Student(x) → HasAccessToMentorship(x))",
+            "ForAll(x, EngagesIndependentStudy(x) → LikelyPublishesResearch(x))",
+            "ForAll(x, Student(x) → BenefitsFromResearch(x))",
+            "ForAll(x, ¬PublishesResearch(x) → ¬ReceivesResearchGrant(x)) → ForAll(x, EngagesIndependentStudy(x))",
+            "ForAll(x, ¬PublishesResearch(x) → ¬ReceivesResearchGrant(x)) → (EngagesIndependentStudy(x) → LikelyPublishesResearch(x))",
+            "ForAll(x, EncouragedIndependentStudy(x)) → (PublishesResearch(x) → GainsAcademicRecognition(x))",
+            "ForAll(x, EngagesIndependentStudy(x) → GainsAcademicRecognition(x))",
+            "ForAll(x, ¬ReceivesResearchGrant(x) → ¬AccessAdvancedResearch(x))"
+        ]
+
+yesno_fol = "all x ( EngagesIndependentStudy(x) -> AccessAdvancedResearch(x) )"
+
+# premises_fol = [
+#             "Exists(x, UserFriendly(x))",
+#             "ForAll(x, ¬Secure(x) → ¬EnergyEfficient(x))",
+#             "Exists(x, CompatibleWithEcosystem(x))",
+#             "¬Exists(x, EnergyEfficient(x))",
+#             "ForAll(x, EnergyEfficient(x) → UserFriendly(x))",
+#             "¬ForAll(x, EnergyEfficient(x))",
+#             "(ForAll(x, ¬Secure(x) → ¬EnergyEfficient(x)) → ¬Exists(x, EnergyEfficient(x)))",
+#             "Exists(x, CompatibleWithEcosystem(x)) → ¬Exists(x, UserFriendly(x))",
+#             "ForAll(x, ¬CompatibleWithEcosystem(x) → ¬UserFriendly(x))",
+#             "Exists(x, SupportsVoiceControl(x))",
+#             "¬ForAll(x, CompatibleWithEcosystem(x))"
+#         ]
+
+# yesno_fol = "Exists(x, EnergyEfficient(x))"
+
+
 
 result = prover9_tool.run(premises_fol, yesno_fol)
-answer = "Yes" if result["is_valid"] else "No"
-used_premises = result["used_premises"]
-print(used_premises)
+print(result["Answer"])
+print(result["used_premises"])
+print(result["idx"])
+
+# premises_fol = [
+#     "∀x (WT(x) → O(x))",
+#     "∀x (¬PEP8(x) → ¬WT(x))",
+#     "∀x (EM(x))",
+#     "∀x (WT(x))",
+#     "∀x (PEP8(x) → EM(x))",
+#     "∀x (WT(x) → PEP8(x))",
+#     "∀x (WS(x) → O(x))",
+#     "∀x (EM(x) → WT(x))",
+#     "∀x (O(x) -> CR(x))",
+#     "∀x (WS(x))",
+#     "∀x (CR(x))",
+#     "∃x (BP(x))",
+#     "∃x (O(x))",
+#     "∀x (¬WS(x) → ¬PEP8(x))"
+# ]
+
+# yesno_fol = "(all x WS(x)) -> (all x O(x))."

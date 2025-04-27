@@ -1,0 +1,296 @@
+{
+    "0": {
+        "results": {
+            "text": "\n            <s>[INST] <<SYS>>\n            ### Instruction:\n            \n        [INSTRUCTION]\n        You are given a list of predicate and its definitions (seperated by :::) which used in a logic programming context. Your task is to:\n        1. Identify any redundant predicates that can be expressed using another more general (overall) predicate.\n        2. Replace those redundant predicates with expressions that use one or two general predicates, while preserving their original meaning.\n            - Example: PredicateA(args) is redundant because it is equivalent to PredicateB(args); replace PredicateA(args) ⇒ PredicateB(args)\n            - Or Example: PredicateA(args) is redundant because it is equivalent the combination of PredicateB(args) and PredicateC(args) using logical conjunction ∧; replace PredicateA(args) ⇒ PredicateB(args) ∧ PredicateB(args)\n        \n        Only remove a predicate if it is fully expressible using other predicate and does not carry unique semantic value.\n        1. Redundant predicates identified and replaced.\n        2. General predicate derived from list predicate.\n        3. Always check if the replaced predicate definition can be express by the new predicate ones.\n        4. Keep the main predicates that has important role. These main predicate has role such as:  (1 predicate per role is kept).\n        5. Do not give explanation\n        6. If predicate can be replace by two another predicates, some logical conjunction can be used is: ∧ (and), ∨ (or).\n        [RESPONSE]\n\n        \n\n        ### Output\n        \"List Redundant Predicates\": Now we know that the replacement are: \n            <predicate> is redundant and can be replaced by <predicate>\n            ...\n    \n\n            <</SYS>>\n            ### Question\n            List of **Predicates**\n\n\n            **Predicate**: Student(x) ::: x is a student\n        \n\n\n            **Predicate**: Year1(x) ::: x is in year 1\n        \n\n\n            **Predicate**: Year2(x) ::: x is in year 2\n        \n\n\n            **Predicate**: Year3(x) ::: x is in year 3\n        \n\n\n            **Predicate**: Year(x, y) ::: student x is in year y\n        \n\n\n            **Predicate**: Semester(z) ::: z is a semester\n        \n\n\n            **Predicate**: S1(z) ::: z is semester S1\n        \n\n\n            **Predicate**: RemainingCreditsGreaterOrEqual(x, n) ::: student x has remaining credits ≥ n\n        \n\n\n            **Predicate**: WithdrawsUpToThreeCourses(x) ::: student x withdrew up to 3 courses in an academic year\n        \n\n\n            **Predicate**: DeductsCredits(x, y) ::: student x has y credits deducted from total due to withdrawal\n        \n\n\n            **Predicate**: Course(x) ::: x is a course\n        \n\n\n            **Predicate**: HasCredits(x, y) ::: course x has y credits\n        \n\n\n            **Predicate**: WithdrawnCourse(x) ::: course x was withdrawn\n        \n\n\n            **Predicate**: ContributesCredits(x, y) ::: course x contributes y credits to GPA\n        \n\n\n            **Predicate**: RegistersForCredits(x, y) ::: student x registered for y credits in a semester\n        \n\n\n            **Predicate**: Regulation(x) ::: x is a rule or policy\n        \n\n\n            **Predicate**: LimitsTotalWithdrawals(x) ::: regulation x limits total withdrawals\n        \n\n\n            **Predicate**: MaxWithdrawalsPerYear(x, y) ::: regulation x allows max y withdrawals per year\n        \n\n\n            **Predicate**: WithdrawCourses(x) ::: student x is withdrawing courses\n        \n\n\n            **Predicate**: AccumulatedCredits(x, y) ::: student x has accumulated y credits\n        \n\n\n            **Predicate**: CanWithdrawCourses(x) ::: student x is allowed to withdraw courses\n        \n\n\n            **Predicate**: WithdrewCourses(x, y) ::: student x withdrew y courses\n        \n\n\n            **Predicate**: WithdrewCourse(x, c) ::: student x withdrew course c\n        \n\n\n            **Predicate**: Credits(x, y) ::: x has y credits (applies to student or course)\n        \n\n\n            **Predicate**: RegisteredCredits(x, y, z, c) ::: student x registered c credits in year y, semester z\n        \n\n\n            **Predicate**: WithdrewCredits(x, y, z, c, v) ::: student x withdrew course c with v credits in year y, semester z\n        \n\n\n            **Predicate**: AttemptedCredits(x, y, z, c, v) ::: student x attempted course c with v credits in year y, semester z\n         [/INST]\n        \n        ### Output\n        \"List Redundant Predicates\":\n\n            * Predicate \"Student(x)\" is redundant and can be replaced by Predicate \"Year(x, y)\"\n            * Predicate \"Year1(x)\" is redundant and can be replaced by Predicate \"Year(x, 1)\"\n            * Predicate \"Year2(x)\" is redundant and can be replaced by Predicate \"Year(x, 2)\"\n            * Predicate \"Year3(x)\" is redundant and can be replaced by Predicate \"Year(x, 3)\"\n            * Predicate \"Year(x, y)\" is a general predicate that can replace all the year-specific predicates\n\n\n        ### Question\n        List of Predicates:\n\n\n        **Predicate**: Student(x) ::: x is a student\n\n\n        **Predicate**: Year(x, y) ::: x is in year y\n\n\n        **Predicate**: Semester(z) ::: z is a semester\n\n\n        **Predicate**: S1(z) ::: z is semester S1\n\n\n        **Predicate**: RemainingCreditsGreaterOrEqual(x, n) ::: student x has remaining credits ≥ n\n\n\n        **Predicate**: WithdrawsUpToThreeCourses(x) ::: student x withdrew up to 3 courses in an academic year\n\n\n        **Predicate**: DeductsCredits(x, y) ::: student x has y credits deducted from total due to withdrawal\n\n\n        **Predicate**: Course(x) ::: x is a course\n\n\n        **Predicate**: HasCredits(x, y) ::: course x has y credits\n\n\n        **Predicate**: WithdrawnCourse(x) ::: course x was withdrawn\n\n\n        **Predicate**: ContributesCredits(x, y) ::: course x contributes y credits to GPA\n\n\n        **Predicate**: RegistersForCredits(x, y) ::: student x registered for y credits in a semester\n\n\n        **Predicate**: Regulation(x) ::: x is a rule or policy\n\n\n        **Predicate**: LimitsTotalWithdrawals(x) ::: regulation x limits total withdrawals\n\n\n        **Predicate**: MaxWithdrawalsPerYear(x, y) ::: regulation x allows max y withdrawals per year\n\n\n        **Predicate**: WithdrawCourses(x) ::: student x is withdrawing courses\n\n\n        **Predicate**: AccumulatedCredits(x, y) ::: student x has accumulated y credits\n\n\n        **Predicate**: CanWithdrawCourses(x) ::: student x is allowed to withdraw courses\n\n\n        **Predicate**: WithdrewCourses(x, y) ::: student x withdrew y courses\n\n\n        **Predicate**: WithdrewCourse(x, c) ::: student x withdrew course c\n\n\n        **Predicate**: Credits(x, y) ::: x has y credits (applies to student or course)\n\n\n        **Predicate**: RegisteredCredits(x, y, z, c) ::: student x registered c credits in year y, semester z\n\n\n        **Predicate**: WithdrewCredits(x, y, z, c, v) ::: student x withdrew course c with v credits in year y, semester z\n\n\n        **Predicate**: AttemptedCredits(x, y, z, c, v) ::: student x attempted course c with v credits in year y, semester z\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+        },
+        "maps": {
+            "Year1(x)": "Year(x, 1)",
+            "Year2(x)": "Year(x, 2)",
+            "Year3(x)": "Year(x, 3)"
+        },
+        "logic_program": [
+            "Student(x) ::: x is a student",
+            "Year1(x) ::: x is in year 1",
+            "Year2(x) ::: x is in year 2",
+            "Year3(x) ::: x is in year 3",
+            "Year(x, y) ::: student x is in year y",
+            "Semester(z) ::: z is a semester",
+            "S1(z) ::: z is semester S1",
+            "RemainingCreditsGreaterOrEqual(x, n) ::: student x has remaining credits ≥ n",
+            "WithdrawsUpToThreeCourses(x) ::: student x withdrew up to 3 courses in an academic year",
+            "DeductsCredits(x, y) ::: student x has y credits deducted from total due to withdrawal",
+            "Course(x) ::: x is a course",
+            "HasCredits(x, y) ::: course x has y credits",
+            "WithdrawnCourse(x) ::: course x was withdrawn",
+            "ContributesCredits(x, y) ::: course x contributes y credits to GPA",
+            "RegistersForCredits(x, y) ::: student x registered for y credits in a semester",
+            "Regulation(x) ::: x is a rule or policy",
+            "LimitsTotalWithdrawals(x) ::: regulation x limits total withdrawals",
+            "MaxWithdrawalsPerYear(x, y) ::: regulation x allows max y withdrawals per year",
+            "WithdrawCourses(x) ::: student x is withdrawing courses",
+            "AccumulatedCredits(x, y) ::: student x has accumulated y credits",
+            "CanWithdrawCourses(x) ::: student x is allowed to withdraw courses",
+            "WithdrewCourses(x, y) ::: student x withdrew y courses",
+            "WithdrewCourse(x, c) ::: student x withdrew course c",
+            "Credits(x, y) ::: x has y credits (applies to student or course)",
+            "RegisteredCredits(x, y, z, c) ::: student x registered c credits in year y, semester z",
+            "WithdrewCredits(x, y, z, c, v) ::: student x withdrew course c with v credits in year y, semester z",
+            "AttemptedCredits(x, y, z, c, v) ::: student x attempted course c with v credits in year y, semester z"
+        ],
+        "fol": [
+            "∀x (Student(x) ∧ (Year1(x) ∨ Year2(x) ∨ Year3(x)) ∧ RemainingCreditsGreaterOrEqual(x, 10) ∧ WithdrawsUpToThreeCourses(x) → DeductsCredits(x, 0.5))",
+            "∀x (Course(x) → (HasCredits(x, 3) ∨ HasCredits(x, 4) ∨ HasCredits(x, 5))) ∧ ∀y (WithdrawnCourse(y) → ContributesCredits(y, 0))",
+            "∀x (Student(x) → (RegistersForCredits(x, 12) ∨ RegistersForCredits(x, 13) ∨ RegistersForCredits(x, 14) ∨ RegistersForCredits(x, 15) ∨ RegistersForCredits(x, 16) ∨ RegistersForCredits(x, 17) ∨ RegistersForCredits(x, 18))) ∧ (Withdraws",
+            "∀x (Regulation(x) → (¬LimitsTotalWithdrawals(x) ∧ MaxWithdrawalsPerYear(x, 3)))",
+            "∀x (Student(x) ∧ WithdrawCourses(x) ∧ AccumulatedCredits(x, y) ∧ <8(y) → ¬CanWithdrawCourses(x))",
+            "∀x (Student(x) ∧ Year(x, 2) ∧ Credits(x, 45) ∧ WithdrewCourses(x, 2) ∧ WithdrewCourse(x, C1) ∧ WithdrewCourse(x, C2) ∧ Credits(C1, 4) ∧ Credits(C2, 3))",
+            "∀x∀y∀z (Student(x) ∧ Year(y) ∧ Semester(z) ∧ Year(y) ∧ Semester(z) ∧ S1(z) ∧ RegisteredCredits(x, y, z, 15) ∧ WithdrewCredits(x, y, z, C3, 5) ∧ WithdrewCredits(x, y, z, C4, 3) ∧ AttemptedCredits(x,"
+        ],
+        "new_fol": [
+            "∀x (Student(x) ∧ (Year(x, 1) ∨ Year(x, 2) ∨ Year(x, 3)) ∧ RemainingCreditsGreaterOrEqual(x, 10) ∧ WithdrawsUpToThreeCourses(x) → DeductsCredits(x, 0.5))",
+            "∀x (Course(x) → (HasCredits(x, 3) ∨ HasCredits(x, 4) ∨ HasCredits(x, 5))) ∧ ∀y (WithdrawnCourse(y) → ContributesCredits(y, 0))",
+            "∀x (Student(x) → (RegistersForCredits(x, 12) ∨ RegistersForCredits(x, 13) ∨ RegistersForCredits(x, 14) ∨ RegistersForCredits(x, 15) ∨ RegistersForCredits(x, 16) ∨ RegistersForCredits(x, 17) ∨ RegistersForCredits(x, 18))) ∧ (Withdraws",
+            "∀x (Regulation(x) → (¬LimitsTotalWithdrawals(x) ∧ MaxWithdrawalsPerYear(x, 3)))",
+            "∀x (Student(x) ∧ WithdrawCourses(x) ∧ AccumulatedCredits(x, y) ∧ <8(y) → ¬CanWithdrawCourses(x))",
+            "∀x (Student(x) ∧ Year(x, 2) ∧ Credits(x, 45) ∧ WithdrewCourses(x, 2) ∧ WithdrewCourse(x, C1) ∧ WithdrewCourse(x, C2) ∧ Credits(C1, 4) ∧ Credits(C2, 3))",
+            "∀x∀y∀z (Student(x) ∧ Year(y) ∧ Semester(z) ∧ Year(y) ∧ Semester(z) ∧ S1(z) ∧ RegisteredCredits(x, y, z, 15) ∧ WithdrewCredits(x, y, z, C3, 5) ∧ WithdrewCredits(x, y, z, C4, 3) ∧ AttemptedCredits(x,"
+        ]
+    },
+    "1": {
+        "results": {
+            "text": "\n            <s>[INST] <<SYS>>\n            ### Instruction:\n            \n        [INSTRUCTION]\n        You are given a list of predicate and its definitions (seperated by :::) which used in a logic programming context. Your task is to:\n        1. Identify any redundant predicates that can be expressed using another more general (overall) predicate.\n        2. Replace those redundant predicates with expressions that use one or two general predicates, while preserving their original meaning.\n            - Example: PredicateA(args) is redundant because it is equivalent to PredicateB(args); replace PredicateA(args) ⇒ PredicateB(args)\n            - Or Example: PredicateA(args) is redundant because it is equivalent the combination of PredicateB(args) and PredicateC(args) using logical conjunction ∧; replace PredicateA(args) ⇒ PredicateB(args) ∧ PredicateB(args)\n        \n        Only remove a predicate if it is fully expressible using other predicate and does not carry unique semantic value.\n        1. Redundant predicates identified and replaced.\n        2. General predicate derived from list predicate.\n        3. Always check if the replaced predicate definition can be express by the new predicate ones.\n        4. Keep the main predicates that has important role. These main predicate has role such as:  (1 predicate per role is kept).\n        5. Do not give explanation\n        6. If predicate can be replace by two another predicates, some logical conjunction can be used is: ∧ (and), ∨ (or).\n        [RESPONSE]\n\n        \n\n        ### Output\n        \"List Redundant Predicates\": Now we know that the replacement are: \n            <predicate> is redundant and can be replaced by <predicate>\n            ...\n    \n\n            <</SYS>>\n            ### Question\n            List of **Predicates**\n\n\n            **Predicate**: Student(x) ::: x is a student\n        \n\n\n            **Predicate**: Year1(x) ::: x is in year 1\n        \n\n\n            **Predicate**: Year2(x) ::: x is in year 2\n        \n\n\n            **Predicate**: Year3(x) ::: x is in year 3\n        \n\n\n            **Predicate**: Year(x, y) ::: student x is in year y\n        \n\n\n            **Predicate**: Semester(z) ::: z is a semester\n        \n\n\n            **Predicate**: S1(z) ::: z is semester S1\n        \n\n\n            **Predicate**: RemainingCreditsGreaterOrEqual(x, n) ::: student x has remaining credits ≥ n\n        \n\n\n            **Predicate**: WithdrawsUpToThreeCourses(x) ::: student x withdrew up to 3 courses in an academic year\n        \n\n\n            **Predicate**: DeductsCredits(x, y) ::: student x has y credits deducted from total due to withdrawal\n        \n\n\n            **Predicate**: Course(x) ::: x is a course\n        \n\n\n            **Predicate**: HasCredits(x, y) ::: course x has y credits\n        \n\n\n            **Predicate**: WithdrawnCourse(x) ::: course x was withdrawn\n        \n\n\n            **Predicate**: ContributesCredits(x, y) ::: course x contributes y credits to GPA\n        \n\n\n            **Predicate**: RegistersForCredits(x, y) ::: student x registered for y credits in a semester\n        \n\n\n            **Predicate**: Regulation(x) ::: x is a rule or policy\n        \n\n\n            **Predicate**: LimitsTotalWithdrawals(x) ::: regulation x limits total withdrawals\n        \n\n\n            **Predicate**: MaxWithdrawalsPerYear(x, y) ::: regulation x allows max y withdrawals per year\n        \n\n\n            **Predicate**: WithdrawCourses(x) ::: student x is withdrawing courses\n        \n\n\n            **Predicate**: AccumulatedCredits(x, y) ::: student x has accumulated y credits\n        \n\n\n            **Predicate**: CanWithdrawCourses(x) ::: student x is allowed to withdraw courses\n        \n\n\n            **Predicate**: WithdrewCourses(x, y) ::: student x withdrew y courses\n        \n\n\n            **Predicate**: WithdrewCourse(x, c) ::: student x withdrew course c\n        \n\n\n            **Predicate**: Credits(x, y) ::: x has y credits (applies to student or course)\n        \n\n\n            **Predicate**: RegisteredCredits(x, y, z, c) ::: student x registered c credits in year y, semester z\n        \n\n\n            **Predicate**: WithdrewCredits(x, y, z, c, v) ::: student x withdrew course c with v credits in year y, semester z\n        \n\n\n            **Predicate**: AttemptedCredits(x, y, z, c, v) ::: student x attempted course c with v credits in year y, semester z\n         [/INST]\n        \n        ### Output\n        \"List Redundant Predicates\":\n\n            * Predicate \"Student(x)\" is redundant and can be replaced by Predicate \"Year(x, y)\"\n            * Predicate \"Year1(x)\" is redundant and can be replaced by Predicate \"Year(x, 1)\"\n            * Predicate \"Year2(x)\" is redundant and can be replaced by Predicate \"Year(x, 2)\"\n            * Predicate \"Year3(x)\" is redundant and can be replaced by Predicate \"Year(x, 3)\"\n            * Predicate \"Year(x, y)\" is a general predicate that can replace all the year-specific predicates\n\n\n        ### Question\n        List of Predicates:\n\n\n        **Predicate**: Student(x) ::: x is a student\n        \n\n\n        **Predicate**: Year(x, y) ::: x is in year y\n        \n\n\n        **Predicate**: Semester(z) ::: z is a semester\n        \n\n\n        **Predicate**: S1(z) ::: z is semester S1\n        \n\n\n        **Predicate**: RemainingCreditsGreaterOrEqual(x, n) ::: student x has remaining credits ≥ n\n        \n\n\n        **Predicate**: WithdrawsUpToThreeCourses(x) ::: student x withdrew up to 3 courses in an academic year\n        \n\n\n        **Predicate**: DeductsCredits(x, y) ::: student x has y credits deducted from total due to withdrawal\n        \n\n\n        **Predicate**: Course(x) ::: x is a course\n        \n\n\n        **Predicate**: HasCredits(x, y) ::: course x has y credits\n        \n\n\n        **Predicate**: WithdrawsCourse(x) ::: course x was withdrawn\n        \n\n\n        **Predicate**: ContributesCredits(x, y) ::: course x contributes y credits to GPA\n        \n\n\n        **Predicate**: RegistersForCredits(x, y) ::: student x registered for y credits in a semester\n        \n\n\n        **Predicate**: Regulation(x) ::: x is a rule or policy\n        \n\n\n        **Predicate**: LimitsTotalWithdrawals(x) ::: regulation x limits total withdrawals\n        \n\n\n        **Predicate**: MaxWithdrawalsPerYear(x, y) ::: regulation x allows max y withdrawals per year\n        \n\n\n        **Predicate**: WithdrawCourses(x) ::: student x is withdrawing courses\n        \n\n\n        **Predicate**: AccumulatedCredits(x, y) ::: student x has accumulated y credits\n        \n\n\n        **Predicate**: CanWithdrawCourses(x) ::: student x is allowed to withdraw courses\n        \n\n\n        **Predicate**: WithdrewCourses(x) ::: student x withdrew courses\n        \n\n\n        **Predicate**: WithdrewCourse(x, c) ::: student x withdrew course c\n        \n\n\n        **Predicate**: Credits(x, y) ::: x has y credits (applies to student or course)\n        \n\n\n        **Predicate**: RegisteredCredits(x, y, z, c) ::: student x registered c credits in year y, semester z\n        \n\n\n        **Predicate**: WithdrewCredits(x, y, z, c, v) ::: student x withdrew course c with v credits in year y, semester z\n        \n\n\n        **Predicate**: AttemptedCredits(x, y, z, c, v) ::: student x attempted course c with v credits in year y, semester z\n        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+        },
+        "maps": {
+            "Year1(x)": "Year(x, 1)",
+            "Year2(x)": "Year(x, 2)",
+            "Year3(x)": "Year(x, 3)"
+        },
+        "logic_program": [
+            "Student(x) ::: x is a student",
+            "Year1(x) ::: x is in year 1",
+            "Year2(x) ::: x is in year 2",
+            "Year3(x) ::: x is in year 3",
+            "Year(x, y) ::: student x is in year y",
+            "Semester(z) ::: z is a semester",
+            "S1(z) ::: z is semester S1",
+            "RemainingCreditsGreaterOrEqual(x, n) ::: student x has remaining credits ≥ n",
+            "WithdrawsUpToThreeCourses(x) ::: student x withdrew up to 3 courses in an academic year",
+            "DeductsCredits(x, y) ::: student x has y credits deducted from total due to withdrawal",
+            "Course(x) ::: x is a course",
+            "HasCredits(x, y) ::: course x has y credits",
+            "WithdrawnCourse(x) ::: course x was withdrawn",
+            "ContributesCredits(x, y) ::: course x contributes y credits to GPA",
+            "RegistersForCredits(x, y) ::: student x registered for y credits in a semester",
+            "Regulation(x) ::: x is a rule or policy",
+            "LimitsTotalWithdrawals(x) ::: regulation x limits total withdrawals",
+            "MaxWithdrawalsPerYear(x, y) ::: regulation x allows max y withdrawals per year",
+            "WithdrawCourses(x) ::: student x is withdrawing courses",
+            "AccumulatedCredits(x, y) ::: student x has accumulated y credits",
+            "CanWithdrawCourses(x) ::: student x is allowed to withdraw courses",
+            "WithdrewCourses(x, y) ::: student x withdrew y courses",
+            "WithdrewCourse(x, c) ::: student x withdrew course c",
+            "Credits(x, y) ::: x has y credits (applies to student or course)",
+            "RegisteredCredits(x, y, z, c) ::: student x registered c credits in year y, semester z",
+            "WithdrewCredits(x, y, z, c, v) ::: student x withdrew course c with v credits in year y, semester z",
+            "AttemptedCredits(x, y, z, c, v) ::: student x attempted course c with v credits in year y, semester z"
+        ],
+        "fol": [
+            "∀x (Student(x) ∧ (Year1(x) ∨ Year2(x) ∨ Year3(x)) ∧ RemainingCreditsGreaterOrEqual(x, 10) ∧ WithdrawsUpToThreeCourses(x) → DeductsCredits(x, 0.5))",
+            "∀x (Course(x) → (HasCredits(x, 3) ∨ HasCredits(x, 4) ∨ HasCredits(x, 5))) ∧ ∀y (WithdrawnCourse(y) → ContributesCredits(y, 0))",
+            "∀x (Student(x) → (RegistersForCredits(x, 12) ∨ RegistersForCredits(x, 13) ∨ RegistersForCredits(x, 14) ∨ RegistersForCredits(x, 15) ∨ RegistersForCredits(x, 16) ∨ RegistersForCredits(x, 17) ∨ RegistersForCredits(x, 18))) ∧ (Withdraws",
+            "∀x (Regulation(x) → (¬LimitsTotalWithdrawals(x) ∧ MaxWithdrawalsPerYear(x, 3)))",
+            "∀x (Student(x) ∧ WithdrawCourses(x) ∧ AccumulatedCredits(x, y) ∧ <8(y) → ¬CanWithdrawCourses(x))",
+            "∀x (Student(x) ∧ Year(x, 2) ∧ Credits(x, 45) ∧ WithdrewCourses(x, 2) ∧ WithdrewCourse(x, C1) ∧ WithdrewCourse(x, C2) ∧ Credits(C1, 4) ∧ Credits(C2, 3))",
+            "∀x∀y∀z (Student(x) ∧ Year(y) ∧ Semester(z) ∧ Year(y) ∧ Semester(z) ∧ S1(z) ∧ RegisteredCredits(x, y, z, 15) ∧ WithdrewCredits(x, y, z, C3, 5) ∧ WithdrewCredits(x, y, z, C4, 3) ∧ AttemptedCredits(x,"
+        ],
+        "new_fol": [
+            "∀x (Student(x) ∧ (Year(x, 1) ∨ Year(x, 2) ∨ Year(x, 3)) ∧ RemainingCreditsGreaterOrEqual(x, 10) ∧ WithdrawsUpToThreeCourses(x) → DeductsCredits(x, 0.5))",
+            "∀x (Course(x) → (HasCredits(x, 3) ∨ HasCredits(x, 4) ∨ HasCredits(x, 5))) ∧ ∀y (WithdrawnCourse(y) → ContributesCredits(y, 0))",
+            "∀x (Student(x) → (RegistersForCredits(x, 12) ∨ RegistersForCredits(x, 13) ∨ RegistersForCredits(x, 14) ∨ RegistersForCredits(x, 15) ∨ RegistersForCredits(x, 16) ∨ RegistersForCredits(x, 17) ∨ RegistersForCredits(x, 18))) ∧ (Withdraws",
+            "∀x (Regulation(x) → (¬LimitsTotalWithdrawals(x) ∧ MaxWithdrawalsPerYear(x, 3)))",
+            "∀x (Student(x) ∧ WithdrawCourses(x) ∧ AccumulatedCredits(x, y) ∧ <8(y) → ¬CanWithdrawCourses(x))",
+            "∀x (Student(x) ∧ Year(x, 2) ∧ Credits(x, 45) ∧ WithdrewCourses(x, 2) ∧ WithdrewCourse(x, C1) ∧ WithdrewCourse(x, C2) ∧ Credits(C1, 4) ∧ Credits(C2, 3))",
+            "∀x∀y∀z (Student(x) ∧ Year(y) ∧ Semester(z) ∧ Year(y) ∧ Semester(z) ∧ S1(z) ∧ RegisteredCredits(x, y, z, 15) ∧ WithdrewCredits(x, y, z, C3, 5) ∧ WithdrewCredits(x, y, z, C4, 3) ∧ AttemptedCredits(x,"
+        ]
+    },
+    "2": {
+        "results": {
+            "text": "\n            <s>[INST] <<SYS>>\n            ### Instruction:\n            \n        [INSTRUCTION]\n        You are given a list of predicate and its definitions (seperated by :::) which used in a logic programming context. Your task is to:\n        1. Identify any redundant predicates that can be expressed using another more general (overall) predicate.\n        2. Replace those redundant predicates with expressions that use one or two general predicates, while preserving their original meaning.\n            - Example: PredicateA(args) is redundant because it is equivalent to PredicateB(args); replace PredicateA(args) ⇒ PredicateB(args)\n            - Or Example: PredicateA(args) is redundant because it is equivalent the combination of PredicateB(args) and PredicateC(args) using logical conjunction ∧; replace PredicateA(args) ⇒ PredicateB(args) ∧ PredicateB(args)\n        \n        Only remove a predicate if it is fully expressible using other predicate and does not carry unique semantic value.\n        1. Redundant predicates identified and replaced.\n        2. General predicate derived from list predicate.\n        3. Always check if the replaced predicate definition can be express by the new predicate ones.\n        4. Keep the main predicates that has important role. These main predicate has role such as:  (1 predicate per role is kept).\n        5. Do not give explanation\n        6. If predicate can be replace by two another predicates, some logical conjunction can be used is: ∧ (and), ∨ (or).\n        [RESPONSE]\n\n        \n\n        ### Output\n        \"List Redundant Predicates\": Now we know that the replacement are: \n            <predicate> is redundant and can be replaced by <predicate>\n            ...\n    \n\n            <</SYS>>\n            ### Question\n            List of **Predicates**\n\n\n            **Predicate**: Student(x) ::: x is a student\n        \n\n\n            **Predicate**: Year1(x) ::: x is in year 1\n        \n\n\n            **Predicate**: Year2(x) ::: x is in year 2\n        \n\n\n            **Predicate**: Year3(x) ::: x is in year 3\n        \n\n\n            **Predicate**: Year(x, y) ::: student x is in year y\n        \n\n\n            **Predicate**: Semester(z) ::: z is a semester\n        \n\n\n            **Predicate**: S1(z) ::: z is semester S1\n        \n\n\n            **Predicate**: RemainingCreditsGreaterOrEqual(x, n) ::: student x has remaining credits ≥ n\n        \n\n\n            **Predicate**: WithdrawsUpToThreeCourses(x) ::: student x withdrew up to 3 courses in an academic year\n        \n\n\n            **Predicate**: DeductsCredits(x, y) ::: student x has y credits deducted from total due to withdrawal\n        \n\n\n            **Predicate**: Course(x) ::: x is a course\n        \n\n\n            **Predicate**: HasCredits(x, y) ::: course x has y credits\n        \n\n\n            **Predicate**: WithdrawnCourse(x) ::: course x was withdrawn\n        \n\n\n            **Predicate**: ContributesCredits(x, y) ::: course x contributes y credits to GPA\n        \n\n\n            **Predicate**: RegistersForCredits(x, y) ::: student x registered for y credits in a semester\n        \n\n\n            **Predicate**: Regulation(x) ::: x is a rule or policy\n        \n\n\n            **Predicate**: LimitsTotalWithdrawals(x) ::: regulation x limits total withdrawals\n        \n\n\n            **Predicate**: MaxWithdrawalsPerYear(x, y) ::: regulation x allows max y withdrawals per year\n        \n\n\n            **Predicate**: WithdrawCourses(x) ::: student x is withdrawing courses\n        \n\n\n            **Predicate**: AccumulatedCredits(x, y) ::: student x has accumulated y credits\n        \n\n\n            **Predicate**: CanWithdrawCourses(x) ::: student x is allowed to withdraw courses\n        \n\n\n            **Predicate**: WithdrewCourses(x, y) ::: student x withdrew y courses\n        \n\n\n            **Predicate**: WithdrewCourse(x, c) ::: student x withdrew course c\n        \n\n\n            **Predicate**: Credits(x, y) ::: x has y credits (applies to student or course)\n        \n\n\n            **Predicate**: RegisteredCredits(x, y, z, c) ::: student x registered c credits in year y, semester z\n        \n\n\n            **Predicate**: WithdrewCredits(x, y, z, c, v) ::: student x withdrew course c with v credits in year y, semester z\n        \n\n\n            **Predicate**: AttemptedCredits(x, y, z, c, v) ::: student x attempted course c with v credits in year y, semester z\n         [/INST]\n        \n        ### Output\n        \"List Redundant Predicates\":\n\n            * Predicate \"Student(x)\" is redundant and can be replaced by Predicate \"Year(x, y)\"\n            * Predicate \"Year1(x)\" is redundant and can be replaced by Predicate \"Year(x, 1)\"\n            * Predicate \"Year2(x)\" is redundant and can be replaced by Predicate \"Year(x, 2)\"\n            * Predicate \"Year3(x)\" is redundant and can be replaced by Predicate \"Year(x, 3)\"\n            * Predicate \"Year(x, y)\" is a general predicate that can replace all the year-specific predicates\n\n\n        ### Question\n        List of Predicates:\n\n\n        **Predicate**: Student(x) ::: x is a student\n        \n\n\n        **Predicate**: Year(x, y) ::: x is in year y\n        \n\n\n        **Predicate**: Semester(z) ::: z is a semester\n        \n\n\n        **Predicate**: S1(z) ::: z is semester S1\n        \n\n\n        **Predicate**: RemainingCreditsGreaterOrEqual(x, n) ::: student x has remaining credits ≥ n\n        \n\n\n        **Predicate**: WithdrawsUpToThreeCourses(x) ::: student x withdrew up to 3 courses in an academic year\n        \n\n\n        **Predicate**: DeductsCredits(x, y) ::: student x has y credits deducted from total due to withdrawal\n        \n\n\n        **Predicate**: Course(x) ::: x is a course\n        \n\n\n        **Predicate**: HasCredits(x, y) ::: course x has y credits\n        \n\n\n        **Predicate**: WithdrawsCourse(x) ::: course x was withdrawn\n        \n\n\n        **Predicate**: ContributesCredits(x, y) ::: course x contributes y credits to GPA\n        \n\n\n        **Predicate**: RegistersForCredits(x, y) ::: student x registered for y credits in a semester\n        \n\n\n        **Predicate**: Regulation(x) ::: x is a rule or policy\n        \n\n\n        **Predicate**: LimitsTotalWithdrawals(x) ::: regulation x limits total withdrawals\n        \n\n\n        **Predicate**: MaxWithdrawalsPerYear(x, y) ::: regulation x allows max y withdrawals per year\n        \n\n\n        **Predicate**: WithdrawCourses(x) ::: student x is withdrawing courses\n        \n\n\n        **Predicate**: AccumulatedCredits(x, y) ::: student x has accumulated y credits\n        \n\n\n        **Predicate**: CanWithdrawCourses(x) ::: student x is allowed to withdraw courses\n        \n\n\n        **Predicate**: WithdrewCourses(x, y) ::: student x withdrew y courses\n        \n\n\n        **Predicate**: WithdrewCourse(x, c) ::: student x withdrew course c\n        \n\n\n        **Predicate**: Credits(x, y) ::: x has y credits (applies to student or course)\n        \n\n\n        **Predicate**: RegisteredCredits(x, y, z, c) ::: student x registered c credits in year y, semester z\n        \n\n\n        **Predicate**: WithdrewCredits(x, y, z, c, v) ::: student x withdrew course c with v credits in year y, semester z\n        \n\n\n        **Predicate**: AttemptedCredits(x, y, z, c, v) ::: student x attempted course c with v credits in year y, semester z\n        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+        },
+        "maps": {
+            "Year1(x)": "Year(x, 1)",
+            "Year2(x)": "Year(x, 2)",
+            "Year3(x)": "Year(x, 3)"
+        },
+        "logic_program": [
+            "Student(x) ::: x is a student",
+            "Year1(x) ::: x is in year 1",
+            "Year2(x) ::: x is in year 2",
+            "Year3(x) ::: x is in year 3",
+            "Year(x, y) ::: student x is in year y",
+            "Semester(z) ::: z is a semester",
+            "S1(z) ::: z is semester S1",
+            "RemainingCreditsGreaterOrEqual(x, n) ::: student x has remaining credits ≥ n",
+            "WithdrawsUpToThreeCourses(x) ::: student x withdrew up to 3 courses in an academic year",
+            "DeductsCredits(x, y) ::: student x has y credits deducted from total due to withdrawal",
+            "Course(x) ::: x is a course",
+            "HasCredits(x, y) ::: course x has y credits",
+            "WithdrawnCourse(x) ::: course x was withdrawn",
+            "ContributesCredits(x, y) ::: course x contributes y credits to GPA",
+            "RegistersForCredits(x, y) ::: student x registered for y credits in a semester",
+            "Regulation(x) ::: x is a rule or policy",
+            "LimitsTotalWithdrawals(x) ::: regulation x limits total withdrawals",
+            "MaxWithdrawalsPerYear(x, y) ::: regulation x allows max y withdrawals per year",
+            "WithdrawCourses(x) ::: student x is withdrawing courses",
+            "AccumulatedCredits(x, y) ::: student x has accumulated y credits",
+            "CanWithdrawCourses(x) ::: student x is allowed to withdraw courses",
+            "WithdrewCourses(x, y) ::: student x withdrew y courses",
+            "WithdrewCourse(x, c) ::: student x withdrew course c",
+            "Credits(x, y) ::: x has y credits (applies to student or course)",
+            "RegisteredCredits(x, y, z, c) ::: student x registered c credits in year y, semester z",
+            "WithdrewCredits(x, y, z, c, v) ::: student x withdrew course c with v credits in year y, semester z",
+            "AttemptedCredits(x, y, z, c, v) ::: student x attempted course c with v credits in year y, semester z"
+        ],
+        "fol": [
+            "∀x (Student(x) ∧ (Year1(x) ∨ Year2(x) ∨ Year3(x)) ∧ RemainingCreditsGreaterOrEqual(x, 10) ∧ WithdrawsUpToThreeCourses(x) → DeductsCredits(x, 0.5))",
+            "∀x (Course(x) → (HasCredits(x, 3) ∨ HasCredits(x, 4) ∨ HasCredits(x, 5))) ∧ ∀y (WithdrawnCourse(y) → ContributesCredits(y, 0))",
+            "∀x (Student(x) → (RegistersForCredits(x, 12) ∨ RegistersForCredits(x, 13) ∨ RegistersForCredits(x, 14) ∨ RegistersForCredits(x, 15) ∨ RegistersForCredits(x, 16) ∨ RegistersForCredits(x, 17) ∨ RegistersForCredits(x, 18))) ∧ (Withdraws",
+            "∀x (Regulation(x) → (¬LimitsTotalWithdrawals(x) ∧ MaxWithdrawalsPerYear(x, 3)))",
+            "∀x (Student(x) ∧ WithdrawCourses(x) ∧ AccumulatedCredits(x, y) ∧ <8(y) → ¬CanWithdrawCourses(x))",
+            "∀x (Student(x) ∧ Year(x, 2) ∧ Credits(x, 45) ∧ WithdrewCourses(x, 2) ∧ WithdrewCourse(x, C1) ∧ WithdrewCourse(x, C2) ∧ Credits(C1, 4) ∧ Credits(C2, 3))",
+            "∀x∀y∀z (Student(x) ∧ Year(y) ∧ Semester(z) ∧ Year(y) ∧ Semester(z) ∧ S1(z) ∧ RegisteredCredits(x, y, z, 15) ∧ WithdrewCredits(x, y, z, C3, 5) ∧ WithdrewCredits(x, y, z, C4, 3) ∧ AttemptedCredits(x,"
+        ],
+        "new_fol": [
+            "∀x (Student(x) ∧ (Year(x, 1) ∨ Year(x, 2) ∨ Year(x, 3)) ∧ RemainingCreditsGreaterOrEqual(x, 10) ∧ WithdrawsUpToThreeCourses(x) → DeductsCredits(x, 0.5))",
+            "∀x (Course(x) → (HasCredits(x, 3) ∨ HasCredits(x, 4) ∨ HasCredits(x, 5))) ∧ ∀y (WithdrawnCourse(y) → ContributesCredits(y, 0))",
+            "∀x (Student(x) → (RegistersForCredits(x, 12) ∨ RegistersForCredits(x, 13) ∨ RegistersForCredits(x, 14) ∨ RegistersForCredits(x, 15) ∨ RegistersForCredits(x, 16) ∨ RegistersForCredits(x, 17) ∨ RegistersForCredits(x, 18))) ∧ (Withdraws",
+            "∀x (Regulation(x) → (¬LimitsTotalWithdrawals(x) ∧ MaxWithdrawalsPerYear(x, 3)))",
+            "∀x (Student(x) ∧ WithdrawCourses(x) ∧ AccumulatedCredits(x, y) ∧ <8(y) → ¬CanWithdrawCourses(x))",
+            "∀x (Student(x) ∧ Year(x, 2) ∧ Credits(x, 45) ∧ WithdrewCourses(x, 2) ∧ WithdrewCourse(x, C1) ∧ WithdrewCourse(x, C2) ∧ Credits(C1, 4) ∧ Credits(C2, 3))",
+            "∀x∀y∀z (Student(x) ∧ Year(y) ∧ Semester(z) ∧ Year(y) ∧ Semester(z) ∧ S1(z) ∧ RegisteredCredits(x, y, z, 15) ∧ WithdrewCredits(x, y, z, C3, 5) ∧ WithdrewCredits(x, y, z, C4, 3) ∧ AttemptedCredits(x,"
+        ]
+    },
+    "3": {
+        "results": {
+            "text": "\n            <s>[INST] <<SYS>>\n            ### Instruction:\n            \n        [INSTRUCTION]\n        You are given a list of predicate and its definitions (seperated by :::) which used in a logic programming context. Your task is to:\n        1. Identify any redundant predicates that can be expressed using another more general (overall) predicate.\n        2. Replace those redundant predicates with expressions that use one or two general predicates, while preserving their original meaning.\n            - Example: PredicateA(args) is redundant because it is equivalent to PredicateB(args); replace PredicateA(args) ⇒ PredicateB(args)\n            - Or Example: PredicateA(args) is redundant because it is equivalent the combination of PredicateB(args) and PredicateC(args) using logical conjunction ∧; replace PredicateA(args) ⇒ PredicateB(args) ∧ PredicateB(args)\n        \n        Only remove a predicate if it is fully expressible using other predicate and does not carry unique semantic value.\n        1. Redundant predicates identified and replaced.\n        2. General predicate derived from list predicate.\n        3. Always check if the replaced predicate definition can be express by the new predicate ones.\n        4. Keep the main predicates that has important role. These main predicate has role such as: well-tested, optimized, follow_PEP_8_standards, not_well-tested, easy_to_maintain, all, well-tested, all, follow_PEP_8_standards, easy_to_maintain, well-tested, follow_PEP_8_standards, well-structured, optimized, easy_to_maintain, well-tested, optimized, clean_and_readable_code, all, well-structured, all, clean_and_readable_code, exists, follow_best_practices, exists, optimized, does_not_follow_PEP_8_standards (1 predicate per role is kept).\n        5. Do not give explanation\n        6. If predicate can be replace by two another predicates, some logical conjunction can be used is: ∧ (and), ∨ (or).\n        [RESPONSE]\n\n        \n\n        ### Output\n        \"List Redundant Predicates\": Now we know that the replacement are: \n            <predicate> is redundant and can be replaced by <predicate>\n            ...\n    \n\n            <</SYS>>\n            ### Question\n            List of **Predicates**\n\n\n            **Predicate**: FollowsPEP8Standards(x) ::: x follows PEP 8 coding standards\n        \n\n\n            **Predicate**: PythonCode(x) ::: x is a Python code\n        \n\n\n            **Predicate**: PythonProject(x) ::: x is a Python project\n        \n\n\n            **Predicate**: WellTested(x) ::: x is well-tested\n        \n\n\n            **Predicate**: OptimizedProject(x) ::: x is an optimized project\n        \n\n\n            **Predicate**: PEP8Standards(x) ::: x follows PEP 8 standards\n        \n\n\n            **Predicate**: EasyToMaintain(x) ::: x is easy to maintain\n        \n\n\n            **Predicate**: WellTestedPythonCode(x) ::: x is a well-tested Python code\n        \n\n\n            **Predicate**: WellStructured(x) ::: x is well-structured\n        \n\n\n            **Predicate**: Optimized(x) ::: x is optimized\n        \n\n\n            **Predicate**: CleanCode(x) ::: x has clean code\n        \n\n\n            **Predicate**: ReadableCode(x) ::: x has readable code\n        \n\n\n            **Predicate**: Person(x) ::: x is a person\n        \n\n\n            **Predicate**: Perfect(x) ::: x is a perfect entity\n        \n\n\n            **Predicate**: FollowsBestPractices(x) ::: x follows best practices\n         [/INST]\n        \n\n        ### Output\n        \"List Redundant Predicates\":\n\n            * FollowsPEP8Standards(x) is redundant and can be replaced by PEP8Standards(x)\n            * PythonCode(x) is redundant and can be replaced by Code(x)\n            * PythonProject(x) is redundant and can be replaced by Project(x)\n            * WellTested(x) is redundant and can be replaced by Tested(x)\n            * OptimizedProject(x) is redundant and can be replaced by Optimized(x)\n            * PEP8Standards(x) is redundant and can be replaced by Standards(x)\n            * EasyToMaintain(x) is redundant and can be replaced by Maintainable(x)\n            * WellTestedPythonCode(x) is redundant and can be replaced by TestedPythonCode(x)\n            * WellStructured(x) is redundant and can be replaced by Structured(x)\n            * Optimized(x) is redundant and can be replaced by Optimized(x)\n            * CleanCode(x) is redundant and can be replaced by Clean(x)\n            * ReadableCode(x) is redundant and can be replaced by Readable(x)\n            * Person(x) is not redundant and cannot be replaced\n            * Perfect(x) is not redundant and cannot be replaced\n            * FollowsBestPractices(x) is not redundant and cannot be replaced\n\n\n\n        ### Question\n        List of **Predicates**\n\n\n\n        **Predicate**: PEP8Standards(x) ::: x follows PEP 8 standards\n        \n\n\n        **Predicate**: Code(x) ::: x is a code\n        \n\n\n        **Predicate**: Project(x) ::: x is a project\n        \n\n\n        **Predicate**: Tested(x) ::: x is well-tested\n        \n\n\n        **Predicate**: Optimized(x) ::: x is optimized\n        \n\n\n        **Predicate**: Structured(x) ::: x is well-structured\n        \n\n\n        **Predicate**: Clean(x) ::: x has clean code\n        \n\n\n        **Predicate**: Readable(x) ::: x has readable code\n        \n\n\n        **Predicate**: Person(x) ::: x is a person\n        \n\n\n        **Predicate**: Perfect(x) ::: x is a perfect entity\n        \n\n\n        **Predicate**: FollowsBestPractices(x) ::: x follows best practices\n        "
+        },
+        "maps": {
+            "FollowsPEP8Standards(x)": "PEP8Standards(x)",
+            "PythonProject(x)": "Project(x)",
+            "WellTested(x)": "Tested(x)",
+            "OptimizedProject(x)": "Optimized(x)",
+            "PEP8Standards(x)": "Standards(x)",
+            "WellTestedPythonCode(x)": "TestedPythonCode(x)",
+            "WellStructured(x)": "Structured(x)",
+            "CleanCode(x)": "Clean(x)",
+            "ReadableCode(x)": "Readable(x)"
+        },
+        "logic_program": [
+            "FollowsPEP8Standards(x) ::: x follows PEP 8 coding standards",
+            "PythonCode(x) ::: x is a Python code",
+            "PythonProject(x) ::: x is a Python project",
+            "WellTested(x) ::: x is well-tested",
+            "OptimizedProject(x) ::: x is an optimized project",
+            "PEP8Standards(x) ::: x follows PEP 8 standards",
+            "EasyToMaintain(x) ::: x is easy to maintain",
+            "WellTestedPythonCode(x) ::: x is a well-tested Python code",
+            "WellStructured(x) ::: x is well-structured",
+            "Optimized(x) ::: x is optimized",
+            "CleanCode(x) ::: x has clean code",
+            "ReadableCode(x) ::: x has readable code",
+            "Person(x) ::: x is a person",
+            "Perfect(x) ::: x is a perfect entity",
+            "FollowsBestPractices(x) ::: x follows best practices"
+        ],
+        "fol": [
+            "∀x (PythonCode(x) ∧ WellTested(x) → OptimizedProject(x))",
+            "∀x (PythonCode(x) ∧ ¬PEP8Standards(x) → ¬WellTested(x))",
+            "∀x (PythonProject(x) → EasyToMaintain(x))",
+            "∀x (PythonCode(x) → WellTested(x))",
+            "∀x (PythonCode(x) ∧ FollowsPEP8Standards(x) → EasyToMaintain(x))",
+            "∀x (WellTestedPythonCode(x) → FollowsPEP8Standards(x))",
+            "∀x (PythonProject(x) ∧ WellStructured(x) → Optimized(x))",
+            "∀x (PythonProject(x) ∧ EasyToMaintain(x) → WellTested(x))",
+            "∀x (PythonProject(x) ∧ Optimized(x) → (CleanCode(x) ∧ ReadableCode(x)))",
+            "∀x (PythonProject(x) → WellStructured(x)) ∧ ¬∃y (Person(y) ∧ Perfect(y))",
+            "∀x (PythonProject(x) → (CleanCode(x) ∧ ReadableCode(x)))",
+            "∃x (PythonProject(x) ∧ FollowsBestPractices(x))",
+            "∃x (PythonProject(x) ∧ Optimized(x))",
+            "∀x (PythonProject(x) ∧ ¬WellStructured(x) → ¬FollowsPEP8Standards(x))"
+        ],
+        "new_fol": [
+            "∀x (PythonCode(x) ∧ Tested(x) → Optimized(x))",
+            "∀x (PythonCode(x) ∧ ¬PEP8Standards(x) → ¬Tested(x))",
+            "∀x (Project(x) → EasyToMaintain(x))",
+            "∀x (PythonCode(x) → Tested(x))",
+            "∀x (PythonCode(x) ∧ PEP8Standards(x) → EasyToMaintain(x))",
+            "∀x (TestedPythonCode(x) → PEP8Standards(x))",
+            "∀x (Project(x) ∧ Structured(x) → Optimized(x))",
+            "∀x (Project(x) ∧ EasyToMaintain(x) → Tested(x))",
+            "∀x (Project(x) ∧ Optimized(x) → (Clean(x) ∧ Readable(x)))",
+            "∀x (Project(x) → Structured(x)) ∧ ¬∃y (Person(y) ∧ Perfect(y))",
+            "∀x (Project(x) → (Clean(x) ∧ Readable(x)))",
+            "∃x (Project(x) ∧ FollowsBestPractices(x))",
+            "∃x (Project(x) ∧ Optimized(x))",
+            "∀x (Project(x) ∧ ¬Structured(x) → ¬PEP8Standards(x))"
+        ]
+    },
+    "4": {
+        "results": {
+            "text": "\n            <s>[INST] <<SYS>>\n            ### Instruction:\n            \n        [INSTRUCTION]\n        You are given a list of predicate and its definitions (seperated by :::) which used in a logic programming context. Your task is to:\n        1. Identify any redundant predicates that can be expressed using another more general (overall) predicate.\n        2. Replace those redundant predicates with expressions that use one or two general predicates, while preserving their original meaning.\n            - Example: PredicateA(args) is redundant because it is equivalent to PredicateB(args); replace PredicateA(args) ⇒ PredicateB(args)\n            - Or Example: PredicateA(args) is redundant because it is equivalent the combination of PredicateB(args) and PredicateC(args) using logical conjunction ∧; replace PredicateA(args) ⇒ PredicateB(args) ∧ PredicateB(args)\n        \n        Only remove a predicate if it is fully expressible using other predicate and does not carry unique semantic value.\n        1. Redundant predicates identified and replaced.\n        2. General predicate derived from list predicate.\n        3. Always check if the replaced predicate definition can be express by the new predicate ones.\n        4. Keep the main predicates that has important role. These main predicate has role such as: well-tested, optimized, follow_PEP_8, not_well-tested, easy_to_maintain, all, well-tested, all, follow_PEP_8, easy_to_maintain, well-tested, follow_PEP_8, well-structured, optimized, well-tested, optimized, clean_and_readable_code, all, well-structured, all, clean_and_readable_code, exists, follow_best_practices, exists, optimized, does_not_follow_PEP_8 (1 predicate per role is kept).\n        5. Do not give explanation\n        6. If predicate can be replace by two another predicates, some logical conjunction can be used is: ∧ (and), ∨ (or).\n        [RESPONSE]\n\n        \n\n        ### Output\n        \"List Redundant Predicates\": Now we know that the replacement are: \n            <predicate> is redundant and can be replaced by <predicate>\n            ...\n    \n\n            <</SYS>>\n            ### Question\n            List of **Predicates**\n\n\n            **Predicate**: FollowsPEP8Standards(x) ::: x follows PEP 8 coding standards\n        \n\n\n            **Predicate**: PythonCode(x) ::: x is a Python code\n        \n\n\n            **Predicate**: PythonProject(x) ::: x is a Python project\n        \n\n\n            **Predicate**: WellTested(x) ::: x is well-tested\n        \n\n\n            **Predicate**: OptimizedProject(x) ::: x is an optimized project\n        \n\n\n            **Predicate**: PEP8Standards(x) ::: x follows PEP 8 standards\n        \n\n\n            **Predicate**: EasyToMaintain(x) ::: x is easy to maintain\n        \n\n\n            **Predicate**: WellTestedPythonCode(x) ::: x is a well-tested Python code\n        \n\n\n            **Predicate**: WellStructured(x) ::: x is well-structured\n        \n\n\n            **Predicate**: Optimized(x) ::: x is optimized\n        \n\n\n            **Predicate**: CleanCode(x) ::: x has clean code\n        \n\n\n            **Predicate**: ReadableCode(x) ::: x has readable code\n        \n\n\n            **Predicate**: Person(x) ::: x is a person\n        \n\n\n            **Predicate**: Perfect(x) ::: x is a perfect entity\n        \n\n\n            **Predicate**: FollowsBestPractices(x) ::: x follows best practices\n         [/INST]\n        \n\n        \"List Redundant Predicates\":\n\n* Predicate \"FollowsPEP8Standards(x)\" is redundant and can be replaced by \"PEP8Standards(x)\"\n* Predicate \"PythonCode(x)\" is redundant and can be replaced by \"PythonProject(x)\"\n* Predicate \"WellTested(x)\" is redundant and can be replaced by \"OptimizedProject(x)\"\n* Predicate \"EasyToMaintain(x)\" is redundant and can be replaced by \"WellStructured(x)\"\n* Predicate \"WellTestedPythonCode(x)\" is redundant and can be replaced by \"Optimized(x)\"\n* Predicate \"ReadableCode(x)\" is redundant and can be replaced by \"CleanCode(x)\"\n* Predicate \"Person(x)\" is redundant and can be replaced by \"Exists(x)\"\n* Predicate \"Perfect(x)\" is redundant and can be replaced by \"DoesNotFollowPEP8(x)\"\n\n\n\n\"List of Predicates\":\n\n* FollowsPEP8Standards(x)\n* PythonCode(x)\n* PythonProject(x)\n* WellTested(x)\n* OptimizedProject(x)\n* PEP8Standards(x)\n* EasyToMaintain(x)\n* WellTestedPythonCode(x)\n* WellStructured(x)\n* Optimized(x)\n* CleanCode(x)\n* ReadableCode(x)\n* Person(x)\n* Exists(x)\n* DoesNotFollowPEP8(x)"
+        },
+        "maps": {
+            "FollowsPEP8Standards(x)": "PEP8Standards(x)",
+            "PythonCode(x)": "PythonProject(x)"
+        },
+        "logic_program": [
+            "FollowsPEP8Standards(x) ::: x follows PEP 8 coding standards",
+            "PythonCode(x) ::: x is a Python code",
+            "PythonProject(x) ::: x is a Python project",
+            "WellTested(x) ::: x is well-tested",
+            "OptimizedProject(x) ::: x is an optimized project",
+            "PEP8Standards(x) ::: x follows PEP 8 standards",
+            "EasyToMaintain(x) ::: x is easy to maintain",
+            "WellTestedPythonCode(x) ::: x is a well-tested Python code",
+            "WellStructured(x) ::: x is well-structured",
+            "Optimized(x) ::: x is optimized",
+            "CleanCode(x) ::: x has clean code",
+            "ReadableCode(x) ::: x has readable code",
+            "Person(x) ::: x is a person",
+            "Perfect(x) ::: x is a perfect entity",
+            "FollowsBestPractices(x) ::: x follows best practices"
+        ],
+        "fol": [
+            "∀x (PythonCode(x) ∧ WellTested(x) → OptimizedProject(x))",
+            "∀x (PythonCode(x) ∧ ¬PEP8Standards(x) → ¬WellTested(x))",
+            "∀x (PythonProject(x) → EasyToMaintain(x))",
+            "∀x (PythonCode(x) → WellTested(x))",
+            "∀x (PythonCode(x) ∧ FollowsPEP8Standards(x) → EasyToMaintain(x))",
+            "∀x (WellTestedPythonCode(x) → FollowsPEP8Standards(x))",
+            "∀x (PythonProject(x) ∧ WellStructured(x) → Optimized(x))",
+            "∀x (PythonProject(x) ∧ EasyToMaintain(x) → WellTested(x))",
+            "∀x (PythonProject(x) ∧ Optimized(x) → (CleanCode(x) ∧ ReadableCode(x)))",
+            "∀x (PythonProject(x) → WellStructured(x)) ∧ ¬∃y (Person(y) ∧ Perfect(y))",
+            "∀x (PythonProject(x) → (CleanCode(x) ∧ ReadableCode(x)))",
+            "∃x (PythonProject(x) ∧ FollowsBestPractices(x))",
+            "∃x (PythonProject(x) ∧ Optimized(x))",
+            "∀x (PythonProject(x) ∧ ¬WellStructured(x) → ¬FollowsPEP8Standards(x))"
+        ],
+        "new_fol": [
+            "∀x (PythonProject(x) ∧ WellTested(x) → OptimizedProject(x))",
+            "∀x (PythonProject(x) ∧ ¬PEP8Standards(x) → ¬WellTested(x))",
+            "∀x (PythonProject(x) → EasyToMaintain(x))",
+            "∀x (PythonProject(x) → WellTested(x))",
+            "∀x (PythonProject(x) ∧ PEP8Standards(x) → EasyToMaintain(x))",
+            "∀x (WellTestedPythonCode(x) → PEP8Standards(x))",
+            "∀x (PythonProject(x) ∧ WellStructured(x) → Optimized(x))",
+            "∀x (PythonProject(x) ∧ EasyToMaintain(x) → WellTested(x))",
+            "∀x (PythonProject(x) ∧ Optimized(x) → (CleanCode(x) ∧ ReadableCode(x)))",
+            "∀x (PythonProject(x) → WellStructured(x)) ∧ ¬∃y (Person(y) ∧ Perfect(y))",
+            "∀x (PythonProject(x) → (CleanCode(x) ∧ ReadableCode(x)))",
+            "∃x (PythonProject(x) ∧ FollowsBestPractices(x))",
+            "∃x (PythonProject(x) ∧ Optimized(x))",
+            "∀x (PythonProject(x) ∧ ¬WellStructured(x) → ¬PEP8Standards(x))"
+        ]
+    }
+}

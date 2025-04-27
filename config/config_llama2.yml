@@ -1,0 +1,29 @@
+model_id: /data/npl/ViInfographicCaps/Contest/demo_contest/xai/Llama-2-7b-chat-hf
+model_type: llama
+
+data:
+  train: /data/npl/ViInfographicCaps/Contest/final_contest/XAI/data/train_v1.json
+  val: /data/npl/ViInfographicCaps/Contest/final_contest/XAI/data/train_v1.json
+  test: /data/npl/ViInfographicCaps/Contest/final_contest/XAI/data/train_v1.json
+  batch_size: 1
+  num_samples: 1
+
+model_config:
+  task: text-generation
+  max_new_tokens: 1024
+  do_sample: true
+  repetition_penalty: 1.15
+  temperature: 0.1
+  top_p: 0.95
+  nun_beam: 2
+  dola_layers: high
+  use_cache: true
+
+module_nl2fol:
+  base_model: "/data/npl/ViInfographicCaps/Contest/demo_contest/xai/Llama-2-7b-chat-hf"
+  peft_path: "/data/npl/ICEK/LLaMA/LogicLLaMA-7b-direct-translate-delta-v0.1"
+  prompt_template_path: "/data/npl/ICEK/News/SymbolicResoning/prompt_templates"
+  load_in_8bit: True
+  max_output_len: 256
+  input_json: "/data/npl/ICEK/News/SymbolicResoning/data/train_v2.json"
+  output_json: "/data/npl/ICEK/News/SymbolicResoning/data/demo_v2.json"

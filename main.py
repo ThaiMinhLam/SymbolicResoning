@@ -92,7 +92,7 @@ def main():
             # print(res_module_1['question-FOL'])
             
             res_modele_2 = extract_logic_program.generate_sample(res_module_1)
-
+        
             print(res_modele_2)
             
             break

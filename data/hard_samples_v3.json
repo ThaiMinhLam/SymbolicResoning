@@ -1,0 +1,975 @@
+[
+  {
+    "premises-NL": [
+      "A student can withdraw up to 3 courses per academic year if remaining credits ≥ 10 (Year 1, 2) or ≥ 8 (Year 3+); each withdrawal deducts 0.5 credits from total accumulated credits.",
+      "Courses have 3, 4, or 5 credits; withdrawn courses contribute 0 credits to semester GPA.",
+      "Students must register for 12–18 credits per semester; withdrawals reduce semester credits.",
+      "No regulation limits total withdrawals, but max 3 per year.",
+      "A student with < 8 accumulated credits cannot withdraw courses.",
+      "A student (Year 2) has 45 credits, withdrew 2 courses in Year 1 (penalty 1 credit), including C1 (4 credits, withdrawn), C2 (3 credits, withdrawn).",
+      "In Year 2, semester S1, the student registered for 15 credits, withdrew C3 (5 credits), C4 (3 credits), attempted C5 (4 credits, passed)."
+    ],
+    "premises-FOL": [
+      "FORALL(x, y): (Withdrawals(x, y) ≤ 3 ∧ RemainingCredits(x, y, s) ≥ (Year(x) ≤ 2 ? 10 : 8)) → CanWithdrawCourse(x, y, s) ∧ TotalCreditsPenalty(x, -0.5 * Withdrawals(x, y))",
+      "FORALL(c): Credits(c) ∈ {3, 4, 5} ∧ Withdrawn(c) → GPACredits(c) = 0",
+      "FORALL(x, s): RegisteredCredits(x, s) ∈ [12, 18] ∧ RemainingCredits(x, s) = RegisteredCredits(x, s) − Sum(WithdrawnCredits(x, s))",
+      "¬EXISTS(r): Regulation(LimitTotalWithdrawals(r)) ∧ FORALL(y): Withdrawals(y) ≤ 3",
+      "FORALL(x): TotalCredits(x) < 8 → ¬CanWithdrawCourse(x, _, _)",
+      "Student(s1) ∧ Year(s1) = 2 ∧ TotalCredits(s1) = 45 ∧ Withdrawals(s1, Year1) = 2 ∧ TotalCreditsPenalty(s1, -1) ∧ Course(s1, c1, 4, Withdrawn) ∧ Course(s1, c2, 3, Withdrawn)",
+      "Courses(s1, Year2, S1) = [c3(5, Withdrawn), c4(3, Withdrawn), c5(4, Passed)] ∧ RegisteredCredits(s1, S1) = 15"
+    ],
+    "questions": [
+      "What is the student’s total accumulated credits after Year 2, semester S1?",
+      "How many credits were withdrawn in Year 2, semester S1, and can the student withdraw another course in semester S2 of Year 2?"
+    ],
+    "answers": [
+      "47",
+      "8, No"
+    ],
+    "idx": [
+      [
+        1,
+        6,
+        7
+      ],
+      [
+        1,
+        3,
+        5,
+        7
+      ]
+    ],
+    "explanation": [
+      "Premise 6 gives 45 credits, with 2 withdrawals in Year 1 (C1: 4 credits, C2: 3 credits, penalty 2 × 0.5 = 1 credit per Premise 1). Adjusted credits: 45 − 1 = 44. Premise 7 adds: S1 registered 15 credits, C3 (5 credits, withdrawn, 0 credits), C4 (3 credits, withdrawn, 0 credits), C5 (4 credits, passed, +4 credits), 2 withdrawals (penalty 1 credit). Total credits: 44 + 4 = 48 − 1 = 47.",
+      "Premise 7 gives S1 withdrawals: C3 (5 credits), C4 (3 credits), total 5 + 3 = 8 credits withdrawn. For S2 withdrawal (Premise 1): Year 2 requires remaining credits ≥ 10. Assume S2 registers 12 credits (Premise 3); withdrawing 3 credits leaves 12 − 3 = 9 < 10, fails. Premise 5: Total credits ≥ 8 (47 from Question 1), passes. Premise 1: 2 withdrawals in S1, 1 allowed in S2. Cannot withdraw in S2 due to insufficient semester credits."
+    ],
+    "LLM-FOL": [
+      "∀x (Student(x) ∧ (Year1(x) ∨ Year2(x)) ∧ RemainingCreditsGreaterThan(x, 10) → CanWithdrawUpTo3Courses(x)) ∧ (Year3Plus(x) ∧ RemainingCreditsGreaterThan(x, 8) → CanWithdrawUpTo3Courses(x)) ∧ DeductsCredits(x, 0.5)\n\nExplanation:\nThe NL statement is translated into FOL as follows:\n\n∀x (Student(x) ∧ (Year1(x) ∨ Year2(x)) ∧ RemainingCreditsGreaterThan(x, 10) → CanWithdrawUpTo3Courses(x))\n\nThis rule states that for any student x, if they are in Year 1 or Year 2 and have remaining credits greater than 10, they can withdraw up to 3 courses.\n\nSimilarly, for any student x in Year 3 or later, and have remaining cred",
+      "∀x (Course(x) → (HasCredits(x, 3) ∨ HasCredits(x, 4) ∨ HasCredits(x, 5))) ∧ ∀y (WithdrawnCourse(y) → ContributesZeroCreditsToGPA(y))",
+      "∀x (Student(x) → (RegisteredCredits(x, 12) ∧ (RegisteredCredits(x, 13) ∨ RegisteredCredits(x, 14)) ∧ (RegisteredCredits(x, 15) ∨ RegisteredCredits(x, 16)) ∧ ¬Withdrawals(x))) ∧ ∀y (Withdrawal(y) → ReducesSemesterCredits(y)))",
+      "∀x (Account(x) → (NoTotalWithdrawalLimit(x) ∧ MaxWithdrawalsPerYear(x, 3)))",
+      "∀x (Student(x) ∧ AccumulatedCredits(x, < 8) → ¬WithdrawCourses(x))",
+      "∀x (Student(x) ∧ Year2(x) → HasCredits(x, 45)) ∧ ∃y (Student(y) ∧ Year1(y) ∧ WithdrewCourse(y, C1) ∧ WithdrewCourse(y, C2))",
+      "∀x ∀y ∀z (Student(x) ∧ Year(y) ∧ Semester(s1) ∧ Credits(c) → (RegisteredFor(x, y, s1, c) ∧ Withdrew(x, y, s1, c) ∧ Attempted(x, y, s1, c)))"
+    ],
+    "question-FOL": [
+      "∀x ∀y ∀z (Student(x) ∧ Year(y) ∧ Semester(z) ∧ TotalAccumulatedCredits(x, y, z) → TotalCredits(x, y, z))",
+      "NumberOfCreditsWithdrawn(s1, Year2, S1) ∧ CanWithdrawAnotherCourse(s1, Year2, S2) → WithdrawalStatus(s1, Year2, S1, S2)"
+    ]
+  },
+  {
+    "premises-NL": [
+      "Nam has a GPA of 6.9 after completing 88 credits.",
+      "Nam retook 3 previously passed courses: C1 (4 credits, initial 5.2, retake1 7.0, retake2 3.5), C2 (3 credits, initial 6.0, retake1 6.8, retake2 6.0), C3 (5 credits, initial 7.5, retake1 5.0, retake2 4.0).",
+      "Nam repeated one failed course: C4 (3 credits, initial 3.0, repeat 6.5).",
+      "Nam took two new courses: C5 (4 credits, score 8.0), C6 (2 credits, score 3.8).",
+      "A retake is re-registering a passed course (same course code) to improve the grade.",
+      "For GPA, use the highest score if ≥ 4.0; if all retake scores < 5.0, deduct 0.2 points per credit from the course’s grade points.",
+      "Retaking a course does not add credits.",
+      "Repeating a failed course means re-registering it.",
+      "A failed course (score < 4.0) adds no credits.",
+      "Repeating a failed course adds credits if the new score ≥ 4.0."
+    ],
+    "premises-FOL": [
+      "GPA(Nam) = 6.9 ∧ AccumulatedCredits(Nam) = 88",
+      "RetakeCourses(Nam) = [C1(4, 5.2, 7.0, 3.5), C2(3, 6.0, 6.8, 6.0), C3(5, 7.5, 5.0, 4.0)]",
+      "RepeatCourses(Nam) = [C4(3, 3.0, 6.5)]",
+      "NewCourses(Nam) = [C5(4, 8.0), C6(2, 3.8)]",
+      "RetakeDefinition(c): PassedBefore(c) ∧ SameCourseCode(c) ∧ AttemptToImprove(c)",
+      "GPAUsesMaxScore(c): GPA(c) = If Max(Score(All)) ≥ 4.0 then Max else 0; If AllRetakes(c) < 5.0 then Subtract(0.2 × Credits(c))",
+      "CreditsUnchangedWhenRetake(Nam, c)",
+      "RepeatDefinition(c): FailedBefore(c) ∧ ReRegister(c)",
+      "If Score(c) < 4.0 then AccumulatedCredit(c) = 0",
+      "RepeatCredits(c): If Score(New) ≥ 4.0 then Credit(c) else 0"
+    ],
+    "questions": [
+      "What are the final scores used for GPA in Nam’s retaken courses?",
+      "What is Nam’s updated GPA after all course attempts?"
+    ],
+    "answers": [
+      "7.0, 6.8, 7.5",
+      "7.02"
+    ],
+    "idx": [
+      [
+        2,
+        6
+      ],
+      [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        9,
+        10
+      ]
+    ],
+    "explanation": [
+      "Premise 2 gives the scores for three retaken courses: C1 (4 credits, initial 5.2, retake1 7.0, retake2 3.5), C2 (3 credits, initial 6.0, retake1 6.8, retake2 6.0), C3 (5 credits, initial 7.5, retake1 5.0, retake2 4.0). Premise 6 says GPA uses the highest score if ≥ 4.0, with a penalty of 0.2 points per credit if all retake scores are < 5.0. For C1, Max(5.2, 7.0, 3.5) = 7.0, retakes 7.0, 3.5 (not all < 5.0), so score is 7.0. For C2, Max(6.0, 6.8, 6.0) = 6.8, retakes 6.8, 6.0 (not all < 5.0), so score is 6.8. For C3, Max(7.5, 5.0, 4.0) = 7.5, retakes 5.0, 4.0 (all < 5.0), but score remains 7.5 (penalty affects grade points, not score). Final scores: 7.0, 6.8, 7.5.",
+      "Premise 1 gives Nam a GPA of 6.9 over 88 credits, so grade points are 6.9 × 88 = 607.2. Premise 2 describes retakes: C1 (4 credits, initial 5.2, retake1 7.0, retake2 3.5, original points 20.8), C2 (3 credits, initial 6.0, retake1 6.8, retake2 6.0, original points 18), C3 (5 credits, initial 7.5, retake1 5.0, retake2 4.0, original points 37.5). Premise 6 says use highest score if ≥ 4.0, with 0.2-point penalty per credit if all retakes < 5.0: C1 uses 7.0, points = 7.0 × 4 = 28, change = 28 − 20.8 = 7.2; C2 uses 6.8, points = 6.8 × 3 = 20.4, change = 20.4 − 18 = 2.4; C3 uses 7.5, retakes < 5.0, penalty 0.2 × 5 = 1.0, points = 7.5 × 5 − 1.0 = 36.5, change = 36.5 − 37.5 = −1.0. Premise 3 adds repeat C4 (3 credits, initial 3.0, repeat 6.5), points = 6.5 × 3 = 19.5. Premise 4 adds new courses: C5 (4 credits, 8.0, points = 32), C6 (2 credits, 3.8, failed, 0 points per Premise 9). Total grade points: 607.2 + 7.2 + 2.4 − 1.0 + 19.5 + 32 = 667.3. Total credits (Premises 7, 10): 88 + 0 + 3 + 4 = 95. GPA = 667.3 / 95 ≈ 7.0242, rounded to 7.02."
+    ],
+    "LLM-FOL": [
+      "HasGPA(Nam, 6.9) ∧ CompletedCredits(Nam, 88)",
+      "∀x ∀y ∀z (RetookCourse(x, y, z) ∧ Course(y) ∧ PassedBefore(y, x) ∧ Retake(x, y) → (RetakeGrade(x, y, z) ∧ Grade(z) ∧ (Retake1(x, y, z) ∧ Retake2(x, y, z))))",
+      "∀x ∀y (Nam(x) ∧ Course(y) ∧ Failed(y) ∧ Credits(y, 3) ∧ InitialGPA(x, 3.0) ∧ RepeatGPA(x, 6.5) → RepeatedFailedCourse(x, y))",
+      "∀x ∀y (Nam(x) ∧ Course(y) → (Took(x, y) ∧ NewCourse(y) ∧ Credits(y, 4) ∧ Score(y, 8.0) ∧ Took(x, y) ∧ NewCourse(y) ∧ Credits(y, 2) ∧ Score(y, 3.8)))",
+      "∀x ∀y (Retake(x) ∧ PassedCourse(y) ∧ SameCourseCode(y, x) → ImprovesGrade(x, y))",
+      "∀x (GPA(x) ∧ Score ≥ 4.0 → HighestScore(x)) ∧ ∀y (Course(y) ∧ RetakeScore(y, z) ∧ <5.0(z) → DeductPoints(y, 0.2))",
+      "∀x (RetakesCourse(x) → ¬AddsCredits(x))",
+      "∀x ∀y (RepeatsFailedCourse(x, y) → Re-RegistersCourse(x, y))",
+      "∀x (Course(x) ∧ ScoreBelowThreshold(x, 4.0) → NoCreditsAdded(x))",
+      "∀x (RepeatedCourse(x) ∧ FailedCourse(x) ∧ NewScoreGreaterThanOrEqualTo4(x) → AddsCredits(x))"
+    ],
+    "question-FOL": [
+      "∀x ∀y (RetakenCourse(x) ∧ FinalScore(y) ∧ TakenIn(x, y) → UsedForGPA(x, y, G))",
+      "∀x (Nam(x) → ∃y (GPA(y) ∧ UpdatedGPA(y, x)))"
+    ]
+  },
+  {
+    "premises-NL": [
+      "A student can withdraw up to 3 courses per academic year if remaining credits ≥ 10 (Year 1, 2) or ≥ 8 (Year 3+); each withdrawal deducts 0.5 credits from total accumulated credits.",
+      "Courses have 3, 4, or 5 credits; withdrawn courses contribute 0 credits to semester GPA.",
+      "Students must register for 12–18 credits per semester; withdrawals reduce semester credits.",
+      "No regulation limits total withdrawals, but max 3 per year.",
+      "A student with < 8 accumulated credits cannot withdraw courses.",
+      "A student (Year 2) has 45 credits, withdrew 2 courses in Year 1 (penalty 1 credit), including C1 (4 credits, withdrawn), C2 (3 credits, withdrawn).",
+      "In Year 2, semester S1, the student registered for 15 credits, withdrew C3 (5 credits), C4 (3 credits), attempted C5 (4 credits, passed)."
+    ],
+    "premises-FOL": [
+      "FORALL(x, y): (Withdrawals(x, y) ≤ 3 ∧ RemainingCredits(x, y, s) ≥ (Year(x) ≤ 2 ? 10 : 8)) → CanWithdrawCourse(x, y, s) ∧ TotalCreditsPenalty(x, -0.5 * Withdrawals(x, y))",
+      "FORALL(c): Credits(c) ∈ {3, 4, 5} ∧ Withdrawn(c) → GPACredits(c) = 0",
+      "FORALL(x, s): RegisteredCredits(x, s) ∈ [12, 18] ∧ RemainingCredits(x, s) = RegisteredCredits(x, s) − Sum(WithdrawnCredits(x, s))",
+      "¬EXISTS(r): Regulation(LimitTotalWithdrawals(r)) ∧ FORALL(y): Withdrawals(y) ≤ 3",
+      "FORALL(x): TotalCredits(x) < 8 → ¬CanWithdrawCourse(x, _, _)",
+      "Student(s1) ∧ Year(s1) = 2 ∧ TotalCredits(s1) = 45 ∧ Withdrawals(s1, Year1) = 2 ∧ TotalCreditsPenalty(s1, -1) ∧ Course(s1, c1, 4, Withdrawn) ∧ Course(s1, c2, 3, Withdrawn)",
+      "Courses(s1, Year2, S1) = [c3(5, Withdrawn), c4(3, Withdrawn), c5(4, Passed)] ∧ RegisteredCredits(s1, S1) = 15"
+    ],
+    "questions": [
+      "What is the student’s total accumulated credits after Year 2, semester S1?",
+      "How many credits were withdrawn in Year 2, semester S1, and can the student withdraw another course in semester S2 of Year 2?"
+    ],
+    "answers": [
+      "47",
+      "8, No"
+    ],
+    "idx": [
+      [
+        1,
+        6,
+        7
+      ],
+      [
+        1,
+        3,
+        5,
+        7
+      ]
+    ],
+    "explanation": [
+      "Premise 6 gives 45 credits, with 2 withdrawals in Year 1 (C1: 4 credits, C2: 3 credits, penalty 2 × 0.5 = 1 credit per Premise 1). Adjusted credits: 45 − 1 = 44. Premise 7 adds: S1 registered 15 credits, C3 (5 credits, withdrawn, 0 credits), C4 (3 credits, withdrawn, 0 credits), C5 (4 credits, passed, +4 credits), 2 withdrawals (penalty 1 credit). Total credits: 44 + 4 = 48 − 1 = 47.",
+      "Premise 7 gives S1 withdrawals: C3 (5 credits), C4 (3 credits), total 5 + 3 = 8 credits withdrawn. For S2 withdrawal (Premise 1): Year 2 requires remaining credits ≥ 10. Assume S2 registers 12 credits (Premise 3); withdrawing 3 credits leaves 12 − 3 = 9 < 10, fails. Premise 5: Total credits ≥ 8 (47 from Question 1), passes. Premise 1: 2 withdrawals in S1, 1 allowed in S2. Cannot withdraw in S2 due to insufficient semester credits."
+    ],
+    "LLM-FOL": [
+      "∀x (Student(x) ∧ (Year1(x) ∨ Year2(x)) ∧ RemainingCreditsGreaterThan(x, 10) → CanWithdrawUpTo3Courses(x)) ∧ (Year3Plus(x) ∧ RemainingCreditsGreaterThan(x, 8) → CanWithdrawUpTo3Courses(x)) ∧ DeductsCredits(x, 0.5)\n\nExplanation:\nThe NL statement is translated into FOL as follows:\n\n∀x (Student(x) ∧ (Year1(x) ∨ Year2(x)) ∧ RemainingCreditsGreaterThan(x, 10) → CanWithdrawUpTo3Courses(x))\n\nThis rule states that for any student x, if they are in Year 1 or Year 2 and have remaining credits greater than 10, they can withdraw up to 3 courses.\n\nSimilarly, for any student x in Year 3 or later, and have remaining cred",
+      "∀x (Course(x) → (HasCredits(x, 3) ∨ HasCredits(x, 4) ∨ HasCredits(x, 5))) ∧ ∀y (WithdrawnCourse(y) → ContributesZeroCreditsToGPA(y))",
+      "∀x (Student(x) → (RegisteredCredits(x, 12) ∧ (RegisteredCredits(x, 13) ∨ RegisteredCredits(x, 14)) ∧ (RegisteredCredits(x, 15) ∨ RegisteredCredits(x, 16)) ∧ ¬Withdrawals(x))) ∧ ∀y (Withdrawal(y) → ReducesSemesterCredits(y)))",
+      "∀x (Account(x) → (NoTotalWithdrawalLimit(x) ∧ MaxWithdrawalsPerYear(x, 3)))",
+      "∀x (Student(x) ∧ AccumulatedCredits(x, < 8) → ¬WithdrawCourses(x))",
+      "∀x (Student(x) ∧ Year2(x) → HasCredits(x, 45)) ∧ ∃y (Student(y) ∧ Year1(y) ∧ WithdrewCourse(y, C1) ∧ WithdrewCourse(y, C2))",
+      "∀x ∀y ∀z (Student(x) ∧ Year(y) ∧ Semester(s1) ∧ Credits(c) → (RegisteredFor(x, y, s1, c) ∧ Withdrew(x, y, s1, c) ∧ Attempted(x, y, s1, c)))"
+    ],
+    "question-FOL": [
+      "∀x ∀y ∀z (Student(x) ∧ Year(y) ∧ Semester(z) ∧ TotalAccumulatedCredits(x, y, z) → TotalCredits(x, y, z))",
+      "NumberOfCreditsWithdrawn(s1, Year2, S1) ∧ CanWithdrawAnotherCourse(s1, Year2, S2) → WithdrawalStatus(s1, Year2, S1, S2)"
+    ]
+  },
+  {
+    "premises-NL": [
+      "Selecting a major requires ≥ 24 general education credits, general GPA ≥ 2.5 (scale 0–4), all general courses passed (grade ≥ 2.0).",
+      "General courses are 3 credits; each retake after failing (grade < 2.0) costs $50 per attempt.",
+      "Students must retake failed general courses until passed; no limit on attempts if fees paid.",
+      "General GPA includes only passed courses; failed attempts contribute 0 credits.",
+      "A student has 18 general credits, GPA 2.7, failed C1 (3 credits, grade 1.8, 2 attempts, $100 paid).",
+      "The student retakes C1 (grade 2.2, $50), passes C2 (3 credits, grade 2.5), pays all fees."
+    ],
+    "premises-FOL": [
+      "FORALL(x): MajorSelection(x) ↔ (GeneralCredits(x) ≥ 24 ∧ GeneralGPA(x) ≥ 2.5 ∧ FORALL(c, GeneralCourse(c) → Grade(x, c) ≥ 2.0))",
+      "FORALL(c): GeneralCourse(c) → Credits(c) = 3 ∧ FORALL(x): (Attempts(x, c) > 1 → RetakeFee(x, c, 50 * (Attempts(x, c) − 1)))",
+      "FORALL(x, c): (Grade(x, c) < 2.0 ∧ FeesPaid(x)) → RetakeCourse(x, c) ∧ ¬LimitRetakes(x, c)",
+      "FORALL(x): GeneralGPA(x) = Sum(Grade(c) * Credits(c) for GeneralCourse(c), Grade(c) ≥ 2.0) / Sum(Credits(c)) ∧ (Grade(c) < 2.0 → Credits(c) = 0)",
+      "Student(s1) ∧ GeneralCredits(s1) = 18 ∧ GeneralGPA(s1) = 2.7 ∧ Course(s1, c1, 3, 1.8, Attempts=2) ∧ RetakeFee(s1, c1, 100)",
+      "Courses(s1) = [c1_reenroll(3, 2.2, Fee=50), c2(3, 2.5)] ∧ FeesPaid(s1)"
+    ],
+    "questions": [
+      "What is the student’s updated general GPA after the new courses?",
+      "How many general credits has the student accumulated, and can they select a major?"
+    ],
+    "answers": [
+      "2.61",
+      "24, Yes"
+    ],
+    "idx": [
+      [
+        3,
+        4,
+        5
+      ],
+      [
+        0,
+        3,
+        4,
+        5
+      ]
+    ],
+    "explanation": [
+      "Premise 4 gives 18 credits, GPA 2.7, C1 (3 credits, 1.8, failed, 0 credits per Premise 3). Passed credits: 18, points: 2.7 × 18 = 48.6. Premise 5 adds: C1 re-enroll (3 credits, 2.2, points 3 × 2.2 = 6.6), C2 (3 credits, 2.5, points 3 × 2.5 = 7.5). Total credits: 18 + 3 + 3 = 24, points: 48.6 + 6.6 + 7.5 = 62.7. GPA: 62.7 / 24 = 2.6125, rounded to 2.61.",
+      "Premise 4 gives 18 credits. Premise 5 adds: C1 re-enroll (3 credits), C2 (3 credits). Total credits: 18 + 3 + 3 = 24. Premise 0 requires: ≥ 24 credits (24, passes), GPA ≥ 2.5 (2.61 from Q0, passes), all grades ≥ 2.0 (C1: 2.2, C2: 2.5, others ≥ 2.0 per initial GPA, passes). The student can select a major."
+    ],
+    "LLM-FOL": [
+      "∀x (SelectsMajor(x) → (∃y (GeneralEducationCredits(y) ≥ 24) ∧ ExistsZ (GeneralGPA(Z) ≥ 2.5) ∧ PassedAllGeneralCourses(x, z) ∧ GradeGreaterThanOrEqualTo2(x, z)))",
+      "∀x (GeneralCourse(x) → Credits(3)) ∧ ∀y (RetakeAfterFailing(y) → Costs(50))",
+      "∀x (Student(x) ∧ FailedGeneralCourse(x) → RetakeUntilPassed(x)) ∧ ∀y (Student(y) ∧ PaidFees(y) → NoLimitOnAttempts(y))",
+      "∀x (Course(x) ∧ Passed(x) → Credits(x, y)) ∧ ∀z (Course(z) ∧ FailedAttempt(z) → Credits(z, 0))",
+      "∀x (Student(x) → (HasGeneralCredits(x, 18) ∧ HasGPA(x, 2.7) ∧ FailedCourse(x, C1, 3, 1.8, 2, $100)))",
+      "RetakesC1(student, grade, fee) ∧ PassesC2(student, credits, grade, fee) ∧ PaysFees(student)"
+    ],
+    "question-FOL": [
+      "∀x (Student(x) ∧ TookNewCourses(x) → UpdatedGeneralGPA(x, 3.5))",
+      "∀x (Student(x) → (AccumulatedGeneralCredits(x) ∧ CanSelectMajor(x)))"
+    ]
+  },
+  {
+    "premises-NL": [
+      "On-time graduation requires ≥ 45 credits, all courses scored ≥ 60/100, English test score ≥ 75/100 by 30/06/2025.",
+      "Each course (3 credits) contributes credits = (score/100) × 3; scores < 60 contribute 0 credits.",
+      "HT grades require $50/attempt removal fee; unresolved HTs by 15/06/2025 block graduation.",
+      "English test results are released 10 days after the test; tests cost $30/attempt.",
+      "Duy has 42 credits, 2 HT courses (Statistics, Economics, 3 credits each), scores pending.",
+      "Duy submits HT removal for Statistics (score 85, $50, 10/06/2025) and Economics (score 55, $50, 12/06/2025).",
+      "Duy takes English test on 25/06/2025 (score 80, $30)."
+    ],
+    "premises-FOL": [
+      "FORALL(x): GraduateOnTime(x) ↔ (TotalCredits(x) ≥ 45 ∧ FORALL(c, Score(x, c) ≥ 60) ∧ EnglishScore(x) ≥ 75 ∧ EnglishResultDate(x) ≤ '30/06/2025')",
+      "FORALL(x, c): Course(c, 3) → (Score(x, c) ≥ 60 → Credits(x, c) = (Score(x, c) / 100) * 3) ∧ (Score(x, c) < 60 → Credits(x, c) = 0)",
+      "FORALL(x, c): HT(x, c) → (RemovalFee(x, c, 50 * Attempts(x, c)) ∧ (HTUnresolved(x, c, '15/06/2025') → ¬GraduateOnTime(x)))",
+      "FORALL(x): EnglishResultDate(x) = EnglishTestDate(x) + 10 ∧ EnglishTestFee(x, 30)",
+      "Student(Duy) ∧ TotalCredits(Duy) = 42 ∧ HT(Duy, 'Statistics') ∧ HT(Duy, 'Economics') ∧ Course('Statistics', 3) ∧ Course('Economics', 3)",
+      "HTRemoval(Duy, 'Statistics', 85, 50, '10/06/2025') ∧ HTRemoval(Duy, 'Economics', 55, 50, '12/06/2025')",
+      "EnglishTest(Duy, 80, 30, '25/06/2025')"
+    ],
+    "questions": [
+      "How many total credits does Duy have after resolving HT grades?",
+      "What is Duy’s total cost (HT removal and English test fees), and is he eligible to graduate on time?"
+    ],
+    "answers": [
+      "44.55",
+      "$130, No"
+    ],
+    "idx": [
+      [
+        1,
+        4,
+        5
+      ],
+      [
+        0,
+        2,
+        3,
+        5,
+        6
+      ]
+    ],
+    "explanation": [
+      "Premise 4: Duy has 42 credits. Premise 5: Statistics HT resolved (score 85, credits = (85/100) × 3 = 2.55, Premise 1), Economics HT resolved (score 55, credits = 0). Total credits: 42 + 2.55 + 0 = 44.55.",
+      "Premise 5: HT removal fees = $50 (Statistics) + $50 (Economics) = $100. Premise 6: English test fee = $30. Total cost: $100 + $30 = $130. Premise 0 requires: ≥ 45 credits (44.55, fails), all scores ≥ 60 (Economics 55, fails), English score ≥ 75 (80, passes), English results by 30/06/2025 (Premise 3: 25/06/2025 + 10 = 05/07/2025, fails). Premise 2: HTs resolved by 15/06/2025 (10/06, 12/06/2025, passes). Not eligible due to credits, Economics score, and English deadline."
+    ],
+    "LLM-FOL": [
+      "∀x (OnTimeGraduation(x) → (∃y (Credits(y) ≥ 45) ∧ ∃z (Courses(z) ∧ Scored(z, 60) ∧ EnglishTestScore(x, 75))) ∧ ByDate(x, 30/06/2025))",
+      "∀x (Course(x) ∧ Credits(x, 3) ∧ Score(x, score) ∧ ScoreBelowThreshold(x, 60) → ContributesCredits(x, score * 3))",
+      "∀x (HTGrades(x) → (RequiresRemovalFee(x, 50) ∧ UnresolvedHTsByDate(x, 15, 06, 2025) ∧ BlocksGraduation(x)))",
+      "∀x (EnglishTestResult(x) → Released10DaysAfterTest(x)) ∧ ∀y (TestAttempt(y) → Costs$30(y))",
+      "∀x (Duy(x) → (HasCredits(x, 42) ∧ HasHTCourses(x, Statistics, Economics, 3CreditsEach) ∧ ScoresPending(x)))",
+      "∀x ∀y (Duy(x) ∧ (Statistics(y) ∧ SubmitsHTRemoval(x, y, 85, $50, 10/06/2025)) ∧ (Economics(y) ∧ SubmitsHTRemoval(x, y, 55, $50, 12/06/2025)))",
+      "TakesEnglishTest(Duy, 25/06/2025, Score80, $30)"
+    ],
+    "question-FOL": [
+      "HasTotalCredits(Duy, 15)",
+      "TotalCost(HTRemovalEnglishTestFees, X) ∧ EligibleToGraduateOnTime(y)"
+    ]
+  },
+  {
+    "premises-NL": [
+      "Choosing a major requires ≥ 30 credits, GPA ≥ 2.5 (scale 0–4), ≤ 2 violations; second-year status (≥ 24 credits).",
+      "Each failed course deducts 1 credit; each violation reduces GPA by 0.1.",
+      "Students with > 2 violations cannot choose a major, regardless of credits or GPA.",
+      "GPA is calculated from passed courses (grade ≥ 1.0); failed courses contribute 0 credits.",
+      "A student in year 1 has 20 credits, GPA 2.8, 1 violation (GPA penalty 0.1), failed 1 course (3 credits, 1 credit deducted).",
+      "In year 2, the student earns 10 credits (GPA 3.0 for new courses), fails 1 course (4 credits, 1 credit deducted), incurs 1 violation."
+    ],
+    "premises-FOL": [
+      "FORALL(x): CanChooseMajor(x) ↔ (TotalCredits(x) ≥ 30 ∧ GPA(x) ≥ 2.5 ∧ Violations(x) ≤ 2 ∧ TotalCredits(x) ≥ 24)",
+      "FORALL(x): FailedCourse(x, n) → CreditDeduction(x, n) ∧ Violation(x, m) → GPAPenalty(x, 0.1 * m)",
+      "FORALL(x): Violations(x) > 2 → ¬CanChooseMajor(x)",
+      "FORALL(x): GPA(x) = Sum(Grade(c) * Credits(c) for PassedCourse(c, Grade≥1.0)) / Sum(Credits(c)) ∧ FailedCourse(c) → Credits(c) = 0",
+      "Student(s1) ∧ Year(s1) = 1 ∧ TotalCredits(s1) = 20 ∧ GPA(s1) = 2.8 ∧ Violations(s1) = 1 ∧ GPAPenalty(s1, 0.1) ∧ FailedCourse(s1, 1) ∧ CreditDeduction(s1, 1)",
+      "Year(s1) = 2 ∧ NewCredits(s1, 10) ∧ NewGPA(s1, 3.0) ∧ FailedCourse(s1, 1) ∧ CreditDeduction(s1, 1) ∧ Violations(s1, 1)"
+    ],
+    "questions": [
+      "What is the student’s updated GPA after year 2?",
+      "How many total credits has the student accumulated, and can they choose a major?"
+    ],
+    "answers": [
+      "2.6",
+      "28, No"
+    ],
+    "idx": [
+      [
+        2,
+        4,
+        5,
+        6
+      ],
+      [
+        1,
+        2,
+        5,
+        6
+      ]
+    ],
+    "explanation": [
+      "Premise 5 gives year 1: 20 credits, GPA 2.8, 1 violation (penalty 0.1, Premise 2), GPA = 2.8 − 0.1 = 2.7, points = 2.7 × 20 = 54.0. Failed course: 0 points (Premise 4). Premise 6 gives year 2: 10 credits, GPA 3.0, points = 3.0 × 10 = 30.0, 1 violation (total 2, penalty 2 × 0.1 = 0.2), failed course (0 points). Total credits: 20 + 10 = 30, points: 54.0 + 30.0 = 84.0, GPA = 84.0 / 30 = 2.8 − 0.2 = 2.6.",
+      "Premise 5: Year 1 credits = 20 − 1 (failed course, Premise 2) = 19. Premise 6: Year 2 credits = 10 − 1 = 9. Total credits: 19 + 9 = 28. Premise 1 requires: ≥ 30 credits (28, fails), GPA ≥ 2.5 (2.6 from Q1, passes), ≤ 2 violations (2, passes), ≥ 24 credits (28, passes). Premise 3: 2 violations ≤ 2, passes. Cannot choose major due to insufficient credits."
+    ],
+    "LLM-FOL": [
+      "∀x (ChoosingMajor(x) → (∃y (Credits(y) ∧ GreaterThanOrEqualTo(y, 30)) ∧ ExistsZ (GPA(z) ∧ GreaterThanOrEqualTo(z, 2.5)) ∧ ∃w (Violations(w) ∧ LessThan(w, 2))) ∧ SecondYearStatus(x)))",
+      "∀x (FailedCourse(x) → DeductsCredits(x, 1)) ∧ ∀y (Violation(y) → ReducesGPA(y, 0.1))",
+      "∀x (Student(x) ∧ HasViolations(x, >2) → ¬ChoosesMajor(x))",
+      "∀x (Course(x) ∧ Passed(x) ∧ GradeGreaterThanOrEqualTo1(x) → GPA(x)) ∧ ∀y (Course(y) ∧ Failed(y) → ContributesZeroCredits(y))",
+      "∀x (Student(x) ∧ Year1(x) → (HasCredits(x, 20) ∧ HasGPA(x, 2.8) ∧ HasGPA Penalty(x, 0.1) ∧ FailedCourse(x, 3, 1 creditDeducted)))",
+      "∀x (Student(x) ∧ Year(2) → (EarnsCredits(x, 10) ∧ GPA30ForNewCourses(x) ∧ FailsCourse(x, 4) ∧ DeducesCredit(x, 1) ∧ IncursViolation(x)))"
+    ],
+    "question-FOL": [
+      "∀x (Student(x) ∧ Year2(x) → UpdatedGPA(x))",
+      "∀x (Student(x) → (AccumulatedCredits(x, totalCredits) ∧ CanChooseMajor(x)))"
+    ]
+  },
+  {
+    "premises-NL": [
+      "Retaking for improvement is re-registering a previously passed course (same course code) to obtain a higher grade.",
+      "Retaking a course (not improvement) means re-registering a failed course.",
+      "For improvement retakes, use the highest score if ≥ 4.0; if any attempt fails, deduct 0.3 points per credit from the course’s grade points.",
+      "A failed course (score < 4.0) contributes no credits.",
+      "Improvement retakes do not change accumulated credits.",
+      "A student has a GPA of 7.4 with 60 credits, including two courses: C1 (4 credits, original grade 6.8), C2 (3 credits, original grade 5.5).",
+      "For C1, the student retook for improvement three times, scoring 7.2, 3.5 (failed), 6.0.",
+      "For C2, the student retook for improvement twice, scoring 6.5, 7.0.",
+      "After C1’s failure, the student retook C1 (as a failed course) and scored 5.8.",
+      "The student took a new course, C3 (5 credits, scored 8.0)."
+    ],
+    "premises-FOL": [
+      "FORALL(x): ImprovedCourse(x) → SameCourseCode(x) ∧ AlreadyPassed(x)",
+      "FORALL(x): RetakeCourse(x) → ¬AlreadyPassed(x)",
+      "FORALL(x): ImprovedCourse(x) → (GPAUse(x) = If Max(Score(All)) ≥ 4.0 then Max else 0; If AnyFailed(x) then Subtract(0.3 × Credits(x)))",
+      "FORALL(x): Failed(x) → ¬AccumulatedCredits(x)",
+      "FORALL(x): ImprovedCourse(x) → AccumulatedCreditsUnchanged(x)",
+      "Student(s1) ∧ GPA(s1) = 7.4 ∧ AccumulatedCredits(s1) = 60 ∧ Course(c1, 4, 6.8) ∧ Course(c2, 3, 5.5)",
+      "ImprovedGrades(s1, c1) = [Attempt1 = 7.2, Attempt2 = 3.5, Attempt3 = 6.0]",
+      "ImprovedGrades(s1, c2) = [Attempt1 = 6.5, Attempt2 = 7.0]",
+      "RetakeGrade(s1, c1, Attempt4) = 5.8",
+      "NewCourse(s1, c3) = (5, 8.0)"
+    ],
+    "questions": [
+      "What are the final grades used for GPA in the student’s retaken courses (C1, C2)?",
+      "What is the student’s updated GPA after all course attempts?"
+    ],
+    "answers": [
+      "7.2, 7.0",
+      "7.52"
+    ],
+    "idx": [
+      [
+        3,
+        6,
+        7,
+        8
+      ],
+      [
+        3,
+        5,
+        6,
+        7,
+        8,
+        10
+      ]
+    ],
+    "explanation": [
+      "Premise 6 states the student had a 4-credit course C1 with an original grade of 6.8 and a 3-credit course C2 with 5.5. Premise 7 says C1 was retaken for improvement three times, scoring 7.2, 3.5 (failed), and 6.0. Premise 8 says C2 was retaken twice, scoring 6.5 and 7.0. Premise 3 says for improvement retakes, use the highest score if ≥ 4.0, with a 0.3-point penalty per credit if any attempt failed. For C1, Max(6.8, 7.2, 3.5, 6.0) = 7.2, with a failure, but the score remains 7.2 (penalty affects grade points). For C2, Max(5.5, 6.5, 7.0) = 7.0, no failure, so score is 7.0. Final grades: 7.2 for C1, 7.0 for C2.",
+      "Premise 6 gives a GPA of 7.4 over 60 credits, so grade points are 7.4 × 60 = 444, with C1 (4 credits, 6.8, points 27.2) and C2 (3 credits, 5.5, points 16.5), leaving 53 credits at 400.3 points. Premise 7 says C1 retakes scored 7.2, 3.5 (failed), 6.0; Premise 3 uses Max(6.8, 7.2, 3.5, 6.0) = 7.2, penalty 0.3 × 4 = 1.2 for failure, so points = 7.2 × 4 − 1.2 = 27.6, change = 27.6 − 27.2 = 0.4. Premise 8 says C2 retakes scored 6.5, 7.0; Max(5.5, 6.5, 7.0) = 7.0, no penalty, points = 7.0 × 3 = 21.0, change = 21.0 − 16.5 = 4.5. Premise 10 adds C3 (5 credits, 8.0, points 40). Total grade points: 400.3 + 27.6 + 21.0 + 40 = 488.9. Total credits (Premise 5): 60 + 5 = 65. GPA = 488.9 / 65 ≈ 7.5215, rounded to 7.52."
+    ],
+    "LLM-FOL": [
+      "∀x ∀y (RetakingForImprovement(x) ∧ Course(y) → Re RegistersSameCourseCode(x, y))",
+      "∀x (RetakesCourse(x) → (PreviouslyFailedCourse(x) ∧ Re-registersForCourse(x)))",
+      "∀x (ImprovementRetake(x) ∧ Score ≥ 4.0 → HighestScore(x)) ∧ ∀y (ImprovementRetake(y) ∧ AttemptFails(y) → DeductPoints(y, CourseGradePoints))",
+      "∀x (Course(x) ∧ ScoreBelowThreshold(x, 4.0) → NoCreditsContributed(x))",
+      "∀x (Student(x) ∧ ImprovementRetake(x) → ¬ChangesAccumulatedCredits(x))",
+      "∀x (Student(x) → (GPA(x, 7.4) ∧ Credits(x, 60) ∧ ∃y (Course(y) ∧ EnrolledIn(x, y) ∧ (C1(y) ∧ OriginalGrade(y, 6.8)) ∧ ∃z (Course(z) ∧ EnrolledIn(x, z) ∧ (C2(z) ∧ OriginalGrade(z, 5.5)))))",
+      "∀x (StudentRetookForImprovement(x, C1) → (Retook(x, i) ∧ Improvement(x, i) ∧ Times(x, t) ∧ Scores(x, sc72, sc35, sc60)))",
+      "∀x (Student(x) ∧ C2(x) → RetookForImprovementTwice(x) ∧ Scored65Or70(x))",
+      "∀x ∀y (Student(x) ∧ Course(y) ∧ Failed(y) ∧ Retook(x, y) → Scored58(x, y))",
+      "∀x ∀y (Student(x) ∧ Course(y) ∧ NewCourse(y) ∧ Credits(y, 5) ∧ Score(x, y, 8.0) → Took(x, y))"
+    ],
+    "question-FOL": [
+      "∀x ∀y (Student(x) ∧ RetakenCourse(x, y) ∧ (C1(y) ∨ C2(y)) → UsedForGPA(x, y))",
+      "∀x (Student(x) ∧ AttemptsCourses(x) → UpdatedGPA(x))"
+    ]
+  },
+  {
+    "premises-NL": [
+      "A student can withdraw up to 2 courses per semester if remaining credits ≥ 12; each withdrawal reduces GPA by 0.1 (scale 0–10).",
+      "Failed courses (grade < 4.0) cannot be withdrawn; passing courses (≥ 4.0) contribute 3, 4, or 5 credits.",
+      "First-year students (Year 1) need ≥ 15 remaining credits to withdraw; others need ≥ 12.",
+      "No regulation limits total withdrawals, but max 2 per semester.",
+      "A student with GPA < 4.0 cannot withdraw courses.",
+      "A student (Year 2) has a GPA of 6.5, 40 credits, withdrew 2 courses in semester S1 (GPA penalty 0.2), including C1 (4 credits, 5.5, withdrawn), C2 (3 credits, 3.8, failed, not withdrawn).",
+      "In semester S2, the student withdrew C3 (5 credits, 6.0), attempted C4 (3 credits, 4.5), withdrew C5 (4 credits, 5.0)."
+    ],
+    "premises-FOL": [
+      "ForAll(x, s): (Withdrawals(x, s) ≤ 2 ∧ RemainingCredits(x, s) ≥ (Year(x) = 1 ? 15 : 12)) → CanWithdrawCourse(x, s) ∧ GPAPenalty(x, s, -0.1 * Withdrawals(x, s))",
+      "ForAll(c): Grade(c) < 4.0 → ¬CanWithdrawCourse(c); Grade(c) ≥ 4.0 → Credits(c) ∈ {3, 4, 5}",
+      "ForAll(x, s): Year(x) = 1 → (CanWithdrawCourse(x, s) → RemainingCredits(x, s) ≥ 15)",
+      "¬Exists(r): Regulation(LimitTotalWithdrawals(r)) ∧ ForAll(s): Withdrawals(s) ≤ 2",
+      "ForAll(x): GPA(x) < 4.0 → ¬CanWithdrawCourse(x, _)",
+      "Student(s1) ∧ Year(s1) = 2 ∧ GPA(s1) = 6.5 ∧ AccumulatedCredits(s1) = 40 ∧ Withdrawals(s1, S1) = 2 ∧ GPAPenalty(s1, S1, -0.2) ∧ Course(s1, c1, 4, 5.5, Withdrawn) ∧ Course(s1, c2, 3, 3.8, Failed)",
+      "Courses(s1, S2) = [c3(5, 6.0, Withdrawn), c4(3, 4.5), c5(4, 5.0, Withdrawn)]"
+    ],
+    "questions": [
+      "What is the student’s updated GPA after semester S2?",
+      "How many total credits remain after S2 withdrawals, and can the student withdraw another course in S3?"
+    ],
+    "answers": [
+      "5.97",
+      "43, No"
+    ],
+    "idx": [
+      [
+        1,
+        2,
+        6,
+        7
+      ],
+      [
+        1,
+        5,
+        6,
+        7
+      ]
+    ],
+    "explanation": [
+      "Premise 6 gives a GPA of 6.5, 40 credits, grade points 6.5 × 40 = 260.0, with C1 (4 credits, 5.5, withdrawn, 0 credits/points), C2 (3 credits, 3.8, failed, 0 credits/points per Premise 2), 2 withdrawals (-0.2 GPA penalty per Premise 1). Adjusted GPA: 6.5 − 0.2 = 6.3, grade points 6.3 × 40 = 252.0. Premise 7 adds: C3 (5 credits, 6.0, withdrawn, 0 credits/points), C4 (3 credits, 4.5, points 3 × 4.5 = 13.5), C5 (4 credits, 5.0, withdrawn, 0 credits/points), 2 withdrawals (-0.2 penalty). Total credits: 40 + 3 = 43. Total grade points: 252.0 + 13.5 = 265.5. GPA before penalty: 265.5 / 43 ≈ 6.17442. After penalty: 6.17442 − 0.2 ≈ 5.97442, rounded to 5.97.",
+      "Premise 6 gives 40 credits, with C1 (4 credits, withdrawn), C2 (3 credits, failed, 0 credits). Premise 7 adds: C3 (5 credits, withdrawn), C4 (3 credits, +3), C5 (4 credits, withdrawn). Total credits: 40 + 3 = 43. For S3 withdrawal (Premise 1): Year 2 requires ≥ 12 credits. Assuming 15 credits registered, withdrawing 4 credits leaves 15 − 4 = 11 < 12, fails. Premise 5: GPA ≥ 4.0 (5.97 from Question 1), passes. Withdrawals ≤ 2, passes. The student cannot withdraw another course in S3 due to insufficient credits."
+    ],
+    "LLM-FOL": [
+      "∀x (Student(x) ∧ RemainingCreditsGreaterThanOrEqualTo(x, 12) → CanWithdrawUpToTwoCoursesPerSemester(x)) ∧ ∀y (Student(y) ∧ WithdrawsCourse(y) → ReducesGPABy(y, 0.1))",
+      "∀x (Course(x) ∧ Failed(x) → ¬Withdraw(x)) ∧ ∀y (Course(y) ∧ Passing(y) → (ContributesCredits(y, 3) ∨ ContributesCredits(y, 4) ∨ ContributesCredits(y, 5)))",
+      "∀x (FirstYearStudent(x) ∧ Year1(x) → NeedCredits(x, ≥15); ¬FirstYearStudent(x) ∧ ¬Year1(x → NeedCredits(x, ≥12)))",
+      "¬∃x (Regulation(x) ∧ LimitsTotalWithdrawals(x)) ∧ ∃y (MaxWithdrawals(y) ∧ Semester(y) ∧ TwoPerSemester(y))",
+      "∀x (Student(x) ∧ GPABelow4.0(x) → ¬WithdrawCourses(x))",
+      "∀x (Student(x) ∧ Year2(x) → (GPA(x, 6.5) ∧ Credits(x, 40) ∧ WithdrewCourses(x, S1, 2) ∧ WithdrewCourse(x, C1, 4, 5.5) ∧ WithdrewCourse(x, C2, 3, 3.8)))",
+      "Rule 1: ∀x ∀y ∀z (Withdrew(x, y, z) ∧ Semester(S2) → (Course(x) ∧ Credits(x, y) ∧ Grade(y) ∧"
+    ],
+    "question-FOL": [
+      "∀x (Student(x) ∧ Semester(S2) → UpdatedGPA(x))",
+      "TotalCreditsRemain(S2Withdrawals) ∧ CanWithdrawAnotherCourseInS3(Student) → KnowledgeClause(RemainingCredits, WithdrawalStatus)"
+    ]
+  },
+  {
+    "premises-NL": [
+      "Graduation requires ≥ 120 credits, GPA ≥ 5.0 (scale 0–10), and ≥ 100 hours of CTXH (social work).",
+      "A failed course (grade < 4.0) contributes 0 credits and 0 CTXH hours.",
+      "Improvement retakes of passed courses (grade ≥ 4.0) use the highest grade but add no credits or CTXH.",
+      "Repeating a failed course adds credits and CTXH hours if grade ≥ 4.0.",
+      "Each course contributes CTXH hours: 3-credit course = 10 hours, 4-credit = 15 hours, 5-credit = 20 hours, if grade ≥ 4.0.",
+      "Students with ≥ 80 credits and < 100 CTXH hours can join extracurriculars, adding 10 CTXH hours.",
+      "A student has a GPA of 6.5 with 85 credits and 200 CTXH hours, including C1 (4 credits, grade 5.8, CTXH 15), C2 (5 credits, grade 7.0, CTXH 20).",
+      "The student retook C1 (grade 3.5, failed), repeated C1 (grade 6.2), took C3 (3 credits, grade 8.0), and C4 (4 credits, grade 3.8, failed).",
+      "The student joined extracurriculars, adding CTXH hours."
+    ],
+    "premises-FOL": [
+      "Graduate(s) ↔ AccumulatedCredits(s) ≥ 120 ∧ GPA(s) ≥ 5.0 ∧ CTXH_Hours(s) ≥ 100",
+      "FORALL(c): Grade(c) < 4.0 → AccumulatedCredits(c) = 0 ∧ CTXH_Hours(c) = 0",
+      "FORALL(c): ImprovedCourse(c) ∧ Grade(c) ≥ 4.0 → GPAUse(c) = Max(Grades(c)) ∧ AccumulatedCreditsUnchanged(c) ∧ CTXH_Unchanged(c)",
+      "FORALL(c): RepeatCourse(c) ∧ Grade(c) ≥ 4.0 → AccumulatedCredits(c) ∧ CTXH_Hours(c)",
+      "FORALL(c): Grade(c) ≥ 4.0 → (Credits(c) = 3 → CTXH_Hours(c) = 10) ∧ (Credits(c) = 4 → CTXH_Hours(c) = 15) ∧ (Credits(c) = 5 → CTXH_Hours(c) = 20)",
+      "AccumulatedCredits(s) ≥ 80 ∧ CTXH_Hours(s) < 100 → CanJoinExtracurricular(s) ∧ CTXH_Hours(s) += 10",
+      "Student(s1) ∧ GPA(s1) = 6.5 ∧ AccumulatedCredits(s1) = 85 ∧ CTXH_Hours(s1) = 200 ∧ Course(s1, c1, 4, 5.8, 15) ∧ Course(s1, c2, 5, 7.0, 20)",
+      "Courses(s1) = [c1_retake(4, 3.5), c1_repeat(4, 6.2), c3(3, 8.0), c4(4, 3.8)]",
+      "JoinedExtracurricular(s1) → CTXH_Hours(s1) += 10"
+    ],
+    "questions": [
+      "What is the student’s updated GPA after all course attempts?",
+      "How many CTXH hours has the student accumulated, and are they eligible for graduation?"
+    ],
+    "answers": [
+      "6.57",
+      "235, No"
+    ],
+    "idx": [
+      [
+        2,
+        3,
+        7,
+        8
+      ],
+      [
+        1,
+        2,
+        5,
+        7,
+        8,
+        9
+      ]
+    ],
+    "explanation": [
+      "Premise 7 gives a GPA of 6.5 with 85 credits, grade points 6.5 × 85 = 552.5, including C1 (4 credits, 5.8, points 23.2), C2 (5 credits, 7.0, points 35.0), other 76 credits at 494.3 points. Premise 8 lists: C1 retake (3.5, failed, Max(5.8, 3.5) = 5.8 per Premise 3, points 23.2, no credits per Premise 2), C1 repeat (4 credits, 6.2, points 6.2 × 4 = 24.8, change 1.6 per Premise 4), C3 (3 credits, 8.0, points 24.0), C4 (4 credits, 3.8, failed, 0 points/credits per Premise 2). Total credits: 85 + 3 = 88. Total grade points: 494.3 + 24.8 + 35.0 + 24.0 = 578.1. GPA = 578.1 / 88 ≈ 6.56932, rounded to 6.57.",
+      "Premise 7 gives 200 CTXH hours initially. Premise 8 adds: C1 retake (3.5, failed, 0 hours per Premise 2), C1 repeat (4 credits, 6.2, 15 hours per Premise 5), C3 (3 credits, 8.0, 10 hours), C4 (3.8, failed, 0 hours). Premise 9 adds 10 hours (extracurricular, eligible since 85 ≥ 80). Total CTXH: 200 + 15 + 10 + 10 = 235 hours. Premise 1 requires for graduation: ≥ 120 credits, GPA ≥ 5.0, ≥ 100 CTXH hours. Credits: 88 (Question 1), fails. GPA: 6.57, passes. CTXH: 235, passes. Not eligible due to credits."
+    ],
+    "LLM-FOL": [
+      "∀x (Graduation(x) → (∃y (Credits(y) ≥ 120) ∧ ∃z (GPA(z) ≥ 5.0) ∧ ∃w (CTXH(w) ≥ 100)))",
+      "∀x (Course(x) ∧ Failed(x) → (ContributesCredits(x, 0) ∧ ContributesCTXHours(x, 0)))",
+      "∀x (Course(x) ∧ Passed(x) ∧ Grade(x, ≥4.0) → ∃y (Retake(y, x) ∧ HighestGrade(y, x)))",
+      "∀x (RepeatedCourse(x) ∧ FailedCourse(x) ∧ GradeGreaterThanOrEqualTo4(x) → AddsCreditsAndCTXHHours(x))",
+      "∀x (Course(x) ∧ (3Credits(x) → ContributesHours(x, 10)) ∧ (4Credits(x) → ContributesHours(x, 15)) ∧ (5Credits(x) → ContributesHours(x, 20)) ∧ (Grade(x) ≥ 4.0))",
+      "∀x (Student(x) ∧ Credits(x, 80) ∧ Hours(x, < 100) → CanJoinExtracurriculars(x, 10))",
+      "∀x (Student(x) → (GPA(x, 6.5) ∧ Credits(x, 85) ∧ CTXHours(x, 200) ∧ (C1(x, 4, 5.8, 15) ∨ C2(x, 5, 7.0, 20)))))",
+      "∀x ∀y ∀z (Student(x) ∧ Course(y) ∧ Course(z) → (Retook(x, y) ∧ Repeated(x, y) ∧ Took(x, z) ∧ Grade(y, z)))",
+      "∀x (Student(x) ∧ JoinedExtracurricular(x) → AddsCTXHHours(x))"
+    ],
+    "question-FOL": [
+      "∀x (Student(x) ∧ AttemptsCourses(x) → UpdatedGPA(x))",
+      "∀x (Student(x) ∧ AccumulatedCTXHHours(x) → EligibleForGraduation(x))"
+    ]
+  },
+  {
+    "premises-NL": [
+      "Students begin specialization before internships or projects.",
+      "Internship eligibility requires ≥ 80 credits, third year, and GPA ≥ 6.0 (scale 0–10).",
+      "Major-specific project requires internship completion, ≥ 90 credits, and ≥ 12 social work days.",
+      "Thesis eligibility requires ≥ 100 credits, ≥ 15 social work days, MOS certificate, and language certificate.",
+      "A failed course (grade < 4.0) contributes 0 credits.",
+      "Improvement retakes (passed courses) use the highest grade but add no credits.",
+      "Repeating a failed course adds credits if grade ≥ 4.0.",
+      "Graduation requires thesis completion, GPA ≥ 5.0, and ≥ 20 social work days.",
+      "A student has a GPA of 6.8 with 82 credits, including C1 (4 credits, grade 5.5, failed retake at 3.8), C2 (3 credits, grade 7.0).",
+      "The student took C3 (5 credits, grade 8.0), repeated C1 (grade 6.0), and took C4 (4 credits, grade 3.5, failed)."
+    ],
+    "premises-FOL": [
+      "StartSpecialization(s) → Before(Internship(s) ∨ Project(s))",
+      "EligibleInternship(s) ↔ AccumulatedCredits(s) ≥ 80 ∧ Year(s) = 3 ∧ GPA(s) ≥ 6.0",
+      "EligibleMajorProject(s) ↔ After(Internship(s)) ∧ AccumulatedCredits(s) ≥ 90 ∧ SocialWorkDays(s) ≥ 12",
+      "EligibleThesis(s) ↔ AccumulatedCredits(s) ≥ 100 ∧ SocialWorkDays(s) ≥ 15 ∧ HasMOSCertificate(s) ∧ HasLanguageCertificate(s)",
+      "FORALL(c): Grade(c) < 4.0 → AccumulatedCredits(c) = 0",
+      "FORALL(c): ImprovedCourse(c) → GPAUse(c) = Max(Grades(c)) ∧ AccumulatedCreditsUnchanged(c)",
+      "FORALL(c): RepeatCourse(c) ∧ Grade(c) ≥ 4.0 → AccumulatedCredits(c)",
+      "Graduate(s) ↔ CompletedThesis(s) ∧ GPA(s) ≥ 5.0 ∧ SocialWorkDays(s) ≥ 20",
+      "Student(s1) ∧ GPA(s1) = 6.8 ∧ AccumulatedCredits(s1) = 82 ∧ Course(s1, c1, 4, 5.5, Retake=3.8) ∧ Course(s1, c2, 3, 7.0)",
+      "NewCourses(s1) = [c3(5, 8.0), c1_repeat(4, 6.0), c4(4, 3.5)]"
+    ],
+    "questions": [
+      "What is the student’s updated GPA after all course attempts?",
+      "How many credits has the student accumulated, and are they eligible for the thesis?"
+    ],
+    "answers": [
+      "6.89",
+      "87, No"
+    ],
+    "idx": [
+      [
+        5,
+        6,
+        9,
+        10
+      ],
+      [
+        4,
+        5,
+        7,
+        9,
+        10
+      ]
+    ],
+    "explanation": [
+      "Premise 9 gives a GPA of 6.8 with 82 credits, so grade points are 6.8 × 82 = 557.6, including C1 (4 credits, 5.5, points 22.0), C2 (3 credits, 7.0, points 21.0), and 75 other credits at 514.6 points. Premise 9 says C1 retake scored 3.8 (failed); Premise 6 uses Max(5.5, 3.8) = 5.5, points unchanged at 22.0, as Premise 5 confirms no credits for failures. Premise 10 adds: C3 (5 credits, 8.0, points 40.0), C1 repeat (4 credits, 6.0, points 6.0 × 4 = 24.0, change 24.0 − 22.0 = 2.0 per Premise 7), C4 (4 credits, 3.5, failed, 0 points per Premise 5). Total grade points: 514.6 + 24.0 + 21.0 + 40.0 = 599.6. Total credits (Question 2): 87. GPA = 599.6 / 87 ≈ 6.89195, rounded to 6.89.",
+      "Premise 9 gives 82 credits initially. Premise 10 adds: C3 (5 credits), C1 repeat (4 credits, grade 6.0 ≥ 4.0, but credits counted originally per Premise 7), C4 (4 credits, 3.5, failed, 0 credits per Premise 5). Total credits: 82 + 5 = 87. Premise 4 requires for thesis eligibility: ≥ 100 credits, ≥ 15 social work days, MOS and language certificates. With 87 credits, the student fails the credit requirement; social work and certificates are unspecified, so assumed unmet. Thus, the student has 87 credits and is not eligible for the thesis."
+    ],
+    "LLM-FOL": [
+      "∀x (Student(x) → BeginsSpecializationBeforeInternshipOrProject(x))",
+      "∀x (InternshipEligibility(x) → (∃y (Credits(y) ≥ 80) ∧ ThirdYear(x) ∧ GPA(x, z) ≥ 6.0 (scale 0–10)))",
+      "∀x (MajorSpecificProject(x) → (RequiresInternshipCompletion(x) ∧ HasCredits(x, ≥90) ∧ HasSocialWorkDays(x, ≥12)))",
+      "∀x (ThesisEligibility(x) → (∃y (Credits(y) ≥ 100) ∧ ∃z (SocialWorkDays(z) ≥ 15) ∧ (∃w (MOSCertificate(w)) ∨ ∃v (LanguageCertificate(v))))))",
+      "∀x (Course(x) ∧ Failed(x) → ContributesZeroCredits(x))",
+      "∀x (ImprovementRetakes(x) ∧ PassedCourses(x) → (HighestGrade(x) ∧ AddNoCredits(x)))",
+      "∀x (Course(x) ∧ Failed(x) ∧ GradeGreaterThanOrEqualTo4(x) → AddsCredits(x))",
+      "∀x (Graduation(x) → (ThesisCompletion(x) ∧ GPAGreaterOrEqual(x, 5.0) ∧ SocialWorkDaysGreaterOrEqual(x, 20)))",
+      "∀x (Student(x) → (GPA(x, 6.8) ∧ HasCredits(x, 82) ∧ (∃y (Course(y) ∧ Credits(x, y) ∧ Grade(x, y) ∧ FailedRetake(x, y, 3.8)) ∧ ∃z (Course(z) ∧ Credits(x, z) ∧ Grade(x, z) ∧ Grade(x, z) ≥ 7.0))))",
+      "∀x (Student(x) → (TookC3(x, 5, 8.0) ∧ RepeatedC1(x, 6.0) ∧ TookC4(x, 4, 3.5, failed)))"
+    ],
+    "question-FOL": [
+      "∀x (Student(x) ∧ AttemptsCourses(x) → UpdatedGPA(x))",
+      "∀x (Student(x) → (AccumulatedCredits(x, credits) ∧ EligibleForThesis(x, thesis)))"
+    ]
+  },
+  {
+    "premises-NL": [
+      "Scholarships require ≥ 20 credits, GPA ≥ 8.0 ($500 award), or GPA ≥ 9.0 ($1000 award); all courses must have grades ≥ 6.0 (scale 0–10).",
+      "Credits earned = 0.5 × total grade points (sum of grades across courses); GPA = sum(grade × credits)/total credits.",
+      "Scores locked on 15/03/2025; late updates (15/03–20/03/2025) incur $20/day penalty if Faculty-approved.",
+      "Unapproved late scores are excluded; approved scores after 20/03/2025 are invalid.",
+      "Minh has 15 credits, GPA 7.8, all grades ≥ 6.0, scores locked on 15/03/2025.",
+      "Minh adds 3 courses: 9.0 (4 credits, updated 17/03/2025), 8.5 (5 credits, 17/03/2025), 7.5 (3 credits, 16/03/2025); Faculty approves delays.",
+      "Minh’s initial courses: 6 credits at 8.0, 9 credits at 7.7."
+    ],
+    "premises-FOL": [
+      "FORALL(x): eligibleScholarship(x) ↔ (creditsEarned(x) ≥ 20 ∧ FORALL(c, grade(x, c) ≥ 6.0) ∧ (gPA(x) ≥ 9.0 → award(x, 1000)) ∧ (gPA(x) ∈ [8.0, 9.0) → award(x, 500)))",
+      "FORALL(x): creditsEarned(x) = 0.5 * sum(grade(x, c)) ∧ gPA(x) = sum(grade(x, c) * credits(c)) / sum(credits(c))",
+      "scholarshipCutoffDate = 15/03/2025 ∧ FORALL(x): (scoreUpdated(x) > 15/03/2025 ∧ scoreUpdated(x) ≤ 20/03/2025 ∧ facultyApproved(x)) → penalty(x, 20 * daysLate(x))",
+      "FORALL(x): (scoreUpdated(x) > 15/03/2025 ∧ (¬facultyApproved(x) ∨ scoreUpdated(x) > 20/03/2025)) → ¬consideredForScholarship(x)",
+      "student(Minh) ∧ creditsEarned(Minh) = 15 ∧ gPA(Minh) = 7.8 ∧ FORALL(c, grade(Minh, c) ≥ 6.0) ∧ scoreUpdated(Minh) ≤ 15/03/2025",
+      "newCourses(Minh) = [(9.0, 4, 17/03/2025), (8.5, 5, 17/03/2025), (7.5, 3, 16/03/2025)] ∧ facultyApproved(Minh)",
+      "initialCourses(Minh) = [(8.0, 6), (7.7, 9)]"
+    ],
+    "questions": [
+      "What is Minh’s scholarship award amount, if any, after new courses?",
+      "What is the total penalty fee for Minh’s late score updates?"
+    ],
+    "answers": [
+      "$500",
+      "$100"
+    ],
+    "idx": [
+      [
+        0,
+        1,
+        4,
+        5,
+        6
+      ],
+      [
+        2,
+        5
+      ]
+    ],
+    "explanation": [
+      "Premise 6: Initial courses (6 credits at 8.0, 9 at 7.7), points = (6 × 8.0) + (9 × 7.7) = 117.3. Premise 4: 15 credits, GPA = 7.8 (117.3 / 15 ≈ 7.82). Premise 5: New courses (9.0, 4 credits, points = 36.0; 8.5, 5 credits, 42.5; 7.5, 3 credits, 22.5). Total credits: 15 + 12 = 27, points: 117.3 + 101.0 = 218.3, GPA = 218.3 / 27 ≈ 8.08519 (Premise 1). Premise 0: Credits ≥ 20 (27, passes), grades ≥ 6.0 (all pass), GPA ≥ 8.0, < 9.0 → $500 award.",
+      "Premise 5: Course updates on 17/03/2025 (2 courses, 2 days late), 16/03/2025 (1 course, 1 day late). Premise 2: Penalty = $20/day, Faculty-approved. Fees: (2 × $20 × 2) + (1 × $20 × 1) = $80 + $20 = $100."
+    ],
+    "LLM-FOL": [
+      "∀x (Scholarship(x) → (∃y (Credits(y) ≥ 20) ∧ (GPA(z) ≥ 8.0 ∧ AwardAmount(z) = $500) ∨ (GPA(z) ≥ 9.0 ∧ AwardAmount(z) = $1000) ∧ AllCoursesGrades(x, y, z, 6.0)))",
+      "∀x (CreditsEarned(x) ∧ GPA(x) → (0.5 × TotalGradePoints(x) ∧ SumOfGradesAcrossCourses(x)))",
+      "∀x ∀y (ScoreLockedOnDate(x) ∧ LateUpdate(y) ∧ FacultyApproved(y) → Penalty(x, $20))",
+      "∀x (LateScore(x) ∧ ¬Approved(x) → Excluded(x)) ∧ ∀y (ApprovedScore(y) ∧ DateAfter(y, \"20/03/2025\") → Invalid(y))",
+      "∀x (Minh(x) → (HasCredits(x, 15) ∧ GPA(x, 7.8) ∧ AllGradesGreaterThan(x, 6.0) ∧ ScoresLockedOn(x, 2025-03-15)))",
+      "∀x ∀y ∀z (AddsCourse(Minh, x) ∧ Course(x) ∧ AddsCourse(Minh, y) ∧ Course(y) ∧ AddsCourse(Minh, z) ∧ Course(z) → (ApprovesDelay(Faculty) ∧ (UpdatedOn(x, 17/03/2025) ∨ UpdatedOn(y, 17/03/2025) ∨ UpdatedOn(z, 16/03/2025))))",
+      "∀x ∀y ∀z ∀w (Minh(x) ∧ Course(y) ∧ Credits(z) ∧ Grade(w) → InitialCourses(x, y, z, w))"
+    ],
+    "question-FOL": [
+      "∀x (Student(Minh) ∧ University(y) ∧ OffersNewCourses(y) → DeterminesScholarshipAwardAmount(x, y))",
+      "TotalPenaltyFee(minh) ↔ ∃x (LateScoreUpdate(x) ∧ Minh(x)) ∧ ¬∃y (ScoreUpdate(y) ∧ HasUpdatedScores(y))"
+    ]
+  },
+  {
+    "premises-NL": [
+      "Registration requires an official schedule (≥ 12 enrolled credits), 12–18 credits/semester, full tuition ($50/credit), no violations.",
+      "Partial tuition payment allows registration for credits proportional to payment (1 credit per $50 paid, rounded down).",
+      "Each violation incurs a $25 penalty; unpaid penalties block registration.",
+      "Official schedule requires ≥ 10 accumulated credits; max 3 violations allowed before registration ban.",
+      "A student with < 8 accumulated credits cannot register, even if other conditions are met.",
+      "A student has 15 credits, paid $400 tuition, 2 violations ($50 unpaid), no official schedule.",
+      "The student pays $200 more tuition, clears 1 violation ($25), enrolls 14 credits (schedule granted), incurs 1 new violation ($25)."
+    ],
+    "premises-FOL": [
+      "FORALL(x, s): CanRegister(x, s) ↔ (HasOfficialSchedule(x) ∧ RegisteredCredits(x, s) ∈ [12, 18] ∧ TuitionPaid(x, s, 50 * RegisteredCredits(x, s)) ∧ NoUnpaidPenalties(x))",
+      "FORALL(x, s): PartialTuition(x, s, p) → MaxCredits(x, s, floor(p / 50))",
+      "FORALL(x): Violation(x, n) → Penalty(x, 25 * n) ∧ UnpaidPenalty(x) → ¬CanRegister(x, _)",
+      "FORALL(x): HasOfficialSchedule(x) ↔ TotalCredits(x) ≥ 10 ∧ Violations(x) ≤ 3",
+      "FORALL(x): TotalCredits(x) < 8 → ¬CanRegister(x, _)",
+      "Student(s1) ∧ TotalCredits(s1) = 15 ∧ TuitionPaid(s1, s1, 400) ∧ Violations(s1) = 2 ∧ Penalty(s1, 50) ∧ UnpaidPenalty(s1) ∧ ¬HasOfficialSchedule(s1)",
+      "TuitionPaid(s1, s2, 200) ∧ ViolationsCleared(s1, 1) ∧ PenaltyPaid(s1, 25) ∧ RegisteredCredits(s1, s2, 14) ∧ HasOfficialSchedule(s1) ∧ Violations(s1, 1) ∧ Penalty(s1, 25)"
+    ],
+    "questions": [
+      "What is the total cost (tuition + penalties paid) for semester S2?",
+      "How many credits can the student register for in S2, and are they eligible to register for 14 credits again in S3?"
+    ],
+    "answers": [
+      "$225",
+      "12, No"
+    ],
+    "idx": [
+      [
+        3,
+        7
+      ],
+      [
+        1,
+        2,
+        3,
+        4,
+        7
+      ]
+    ],
+    "explanation": [
+      "Premise 7 gives S2: additional tuition $200, 1 violation cleared ($25 penalty paid), new violation ($25 unpaid). Total cost: tuition + penalties paid = $200 + $25 = $225.",
+      "Premise 6 gives $400 tuition, Premise 7 adds $200, total $600. Premise 2: Max credits = floor($600 / 50) = 12 credits for S2, though 14 requested. For S3 (Premise 1): Official schedule (Premise 4: 15 + 12 = 27 credits ≥ 10, 1 violation ≤ 3, passes), 14 credits ∈ [12, 18], passes; but tuition $600 allows 12 credits < 14 (Premise 2), fails. Premise 3: $25 unpaid penalty, fails. Premise 5: 27 ≥ 8, passes. Not eligible for 14 credits in S3 due to tuition and penalty."
+    ],
+    "LLM-FOL": [
+      "∀x (Registration(x) → (OfficialSchedule(x, ≥12EnrolledCredits) ∧ SemesterCredits(x, 12–18) ∧ FullTuition(x, $50/credit) ∧ NoViolations(x)))",
+      "∀x (PartialTuitionPayment(x) → AllowsRegistration(x) ∧ CreditsProportionalToPayment(x, 50))",
+      "∀x (Violation(x) → (IncursPenalty(x, 25) ∧ UnpaidPenalty(x) ∧ BlocksRegistration(x)))",
+      "∀x (OfficialSchedule(x) → (∃y (AccumulatedCredits(y) ∧ GreaterThanOrEqualTo(y, 10)) ∧ ∃z (Violations(z) ∧ LessThanOrEqualTo(z, 3))))",
+      "∀x (Student(x) ∧ AccumulatedCredits(x, y) ∧ LessThan(y, 8) → ¬CanRegister(x))",
+      "∀x (Student(x) → (HasCredits(x, 15) ∧ PaidTuition(x, 400) ∧ HasViolations(x, 2, 50) ∧ ¬HasOfficialSchedule(x)))",
+      "∀x (Student(x) → (PayTuition(x, 200) ∧ ClearViolation(x, 25) ∧ EnrollCredits(x, 14) ∧ IncurrNewViolation(x, 25)))"
+    ],
+    "question-FOL": [
+      "TotalCost(S2) ↔ (Tuition(S2) + PenaltiesPaid(S2))",
+      "∀x (Student(x) → (RegisterCredits(x, S2, y) ∧ EligibleToRegister(x, S3, 14)))"
+    ]
+  },
+  {
+    "premises-NL": [
+      "Graduation requires ≥ 130 credits, GPA ≥ 5.5 (scale 0–10), ≥ 120 CTXH hours, and a certificate.",
+      "Each course (≥ 4.0 grade) contributes: 3 credits = 8 CTXH hours, 4 credits = 12 hours, 5 credits = 16 hours.",
+      "Failed courses (grade < 4.0) add 0 credits, 0 CTXH hours.",
+      "Social activities contribute CTXH: club = 20 hours, event = 10 hours; requires ≥ 50 credits to join.",
+      "Students with GPA < 6.0 get 0.5 CTXH hours per credit instead of standard course hours.",
+      "A student has a GPA of 5.8 with 90 credits, 180 CTXH hours, no certificate, including C1 (3 credits, grade 6.0, CTXH 0), C2 (4 credits, grade 5.5, CTXH 0).",
+      "The student took C3 (5 credits, grade 7.0), C4 (3 credits, grade 3.8, failed), joined 2 clubs and 3 events."
+    ],
+    "premises-FOL": [
+      "Graduate(s) ↔ AccumulatedCredits(s) ≥ 130 ∧ GPA(s) ≥ 5.5 ∧ CTXH_Hours(s) ≥ 120 ∧ HasCertificate(s)",
+      "FORALL(c): Grade(c) ≥ 4.0 → (Credits(c) = 3 → CTXH_Hours(c) = 8) ∧ (Credits(c) = 4 → CTXH_Hours(c) = 12) ∧ (Credits(c) = 5 → CTXH_Hours(c) = 16)",
+      "FORALL(c): Grade(c) < 4.0 → AccumulatedCredits(c) = 0 ∧ CTXH_Hours(c) = 0",
+      "AccumulatedCredits(s) ≥ 50 → (Club(s) → CTXH_Hours(s) += 20) ∧ (Event(s) → CTXH_Hours(s) += 10)",
+      "GPA(s) < 6.0 → CTXH_Hours(c) = 0.5 × AccumulatedCredits(c)",
+      "Student(s1) ∧ GPA(s1) = 5.8 ∧ AccumulatedCredits(s1) = 90 ∧ CTXH_Hours(s1) = 180 ∧ ¬HasCertificate(s1) ∧ Course(s1, c1, 3, 6.0, 0) ∧ Course(s1, c2, 4, 5.5, 0)",
+      "Courses(s1) = [c3(5, 7.0), c4(3, 3.8)] ∧ Clubs(s1) = 2 ∧ Events(s1) = 3"
+    ],
+    "questions": [
+      "What is the student’s updated GPA after all courses and activities?",
+      "How many CTXH hours has the student accumulated, and are they eligible for graduation?"
+    ],
+    "answers": [
+      "5.86",
+      "266, No"
+    ],
+    "idx": [
+      [
+        3,
+        6,
+        7
+      ],
+      [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    ],
+    "explanation": [
+      "Premise 6 gives a GPA of 5.8, 90 credits, grade points 5.8 × 90 = 522.0, with C1 (3 credits, 6.0, points 18.0), C2 (4 credits, 5.5, points 22.0), other 83 credits at 482.0 points. Premise 7 adds: C3 (5 credits, 7.0, points 5 × 7.0 = 35.0), C4 (3 credits, 3.8, failed, 0 credits/points per Premise 3). Total credits: 90 + 5 = 95. Total grade points: 482.0 + 18.0 + 22.0 + 35.0 = 557.0. GPA = 557.0 / 95 ≈ 5.86316, rounded to 5.86.",
+      "Premise 6 gives 180 CTXH hours initially. Premise 5 says GPA 5.8 < 6.0 gives 0 hours for C1, C2, but uses initial 180 hours. Premise 7 adds: C3 (5 credits, 7.0, 16 hours per Premise 2), C4 (3.8, failed, 0 hours per Premise 3), 2 clubs (2 × 20 = 40 hours), 3 events (3 × 10 = 30 hours) per Premise 4 (90 ≥ 50). Total CTXH: 180 + 16 + 40 + 30 = 266 hours. Premise 1 requires: ≥ 130 credits, GPA ≥ 5.5, ≥ 120 CTXH hours, certificate. Credits: 95 (Question 1), fails. GPA: 5.86, passes. CTXH: 266, passes. Certificate: none, fails. Not eligible for graduation."
+    ],
+    "LLM-FOL": [
+      "∀x (Graduation(x) → (∃y (Credits(y) ≥ 130) ∧ ∃z (GPA(z) ≥ 5.5) ∧ ∃w (CTXHHours(w) ≥ 120) ∧ HasCertificate(x)))",
+      "∀x (Course(x) ∧ Grade(x, ≥ 4.0) → (Credits(x, 3) ∧ CTXHours(x, 8) ∨ Credits(x, 4) ∧ CTXHours(x, 12) ∨ Credits(x, 5) ∧ CTXHours(x, 16)))",
+      "∀x (Course(x) ∧ GradeBelowThreshold(x, 4.0) → (AddsZeroCredits(x) ∧ AddsZeroCTXHours(x)))",
+      "∀x (SocialActivity(x) → (ContributesCTXH(x, 20) ∧ ContributesCTXH(x, 10) ∧ RequiresCredits(x, ≥ 50)))",
+      "∀x (Student(x) ∧ GPA(x) < 6.0 → CTXH(x) = 0.5 ∧ CourseHours(x) × 0.5)",
+      "∀x (Student(x) → (GPA(x, 5.8) ∧ Credits(x, 90) ∧ CTXHours(x, 180) ∧ ¬HasCertificate(x) ∧ (C1(x, 3, 6.0, 0) ∨ C2(x, 4, 5.5, 0))))",
+      "∀x (Student(x) → (TookCourse(x, C3) ∧ TookCourse(x, C4) ∧ JoinedClub(x, 2) ∧ JoinedEvent(x, 3) ∧ JoinedEvent(x, 3)))"
+    ],
+    "question-FOL": [
+      "∀x (Student(x) → (UpdatedGPA(x, 0)))",
+      "∀x (Student(x) ∧ AccumulatedCTXHHours(x) → EligibleForGraduation(x))"
+    ]
+  },
+  {
+    "premises-NL": [
+      "Electives require 3 courses from group A (6 credits each), 3 from group B (4 credits each), and 1 from group C (3 credits) for a total of 21 credits.",
+      "DTBTL = sum(grade × credits) / total credits for selected electives (scale 0–10); DTBTLN excludes non-major courses.",
+      "Extra elective courses incur $10/credit fee; highest-scoring subset selected to meet A:3, B:3, C:1.",
+      "Student takes 4 group A courses (grades: 8.0, 7.0, 9.0, 6.5; 6 credits each), 4 group B courses (6.0, 7.5, 8.0, 8.5; 4 credits each), 2 group C courses (7.0, 8.0; 3 credits each); group A is non-major."
+    ],
+    "premises-FOL": [
+      "FORALL(x): RequiredElectives(x) = {A:3, Credits=6; B:3, Credits=4; C:1, Credits=3} ∧ TotalCredits(x) = 21",
+      "FORALL(x): DTBTL(x) = Sum(Grade(x, c) * Credits(c)) / Sum(Credits(c)) ∧ DTBTLN(x) = Sum(Grade(x, c) * Credits(c) | MajorCourse(c)) / Sum(Credits(c) | MajorCourse(c))",
+      "FORALL(x): ExtraElectives(x) → (Fee(x, 10 * Credits(c)) ∧ SelectHighestScoring(x, {A:3, B:3, C:1}))",
+      "Courses(x) = {A: [(8.0, 6), (7.0, 6), (9.0, 6), (6.5, 6)], B: [(6.0, 4), (7.5, 4), (8.0, 4), (8.5, 4)], C: [(7.0, 3), (8.0, 3)]} ∧ ¬MajorCourse(A)"
+    ],
+    "questions": [
+      "What is the student’s DTBTL for selected electives?",
+      "What is the total fee for extra electives, and what is the DTBTLN?"
+    ],
+    "answers": [
+      "8.0",
+      "$130, 8.0"
+    ],
+    "idx": [
+      [
+        2,
+        3,
+        4
+      ],
+      [
+        2,
+        3,
+        4
+      ]
+    ],
+    "explanation": [
+      "Premise 4: Courses A (9.0, 8.0, 7.0), B (8.5, 8.0, 7.5), C (8.0). Premise 3: Select highest. Premise 2: DTBTL = (9.0 × 6 + 8.0 × 6 + 7.0 × 6 + 8.5 × 4 + 8.0 × 4 + 7.5 × 4 + 8.0 × 3) / 33 = 264 / 33 = 8.0.",
+      "Premise 4: Extra courses: 1A (6 credits), 1B (4 credits), 1C (3 credits). Premise 3: Fee = (6 + 4 + 3) × 10 = $130. Premise 4: A non-major. Premise 2: DTBTLN = (8.5 × 4 + 8.0 × 4 + 7.5 × 4 + 8.0 × 3) / 15 = 120 / 15 = 8.0."
+    ],
+    "LLM-FOL": [
+      "∀x (Elective(x) → (RequiresCoursesFromGroupA(x, 3, 6) ∧ RequiresCoursesFromGroupB(x, 3, 4) ∧ RequiresCourseFromGroupC(x, 1, 3)))",
+      "∀x (DTBTL(x) ↔ (SumGradeCredits(x) / TotalCredits(x) ∧ ∀y (ElectiveCourse(y) ∧ Selected(y) → IncludedInDTBTL(y)) ∧ ¬∃z (NonMajorCourse(z) ∧ Selected(z)))])",
+      "∀x (ExtraElectiveCourse(x) → IncurFee(x, 10)) ∧ ∃y (HighestScoringSubset(y) ∧ MeetsRequirements(y, A3, B3, C1))",
+      "∀x (Student(x) → (∃y GroupACourses(y) ∧ TakesCourses(x, y) ∧ Grade(y, 8.0) ∧ Grade(y, 7.0) ∧ Grade(y, 9.0) ∧ Grade(y, 6.5); ∃z GroupBCourses(z) ∧ TakesCourses(x, z) ∧ Grade(z, 6.0) ∧ Grade(z, 7.5) ∧ Grade(z, 8.0) ∧ Grade(z, 8.5); ∃w GroupCourses(w) ∧ TakesCourses(x, w) ∧ Grade(w, 7.0) ∧ Grade(w, 8.0)))"
+    ],
+    "question-FOL": [
+      "∀x ∀y (Student(x) ∧ Elective(y) ∧ Selected(x, y) → DTBTL(x, y))",
+      "TotalFeeForExtraElectives(StudentName) ∧ DTBTLN(StudentName)"
+    ]
+  },
+  {
+    "premises-NL": [
+      "Total program credits are 120; internship eligibility requires ≥ 78 credits (65%), GPA ≥ 6.0 (scale 0–10), and ≥ 50 internship prep hours.",
+      "First-year students (Year 1) have < 40 credits.",
+      "Failed courses (grade < 4.0) contribute 0 credits.",
+      "Improvement retakes (grade ≥ 4.0) use highest grade, no extra credits.",
+      "Each course (grade ≥ 4.0) adds prep hours: 3 credits = 5 hours, 4 credits = 7 hours, 5 credits = 10 hours.",
+      "Third-year students (Year 3) with < 78 credits can join prep workshops (20 hours), if GPA ≥ 5.5.",
+      "A student (Year 2) has a GPA of 6.2, 80 credits, 120 prep hours, including C1 (3 credits, 5.8, 5 hours), C2 (4 credits, 6.5, 7 hours).",
+      "The student took C3 (5 credits, 7.0), retook C1 (6.8), took C4 (3 credits, 3.5, failed)."
+    ],
+    "premises-FOL": [
+      "TotalCredits = 120 ∧ EligibleForInternship(s) ↔ AccumulatedCredits(s) ≥ 78 ∧ GPA(s) ≥ 6.0 ∧ PrepHours(s) ≥ 50",
+      "FORALL(x): Year(x) = 1 → AccumulatedCredits(x) < 40",
+      "FORALL(c): Grade(c) < 4.0 → AccumulatedCredits(c) = 0",
+      "FORALL(c): ImprovedCourse(c) ∧ Grade(c) ≥ 4.0 → GPAUse(c) = Max(Grades(c)) ∧ AccumulatedCreditsUnchanged(c)",
+      "FORALL(c): Grade(c) ≥ 4.0 → (Credits(c) = 3 → PrepHours(c) = 5) ∧ (Credits(c) = 4 → PrepHours(c) = 7) ∧ (Credits(c) = 5 → PrepHours(c) = 10)",
+      "Year(x) = 3 ∧ AccumulatedCredits(x) < 78 ∧ GPA(x) ≥ 5.5 → PrepHours(x) += 20",
+      "Student(s1) ∧ Year(s1) = 2 ∧ GPA(s1) = 6.2 ∧ AccumulatedCredits(s1) = 80 ∧ PrepHours(s1) = 120 ∧ Course(s1, c1, 3, 5.8, 5) ∧ Course(s1, c2, 4, 6.5, 7)",
+      "Courses(s1) = [c3(5, 7.0), c1_retake(3, 6.8), c4(3, 3.5)]"
+    ],
+    "questions": [
+      "What is the student’s updated GPA after all course attempts?",
+      "How many internship prep hours has the student accumulated, and are they eligible for an internship?"
+    ],
+    "answers": [
+      "6.28",
+      "130, Yes"
+    ],
+    "idx": [
+      [
+        3,
+        4,
+        7,
+        8
+      ],
+      [
+        1,
+        3,
+        5,
+        7,
+        8
+      ]
+    ],
+    "explanation": [
+      "Premise 7 gives a GPA of 6.2, 80 credits, grade points 6.2 × 80 = 496.0, with C1 (3 credits, 5.8, points 17.4), C2 (4 credits, 6.5, points 26.0), other 73 credits at 452.6 points. Premise 8 adds: C3 (5 credits, 7.0, points 5 × 7.0 = 35.0), C1 retake (6.8, Max(5.8, 6.8) = 6.8, points 3 × 6.8 = 20.4, change 3.0 per Premise 4), C4 (3 credits, 3.5, failed, 0 credits/points per Premise 3). Total credits: 80 + 5 = 85. Total grade points: 452.6 + 20.4 + 26.0 + 35.0 = 534.0. GPA = 534.0 / 85 ≈ 6.28235, rounded to 6.28.",
+      "Premise 7 gives 120 prep hours. Premise 8 adds: C3 (5 credits, 7.0, 10 hours per Premise 5), C1 retake (6.8, 0 hours per Premise 4), C4 (3.5, failed, 0 hours per Premise 3). No workshops (Year 2, Premise 6). Total prep hours: 120 + 10 = 130. Premise 1 requires: ≥ 78 credits, GPA ≥ 6.0, ≥ 50 prep hours. Credits: 85 (Question 1), passes. GPA: 6.28, passes. Prep hours: 130, passes. The student is eligible for an internship."
+    ],
+    "LLM-FOL": [
+      "TotalProgramCredits(120) ∧ InternshipEligibilityRequiresCredits(78) ∧ GPAGreaterThanOrEqualTo(6.0) ∧ InternshipPrepHoursGreaterThanOrEqualTo(50)",
+      "∀x (FirstYearStudent(x) → <40Credits(x))",
+      "∀x (FailedCourse(x) → ContributesZeroCredits(x))",
+      "∀x (ImprovementRetake(x) ∧ Grade(x) ≥ 4.0 → HighestGrade(x))",
+      "∀x (Course(x) ∧ GradeGreaterOrEqual(x, 4.0) → AddsPreparationHours(x, y)) ∧ (y = 3 → HoursPerCredit(x, 5)) ∧ (y = 4 → HoursPerCredit(x, 7)) ∧ (y = 5 → HoursPerCredit(x, 10))",
+      "∀x (ThirdYearStudent(x) ∧ Year3(x) ∧ CreditsBelow78(x) ∧ GPAGreaterOrEqual(x, 5.5) → CanJoinPrepWorkshops(x, 20Hours))",
+      "∀x (Student(x) ∧ Year2(x) → (GPA(x, 6.2) ∧ Credits(x, 80) ∧ PrepHours(x, 120) ∧ HasCourseC1(x, 3, 5.8, 5) ∧ HasCourseC2(x, 4, 6.5, 7)))",
+      "∀x (Student(x) → (TookC3(x, 5, 7.0) ∧ RetookC1(x, 6.8) ∧ TookC4(x, 3, 3.5, Failed)))"
+    ],
+    "question-FOL": [
+      "∀x (Student(x) ∧ AttemptsCourses(x) → UpdatedGPA(x))",
+      "∀x (Student(x) → (AccumulatedInternshipPrepHours(x, y) ∧ EligibleForInternship(x))) ∧ ∃z (Student(z) ∧ AccumulatedInternshipPrepHours(z, 40) ∧ EligibleForInternship(z))"
+    ]
+  },
+  {
+    "premises-NL": [
+      "Thesis eligibility requires ≥ 100 credits, GPA ≥ 5.5 (scale 0–10), capstone completion, and ≥ 80 capstone hours.",
+      "Capstone completion requires ≥ 80 credits and a 5-credit capstone course (grade ≥ 4.0).",
+      "Failed courses (grade < 4.0) add 0 credits, 0 capstone hours.",
+      "Improvement retakes (grade ≥ 4.0) use highest grade, no extra credits/hours.",
+      "Each course (grade ≥ 4.0) adds capstone hours: 3 credits = 6 hours, 4 credits = 8 hours, 5 credits = 10 hours.",
+      "Final-year students (Year 4) with capstone but < 80 hours can join capstone workshops (15 hours), if GPA ≥ 5.0.",
+      "A student (Year 3) has a GPA of 5.8, 85 credits, 100 capstone hours, no capstone course, including C1 (3 credits, 6.0, 6 hours), C2 (4 credits, 5.5, 8 hours).",
+      "The student took capstone course C3 (5 credits, 4.5), retook C1 (6.5), took C4 (3 credits, 3.8, failed), joined 2 workshops."
+    ],
+    "premises-FOL": [
+      "EligibleForThesis(s) ↔ AccumulatedCredits(s) ≥ 100 ∧ GPA(s) ≥ 5.5 ∧ CompletedCapstone(s) ∧ CapstoneHours(s) ≥ 80",
+      "CompletedCapstone(s) ↔ AccumulatedCredits(s) ≥ 80 ∧ ∃c: CapstoneCourse(c) ∧ Credits(c) = 5 ∧ Grade(c) ≥ 4.0",
+      "FORALL(c): Grade(c) < 4.0 → AccumulatedCredits(c) = 0 ∧ CapstoneHours(c) = 0",
+      "FORALL(c): ImprovedCourse(c) ∧ Grade(c) ≥ 4.0 → GPAUse(c) = Max(Grades(c)) ∧ AccumulatedCreditsUnchanged(c) ∧ CapstoneHoursUnchanged(c)",
+      "FORALL(c): Grade(c) ≥ 4.0 → (Credits(c) = 3 → CapstoneHours(c) = 6) ∧ (Credits(c) = 4 → CapstoneHours(c) = 8) ∧ (Credits(c) = 5 → CapstoneHours(c) = 10)",
+      "Year(x) = 4 ∧ CompletedCapstone(x) ∧ CapstoneHours(x) < 80 ∧ GPA(x) ≥ 5.0 → CapstoneHours(x) += 15",
+      "Student(s1) ∧ Year(s1) = 3 ∧ GPA(s1) = 5.8 ∧ AccumulatedCredits(s1) = 85 ∧ CapstoneHours(s1) = 100 ∧ ¬CompletedCapstone(s1) ∧ Course(s1, c1, 3, 6.0, 6) ∧ Course(s1, c2, 4, 5.5, 8)",
+      "Courses(s1) = [c3_capstone(5, 4.5), c1_retake(3, 6.5), c4(3, 3.8)] ∧ Workshops(s1) = 2"
+    ],
+    "questions": [
+      "What is the student’s updated GPA after all course attempts?",
+      "How many capstone hours has the student accumulated, and are they eligible for the thesis?"
+    ],
+    "answers": [
+      "5.74",
+      "140, No"
+    ],
+    "idx": [
+      [
+        3,
+        4,
+        7,
+        8
+      ],
+      [
+        1,
+        2,
+        3,
+        5,
+        7,
+        8
+      ]
+    ],
+    "explanation": [
+      "Premise 7 gives a GPA of 5.8, 85 credits, grade points 5.8 × 85 = 493.0, with C1 (3 credits, 6.0, points 18.0), C2 (4 credits, 5.5, points 22.0), other 78 credits at 453.0 points. Premise 8 adds: C3 (capstone, 5 credits, 4.5, points 5 × 4.5 = 22.5), C1 retake (6.5, Max(6.0, 6.5) = 6.5, points 3 × 6.5 = 19.5, change 1.5 per Premise 4), C4 (3 credits, 3.8, failed, 0 credits/points per Premise 3). Total credits: 85 + 5 = 90. Total grade points: 453.0 + 19.5 + 22.0 + 22.5 = 517.0. GPA = 517.0 / 90 ≈ 5.74444, rounded to 5.74.",
+      "Premise 7 gives 100 capstone hours. Premise 8 adds: C3 (5 credits, 4.5, 10 hours per Premise 5), C1 retake (6.5, 0 hours per Premise 4), C4 (3.8, failed, 0 hours per Premise 3), 2 workshops (2 × 15 = 30 hours, assumed eligible). Total hours: 100 + 10 + 30 = 140. Premise 1 requires: ≥ 100 credits, GPA ≥ 5.5, capstone completion, ≥ 80 hours. Credits: 90 (Question 1), fails. GPA: 5.74, passes. Capstone: C3 (4.5), credits 90 ≥ 80, passes (Premise 2). Hours: 140, passes. Not eligible due to credits."
+    ],
+    "LLM-FOL": [
+      "∀x (ThesisEligibility(x) → (∃y (Credits(y) ≥ 100) ∧ ∃z (GPA(z) ≥ 5.5) ∧ CapstoneCompletion(x) ∧ Hours(x) ≥ 80))",
+      "∀x (CapstoneCompletion(x) ↔ (∃y (Credits(y) ≥ 80) ∧ ∃z (CapstoneCourse(z) ∧ CreditsIncluded(x, z)) ∧ GradeAboveThreshold(x, z, 4.0)))",
+      "∀x (CourseFailed(x) ∧ GradeBelowThreshold(x, 4.0) → (AddsZeroCredits(x) ∧ AddsZeroCapstoneHours(x)))",
+      "∀x (ImprovementRetakes(x) → (Grade(x) ≥ 4.0) ∧ HighestGrade(x) ∧ ¬ExtraCredits(x) ∧ ¬ExtraHours(x))",
+      "∀x (Course(x) ∧ GradeGreaterOrEqual(x, 4.0) → AddsCapstoneHours(x, credits, hours))\n\nExplanation:\nThe FOL rule takes a course (x) and a grade threshold (greater or equal to 4.0) as input, and outputs a logical statement indicating whether the course adds capstone hours. The rule uses the ∧ (and) operator to combine the course and grade conditions, and the → (implies) operator to indicate the relationship between the conditions and the output. The rule also uses the credits and hours variables to represent the amount of capstone hours added by the course.",
+      "∀x (FinalYearStudent(x) ∧ Year4(x) ∧ Capstone(x) ∧ HoursBelowThreshold(x, 80) ∧ GPAGreaterThanOrEqualTo5(x) → JoinCapstoneWorkshops(x, 15))",
+      "∀x (Student(x) ∧ Year3(x) → (GPA(x, 5.8) ∧ Credits(x, 85) ∧ CapstoneHours(x, 100) ∧ ¬HasCapstoneCourse(x, C1) ∧ ¬HasCapstoneCourse(x, C2)))",
+      "∀x (Student(x) → (TookCapstoneCourseC3(x) ∧ RetookCourseC1(x) ∧ TookCourseC4(x) ∧ JoinedWorkshops(x)))"
+    ],
+    "question-FOL": [
+      "∀x (Student(x) ∧ AttemptsCourses(x) → UpdatedGPA(x))",
+      "∀x (Student(x) ∧ AccumulatedCapstoneHours(x) ∧ EligibleForThesis(x) → (∃y (Thesis(y) ∧ CanSubmit(x, y))))"
+    ]
+  }
+]

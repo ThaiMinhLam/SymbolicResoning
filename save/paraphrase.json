@@ -1,0 +1,101 @@
+{
+    "0": {
+        "simplified statement": [
+            [
+                "A student can withdraw up to 3 courses per academic year if remaining credits ≥ 10 (Year 1",
+                " 2) or ≥ 8 (Year 3+); each withdrawal deducts 0.5 credits from total accumulated credits."
+            ],
+            [
+                "Courses have 3",
+                " 4",
+                " or 5 credits; withdrawn courses contribute 0 credits to semester GPA."
+            ],
+            [
+                "Students must register for 12–18 credits per semester; withdrawals reduce semester credits."
+            ],
+            [
+                "No regulation limits total withdrawals",
+                " but max 3 per year."
+            ],
+            [
+                "A student with < 8 accumulated credits cannot withdraw courses."
+            ],
+            [
+                "A student (Year 2) has 45 credits",
+                " withdrew 2 courses in Year 1 (penalty 1 credit)",
+                " including C1 (4 credits",
+                " withdrawn)",
+                " C2 (3 credits",
+                " withdrawn)."
+            ],
+            [
+                "In Year 2",
+                " semester S1",
+                " the student registered for 15 credits",
+                " withdrew C3 (5 credits)",
+                " C4 (3 credits)",
+                " attempted C5 (4 credits",
+                " passed)."
+            ]
+        ],
+        "list predicates": [
+            [
+                "withdraw_courses",
+                " remaining_credit",
+                " deducted_credit",
+                " academic_year",
+                " student_status"
+            ],
+            [
+                "course_credits",
+                " withdraw_course",
+                " contribution_gpa",
+                " course_type"
+            ],
+            [
+                "register_credits",
+                " withdraw_credits",
+                " semester_credits",
+                " student_status"
+            ],
+            [
+                "total_withdrawal",
+                " yearly_withdrawal",
+                " withdraw_limit"
+            ],
+            [
+                "accumulated_credit",
+                " withdraw_course",
+                " student_status"
+            ],
+            [
+                "student_status",
+                " year_credits",
+                " withdrawn_course",
+                " penalty_credit",
+                " course_information"
+            ],
+            [
+                "register_credits",
+                " withdraw_credits",
+                " attempted_credits",
+                " semester_credits",
+                " student_status",
+                " course_information"
+            ]
+        ],
+        "statement": [
+            "A student can withdraw up to 3 courses per academic year if remaining credits ≥ 10 (Year 1, 2) or ≥ 8 (Year 3+); each withdrawal deducts 0.5 credits from total accumulated credits.",
+            "Courses have 3, 4, or 5 credits; withdrawn courses contribute 0 credits to semester GPA.",
+            "Students must register for 12–18 credits per semester; withdrawals reduce semester credits.",
+            "No regulation limits total withdrawals, but max 3 per year.",
+            "A student with < 8 accumulated credits cannot withdraw courses.",
+            "A student (Year 2) has 45 credits, withdrew 2 courses in Year 1 (penalty 1 credit), including C1 (4 credits, withdrawn), C2 (3 credits, withdrawn).",
+            "In Year 2, semester S1, the student registered for 15 credits, withdrew C3 (5 credits), C4 (3 credits), attempted C5 (4 credits, passed)."
+        ],
+        "questions": [
+            "What is the student’s total accumulated credits after Year 2, semester S1?",
+            "How many credits were withdrawn in Year 2, semester S1, and can the student withdraw another course in semester S2 of Year 2?"
+        ]
+    }
+}

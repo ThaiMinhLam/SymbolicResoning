@@ -1,0 +1,6 @@
+{
+    "fol": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\n QualifiesForGraduateFellowship(John) ∧ GraduateFellowshipProgram(program)\n ∀x ∀y (John(x) ∧ Fellowship(y) → NeedsRecommendation(x, y))\n MustCompleteInternship(John)\n ∀x (GradePointAverage(x) ∧ BelongsToJohn(x) → ¬HonorsEligible(x)):",
+        "∀z (AcademicDistinction(z) → Receives(x, z))"
+    ]
+}

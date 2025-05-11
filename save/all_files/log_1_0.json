@@ -1,0 +1,191 @@
+{
+    "premises-nl": [
+        "If a Python code is well-tested, then the project is optimized.",
+        "If a Python code does not follow PEP 8 standards, then it is not well-tested.",
+        "All Python projects are easy to maintain.",
+        "All Python code is well-tested.",
+        "If a Python code follows PEP 8 standards, then it is easy to maintain.",
+        "If a Python code is well-tested, then it follows PEP 8 standards.",
+        "If a Python project is well-structured, then it is optimized.",
+        "If a Python project is easy to maintain, then it is well-tested.",
+        "If a Python project is optimized, then it has clean and readable code.",
+        "All Python projects are well-structured.",
+        "All Python projects have clean and readable code.",
+        "There exists at least one Python project that follows best practices.",
+        "There exists at least one Python project that is optimized.",
+        "If a Python project is not well-structured, then it does not follow PEP 8 standards."
+    ],
+    "fol_premises": [
+        "∀x (WT(x) → O(x))",
+        "∀x (¬PEP8(x) → ¬WT(x))",
+        "∀x (EM(x))",
+        "∀x (WT(x))",
+        "∀x (PEP8(x) → EM(x))",
+        "∀x (WT(x) → PEP8(x))",
+        "∀x (WS(x) → O(x))",
+        "∀x (EM(x) → WT(x))",
+        "∀x (O(x) -> CR(x))",
+        "∀x (WS(x))",
+        "∀x (CR(x))",
+        "∃x (BP(x))",
+        "∃x (O(x))",
+        "∀x (¬WS(x) → ¬PEP8(x))"
+    ],
+    "questions": [
+        "\n If a Python project is not optimized, then it is not well-tested. \n If all Python projects are optimized, then all Python projects are well-structured. \n If a Python project is well-tested, then it must be clean and readable. \n If a Python project is not optimized, then it does not follow PEP 8 standards.",
+        "All Python projects that are well-structured are optimized."
+    ],
+    "reasonings": [
+        "Premise 1 states that if a Python project is well-tested, it is optimized. By logical contraposition, if a project is not optimized, it is not well-tested, supporting option A with the fewest premises. Option B is false because optimization does not imply well-structured projects. Option C follows from premises 4, 1, and 9 but requires more steps. Option D follows from premises 1 and 6 but is less direct than A.",
+        "Premise 10 confirms all Python projects are well-structured. Premise 7 states that well-structured projects are optimized, implying all projects are optimized, so the statement that well-structured projects imply optimized projects holds."
+    ],
+    "answers": [
+        "A",
+        "Yes"
+    ],
+    "LLM-FOL": [
+        "∀x (PythonCode(x) ∧ WellTested(x) → OptimizedProject(x))",
+        "∀x (PythonCode(x) ∧ ¬PEP8Standards(x) → ¬WellTested(x))",
+        "∀x (PythonProject(x) → EasyToMaintain(x))",
+        "∀x (PythonCode(x) → WellTested(x))",
+        "∀x (PythonCode(x) ∧ FollowsPEP8Standards(x) → EasyToMaintain(x))",
+        "∀x (PythonCode(x) ∧ WellTested(x) → FollowsPEP8Standards(x))",
+        "∀x (PythonProject(x) ∧ WellStructured(x) → Optimized(x))",
+        "∀x (PythonProject(x) ∧ EasyToMaintain(x) → WellTested(x))",
+        "∀x (PythonProject(x) ∧ Optimized(x) → (CleanCode(x) ∧ ReadableCode(x)))",
+        "∀x (PythonProject(x) → WellStructured(x))",
+        "∀x (PythonProject(x) → (CleanCode(x) ∧ ReadableCode(x)))",
+        "∃x (PythonProject(x) ∧ FollowsBestPractices(x))",
+        "∃x (PythonProject(x) ∧ Optimized(x))",
+        "∀x (PythonProject(x) ∧ ¬WellStructured(x) → ¬FollowsPEP8Standards(x))"
+    ],
+    "question-FOL": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\n ∀x (PythonProject(x) ∧ ¬Optimized(x) → ¬WellTested(x))\n ∀x (PythonProject(x) ∧ Optimized(x) → WellStructured(x))\n ∀x (PythonProject(x) ∧ WellTested(x) → (Clean(x) ∧ Readable(x)))\n ∀x (PythonProject(x) ∧ ¬Optimized(x) → ¬FollowsPEP8Standards(x)):",
+        "∀x (PythonProject(x) ∧ WellStructured(x) → Optimized(x))"
+    ],
+    "logic_program": [
+        "PythonProject(x) ::: x is a project written in Python",
+        "OptimizedProject(x) ::: x is a project that has been optimized for performance",
+        "PythonCode(x) ::: x is Python code",
+        "FollowsPEP8Standards(x) ::: x follows the Python coding standards outlined in PEP 8",
+        "Optimized(x) ::: x is optimized",
+        "EasyToMaintain(x) ::: x is easy to maintain",
+        "FollowsBestPractices(x) ::: x follows best practices in software development",
+        "WellStructured(x) ::: x is well-structured",
+        "WellTested(x) ::: x is well-tested",
+        "CleanCode(x) ::: x is clean code",
+        "PEP8Standards(x) ::: x adheres to the Python coding standards outlined in PEP 8",
+        "ReadableCode(x) ::: x is readable code",
+        "Readable(x) ::: x is readable.",
+        "Clean(x) ::: x is clean."
+    ],
+    "new-fol": [
+        "∀x (PythonCode(x) ∧ WellTested(x) → Optimized(x))",
+        "∀x (PythonCode(x) ∧ ¬PEP8Standards(x) → ¬WellTested(x))",
+        "∀x (PythonProject(x) → EasyToMaintain(x))",
+        "∀x (PythonCode(x) → WellTested(x))",
+        "∀x (PythonCode(x) ∧ PEP8Standards(x) → EasyToMaintain(x))",
+        "∀x (PythonCode(x) ∧ WellTested(x) → PEP8Standards(x))",
+        "∀x (PythonProject(x) ∧ WellStructured(x) → Optimized(x))",
+        "∀x (PythonProject(x) ∧ EasyToMaintain(x) → WellTested(x))",
+        "∀x (PythonProject(x) ∧ Optimized(x) → (CleanCode(x) ∧ ReadableCode(x)))",
+        "∀x (PythonProject(x) → WellStructured(x))",
+        "∀x (PythonProject(x) → (CleanCode(x) ∧ ReadableCode(x)))",
+        "∃x (PythonProject(x) ∧ BestPractices(x))",
+        "∃x (PythonProject(x) ∧ Optimized(x))",
+        "∀x (PythonProject(x) ∧ ¬WellStructured(x) → ¬PEP8Standards(x))"
+    ],
+    "maps": [
+        {},
+        {
+            "OptimizedProject(x)": "Optimized(x)"
+        },
+        {
+            "FollowsPEP8Standards(x)": "PEP8Standards(x)",
+            "FollowsBestPractices(x)": "BestPractices(x)",
+            "PEP8Standards(x)": "AdheresToStandards(x)"
+        },
+        {
+            "CleanCode(x)": "ReadableCode(x)",
+            "ReadableCode(x)": "CleanCode(x)"
+        }
+    ],
+    "q_ids": null,
+    "logic_program_premise": [
+        "PythonProject(x) ::: x is a project written in Python",
+        "OptimizedProject(x) ::: x is a project that has been optimized for performance",
+        "PythonCode(x) ::: x is Python code",
+        "FollowsPEP8Standards(x) ::: x follows the Python coding standards outlined in PEP 8",
+        "Optimized(x) ::: x is optimized",
+        "EasyToMaintain(x) ::: x is easy to maintain",
+        "FollowsBestPractices(x) ::: x follows best practices in software development",
+        "WellStructured(x) ::: x is well-structured",
+        "WellTested(x) ::: x is well-tested",
+        "CleanCode(x) ::: x is clean code",
+        "PEP8Standards(x) ::: x adheres to the Python coding standards outlined in PEP 8",
+        "ReadableCode(x) ::: x is readable code"
+    ],
+    "logic_program_question": [
+        "PythonProject(x) ::: x is a Python project.",
+        "Optimized(x) ::: x is optimized.",
+        "FollowsPEP8Standards(x) ::: x follows PEP 8 standards.",
+        "Readable(x) ::: x is readable.",
+        "WellStructured(x) ::: x is well-structured.",
+        "WellTested(x) ::: x is well-tested.",
+        "Clean(x) ::: x is clean."
+    ],
+    "new-question-FOL": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\n ∀x (PythonProject(x) ∧ ¬Optimized(x) → ¬WellTested(x))\n ∀x (PythonProject(x) ∧ Optimized(x) → WellStructured(x))\n ∀x (PythonProject(x) ∧ WellTested(x) → (Clean(x) ∧ Readable(x)))\n ∀x (PythonProject(x) ∧ ¬Optimized(x) → ¬PEP8Standards(x)):",
+        "∀x (PythonProject(x) ∧ WellStructured(x) → Optimized(x))"
+    ],
+    "clusters": [
+        [
+            "PythonProject(x) ::: x is a project written in Python",
+            "PythonCode(x) ::: x is Python code"
+        ],
+        [
+            "OptimizedProject(x) ::: x is a project that has been optimized for performance",
+            "Optimized(x) ::: x is optimized"
+        ],
+        [
+            "FollowsPEP8Standards(x) ::: x follows the Python coding standards outlined in PEP 8",
+            "FollowsBestPractices(x) ::: x follows best practices in software development",
+            "PEP8Standards(x) ::: x adheres to the Python coding standards outlined in PEP 8"
+        ],
+        [
+            "EasyToMaintain(x) ::: x is easy to maintain"
+        ],
+        [
+            "WellStructured(x) ::: x is well-structured"
+        ],
+        [
+            "WellTested(x) ::: x is well-tested"
+        ],
+        [
+            "CleanCode(x) ::: x is clean code",
+            "ReadableCode(x) ::: x is readable code",
+            "Clean(x) ::: x is clean."
+        ],
+        [
+            "Readable(x) ::: x is readable."
+        ]
+    ],
+    "solver": [
+        {
+            "final_ans": "A",
+            "idx_final_ans": [],
+            "dic_idx_wrong_options": {},
+            "proof_final_ans": [],
+            "dic_proof_wrong_options": {}
+        },
+        {
+            "final_ans": "Yes",
+            "idx_final_ans": [
+                7
+            ],
+            "dic_idx_wrong_options": {},
+            "proof_final_ans": "============================== prooftrans ============================\nProver9 (64) version 2009-11A, November 2009.\nProcess 2316010 was started by npl on uit-dgx01,\nFri May  9 02:52:13 2025\nThe command was \"/data/npl/ICEK/News/Qwen_evaluate/LADR-2009-11A/bin/prover9\".\n============================== end of head ===========================\n\n============================== end of input ==========================\n\n============================== PROOF =================================\n\n% -------- Comments from original proof --------\n% Proof 1 at 0.00 (+ 0.00) seconds.\n% Length of proof is 9.\n% Level of proof is 4.\n% Maximum clause weight is 0.000.\n% Given clauses 0.\n\n\n7 (all x (PythonProject(x) & WellStructured(x) -> Optimized(x))).  [assumption].\n15 (all x (PythonProject(x) & WellStructured(x) -> Optimized(x))).  [goal].\n18 -PythonProject(x) | -WellStructured(x) | Optimized(x).  [clausify(7)].\n27 PythonProject(c3).  [deny(15)].\n28 -Optimized(c3).  [deny(15)].\n35 -WellStructured(c3) | Optimized(c3).  [resolve(27,a,18,a)].\n36 -WellStructured(c3).  [resolve(35,b,28,a)].\n37 WellStructured(c3).  [deny(15)].\n46 $F.  [resolve(36,a,37,a)].\n\n============================== end of proof ==========================",
+            "dic_proof_wrong_options": {}
+        }
+    ]
+}

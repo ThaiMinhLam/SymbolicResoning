@@ -1,0 +1,6 @@
+{
+    "fol": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\n ∀x (Dr. John(x) → TeachesUndergraduateCourses(x))\n HasCapability(John, ResearchMentor)\n ∀x (Dr. John(x) → (TeachesUndergraduateCourses(x) ∧ ¬TeachesGraduateCourses(x)))\n NeedsAdditionalCertification(DrJohn) ↔ Mentor(DrJohn):",
+        "∀x (PhDQualification(x) ∧ DrJohn(x) → ResearchMentor(x))"
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "fol": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\n ∀x (Person(x) ∧ HasQualificationsForTransportingHazardousMaterials(x) → ¬CanCrossStateLines(x))\n ∀x ∀y (John(x) ∧ HazardousCargo(y) → QualifiedToTransportAcrossStateLines(x, y))\n ∀x (Premise(x) → ¬CanTransportHazardousMaterials(John))\n ∀x (Premise(x) → ¬QualifiedToTransportGoods(John)):",
+        "∀x (MeetsRequirements(John, HazardousCargo) → CanCrossStateLines(John))"
+    ]
+}

@@ -1,0 +1,125 @@
+[
+    {
+        "premises-NL": [
+            "A student can withdraw up to 3 courses per academic year if remaining credits ≥ 10 (Year 1, 2) or ≥ 8 (Year 3+); each withdrawal deducts 0.5 credits from total accumulated credits.",
+            "Courses have 3, 4, or 5 credits; withdrawn courses contribute 0 credits to semester GPA.",
+            "Students must register for 12–18 credits per semester; withdrawals reduce semester credits.",
+            "No regulation limits total withdrawals, but max 3 per year.",
+            "A student with < 8 accumulated credits cannot withdraw courses.",
+            "A student (Year 2) has 45 credits, withdrew 2 courses in Year 1 (penalty 1 credit), including C1 (4 credits, withdrawn), C2 (3 credits, withdrawn).",
+            "In Year 2, semester S1, the student registered for 15 credits, withdrew C3 (5 credits), C4 (3 credits), attempted C5 (4 credits, passed)."
+        ],
+        "LLM-FOL": [
+            "∀x (Student(x) ∧ (Year1(x) ∨ Year2(x) ∨ Year3(x)) ∧ RemainingCreditsGreaterOrEqual(x, 10) ∧ WithdrawsUpToThreeCourses(x) → DeductsCredits(x, 0.5))",
+            "∀x (Course(x) → (HasCredits(x, 3) ∨ HasCredits(x, 4) ∨ HasCredits(x, 5))) ∧ ∀y (WithdrawnCourse(y) → ContributesCredits(y, 0))",
+            "∀x (Student(x) → (RegistersForCredits(x, 12) ∨ RegistersForCredits(x, 13) ∨ RegistersForCredits(x, 14) ∨ RegistersForCredits(x, 15) ∨ RegistersForCredits(x, 16) ∨ RegistersForCredits(x, 17) ∨ RegistersForCredits(x, 18))) ∧ (Withdraws",
+            "∀x (Regulation(x) → (¬LimitsTotalWithdrawals(x) ∧ MaxWithdrawalsPerYear(x, 3)))",
+            "∀x (Student(x) ∧ WithdrawCourses(x) ∧ AccumulatedCredits(x, y) ∧ <8(y) → ¬CanWithdrawCourses(x))",
+            "∀x (Student(x) ∧ Year(x, 2) ∧ Credits(x, 45) ∧ WithdrewCourses(x, 2) ∧ WithdrewCourse(x, C1) ∧ WithdrewCourse(x, C2) ∧ Credits(C1, 4) ∧ Credits(C2, 3))",
+            "∀x∀y∀z (Student(x) ∧ Year(y) ∧ Semester(z) ∧ Year(y) ∧ Semester(z) ∧ S1(z) ∧ RegisteredCredits(x, y, z, 15) ∧ WithdrewCredits(x, y, z, C3, 5) ∧ WithdrewCredits(x, y, z, C4, 3) ∧ AttemptedCredits(x,"
+        ],
+        "premises-FOL": [
+            "FORALL(x, y): (Withdrawals(x, y) ≤ 3 ∧ RemainingCredits(x, y, s) ≥ (Year(x) ≤ 2 ? 10 : 8)) → CanWithdrawCourse(x, y, s) ∧ TotalCreditsPenalty(x, -0.5 * Withdrawals(x, y))",
+            "FORALL(c): Credits(c) ∈ {{3, 4, 5}} ∧ Withdrawn(c) → GPACredits(c) = 0",
+            "FORALL(x, s): RegisteredCredits(x, s) ∈ [12, 18] ∧ RemainingCredits(x, s) = RegisteredCredits(x, s) − Sum(WithdrawnCredits(x, s))",
+            "¬EXISTS(r): Regulation(LimitTotalWithdrawals(r)) ∧ FORALL(y): Withdrawals(y) ≤ 3",
+            "FORALL(x): TotalCredits(x) < 8 → ¬CanWithdrawCourse(x, _, _)",
+            "Student(s1) ∧ Year(s1) = 2 ∧ TotalCredits(s1) = 45 ∧ Withdrawals(s1, Year1) = 2 ∧ TotalCreditsPenalty(s1, -1) ∧ Course(s1, c1, 4, Withdrawn) ∧ Course(s1, c2, 3, Withdrawn)",
+            "Courses(s1, Year2, S1) = [c3(5, Withdrawn), c4(3, Withdrawn), c5(4, Passed)] ∧ RegisteredCredits(s1, S1) = 15"
+        ],
+        "questions": [
+            "What is the student’s total accumulated credits after Year 2, semester S1?",
+            "How many credits were withdrawn in Year 2, semester S1, and can the student withdraw another course in semester S2 of Year 2?"
+        ],
+        "logic_program_predicate_LLM": [
+            "Student(x) ::: x is a student",
+            "Year1(x) ::: x is in year 1",
+            "Year2(x) ::: x is in year 2",
+            "Year3(x) ::: x is in year 3",
+            "Year(x, y) ::: student x is in year y",
+            "Semester(z) ::: z is a semester",
+            "S1(z) ::: z is semester S1",
+            "RemainingCreditsGreaterOrEqual(x, n) ::: student x has remaining credits ≥ n",
+            "WithdrawsUpToThreeCourses(x) ::: student x withdrew up to 3 courses in an academic year",
+            "DeductsCredits(x, y) ::: student x has y credits deducted from total due to withdrawal",
+            "Course(x) ::: x is a course",
+            "HasCredits(x, y) ::: course x has y credits",
+            "WithdrawnCourse(x) ::: course x was withdrawn",
+            "ContributesCredits(x, y) ::: course x contributes y credits to GPA",
+            "RegistersForCredits(x, y) ::: student x registered for y credits in a semester",
+            "Regulation(x) ::: x is a rule or policy",
+            "LimitsTotalWithdrawals(x) ::: regulation x limits total withdrawals",
+            "MaxWithdrawalsPerYear(x, y) ::: regulation x allows max y withdrawals per year",
+            "WithdrawCourses(x) ::: student x is withdrawing courses",
+            "AccumulatedCredits(x, y) ::: student x has accumulated y credits",
+            "CanWithdrawCourses(x) ::: student x is allowed to withdraw courses",
+            "WithdrewCourses(x, y) ::: student x withdrew y courses",
+            "WithdrewCourse(x, c) ::: student x withdrew course c",
+            "Credits(x, y) ::: x has y credits (applies to student or course)",
+            "RegisteredCredits(x, y, z, c) ::: student x registered c credits in year y, semester z",
+            "WithdrewCredits(x, y, z, c, v) ::: student x withdrew course c with v credits in year y, semester z",
+            "AttemptedCredits(x, y, z, c, v) ::: student x attempted course c with v credits in year y, semester z"
+        ],
+        "logic_program_predicates": [
+            "Withdrawals(x, y) ::: student x withdrew y courses in a given year or semester",
+            "RemainingCredits(x, y, s) ::: student x has y credits remaining in semester s",
+            "Year(x) ::: academic year of semester x (1, 2, 3, ...)",
+            "CanWithdrawCourse(x, y, s) ::: student x is allowed to withdraw y courses in semester s",
+            "TotalCreditsPenalty(x, z) ::: student x is penalized z credits due to withdrawal",
+            "Credits(c) ::: course c has n credits",
+            "Withdrawn(c) ::: course c is withdrawn",
+            "GPACredits(c) ::: the number of GPA-contributing credits from course c",
+            "RegisteredCredits(x, s) ::: number of credits student x registered in semester s",
+            "WithdrawnCredits(x, s) ::: total credits student x withdrew in semester s",
+            "TotalCredits(x) ::: total accumulated credits of student x",
+            "Course(x, c, n, status) ::: student x took course c, n credits, status = Withdrawn/Passed",
+            "Courses(x, y, s) = [..] ::: list of courses in a semester",
+            "Regulation(r) ::: regulation r exists",
+            "LimitTotalWithdrawals(r) ::: regulation r limits total withdrawals",
+            "Student(x) ::: x is a student"
+        ],
+        "logic_program_premises": [
+            "∀x ∀y ∀s ((Withdrawals(x, y) ≤ 3 ∧ (Year(x) ≤ 2 → RemainingCredits(x, _, s) ≥ 10) ∧(Year(x) > 2 → RemainingCredits(x, _, s) ≥ 8)) → CanWithdrawCourse(x, y, s) ∧ TotalCreditsPenalty(x, -0.5 * y)) ::: Courses have 3, 4, or 5 credits; withdrawn courses contribute 0 credits to semester GPA.",
+            "∀c (Credits(c) ∈ [3, 4, 5] ∧ Withdrawn(c) → GPACredits(c) = 0) ::: Students must register for 12–18 credits per semester; withdrawals reduce semester credits.",
+            "∀x ∀s (RegisteredCredits(x, s) ∈ [12,18] ∧ RemainingCredits(x, _, s) = RegisteredCredits(x, s) − WithdrawnCredits(x, s)) ::: No regulation limits total withdrawals, but max 3 per year.",
+            "¬∃r (Regulation(LimitTotalWithdrawals(r))) ∧ ∀y (Withdrawals(y) ≤ 3) ::: A student with < 8 accumulated credits cannot withdraw courses.",
+            "∀x (TotalCredits(x) < 8 → ¬CanWithdrawCourse(x, _, _)) ::: A student (Year 2) has 45 credits, withdrew 2 courses in Year 1 (penalty 1 credit), including C1 (4 credits, withdrawn), C2 (3 credits, withdrawn).",
+            "Student(s1) ∧ Year(s1) = 2 ∧ TotalCredits(s1) = 45 ∧ Withdrawals(s1, Year1) = 2 ∧ TotalCreditsPenalty(s1, -1) ∧ Course(s1, c1, 4, Withdrawn) ∧ Course(s1, c2, 3, Withdrawn) ::: In Year 2, semester S1, the student registered for 15 credits, withdrew C3 (5 credits), C4 (3 credits), attempted C5 (4 credits, passed).",
+            "Courses(s1, Year2, S1) = [c3(5, Withdrawn), c4(3, Withdrawn), c5(4, Passed)] ∧ RegisteredCredits(s1, S1) = 15 ::: In Year 2, semester S1, the student registered for 15 credits, withdrew C3 (5 credits), C4 (3 credits), attempted C5 (4 credits, passed)."
+        ],
+        "answers": [
+            "47",
+            "8, No"
+        ],
+        "idx_hidden": [
+            [
+                1,
+                6,
+                7
+            ],
+            [
+                1,
+                3,
+                5,
+                7
+            ]
+        ],
+        "idx": [
+            [
+                1,
+                6,
+                7
+            ],
+            [
+                1,
+                3,
+                5,
+                7
+            ]
+        ],
+        "explanation": [
+            "Premise 6 gives 45 credits, with 2 withdrawals in Year 1 (C1: 4 credits, C2: 3 credits, penalty 2 × 0.5 = 1 credit per Premise 1). Adjusted credits: 45 − 1 = 44. Premise 7 adds: S1 registered 15 credits, C3 (5 credits, withdrawn, 0 credits), C4 (3 credits, withdrawn, 0 credits), C5 (4 credits, passed, +4 credits), 2 withdrawals (penalty 1 credit). Total credits: 44 + 4 = 48 − 1 = 47.",
+            "Premise 7 gives S1 withdrawals: C3 (5 credits), C4 (3 credits), total 5 + 3 = 8 credits withdrawn. For S2 withdrawal (Premise 1): Year 2 requires remaining credits ≥ 10. Assume S2 registers 12 credits (Premise 3); withdrawing 3 credits leaves 12 − 3 = 9 < 10, fails. Premise 5: Total credits ≥ 8 (47 from Question 1), passes. Premise 1: 2 withdrawals in S1, 1 allowed in S2. Cannot withdraw in S2 due to insufficient semester credits."
+        ]
+    }
+]

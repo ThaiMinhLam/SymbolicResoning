@@ -1,0 +1,6 @@
+{
+    "fol": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\n ∀x (Professor(x) ∧ AccessRestrictedArchives(x) → ¬SubmitProposals(x))\n ∀x (Professor(x) ∧ John(x) → CanApplyForCollaborativeResearchProjects(x))\n NeedsMorePublications(John) → AccessArchives(John)\n EligibleForExtendedLibraryAccess(John) ∧ ¬ApplyForProjects(John):",
+        "∀x (Professor John(x) → (MeetsAllRequirementsForCollaborativeResearchProjects(x)))"
+    ]
+}

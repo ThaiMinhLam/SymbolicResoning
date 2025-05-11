@@ -1,0 +1,51 @@
+{
+    "res": {
+        "premises-nl": [
+            "If a student completes all required courses, they are eligible for graduation.",
+            "If a student is eligible for graduation and maintains a GPA above 3.5, they graduate with honors.",
+            "If a student graduates with honors and completes a thesis, they receive academic distinction.",
+            "If a student receives academic distinction, they qualify for the graduate fellowship program.",
+            "John has completed all required courses.",
+            "John maintains a GPA of 3.8.",
+            "John has completed a thesis."
+        ],
+        "fol_premises": [
+            "ForAll(x, completed_required_courses(x) → eligible_for_graduation(x))",
+            "ForAll(x, (eligible_for_graduation(x) ∧ gpa_above_3_5(x)) → graduates_with_honors(x))",
+            "ForAll(x, (graduates_with_honors(x) ∧ completed_thesis(x)) → academic_distinction(x))",
+            "ForAll(x, academic_distinction(x) → qualifies_for_fellowship(x))",
+            "completed_required_courses(John)",
+            "gpa_above_3_5(John)",
+            "completed_thesis(John)"
+        ],
+        "questions": [
+            "\nA. John qualifies for the graduate fellowship program. \nB. John needs faculty recommendation for the fellowship. \nC. John must complete an internship to qualify. \nD. John's GPA is insufficient for honors.",
+            "John receives academic distinction."
+        ],
+        "reasonings": [
+            "Premise 5 and premise 1 confirm John is eligible for graduation by completing required courses. Premise 6’s GPA of 3.8 and premise 2 qualify him for honors. Premise 7’s thesis and premise 3 grant academic distinction. Premise 4 confirms distinction qualifies him for the graduate fellowship program, supporting option A. Option B is false because no recommendation is required. Option C is false because no internship is mentioned. Option D is false because his GPA exceeds 3.5.",
+            "Academic distinction per premise 3 requires graduating with honors and completing a thesis. Premise 2 requires graduation eligibility and a GPA above 3.5, and premise 1 requires course completion. Premises 5–7 confirm John’s course completion, GPA of 3.8, and thesis, satisfying all conditions for academic distinction."
+        ],
+        "answers": [
+            "A",
+            "Yes"
+        ],
+        "LLM-FOL": [
+            "∀x (Student(x) ∧ CompletesRequiredCourses(x) → EligibleForGraduation(x))",
+            "∀x (Student(x) ∧ EligibleForGraduation(x) ∧ MaintainsGPAAbove35(x) → GraduatesWithHonors(x))",
+            "∀x (Student(x) ∧ GraduatesWithHonors(x) ∧ CompletesThesis(x) → ReceivesAcademicDistinction(x))",
+            "∀x (Student(x) ∧ ReceivesAcademicDistinction(x) → QualifiesForGraduateFellowshipProgram(x))",
+            "∀x (Student(x) ∧ CompletedCourses(x, y) ∧ RequiredCourses(y) → CompletedAllRequiredCourses(x))",
+            "MaintainsGPA(John, 3.8)",
+            "HasCompletedThesis(John)"
+        ],
+        "question-FOL": [
+            "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\nA QualifiesForGraduateFellowship(John) ∧ GraduateFellowshipProgram(program)\nB ∀x ∀y (John(x) ∧ Fellowship(y) → NeedsRecommendation(x, y))\nC MustCompleteInternship(John)\nD ∀x (GradePointAverage(x) ∧ BelongsToJohn(x) → ¬HonorsEligible(x)):",
+            "∀z (AcademicDistinction(z) → Receives(x, z))"
+        ],
+        "logic_program": null,
+        "new-fol": null,
+        "maps": null,
+        "q_ids": null
+    }
+}

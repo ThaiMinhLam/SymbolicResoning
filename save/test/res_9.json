@@ -1,0 +1,48 @@
+{
+    "res": {
+        "premises-nl": [
+            "If a curriculum is well-structured and has exercises, it enhances student engagement.",
+            "If a curriculum enhances student engagement and provides access to advanced resources, it enhances critical thinking.",
+            "If a faculty prioritizes pedagogical training and curriculum development, the curriculum is well-structured.",
+            "The faculty prioritizes pedagogical training and curriculum development.",
+            "The curriculum has practical exercises.",
+            "The curriculum provides access to advanced resources."
+        ],
+        "fol_premises": [
+            "ForAll(c, (well_structured(c) ∧ has_exercises(c)) → enhances_engagement(c))",
+            "ForAll(c, (enhances_engagement(c) ∧ advanced_resources(c)) → enhances_critical_thinking(c))",
+            "ForAll(f, (pedagogical_training(f) ∧ curriculum_development(f)) → well_structured(curriculum))",
+            "pedagogical_training(faculty) ∧ curriculum_development(faculty)",
+            "has_exercises(curriculum)",
+            "advanced_resources(curriculum)"
+        ],
+        "questions": [
+            "\nA. Based on the premises, we can conclude that the curriculum enhances student engagement but does not enhance critical thinking. \nB. Based on the premises, we can conclude that the curriculum enhances critical thinking. \nC. Based on the premises, it can be concluded that the curriculum needs more resources to enhance critical thinking. \nD. Based on the premises, we can conclude that the curriculum is well-structured, but lacks exercises.",
+            "The combination of faculty priorities and curriculum features leads to enhanced critical thinking."
+        ],
+        "reasonings": [
+            "Premise 4 and premise 3 confirm the curriculum is well-structured due to faculty priorities in pedagogical training and curriculum development. Premise 5 provides exercises, so premise 1 implies the curriculum enhances student engagement. Premise 6 adds advanced resources, and premise 2 confirms the curriculum enhances critical thinking, supporting option B. Option A is false because it enhances critical thinking. Option C is false because resources are sufficient. Option D is false because the curriculum has exercises.",
+            "Faculty priorities in premise 4 (pedagogical training and curriculum development) satisfy premise 3, making the curriculum well-structured. Curriculum features in premise 5 (exercises) and premise 1 lead to enhanced engagement, and with premise 6 (advanced resources), premise 2 confirms enhanced critical thinking, supporting the statement."
+        ],
+        "answers": [
+            "B",
+            "Yes"
+        ],
+        "LLM-FOL": [
+            "∀x (Curriculum(x) ∧ WellStructured(x) ∧ HasExercises(x) → EnhancesStudentEngagement(x))",
+            "∀x (Curriculum(x) ∧ EnhancesStudentEngagement(x) ∧ ProvidesAccessToAdvancedResources(x) → EnhancesCriticalThinking(x))",
+            "∀x (Faculty(x) ∧ PrioritizesPedagogicalTraining(x) ∧ DevelopsCurriculum(x) → WellStructuredCurriculum(x))",
+            "Prioritizes(Faculty, PedagogicalTraining) ∧ Prioritizes(Faculty, CurriculumDevelopment)",
+            "∃x (Curriculum(x) ∧ PracticalExercises(x))",
+            "∀x (Curriculum(x) → ProvidesAccessToAdvancedResources(x))"
+        ],
+        "question-FOL": [
+            "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\nA ∀x (Curriculum(x) → (EnhancesStudentEngagement(x) ∧ ¬EnhancesCriticalThinking(x)))\nB ∀x (Curriculum(x) ∧ EnhancesCriticalThinking(x) → CanConclude(y))\n\nWhere y is the conclusion that the curriculum enhances critical thinking.\nC ∀x (Curriculum(x) ∧ NeedsResources(x) → EnhancesCriticalThinking(x))\nD ∀x (Curriculum(x) ∧ WellStructured(x) → ¬∃y (Exercises(y) ∧ AssignedTo(y, x))):",
+            "∀x ∀y (FacultyPriorities(x) ∧ CurriculumFeatures(y) → EnhancedCriticalThinking(x, y))"
+        ],
+        "logic_program": null,
+        "new-fol": null,
+        "maps": null,
+        "q_ids": null
+    }
+}

@@ -1,0 +1,214 @@
+{
+    "premises-nl": [
+        "If a faculty member has taught for at least 5 years, they are eligible for extended library access.",
+        "If someone has extended library access and has published at least one academic paper, they can access restricted archives.",
+        "If someone can access restricted archives and has completed research ethics training, they can submit research proposals.",
+        "If someone can submit research proposals and has a departmental endorsement, they can apply for collaborative research projects.",
+        "Professor John has taught for at least 5 years.",
+        "Professor John has published at least one academic paper.",
+        "Professor John has completed research ethics training.",
+        "Professor John has a departmental endorsement."
+    ],
+    "fol_premises": [
+        "ForAll(x, taught_min_five_years(x) → eligible_extended_library(x))",
+        "ForAll(x, (eligible_extended_library(x) ∧ has_publications(x)) → can_access_restricted_archives(x))",
+        "ForAll(x, (can_access_restricted_archives(x) ∧ completed_ethics_training(x)) → can_submit_research_proposals(x))",
+        "ForAll(x, (can_submit_research_proposals(x) ∧ has_departmental_endorsement(x)) → can_apply_collaborative_projects(x))",
+        "taught_min_five_years(John)",
+        "has_publications(John)",
+        "completed_ethics_training(John)",
+        "has_departmental_endorsement(John)"
+    ],
+    "questions": [
+        "\n Professor John can access restricted archives but cannot submit proposals. \n Professor John can apply for collaborative research projects. \n Professor John needs more publications to access archives. \n Professor John is eligible for extended library access but cannot apply for projects.",
+        "Professor John meets all requirements for collaborative research projects."
+    ],
+    "reasonings": [
+        "Professor John has taught for at least 5 years (Premise 5), so he is eligible for extended library access (by Premise 1). Because he has at least one publication (Premise 6), he can access restricted archives (Premise 2). With completed ethics training (Premise 7), he can submit research proposals (Premise 3), and with departmental endorsement (Premise 8), he can apply for collaborative research projects (Premise 4). Hence, option B is logically valid.",
+        "Yes, all conditions in the logical sequence are fulfilled in order: teaching experience leads to extended access, which, with a publication, allows access to archives. Adding ethics training enables proposal submission, and endorsement completes the criteria for collaborative project application. The reasoning is valid and consistent."
+    ],
+    "answers": [
+        "B",
+        "Yes"
+    ],
+    "LLM-FOL": [
+        "∀x (FacultyMember(x) ∧ TaughtForAtLeast5Years(x) → EligibleForExtendedLibraryAccess(x))",
+        "∀x (Person(x) ∧ ExtendedLibraryAccess(x) ∧ PublishedAcademicPaper(x) → CanAccessRestrictedArchives(x))",
+        "∀x (CanAccessRestrictedArchives(x) ∧ CompletedResearchEthicsTraining(x) → CanSubmitResearchProposals(x))",
+        "∀x (CanSubmitResearchProposals(x) ∧ HasDepartmentalEndorsement(x) → CanApplyForCollaborativeResearchProjects(x))",
+        "Person(John) ∧ Teacher(John) ∧ TaughtForAtLeastYears(John, 5)",
+        "HasPublishedAcademicPaper(John) ∧ ∃x (AcademicPaper(x) ∧ PublishedBy(x, John))",
+        "∀x (Professor(x) ∧ John(x) → CompletedResearchEthicsTraining(x))",
+        "HasDepartmentalEndorsement(John)"
+    ],
+    "question-FOL": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\n ∀x (Professor(x) ∧ AccessRestrictedArchives(x) → ¬SubmitProposals(x))\n ∀x (Professor(x) ∧ John(x) → CanApplyForCollaborativeResearchProjects(x))\n NeedsMorePublications(John) → AccessArchives(John)\n EligibleForExtendedLibraryAccess(John) ∧ ¬ApplyForProjects(John):",
+        "∀x (Professor John(x) → (MeetsAllRequirementsForCollaborativeResearchProjects(x)))"
+    ],
+    "logic_program": [
+        "Professor(x) ::: x is a Professor",
+        "CompletedResearchEthicsTraining(x) ::: x has completed research ethics training",
+        "CanAccessRestrictedArchives(x) ::: x can access restricted archives",
+        "John(x) ::: x is John",
+        "HasDepartmentalEndorsement(x) ::: x has departmental endorsement",
+        "Person(x) ::: x is a person",
+        "FacultyMember(x) ::: x is a faculty member",
+        "PublishedBy(x, John) ::: x was published by John",
+        "Teacher(John) ::: John is a teacher",
+        "AcademicPaper(x) ::: x is an academic paper",
+        "EligibleForExtendedLibraryAccess(x) ::: x is eligible for extended library access",
+        "TaughtForAtLeast5Years(x) ::: x has taught for at least 5 years",
+        "PublishedAcademicPaper(x) ::: x has published an academic paper",
+        "TaughtForAtLeastYears(John, 5) ::: John has taught for at least 5 years",
+        "HasPublishedAcademicPaper(John) ::: John has published an academic paper",
+        "ExtendedLibraryAccess(x) ::: x has extended library access",
+        "CanSubmitResearchProposals(x) ::: x can submit research proposals",
+        "Person(John) ::: John is a person",
+        "CanApplyForCollaborativeResearchProjects(x) ::: x can apply for collaborative research projects",
+        "HasDepartmentalEndorsement(John) ::: John has departmental endorsement",
+        "ApplyForProjects(John) ::: John applies for projects.",
+        "SubmitProposals(x) ::: x submits proposals.",
+        "EligibleForExtendedLibraryAccess(John) ::: John is eligible for extended library access.",
+        "AccessArchives(John) ::: John accesses archives.",
+        "AccessRestrictedArchives(x) ::: x accesses restricted archives.",
+        "NeedsMorePublications(John) ::: John needs more publications."
+    ],
+    "new-fol": [
+        "∀x (FacultyMember(x) ∧ TaughtForAtLeast5Years(x) → ExtendedLibraryAccess(x))",
+        "∀x (Person(x) ∧ ExtendedLibraryAccess(x) ∧ PublishedAcademicPaper(x) → AccessRestrictedArchives(x))",
+        "∀x (AccessRestrictedArchives(x) ∧ CompletedResearchEthicsTraining(x) → SubmitResearchProposals(x))",
+        "∀x (SubmitResearchProposals(x) ∧ HasDepartmentalEndorsement(x) → CanApplyForCollaborativeResearchProjects(x))",
+        "Person(John) ∧ Teacher(John) ∧ TaughtForAtLeastYears(John, 5)",
+        "PublishedAcademicPaper(John) ∧ ∃x (AcademicPaper(x) ∧ PublishedAcademicPaper(x))",
+        "∀x (Professor(x) ∧ John(x) → CompletedResearchEthicsTraining(x))",
+        "HasDepartmentalEndorsement(John)"
+    ],
+    "maps": [
+        {},
+        {
+            "CanAccessRestrictedArchives(x)": "AccessRestrictedArchives(x)",
+            "CanSubmitResearchProposals(x)": "SubmitResearchProposals(x)",
+            "AccessRestrictedArchives(x)": "RestrictedArchivesAccess(x)"
+        },
+        {},
+        {
+            "PublishedBy(x, John)": "PublishedAcademicPaper(x)"
+        },
+        {
+            "EligibleForExtendedLibraryAccess(x)": "ExtendedLibraryAccess(x)"
+        },
+        {},
+        {
+            "HasPublishedAcademicPaper(John)": "PublishedAcademicPaper(John)",
+            "NeedsMorePublications(John)": "Publications(John)"
+        }
+    ],
+    "q_ids": null,
+    "logic_program_premise": [
+        "Professor(x) ::: x is a Professor",
+        "CompletedResearchEthicsTraining(x) ::: x has completed research ethics training",
+        "CanAccessRestrictedArchives(x) ::: x can access restricted archives",
+        "John(x) ::: x is John",
+        "HasDepartmentalEndorsement(x) ::: x has departmental endorsement",
+        "Person(x) ::: x is a person",
+        "FacultyMember(x) ::: x is a faculty member",
+        "PublishedBy(x, John) ::: x was published by John",
+        "Teacher(John) ::: John is a teacher",
+        "AcademicPaper(x) ::: x is an academic paper",
+        "EligibleForExtendedLibraryAccess(x) ::: x is eligible for extended library access",
+        "TaughtForAtLeast5Years(x) ::: x has taught for at least 5 years",
+        "PublishedAcademicPaper(x) ::: x has published an academic paper",
+        "TaughtForAtLeastYears(John, 5) ::: John has taught for at least 5 years",
+        "HasPublishedAcademicPaper(John) ::: John has published an academic paper",
+        "ExtendedLibraryAccess(x) ::: x has extended library access",
+        "CanSubmitResearchProposals(x) ::: x can submit research proposals",
+        "Person(John) ::: John is a person",
+        "CanApplyForCollaborativeResearchProjects(x) ::: x can apply for collaborative research projects",
+        "HasDepartmentalEndorsement(John) ::: John has departmental endorsement"
+    ],
+    "logic_program_question": [
+        "ApplyForProjects(John) ::: John applies for projects.",
+        "SubmitProposals(x) ::: x submits proposals.",
+        "Professor(x) ::: x is a professor.",
+        "EligibleForExtendedLibraryAccess(John) ::: John is eligible for extended library access.",
+        "AccessArchives(John) ::: John accesses archives.",
+        "John(x) ::: x is John.",
+        "CanApplyForCollaborativeResearchProjects(x) ::: x can apply for collaborative research projects.",
+        "AccessRestrictedArchives(x) ::: x accesses restricted archives.",
+        "NeedsMorePublications(John) ::: John needs more publications."
+    ],
+    "new-question-FOL": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\n ∀x (Professor(x) ∧ AccessRestrictedArchives(x) → ¬SubmitProposals(x))\n ∀x (Professor(x) ∧ John(x) → CanApplyForCollaborativeResearchProjects(x))\n Publications(John) → AccessArchives(John)\n EligibleForExtendedLibraryAccess(John) ∧ ¬ApplyForProjects(John):",
+        "∀x (Professor John(x) → (MeetsAllRequirementsForCollaborativeResearchProjects(x)))"
+    ],
+    "clusters": [
+        [
+            "Professor(x) ::: x is a Professor",
+            "John(x) ::: x is John",
+            "Person(x) ::: x is a person",
+            "FacultyMember(x) ::: x is a faculty member",
+            "Teacher(John) ::: John is a teacher"
+        ],
+        [
+            "CompletedResearchEthicsTraining(x) ::: x has completed research ethics training"
+        ],
+        [
+            "CanAccessRestrictedArchives(x) ::: x can access restricted archives",
+            "CanSubmitResearchProposals(x) ::: x can submit research proposals",
+            "AccessRestrictedArchives(x) ::: x accesses restricted archives."
+        ],
+        [
+            "HasDepartmentalEndorsement(x) ::: x has departmental endorsement",
+            "HasDepartmentalEndorsement(John) ::: John has departmental endorsement"
+        ],
+        [
+            "PublishedBy(x, John) ::: x was published by John",
+            "PublishedAcademicPaper(x) ::: x has published an academic paper",
+            "Person(John) ::: John is a person"
+        ],
+        [
+            "AcademicPaper(x) ::: x is an academic paper"
+        ],
+        [
+            "EligibleForExtendedLibraryAccess(x) ::: x is eligible for extended library access",
+            "ExtendedLibraryAccess(x) ::: x has extended library access",
+            "EligibleForExtendedLibraryAccess(John) ::: John is eligible for extended library access."
+        ],
+        [
+            "TaughtForAtLeast5Years(x) ::: x has taught for at least 5 years"
+        ],
+        [
+            "TaughtForAtLeastYears(John, 5) ::: John has taught for at least 5 years",
+            "ApplyForProjects(John) ::: John applies for projects."
+        ],
+        [
+            "HasPublishedAcademicPaper(John) ::: John has published an academic paper",
+            "NeedsMorePublications(John) ::: John needs more publications."
+        ],
+        [
+            "CanApplyForCollaborativeResearchProjects(x) ::: x can apply for collaborative research projects"
+        ],
+        [
+            "SubmitProposals(x) ::: x submits proposals."
+        ],
+        [
+            "AccessArchives(John) ::: John accesses archives."
+        ]
+    ],
+    "solver": [
+        {
+            "final_ans": "A",
+            "idx_final_ans": [],
+            "dic_idx_wrong_options": {},
+            "proof_final_ans": [],
+            "dic_proof_wrong_options": {}
+        },
+        {
+            "final_ans": "No",
+            "idx_final_ans": [],
+            "dic_idx_wrong_options": {},
+            "proof_final_ans": [],
+            "dic_proof_wrong_options": {}
+        }
+    ]
+}

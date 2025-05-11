@@ -1,0 +1,52 @@
+{
+    "cluster": [
+        [
+            "RequiredCourses(y) ::: HasEnrolledInSpecifiedCourses(y)",
+            "CompletedAllRequiredCourses(x) ::: EnrolledInAndCompletedAllCourses(x)",
+            "CompletesRequiredCourses(x) ::: EnrolledInAndCompletedRequiredCourses(x)",
+            "CompletedCourses(x, y) ::: EnrolledInAndCompletedCourses(x, y)",
+            "NeedsRecommendation(x, y) ::: X needs a recommendation from y"
+        ],
+        [
+            "EligibleForGraduation(x) ::: MeetsGraduationRequirements(x)",
+            "QualifiesForGraduateFellowshipProgram(x) ::: MeetsFellowshipProgramRequirements(x)",
+            "Student(x) ::: EnrolledInCourses(x)"
+        ],
+        [
+            "HasCompletedThesis(John) ::: CompletedThesis(John)",
+            "MustCompleteInternship(John) ::: John must complete an internship",
+            "John(x) ::: X is John"
+        ],
+        [
+            "MaintainsGPA(John, 3.8) ::: MaintainsHighGPA(John, 3.8)",
+            "MaintainsGPAAbove35(x) ::: MaintainsHighGPAAbove35(x)"
+        ],
+        [
+            "CompletesThesis(x) ::: CompletesThesisProject(x)"
+        ],
+        [
+            "ReceivesAcademicDistinction(x) ::: ReceivesDistinction(x)"
+        ],
+        [
+            "GraduatesWithHonors(x) ::: GraduatesWithDistinction(x)"
+        ],
+        [
+            "Fellowship(y) ::: Y is a fellowship"
+        ],
+        [
+            "GraduateFellowshipProgram(program) ::: Program is a graduate fellowship program"
+        ],
+        [
+            "BelongsToJohn(x) ::: X belongs to John"
+        ],
+        [
+            "QualifiesForGraduateFellowship(John) ::: John qualifies for a graduate fellowship"
+        ],
+        [
+            "GradePointAverage(x) ::: X's grade point average is y"
+        ],
+        [
+            "HonorsEligible(x) ::: X is eligible for honors"
+        ]
+    ]
+}

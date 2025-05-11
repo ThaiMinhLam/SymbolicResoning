@@ -1,0 +1,54 @@
+{
+    "res": {
+        "premises-nl": [
+            "If a faculty member has taught for at least 5 years, they are eligible for extended library access.",
+            "If someone has extended library access and has published at least one academic paper, they can access restricted archives.",
+            "If someone can access restricted archives and has completed research ethics training, they can submit research proposals.",
+            "If someone can submit research proposals and has a departmental endorsement, they can apply for collaborative research projects.",
+            "Professor John has taught for at least 5 years.",
+            "Professor John has published at least one academic paper.",
+            "Professor John has completed research ethics training.",
+            "Professor John has a departmental endorsement."
+        ],
+        "fol_premises": [
+            "ForAll(x, taught_min_five_years(x) → eligible_extended_library(x))",
+            "ForAll(x, (eligible_extended_library(x) ∧ has_publications(x)) → can_access_restricted_archives(x))",
+            "ForAll(x, (can_access_restricted_archives(x) ∧ completed_ethics_training(x)) → can_submit_research_proposals(x))",
+            "ForAll(x, (can_submit_research_proposals(x) ∧ has_departmental_endorsement(x)) → can_apply_collaborative_projects(x))",
+            "taught_min_five_years(John)",
+            "has_publications(John)",
+            "completed_ethics_training(John)",
+            "has_departmental_endorsement(John)"
+        ],
+        "questions": [
+            "\nA. Professor John can access restricted archives but cannot submit proposals. \nB. Professor John can apply for collaborative research projects. \nC. Professor John needs more publications to access archives. \nD. Professor John is eligible for extended library access but cannot apply for projects.",
+            "Professor John meets all requirements for collaborative research projects."
+        ],
+        "reasonings": [
+            "Professor John has taught for at least 5 years (Premise 5), so he is eligible for extended library access (by Premise 1). Because he has at least one publication (Premise 6), he can access restricted archives (Premise 2). With completed ethics training (Premise 7), he can submit research proposals (Premise 3), and with departmental endorsement (Premise 8), he can apply for collaborative research projects (Premise 4). Hence, option B is logically valid.",
+            "Yes, all conditions in the logical sequence are fulfilled in order: teaching experience leads to extended access, which, with a publication, allows access to archives. Adding ethics training enables proposal submission, and endorsement completes the criteria for collaborative project application. The reasoning is valid and consistent."
+        ],
+        "answers": [
+            "B",
+            "Yes"
+        ],
+        "LLM-FOL": [
+            "∀x (FacultyMember(x) ∧ TaughtForAtLeast5Years(x) → EligibleForExtendedLibraryAccess(x))",
+            "∀x (Person(x) ∧ ExtendedLibraryAccess(x) ∧ PublishedAcademicPaper(x) → CanAccessRestrictedArchives(x))",
+            "∀x (CanAccessRestrictedArchives(x) ∧ CompletedResearchEthicsTraining(x) → CanSubmitResearchProposals(x))",
+            "∀x (CanSubmitResearchProposals(x) ∧ HasDepartmentalEndorsement(x) → CanApplyForCollaborativeResearchProjects(x))",
+            "Person(John) ∧ Teacher(John) ∧ TaughtForAtLeastYears(John, 5)",
+            "HasPublishedAcademicPaper(John) ∧ ∃x (AcademicPaper(x) ∧ PublishedBy(x, John))",
+            "∀x (Professor(x) ∧ John(x) → CompletedResearchEthicsTraining(x))",
+            "HasDepartmentalEndorsement(John)"
+        ],
+        "question-FOL": [
+            "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\nA ∀x (Professor(x) ∧ AccessRestrictedArchives(x) → ¬SubmitProposals(x))\nB ∀x (Professor(x) ∧ John(x) → CanApplyForCollaborativeResearchProjects(x))\nC NeedsMorePublications(John) → AccessArchives(John)\nD EligibleForExtendedLibraryAccess(John) ∧ ¬ApplyForProjects(John):",
+            "∀x (Professor John(x) → (MeetsAllRequirementsForCollaborativeResearchProjects(x)))"
+        ],
+        "logic_program": null,
+        "new-fol": null,
+        "maps": null,
+        "q_ids": null
+    }
+}

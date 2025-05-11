@@ -1,0 +1,21 @@
+model_id: /workspace/model_hf/Mistral-7B-Instruct-v0.2
+model_type: mistral
+model_embedding: sentence-transformers/all-MiniLM-L6-v2
+
+model_config:
+  task: text-generation
+  max_new_tokens: 2048
+  do_sample: true
+  repetition_penalty: 1.15
+  temperature: 0.1
+  top_p: 0.95
+  num_beam: 2
+  dola_layers: high
+  use_cache: true
+
+module_nl2fol:
+  base_model: "/workspace/model_hf/Llama-2-7b-chat-hf"
+  peft_path: "/workspace/XAI/model_hf/LogicLLaMA-7b-direct-translate-delta-v0.1"
+  prompt_template_path: "/workspace/XAI/data/prompt_templates"
+  load_in_8bit: False
+  max_output_len: 256

@@ -1,0 +1,54 @@
+{
+    "res": {
+        "premises-nl": [
+            "If a faculty member has completed training, they can teach undergraduate courses.",
+            "If a faculty member can teach undergraduate courses and holds a PhD, they can supervise graduate students.",
+            "If a faculty member can supervise graduate students and has at least 3 publications, they can serve on curriculum committees.",
+            "If a faculty member can serve on curriculum committees and has a positive teaching evaluation, they can propose new courses.",
+            "Professor John has completed pedagogical training.",
+            "Professor John holds a PhD.",
+            "Professor John has published at least 3 academic papers.",
+            "Professor John has received a positive teaching evaluation."
+        ],
+        "fol_premises": [
+            "ForAll(x, completed_pedagogical_training(x) → can_teach_undergraduate(x))",
+            "ForAll(x, (can_teach_undergraduate(x) ∧ holds_phd(x)) → can_supervise_graduate(x))",
+            "ForAll(x, (can_supervise_graduate(x) ∧ has_at_least_three_publications(x)) → can_serve_curriculum_committees(x))",
+            "ForAll(x, (can_serve_curriculum_committees(x) ∧ has_positive_evaluation(x)) → can_propose_courses(x))",
+            "completed_pedagogical_training(John)",
+            "holds_phd(John)",
+            "has_at_least_three_publications(John)",
+            "has_positive_evaluation(John)"
+        ],
+        "questions": [
+            "\nA. Professor John can teach undergraduate courses but cannot supervise graduates. \nB. Professor John can serve on curriculum committees but cannot propose courses. \nC. Professor John can propose new courses. \nD. Professor John needs more publications to serve on committees.",
+            "Professor John meets all requirements to propose new courses."
+        ],
+        "reasonings": [
+            "Premise 5 and premise 1 confirm Professor John can teach undergraduate courses due to pedagogical training. Premise 6’s PhD and premise 2 allow him to supervise graduate students. Premise 7’s three or more publications and premise 3 qualify him for curriculum committees. Premise 8’s positive evaluation and premise 4 confirm he can propose new courses, supporting option C. Option A is false because he can supervise graduates. Option B is false because he can propose courses. Option D is false because he has sufficient publications.",
+            "Proposing new courses per premise 4 requires serving on curriculum committees and a positive evaluation. Premise 3 requires graduate supervision and at least three publications, premise 2 requires undergraduate teaching and a PhD, and premise 1 requires training. Premises 5–8 confirm John’s training, PhD, publications, and evaluation, satisfying all conditions, so he meets the requirements."
+        ],
+        "answers": [
+            "C",
+            "Yes"
+        ],
+        "LLM-FOL": [
+            "∀x (FacultyMember(x) ∧ CompletedTraining(x) → CanTeachUndergraduateCourses(x))",
+            "∀x (FacultyMember(x) ∧ CanTeachUndergraduateCourses(x) ∧ HoldsPhD(x) → CanSuperviseGraduateStudents(x))",
+            "∀x (FacultyMember(x) ∧ CanSuperviseGraduateStudents(x) ∧ HasAtLeast3Publications(x) → CanServeOnCurriculumCommittees(x))",
+            "∀x (FacultyMember(x) ∧ CanServeOnCurriculumCommittees(x) ∧ PositiveTeachingEvaluation(x) → CanProposeNewCourses(x))",
+            "HasCompletedPedagogicalTraining(John)",
+            "HoldPhD(John)",
+            "HasPublishedAtLeast(John, 3)",
+            "HasReceivedPositiveTeachingEvaluation(John)"
+        ],
+        "question-FOL": [
+            "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\nA ∀x (Professor(x) ∧ John(x) → (TeachesUndergraduateCourses(x) ∧ ¬SupervisesGraduates(x)))\nB ∀x (Professor(x) ∧ John(x) → (ServeOnCurriculumCommittees(x) ∧ ¬ProposeCourses(x)))\nC ProposesNewCourses(John) ∧ CanProposeNewCourses(John)\nD ∀x (ProfessorJohn(x) → ∃y (Publication(y) ∧ NeedsMore(x, y))):",
+            "∀x (ProfessorJohn(x) → MeetsRequirementsForProposingNewCourses(x))"
+        ],
+        "logic_program": null,
+        "new-fol": null,
+        "maps": null,
+        "q_ids": null
+    }
+}

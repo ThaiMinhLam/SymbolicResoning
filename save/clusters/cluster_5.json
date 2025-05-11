@@ -1,0 +1,55 @@
+{
+    "cluster": [
+        [
+            "PositiveTeachingEvaluation(x) ::: x has a positive teaching evaluation."
+        ],
+        [
+            "HasReceivedPositiveTeachingEvaluation(John) ::: John has received a positive teaching evaluation.",
+            "HasPublishedAtLeast(John, 3) ::: John has published at least 3 things.",
+            "HoldPhD(John) ::: John holds a PhD.",
+            "HasCompletedPedagogicalTraining(John) ::: John has completed pedagogical training.",
+            "CanProposeNewCourses(John) ::: John can propose new courses",
+            "ProposesNewCourses(John) ::: John proposes new courses"
+        ],
+        [
+            "CanTeachUndergraduateCourses(x) ::: x can teach undergraduate courses.",
+            "CanServeOnCurriculumCommittees(x) ::: x can serve on curriculum committees.",
+            "ProposeCourses(x) ::: X proposes courses",
+            "TeachesUndergraduateCourses(x) ::: X teaches undergraduate courses"
+        ],
+        [
+            "CanSuperviseGraduateStudents(x) ::: x can supervise graduate students.",
+            "CanProposeNewCourses(x) ::: x can propose new courses."
+        ],
+        [
+            "HoldsPhD(x) ::: x holds a PhD."
+        ],
+        [
+            "HasAtLeast3Publications(x) ::: x has at least 3 publications."
+        ],
+        [
+            "CompletedTraining(x) ::: x has completed training."
+        ],
+        [
+            "FacultyMember(x) ::: x is a faculty member.",
+            "Professor(x) ::: X is a professor",
+            "ProfessorJohn(x) ::: X is Professor John"
+        ],
+        [
+            "Publication(y) ::: Y is a publication"
+        ],
+        [
+            "ServeOnCurriculumCommittees(x) ::: X serves on curriculum committees"
+        ],
+        [
+            "SupervisesGraduates(x, y) ::: X supervises graduates",
+            "SupervisesGraduates(x) ::: X supervises graduates"
+        ],
+        [
+            "NeedsMore(x, y) ::: X needs more y"
+        ],
+        [
+            "John(x) ::: X is John"
+        ]
+    ]
+}

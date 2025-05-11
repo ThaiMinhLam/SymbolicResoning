@@ -1,0 +1,836 @@
+[
+    {
+        "premises-NL": [
+            "All students receive training.",
+            "If a student does not receive training, then they do not have a research foundation.",
+            "At least one student has completed a course.",
+            "At least one student is certified.",
+            "If a student does not receive training, then they do not have pedagogical skills.",
+            "If a student does not receive training, then they are not certified.",
+            "If a student lacks pedagogical skills, then they cannot teach.",
+            "If a student is not certified, then they cannot teach.",
+            "If a student has pedagogical skills, then they have received training.",
+            "All students have pedagogical skills.",
+            "If a student cannot teach, then they lack a research foundation.",
+            "If at least one student is certified, then if a lack of research foundation leads to not being certified, then not being able to teach leads to a lack of research foundation.",
+            "If a student has completed a course, then the above logical rule holds true.",
+            "All students are certified."
+        ],
+        "premises-FOL": [
+            "∀x student(x) → receives_training(x)",
+            "∀x (¬receives_training(x) → ¬research_foundation(x))",
+            "∃x completed_course(x)",
+            "∃x certified(x)",
+            "∀x (¬receives_training(x) → ¬pedagogical_skills(x))",
+            "∀x (¬receives_training(x) → ¬certified(x))",
+            "∀x (¬pedagogical_skills(x) → ¬can_teach(x))",
+            "∀x (¬certified(x) → ¬can_teach(x))",
+            "∀x (pedagogical_skills(x) → receives_training(x))",
+            "∀x pedagogical_skills(x)",
+            "∀x (¬can_teach(x) → ¬research_foundation(x))",
+            "(∃x certified(x)) → ((∀x (¬research_foundation(x) → ¬certified(x))) → (∀x (¬can_teach(x) → ¬research_foundation(x))))",
+            "∀x (completed_course(x) → ((∃x certified(x)) → ((∀x (¬research_foundation(x) → ¬certified(x))) → (∀x (¬can_teach(x) → ¬research_foundation(x))))))",
+            "∀x certified(x)"
+        ],
+        "questions": [
+            "A. And(Implies(Not(certified(x)), Not(can_teach(x))), Not(Implies(Not(can_teach(x)), Not(research_foundation(x)))))\n",
+            "B. Implies(Implies(Not(certified(x)), Not(can_teach(x))), Implies(Not(can_teach(x)), Not(research_foundation(x))))\n",
+            "C. Implies(Implies(Not(can_teach(x)), Not(research_foundation(x))), Implies(Not(certified(x)), Not(can_teach(x))))\n",
+            "D. Not(Implies(Implies(Not(certified(x)), Not(can_teach(x))), Implies(Not(can_teach(x)), Not(research_foundation(x)))))"
+        ],
+        "answers": [
+            "B"
+        ],
+        "idx": [
+            [
+                8,
+                11
+            ],
+            [
+                1
+            ]
+        ],
+        "explanation": [
+            "The statement follows from the premises that if a student is not certified, they cannot teach (premise 8), and if a student cannot teach, they lack a research foundation (premise 11). Together, these imply that if 'not certified implies cannot teach,' then 'cannot teach implies no research foundation.'",
+            "The premise explicitly states that all students receive training (premise 1), so the statement is true."
+        ]
+    },
+    {
+        "premises-NL": [
+            "All students have knowledge.",
+            "At least one student conducts research.",
+            "If a student conducts research, then they publish papers.",
+            "At least one student publishes papers.",
+            "If a student teaches, then they conduct research.",
+            "All students conduct research.",
+            "If a student has knowledge, then they teach.",
+            "If a student does not publish papers, then they do not give seminars.",
+            "If a student does not teach, then they do not understand the subject.",
+            "At least one student teaches.",
+            "If a student publishes papers, then they conduct research.",
+            "At least one student has knowledge.",
+            "If having knowledge leads to teaching, then teaching leads to conducting research.",
+            "If at least one student teaches, then at least one student conducts research.",
+            "All students teach.",
+            "If a student has knowledge, then they give seminars."
+        ],
+        "premises-FOL": [
+            "∀x knowledge(x)",
+            "∃x conducts_research(x)",
+            "∀x (conducts_research(x) → publishes_papers(x))",
+            "∃x publishes_papers(x)",
+            "∀x (teaches(x) → conducts_research(x))",
+            "∀x conducts_research(x)",
+            "∀x (knowledge(x) → teaches(x))",
+            "∀x (¬publishes_papers(x) → ¬gives_seminars(x))",
+            "∀x (¬teaches(x) → ¬understands_subject(x))",
+            "∃x teaches(x)",
+            "∀x (publishes_papers(x) → conducts_research(x))",
+            "∃x knowledge(x)",
+            "(∀x (knowledge(x) → teaches(x))) → (∀x (teaches(x) → conducts_research(x)))",
+            "(∃x teaches(x)) → (∃x conducts_research(x))",
+            "∀x teaches(x)",
+            "∀x (knowledge(x) → gives_seminars(x))"
+        ],
+        "questions": [
+           "A. ForAll(x, Implies(publishes_papers(x), teaches(x)))",
+        "B. And(ForAll(x, Implies(teaches(x), publishes_papers(x))), Not(ForAll(x, Implies(teaches(x), publishes_papers(x)))))",
+        "C. ForAll(x, Implies(teaches(x), publishes_papers(x)))",
+        "D. Not(ForAll(x, Implies(teaches(x), publishes_papers(x))))"],
+        "answers": [
+            "C"
+        ],
+        "idx": [
+            [
+                3,
+                5
+            ],
+            [
+                11
+            ]
+        ],
+        "explanation": [
+            "The statement that if a student teaches, then they publish papers can be inferred by combining the premises that if a student teaches, they conduct research (premise 5), and if a student conducts research, they publish papers (premise 3). These imply that teaching leads to publishing papers.",
+            "The statement is true because it is explicitly given as a premise that if a student publishes papers, then they conduct research (premise 11)."
+        ]
+    },{
+        "premises-NL": [
+            "If a student completes prerequisite courses, then they are eligible for advanced training.",
+            "There exists at least one student who is eligible for advanced training.",
+            "There exists at least one student who has received a qualification.",
+            "If a student does not meet the requirements, then they do not receive a qualification.",
+            "If a student completes prerequisite courses, then they are able to conduct research.",
+            "If a student does not meet the requirements, then they do not engage in training.",
+            "All students complete prerequisite courses.",
+            "If a student meets the requirements, then they engage in independent learning.",
+            "If a student meets the requirements, then they receive a qualification.",
+            "If a student receives a qualification, then they meet the requirements.",
+            "All students meet the requirements.",
+            "If a student meets the requirements, then they engage in training.",
+            "If the inability to meet the requirements leads to the inability to receive a qualification, then the inability to receive a qualification leads to the inability to conduct research.",
+            "If the inability to engage in training leads to the inability to receive a qualification, then the inability to receive a qualification leads to the inability to conduct research.",
+            "If a student meets the requirements, then they engage in training.",
+            "If a student completes prerequisite courses, then they can engage in training."
+        ],
+        "premises-FOL": [
+            "∀x (C(x) → E(x))",
+            "∃x E(x)",
+            "∃x P(x)",
+            "∀x (¬Q(x) → ¬P(x))",
+            "∀x (C(x) → R(x))",
+            "∀x (¬Q(x) → ¬T(x))",
+            "∀x C(x)",
+            "∀x (Q(x) → U(x))",
+            "∀x (Q(x) → P(x))",
+            "∀x (P(x) → Q(x))",
+            "∀x Q(x)",
+            "∀x (Q(x) → T(x))",
+            "∀x ((¬Q(x) → ¬P(x)) → (¬P(x) → ¬R(x)))",
+            "∀x ((¬T(x) → ¬P(x)) → (¬P(x) → ¬R(x)))",
+            "∀x (Q(x) → T(x))",
+            "∀x (C(x) → T(x))"
+        ],
+        "questions": [
+            "A. ForAll(x, Implies(R(x), P(x)))",
+    "B. And(ForAll(x, Implies(P(x), R(x))), Not(ForAll(x, Implies(P(x), R(x)))))",
+    "C. ForAll(x, Implies(P(x), R(x)))",
+    "D. Not(ForAll(x, Implies(P(x), R(x))))"
+        ],
+        "answers": [
+            "C"
+        ],
+        "idx": [
+            [
+                5,
+                7
+            ],
+            [
+                10,
+                12
+            ]
+        ],
+        "explanation": [
+            "The statement that if a student receives a qualification, they can conduct research follows because all students complete prerequisite courses (premise 7), and completing prerequisite courses implies the ability to conduct research (premise 5), ensuring that all students can conduct research, satisfying the implication.",
+            "The statement that if a student does not engage in training, they do not receive a qualification is true because if a student receives a qualification, they meet the requirements (premise 10), and if they meet the requirements, they engage in training (premise 12), implying that a qualification requires training."
+        ]
+    },{
+        "premises-NL": [
+            "If a student does not receive a qualification, then they cannot conduct research.",
+            "There exists at least one student who is engaged in training.",
+            "If a student does not meet the requirements, then they do not receive a qualification.",
+            "There exists at least one student who has received a qualification.",
+            "If a student does not receive a qualification, then they cannot participate in advanced seminars.",
+            "If a student does not engage in independent learning, then they cannot conduct research.",
+            "If a student is engaged in training, then they receive a qualification.",
+            "If a student engages in independent learning, then they meet the requirements.",
+            "There exists at least one student who is participating in advanced seminars.",
+            "If a student does not receive a qualification, then they do not engage in independent learning.",
+            "There exists at least one student who is conducting research.",
+            "All students receive qualifications.",
+            "If independent learning leads to meeting the requirements, then lack of qualification leads to inability to conduct research.",
+            "If the lack of meeting requirements leads to no qualification, then lack of qualification leads to no participation in advanced seminars.",
+            "If a student does not participate in advanced seminars, then they cannot conduct research.",
+            "All students are engaged in training."
+        ],
+        "premises-FOL": [
+            "∀x (¬P(x) → ¬R(x))",
+            "∃x T(x)",
+            "∀x (¬Q(x) → ¬P(x))",
+            "∃x P(x)",
+            "∀x (¬P(x) → ¬S(x))",
+            "∀x (¬U(x) → ¬R(x))",
+            "∀x (T(x) → P(x))",
+            "∀x (U(x) → Q(x))",
+            "∃x S(x)",
+            "∀x (¬P(x) → ¬U(x))",
+            "∃x R(x)",
+            "∀x P(x)",
+            "∀x ((U(x) → Q(x)) → (¬P(x) → ¬R(x)))",
+            "∀x ((¬Q(x) → ¬P(x)) → (¬P(x) → ¬S(x)))",
+            "∀x (¬S(x) → ¬R(x))",
+            "∀x T(x)"
+        ],
+        "questions": [
+            "A. ∀x (S(x) → Q(x))",
+            "B. (∀x (Q(x) → S(x)) ∧ ¬∀x (Q(x) → S(x)))",
+            "C. ∀x (Q(x) → S(x))",
+            "D. ¬∀x (Q(x) → S(x))"
+        ],
+        "answers": [
+            "C"
+        ],
+        "idx": [
+            [
+                3,
+                5
+            ],
+            [
+                16
+            ]
+        ],
+        "explanation": [
+            "The statement that if a student meets the requirements, they participate in advanced seminars follows because meeting the requirements implies receiving a qualification (premise 3), and receiving a qualification implies participating in advanced seminars (premise 5), so meeting the requirements leads to seminar participation.",
+            "The statement that there exists at least one student engaged in training is true because all students are engaged in training (premise 16), which implies at least one student is engaged in training."
+        ]
+    },
+    {
+        "premises-NL": [
+            "All students must undergo training.",
+            "If a student is trained, then they can conduct research.",
+            "If a student is trained, then they can participate in a seminar.",
+            "All students are trained.",
+            "If a student conducts research, then they receive a qualification.",
+            "There exists at least one student who has received a qualification.",
+            "There exists at least one student who is trained.",
+            "All students conduct research.",
+            "There exists at least one student who is conducting research.",
+            "If a student does not participate in training, then they cannot conduct research.",
+            "If a student does not participate in self-study, then they cannot conduct research.",
+            "All students participate in self-study.",
+            "If participating in self-study leads to conducting research, then students who do not participate in self-study cannot conduct research.",
+            "If participating in self-study leads to receiving qualifications, then students who do not participate in self-study cannot receive a qualification.",
+            "If a student does not participate in self-study, they cannot participate in seminars.",
+            "There exists at least one student who is participating in self-study."
+        ],
+        "premises-FOL": [
+            "∀x T(x)",
+            "∀x (T(x) → R(x))",
+            "∀x (T(x) → U(x))",
+            "∀x T(x)",
+            "∀x (R(x) → P(x))",
+            "∃x P(x)",
+            "∃x T(x)",
+            "∀x R(x)",
+            "∃x R(x)",
+            "∀x (¬T(x) → ¬R(x))",
+            "∀x (¬S(x) → ¬R(x))",
+            "∀x S(x)",
+            "∀x ((S(x) → R(x)) → (¬S(x) → ¬R(x)))",
+            "∀x ((S(x) → P(x)) → (¬S(x) → ¬P(x)))",
+            "∀x (¬S(x) → ¬U(x))",
+            "∃x S(x)"
+        ],
+        "questions": [
+            "A. ∀x (P(x) → S(x))",
+            "B. ∀x (S(x) → P(x))",
+            "C. ¬∀x (S(x) → P(x))",
+            "D. (∀x (S(x) → P(x)) ∧ ¬∀x (S(x) → P(x)))"
+  
+        ],
+        "answers": [
+            "B"
+        ],
+        "idx": [
+            [
+                5,
+                8
+            ],
+            [
+                4
+            ]
+        ],
+        "explanation": [
+            "The statement that if a student participates in self-study, they receive a qualification follows because all students conduct research (premise 8), and conducting research implies receiving a qualification (premise 5), ensuring all students have qualifications, satisfying the implication.",
+            "The statement that there exists at least one student who is trained is true because all students are trained (premise 4), which implies at least one student is trained."
+        ]
+    },
+    {
+        "premises-NL": [
+            "All students engage in self-study.",
+            "If a student participates in research, then they publish papers.",
+            "If a student participates in research, then they engage in training.",
+            "All students engage in training.",
+            "If a student conducts research, then they receive a qualification.",
+            "There exists at least one student who has received a qualification.",
+            "There exists at least one student who is engaged in training.",
+            "All students receive a qualification.",
+            "There exists at least one student who is conducting research.",
+            "If a student does not engage in training, then they cannot participate in research.",
+            "If a student does not engage in self-study, then they cannot receive a qualification.",
+            "All students participate in self-study.",
+            "If training leads to receiving a qualification, then the inability to participate in self-study leads to the inability to receive a qualification.",
+            "If the inability to engage in self-study leads to not receiving a qualification, then the inability to participate in training leads to the inability to conduct research.",
+            "If a student participates in self-study, then they are engaged in research.",
+            "If a student does not participate in self-study, then they cannot participate in training."
+        ],
+        "premises-FOL": [
+            "∀x S(x)",
+            "∀x (R(x) → U(x))",
+            "∀x (R(x) → T(x))",
+            "∀x T(x)",
+            "∀x (R(x) → P(x))",
+            "∃x P(x)",
+            "∃x T(x)",
+            "∀x P(x)",
+            "∃x R(x)",
+            "∀x (¬T(x) → ¬R(x))",
+            "∀x (¬S(x) → ¬P(x))",
+            "∀x S(x)",
+            "∀x ((T(x) → P(x)) → (¬S(x) → ¬P(x)))",
+            "∀x ((¬S(x) → ¬P(x)) → (¬T(x) → ¬R(x)))",
+            "∀x (S(x) → R(x))",
+            "∀x (¬S(x) → ¬T(x))"
+        ],
+        "questions": [
+            "A. ∀x (T(x) → R(x))",
+            "B. ∀x (S(x) → P(x))",
+            "C. ¬∀x (S(x) → P(x))",
+            "D. (∀x (S(x) → P(x)) ∧ ¬∀x (S(x) → P(x)))"
+         ],
+        "answers": [
+            "B"
+        ],
+        "idx": [
+            [
+                5,
+                15
+            ],
+            [
+                4
+            ]
+        ],
+        "explanation": [
+            "The statement that if a student engages in self-study, they receive a qualification follows because self-study implies participating in research (premise 15), and participating in research implies receiving a qualification (premise 5), so self-study leads to a qualification.",
+            "The statement that there exists at least one student engaged in training is true because all students engage in training (premise 4), which implies at least one student is engaged in training."
+        ]
+    },
+    {
+        "premises-NL": [
+            "If a student receives a qualification, then they engage in training.",
+            "If a student does not participate in self-study, then they cannot conduct research.",
+            "If a student does not engage in independent learning, then they cannot conduct research.",
+            "If a student participates in self-study, then they engage in independent learning.",
+            "All students engage in self-study.",
+            "If a student participates in research, then they receive a qualification.",
+            "If a student does not engage in independent learning, then they cannot participate in self-study.",
+            "If a student participates in research, then they engage in self-study.",
+            "If a student receives a qualification, then they participate in self-study.",
+            "If a student does not engage in research, then they cannot receive a qualification.",
+            "All students engage in research.",
+            "If a student does not participate in self-study, then they cannot engage in research.",
+            "If a student does not participate in self-study, then they cannot receive a qualification.",
+            "If a student does not participate in self-study, then they cannot participate in independent learning.",
+            "If a student engages in research, then they receive a qualification."
+        ],
+        "premises-FOL": [
+            "∀x (P(x) → T(x))",
+            "∀x (¬S(x) → ¬R(x))",
+            "∀x (¬U(x) → ¬R(x))",
+            "∀x (S(x) → U(x))",
+            "∀x S(x)",
+            "∀x (R(x) → P(x))",
+            "∀x (¬U(x) → ¬S(x))",
+            "∀x (R(x) → S(x))",
+            "∀x (P(x) → S(x))",
+            "∀x (¬R(x) → ¬P(x))",
+            "∀x R(x)",
+            "∀x (¬S(x) → ¬R(x))",
+            "∀x (¬S(x) → ¬P(x))",
+            "∀x (¬S(x) → ¬U(x))",
+            "∀x (R(x) → P(x))"
+        ],
+        "questions": [
+            "A. ∀x (T(x) → R(x))",
+            "B. ¬∀x (S(x) → P(x))",
+            "C. ∀x (S(x) → P(x))",
+            "D. (∀x (S(x) → P(x)) ∧ ¬∀x (S(x) → P(x)))"
+         ],
+        "answers": [
+            "C"
+        ],
+        "idx": [
+            [
+                6,
+                11
+            ],
+            [
+                6,
+                11
+            ]
+        ],
+        "explanation": [
+            "The statement that if a student engages in self-study, they receive a qualification follows because all students engage in research (premise 11), and participating in research implies receiving a qualification (premise 6), ensuring all students have qualifications, satisfying the implication.",
+            "The statement that if research implies self-study, then self-study implies a qualification is true because all students engage in research (premise 11), and research implies a qualification (premise 6), ensuring that self-study leads to a qualification."
+        ]
+    },
+    {
+        "premises-NL": [
+            "If a student completes prerequisite courses, then they are eligible for advanced training.",
+            "There exists at least one student who has received a qualification.",
+            "There exists at least one student who has completed prerequisite courses.",
+            "All students are required to undergo training.",
+            "All students participate in self-study.",
+            "There exists at least one student engaged in independent research.",
+            "If a student does not undergo training, then they cannot conduct research.",
+            "If a student completes prerequisite courses, then they receive a qualification.",
+            "If a student conducts research, then they engage in independent learning.",
+            "If a student does not undergo training, then they cannot engage in independent learning.",
+            "All students must obtain qualifications.",
+            "If a student undergoes training, then they participate in self-study.",
+            "If the inability to undergo training leads to the inability to conduct research, then at least one student must receive a qualification.",
+            "If there exists at least one student engaged in independent research, then the inability to undergo training leads to the inability to conduct research.",
+            "If a student undergoes training, then they engage in independent learning.",
+            "If a student completes prerequisite courses, then they are able to conduct research."
+        ],
+        "premises-FOL": [
+            "∀x (C(x) → T(x))",
+            "∃x Q(x)",
+            "∃x C(x)",
+            "∀x T(x)",
+            "∀x S(x)",
+            "∃x R(x)",
+            "∀x (¬T(x) → ¬R(x))",
+            "∀x (C(x) → Q(x))",
+            "∀x (R(x) → U(x))",
+            "∀x (¬T(x) → ¬U(x))",
+            "∀x Q(x)",
+            "∀x (T(x) → S(x))",
+            "(∀x (¬T(x) → ¬R(x))) → ∃x Q(x)",
+            "∃x R(x) → ∀x (¬T(x) → ¬R(x))",
+            "∀x (T(x) → U(x))",
+            "∀x (C(x) → R(x))"
+        ],
+        "questions": [
+            "A. ∀x (R(x) → Q(x))",
+            "B. ∀x (Q(x) → R(x))",
+            "C. ¬∀x (R(x) → Q(x))",
+            "D. (∀x (R(x) → Q(x)) ∧ ¬∀x (R(x) → Q(x)))"
+         ],
+        "answers": [
+            "A"
+        ],
+        "idx": [
+            [
+                8,
+                16
+            ],
+            [
+                3
+            ]
+        ],
+        "explanation": [
+            "The statement that if a student conducts research, they receive a qualification follows because completing prerequisite courses implies both the ability to conduct research (premise 16) and receiving a qualification (premise 8), so research leads to a qualification.",
+            "The statement that there exists at least one student who has completed prerequisite courses is true because it is explicitly stated that at least one student has completed prerequisite courses (premise 3)."
+        ]
+    },
+    {
+        "premises-NL": [
+            "There exists at least one student who participates in extracurricular activities.",
+            "All students participate in extracurricular activities.",
+            "There exists at least one student who has completed prerequisite courses.",
+            "If a student participates in extracurricular activities, then they engage in self-study.",
+            "All students engage in self-study.",
+            "If a student engages in self-study, then they develop critical thinking skills.",
+            "If a student does not undergo training, then they do not engage in self-study.",
+            "If a student does not undergo training, then they cannot conduct research.",
+            "There exists at least one student who conducts research.",
+            "If a student cannot conduct research, then they do not participate in extracurricular activities.",
+            "If a student undergoes training, then they have completed prerequisite courses.",
+            "All students must complete prerequisite courses.",
+            "If there exists at least one student who participates in extracurricular activities, then the inability to undergo training leads to the inability to conduct research.",
+            "If participation in extracurricular activities leads to self-study, then all students must participate in extracurricular activities.",
+            "All students engage in research.",
+            "All students undergo training."
+        ],
+        "premises-FOL": [
+            "∃x E(x)",
+            "∀x E(x)",
+            "∃x C(x)",
+            "∀x (E(x) → S(x))",
+            "∀x S(x)",
+            "∀x (S(x) → K(x))",
+            "∀x (¬T(x) → ¬S(x))",
+            "∀x (¬T(x) → ¬R(x))",
+            "∃x R(x)",
+            "∀x (¬R(x) → ¬E(x))",
+            "∀x (T(x) → C(x))",
+            "∀x C(x)",
+            "∃x E(x) → ∀x (¬T(x) → ¬R(x))",
+            "(∀x (E(x) → S(x))) → ∀x E(x)",
+            "∀x R(x)",
+            "∀x T(x)"
+        ],
+        "questions": [
+            "A. ∀x (S(x) → R(x))",
+            "B. ∀x (R(x) → S(x))",
+            "C. ¬∀x (S(x) → R(x))",
+            "D. (∀x (S(x) → R(x)) ∧ ¬∀x (S(x) → R(x)))"
+        ],
+        "answers": [
+            "A"
+        ],
+        "idx": [
+            [
+                2,
+                10
+            ],
+            [
+                7
+            ]
+        ],
+        "explanation": [
+            "The statement that if a student engages in self-study, they conduct research follows because all students participate in extracurricular activities (premise 2), and participation in extracurricular activities implies conducting research (premise 10), ensuring that self-study aligns with research.",
+            "The statement that if a student does not undergo training, they do not engage in self-study is true because it is explicitly stated that the absence of training prevents self-study (premise 7)."
+        ]
+    },
+    {
+        "premises-NL": [
+            "All students engage in self-study.",
+            "All students undergo training.",
+            "There exists at least one student who engages in self-study.",
+            "All students participate in projects.",
+            "If a student does not undergo training, then they do not engage in extracurricular activities.",
+            "If a student does not engage in self-study, then they do not undergo training.",
+            "If a student participates in extracurricular activities, then they take part in projects.",
+            "There exists at least one student who undergoes training.",
+            "All students participate in extracurricular activities.",
+            "If a student participates in extracurricular activities, then they contribute to research.",
+            "If a student meets a certain qualification, then they engage in self-study.",
+            "If a student contributes to research, then they engage in self-study.",
+            "If contributing to research leads to self-study, then participating in extracurricular activities leads to research involvement.",
+            "If all students participate in projects, then contributing to research leads to self-study.",
+            "If a student engages in self-study, then they participate in extracurricular activities.",
+            "There exists at least one student who contributes to research."
+        ],
+        "premises-FOL": [
+            "∀x S(x)",
+            "∀x T(x)",
+            "∃x S(x)",
+            "∀x P(x)",
+            "∀x (¬T(x) → ¬E(x))",
+            "∀x (¬S(x) → ¬T(x))",
+            "∀x (E(x) → P(x))",
+            "∃x T(x)",
+            "∀x E(x)",
+            "∀x (E(x) → R(x))",
+            "∀x (Q(x) → S(x))",
+            "∀x (R(x) → S(x))",
+            "∀x ((R(x) → S(x)) → (E(x) → R(x)))",
+            "∀x P(x) → ∀x (R(x) → S(x))",
+            "∀x (S(x) → E(x))",
+            "∃x R(x)"
+        ],
+        "questions": [
+            "A. ∀x (S(x) → R(x))",
+            "B. ∀x (P(x) → T(x))",
+            "C. ¬∀x (S(x) → R(x))",
+            "D. (∀x (S(x) → R(x)) ∧ ¬∀x (S(x) → R(x)))"
+        ],
+        "answers": [
+            "A"
+        ],
+        "idx": [
+            [
+                10,
+                15
+            ],
+            [
+                11
+            ]
+        ],
+        "explanation": [
+            "The statement that if a student engages in self-study, they contribute to research follows because self-study implies participation in extracurricular activities (premise 15), and extracurricular activities imply contributing to research (premise 10), so self-study leads to research.",
+            "The statement that if a student meets a certain qualification, they engage in self-study is true because it is explicitly stated that meeting a qualification implies self-study (premise 11)."
+        ]
+    },
+    {
+        "premises-NL": [
+            "If a student has training, then they have proficiency.",
+            "If a student lacks qualifications, then they lack proficiency.",
+            "All students have qualifications.",
+            "If a student lacks understanding, then they lack skills.",
+            "There exists at least one student with skills.",
+            "There exists at least one student with proficiency.",
+            "If a student lacks proficiency, then they lack qualifications.",
+            "If a student has skills, then they have understanding.",
+            "If a student lacks training, then they lack proficiency.",
+            "All students have understanding.",
+            "If a student has understanding, then they have qualifications.",
+            "If a student lacks proficiency, then they lack recognition.",
+            "If lacking proficiency leads to lacking recognition, then lacking qualifications leads to lacking proficiency.",
+            "If lacking training leads to lacking proficiency, then training leads to proficiency.",
+            "If a student has proficiency, then they receive recognition.",
+            "If a student has understanding, then they have skills."
+        ],
+        "premises-FOL": [
+            "∀x (T(x) → P(x))",
+            "∀x (¬Q(x) → ¬P(x))",
+            "∀x Q(x)",
+            "∀x (¬U(x) → ¬S(x))",
+            "∃x S(x)",
+            "∃x P(x)",
+            "∀x (¬P(x) → ¬Q(x))",
+            "∀x (S(x) → U(x))",
+            "∀x (¬T(x) → ¬P(x))",
+            "∀x U(x)",
+            "∀x (U(x) → Q(x))",
+            "∀x (¬P(x) → ¬R(x))",
+            "∀x ((¬P(x) → ¬R(x)) → (¬Q(x) → ¬P(x)))",
+            "∀x ((¬T(x) → ¬P(x)) → (T(x) → P(x)))",
+            "∀x (P(x) → R(x))",
+            "∀x (U(x) → S(x))"
+        ],
+        "questions": [
+            "A. ∀x (R(x) → T(x))",
+            "B. ¬∀x (T(x) → R(x))",
+            "C. ∀x (T(x) → R(x))",
+            "D. (∀x (T(x) → R(x)) ∧ ¬∀x (T(x) → R(x)))"
+         ],
+        "answers": [
+            "C"
+        ],
+        "idx": [
+            [
+                1,
+                15
+            ],
+            [
+                10
+            ]
+        ],
+        "explanation": [
+            "The statement that if a student has training, they receive recognition follows because training implies proficiency (premise 1), and proficiency implies recognition (premise 15), so training leads to recognition.",
+            "The statement that all students have understanding is true because it is explicitly stated that all students have understanding (premise 10)."
+        ]
+    },
+    {
+        "premises-NL": [
+            "All students are enrolled in courses.",
+            "If a student lacks research, then they lack proficiency.",
+            "If a student submits assignments, then they demonstrate knowledge.",
+            "If a student lacks participation, then they lack engagement.",
+            "There exists at least one student who participates in discussions.",
+            "There exists at least one student who has proficiency.",
+            "If a student lacks proficiency, then they lack research.",
+            "If a student engages, then they have understanding.",
+            "If a student lacks training, then they lack proficiency.",
+            "All students have access to resources.",
+            "If a student has access to resources, then they complete assignments.",
+            "If a student lacks proficiency, then they lack certification.",
+            "If lacking proficiency leads to lacking certification, then lacking research leads to lacking proficiency.",
+            "If lacking training leads to lacking proficiency, then training leads to proficiency.",
+            "If a student has proficiency, then they obtain certification.",
+            "If a student has access to resources, then they can conduct research."
+        ],
+        "premises-FOL": [
+            "∀x E(x)",
+            "∀x (¬R(x) → ¬P(x))",
+            "∀x (A(x) → K(x))",
+            "∀x (¬N(x) → ¬G(x))",
+            "∃x D(x)",
+            "∃x P(x)",
+            "∀x (¬P(x) → ¬R(x))",
+            "∀x (G(x) → U(x))",
+            "∀x (¬T(x) → ¬P(x))",
+            "∀x S(x)",
+            "∀x (S(x) → A(x))",
+            "∀x (¬P(x) → ¬C(x))",
+            "∀x ((¬P(x) → ¬C(x)) → (¬R(x) → ¬P(x)))",
+            "∀x ((¬T(x) → ¬P(x)) → (T(x) → P(x)))",
+            "∀x (P(x) → C(x))",
+            "∀x (S(x) → R(x))"
+        ],
+        "questions": [
+            "A. ∀x (K(x) → S(x))",
+            "B. ¬∀x (S(x) → K(x))",
+            "C. ∀x (S(x) → K(x))",
+            "D. (∀x (S(x) → K(x)) ∧ ¬∀x (S(x) → K(x)))"
+        ],
+        "answers": [
+            "C"
+        ],
+        "idx": [
+            [
+                3,
+                11
+            ],
+            [
+                10
+            ]
+        ],
+        "explanation": [
+            "The statement that if a student has access to resources, they demonstrate knowledge follows because access to resources implies completing assignments (premise 11), and completing assignments implies demonstrating knowledge (premise 3), so resources lead to knowledge.",
+            "The statement that all students have access to resources is true because it is explicitly stated that all students have access to resources (premise 10)."
+        ]
+    },
+    {
+        "premises-NL": [
+            "There exists at least one student with recognition.",
+            "If a student lacks skills, then they lack training.",
+            "All students have recognition.",
+            "There exists at least one student with training.",
+            "If a student lacks proficiency, then they lack skills.",
+            "There exists at least one student with skills.",
+            "If a student lacks recognition, then they lack qualifications.",
+            "If a student has recognition, then they have understanding.",
+            "All students have skills.",
+            "There exists at least one student with qualifications.",
+            "All students have qualifications.",
+            "If a student has recognition, then they have qualifications.",
+            "If all students have recognition, then all students have skills.",
+            "If recognition leads to understanding, then there exists at least one student with recognition.",
+            "If a student has proficiency, then they have recognition.",
+            "If a student has proficiency, then they have qualifications."
+        ],
+        "premises-FOL": [
+            "∃x R(x)",
+            "∀x (¬S(x) → ¬T(x))",
+            "∀x R(x)",
+            "∃x T(x)",
+            "∀x (¬P(x) → ¬S(x))",
+            "∃x S(x)",
+            "∀x (¬R(x) → ¬Q(x))",
+            "∀x (R(x) → U(x))",
+            "∀x S(x)",
+            "∃x Q(x)",
+            "∀x Q(x)",
+            "∀x (R(x) → Q(x))",
+            "∀x R(x) → ∀x S(x)",
+            "∀x (R(x) → U(x)) → ∃x R(x)",
+            "∀x (P(x) → R(x))",
+            "∀x (P(x) → Q(x))"
+        ],
+        "questions": [
+            "A. ∀x (S(x) → R(x))",
+            "B. ∀x (R(x) → S(x))",
+            "C. ¬∀x (R(x) → S(x))",
+            "D. (∀x (R(x) → S(x)) ∧ ¬∀x (R(x) → S(x)))"
+         ],
+        "answers": [
+            "B"
+        ],
+        "idx": [
+            [
+                3,
+                9
+            ],
+            [
+                11
+            ]
+        ],
+        "explanation": [
+            "The statement that if a student has recognition, they have skills follows because all students have recognition (premise 3) and all students have skills (premise 9), ensuring that recognition implies skills.",
+            "The statement that all students have qualifications is true because it is explicitly stated that all students have qualifications (premise 11)."
+        ]
+    },
+    {
+        "premises-NL": [
+            "All students have qualifications.",
+            "All students have recognition.",
+            "If a student lacks understanding, then they lack recognition.",
+            "There exists at least one student with proficiency.",
+            "All students have training.",
+            "If a student has qualifications, then they have recognition.",
+            "If a student has proficiency, then they have qualifications.",
+            "There exists at least one student with training.",
+            "If a student lacks qualifications, then they lack training.",
+            "If a student has proficiency, then they have training.",
+            "If a student has training, then they have qualifications.",
+            "If a student lacks training, then they lack proficiency.",
+            "If lacking training leads to lacking proficiency, then proficiency leads to training.",
+            "If lacking understanding leads to lacking recognition, then proficiency leads to qualifications.",
+            "There exists at least one student with understanding.",
+            "If a student lacks understanding, then they lack training."
+        ],
+        "premises-FOL": [
+            "∀x Q(x)",
+            "∀x R(x)",
+            "∀x (¬U(x) → ¬R(x))",
+            "∃x P(x)",
+            "∀x T(x)",
+            "∀x (Q(x) → R(x))",
+            "∀x (P(x) → Q(x))",
+            "∃x T(x)",
+            "∀x (¬Q(x) → ¬T(x))",
+            "∀x (P(x) → T(x))",
+            "∀x (T(x) → Q(x))",
+            "∀x (¬T(x) → ¬P(x))",
+            "∀x ((¬T(x) → ¬P(x)) → (P(x) → T(x)))",
+            "∀x ((¬U(x) → ¬R(x)) → (P(x) → Q(x)))",
+            "∃x U(x)",
+            "∀x (¬U(x) → ¬T(x))"
+        ],
+        "questions": [
+            "A. ∀x (U(x) → P(x))",
+            "B. ¬∀x (P(x) → U(x))",
+            "C. ∀x (P(x) → U(x))",
+            "D. (∀x (P(x) → U(x)) ∧ ¬∀x (P(x) → U(x)))"
+        ],
+        "answers": [
+            "C"
+        ],
+        "idx": [
+            [
+                10,
+                16
+            ],
+            [
+                13
+            ]
+        ],
+        "explanation": [
+            "The statement that if a student has proficiency, they have understanding follows because proficiency implies training (premise 10), and training implies understanding (premise 16), so proficiency leads to understanding.",
+            "The statement that if lacking training leads to lacking proficiency, then proficiency leads to training is true because it is explicitly stated that this implication holds (premise 13)."
+        ]
+    }
+]

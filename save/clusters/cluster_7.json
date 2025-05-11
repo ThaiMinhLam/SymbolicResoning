@@ -1,0 +1,62 @@
+{
+    "cluster": [
+        [
+            "HasAppropriateLicense(John) ::: John has an appropriate driver's license.",
+            "HasPassedVehicleInspection(John) ::: John has passed a vehicle inspection.",
+            "LicenseValid(John) ::: John's driver's license is valid.",
+            "HasAppropriateLicense(x) ::: x has an appropriate driver's license.",
+            "HasNotReceivedSafetyEndorsement(John) ::: John has not received a safety endorsement.",
+            "HasInterstatePermit(John) ::: John has an interstate permit.",
+            "QualifiedToTransportGoods(John) ::: John is qualified to transport goods.",
+            "John(x) ::: x is John."
+        ],
+        [
+            "SpecificTypeOfPermit(InterstatePermit) ::: Interstate permit is a specific type of permit.",
+            "HasInterstatePermit(x) ::: x has an interstate permit."
+        ],
+        [
+            "CanTransportStandardGoods(x) ::: x can transport standard goods.",
+            "CanTransportHazardousMaterials(x) ::: x can transport hazardous materials.",
+            "CanCrossStateLinesWithHazardousCargo(x) ::: x can cross state lines with hazardous cargo.",
+            "CanCrossStateLines(x) ::: x can cross state lines."
+        ],
+        [
+            "Person(x) ::: x is a person."
+        ],
+        [
+            "IssuedByGovernmentAgency(SafetyEndorsement) ::: Safety endorsement is issued by a government agency."
+        ],
+        [
+            "Driver(x) ::: x is a driver."
+        ],
+        [
+            "CompletedHazmatTraining(x) ::: x has completed hazmat training.",
+            "HasCompletedHazmatTraining(x) ::: x has completed hazmat training."
+        ],
+        [
+            "PassedVehicleInspection(x) ::: x has passed a vehicle inspection."
+        ],
+        [
+            "ValidForActivity(John) ::: John is valid for driving."
+        ],
+        [
+            "KnowledgeableAboutHazardousMaterials(x) ::: x is knowledgeable about hazardous materials.",
+            "CanTransportHazardousMaterials(John) ::: John is qualified to transport hazardous materials."
+        ],
+        [
+            "ReceivedSafetyEndorsement(x) ::: x has received a safety endorsement."
+        ],
+        [
+            "HazardousCargo(y) ::: y is hazardous cargo."
+        ],
+        [
+            "QualifiedToTransportAcrossStateLines(x, y) ::: x is qualified to transport goods across state lines and y is a recipient state."
+        ],
+        [
+            "HasQualificationsForTransportingHazardousMaterials(x) ::: x has qualifications for transporting hazardous materials."
+        ],
+        [
+            "Premise(x) ::: x is a premise."
+        ]
+    ]
+}

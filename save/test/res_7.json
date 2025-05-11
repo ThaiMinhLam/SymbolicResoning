@@ -1,0 +1,54 @@
+{
+    "res": {
+        "premises-nl": [
+            "If a driver has passed vehicle inspection and has the appropriate license, they can transport standard goods.",
+            "If a driver can transport standard goods and has completed hazmat training and received a safety endorsement, they can transport hazardous materials.",
+            "If a driver can transport hazardous materials and has an interstate permit, they can cross state lines with hazardous cargo.",
+            "John has passed vehicle inspection.",
+            "John has the appropriate license.",
+            "John has completed hazmat training.",
+            "John has not received a safety endorsement.",
+            "John has an interstate permit."
+        ],
+        "fol_premises": [
+            "ForAll(x, (passed_vehicle_inspection(x) ∧ has_appropriate_license(x)) → can_transport_standard_goods(x))",
+            "ForAll(x, (can_transport_standard_goods(x) ∧ completed_hazmat_training(x) ∧ received_safety_endorsement(x)) → can_transport_hazardous_materials(x))",
+            "ForAll(x, (can_transport_hazardous_materials(x) ∧ has_interstate_permit(x)) → can_cross_state_lines(x))",
+            "passed_vehicle_inspection(John)",
+            "has_appropriate_license(John)",
+            "completed_hazmat_training(John)",
+            "¬received_safety_endorsement(John)",
+            "has_interstate_permit(John)"
+        ],
+        "questions": [
+            "\nA. John has qualifications to transport hazardous materials, but he cannot cross state lines. \nB. John is qualified to transport hazardous cargo across state lines. \nC. Based on the premises, we can conclude that John cannot transport hazardous materials. \nD. Based on the premises, we can conclude that John is not qualified to transport any kind of goods.",
+            "John meets all requirements to cross state lines with hazardous cargo."
+        ],
+        "reasonings": [
+            "Premises 4 and 5 confirm John passed vehicle inspection and has a license, satisfying premise 1 for transporting standard goods. However, premise 6 confirms hazmat training, but premise 7 states he lacks a safety endorsement, so premise 2 prevents him from transporting hazardous materials, supporting option C. Option A is false because he cannot transport hazardous materials. Option B is false because he cannot cross state lines without hazardous material capability. Option D is false because he can transport standard goods.",
+            "Crossing state lines with hazardous cargo per premise 3 requires the ability to transport hazardous materials and an interstate permit. Premise 2 requires standard goods capability, hazmat training, and a safety endorsement for hazardous materials. Premises 1, 4, 5, and 6 confirm standard goods and training, and premise 8 confirms the permit, but premise 7’s lack of endorsement prevents hazardous material transport, so John does not meet all requirements."
+        ],
+        "answers": [
+            "C",
+            "No"
+        ],
+        "LLM-FOL": [
+            "∀x (Driver(x) ∧ PassedVehicleInspection(x) ∧ HasAppropriateLicense(x) → CanTransportStandardGoods(x))",
+            "∀x (Driver(x) ∧ CanTransportStandardGoods(x) ∧ CompletedHazmatTraining(x) ∧ ReceivedSafetyEndorsement(x) → CanTransportHazardousMaterials(x))",
+            "∀x (Driver(x) ∧ CanTransportHazardousMaterials(x) ∧ HasInterstatePermit(x) → CanCrossStateLinesWithHazardousCargo(x))",
+            "HasPassedVehicleInspection(John)",
+            "HasAppropriateLicense(John) ↔ (LicenseValid(John) ∧ ValidForActivity(John))",
+            "∀x (Person(x) ∧ HasCompletedHazmatTraining(x) → KnowledgeableAboutHazardousMaterials(x))",
+            "HasNotReceivedSafetyEndorsement(John) ∧ IssuedByGovernmentAgency(SafetyEndorsement)",
+            "HasInterstatePermit(John) ∧ SpecificTypeOfPermit(InterstatePermit)"
+        ],
+        "question-FOL": [
+            "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\nA ∀x (Person(x) ∧ HasQualificationsForTransportingHazardousMaterials(x) → ¬CanCrossStateLines(x))\nB ∀x ∀y (John(x) ∧ HazardousCargo(y) → QualifiedToTransportAcrossStateLines(x, y))\nC ∀x (Premise(x) → ¬CanTransportHazardousMaterials(John))\nD ∀x (Premise(x) → ¬QualifiedToTransportGoods(John)):",
+            "∀x (MeetsRequirements(John, HazardousCargo) → CanCrossStateLines(John))"
+        ],
+        "logic_program": null,
+        "new-fol": null,
+        "maps": null,
+        "q_ids": null
+    }
+}

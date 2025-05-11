@@ -1,0 +1,41 @@
+{
+    "cluster": [
+        [
+            "DevelopsCurriculum(x) ::: X develops curriculum.",
+            "WellStructuredCurriculum(x) ::: Curriculum is well structured."
+        ],
+        [
+            "Prioritizes(Faculty, CurriculumDevelopment) ::: Faculty prioritizes curriculum development.",
+            "Curriculum(x) ::: X is a curriculum.",
+            "PrioritizesPedagogicalTraining(x) ::: Faculty prioritizes pedagogical training.",
+            "Prioritizes(Faculty, PedagogicalTraining) ::: Faculty prioritizes pedagogical training."
+        ],
+        [
+            "Faculty(x) ::: X is a faculty member."
+        ],
+        [
+            "EnhancesCriticalThinking(x) ::: X enhances critical thinking.",
+            "EnhancesStudentEngagement(x) ::: X enhances student engagement."
+        ],
+        [
+            "WellStructured(x) ::: X is well structured."
+        ],
+        [
+            "HasExercises(x) ::: X has exercises.",
+            "PracticalExercises(x) ::: X has practical exercises.",
+            "Exercises(y) ::: A set of activities designed to improve physical or mental fitness."
+        ],
+        [
+            "ProvidesAccessToAdvancedResources(x) ::: X provides access to advanced resources."
+        ],
+        [
+            "NeedsResources(x) ::: The state of requiring resources or support to function."
+        ],
+        [
+            "AssignedTo(y, x) ::: The relationship where one entity (y) is assigned to perform an action or task for another entity (x)."
+        ],
+        [
+            "CanConclude(y) ::: The ability to draw a logical conclusion based on a set of premises or evidence."
+        ]
+    ]
+}

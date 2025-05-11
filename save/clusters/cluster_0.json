@@ -1,0 +1,108 @@
+{
+    "cluster": [
+        [
+            "HigherDegreeThanBA(x) ::: x is a higher degree than a Bachelor's degree.",
+            "HigherThan(x, y) ::: x is higher than y in some aspect.",
+            "HigherThan(x, z) ::: x is higher than z in some aspect.",
+            "HigherThanMScDegree(x) ::: x is higher than a Master's degree.",
+            "HigherThan(y, z) ::: y is higher than z in some aspect."
+        ],
+        [
+            "HasPhD(DrJohn) ::: DrJohn has a PhD degree.",
+            "Person(DrJohn) ::: DrJohn is a person.",
+            "FacultyMember(DrJohn) ::: DrJohn is a faculty member.",
+            "Mentor(DrJohn) ::: Dr. John is a mentor.",
+            "NeedsAdditionalCertification(DrJohn) ::: Dr. John needs additional certification."
+        ],
+        [
+            "DegreeB(y) ::: y is a Bachelor's degree.",
+            "DegreeC(z) ::: z is a degree.",
+            "DegreeA(x) ::: x is a degree."
+        ],
+        [
+            "TeachesGraduateCourses(x) ::: x teaches graduate courses.",
+            "CanTeachUndergraduateCourses(x) ::: x can teach undergraduate courses.",
+            "CanTeachGraduateCourses(x) ::: x can teach graduate courses.",
+            "TeachesUndergraduateCourses(x) ::: x teaches undergraduate courses."
+        ],
+        [
+            "HigherDegree(PhD, MSc) ::: PhD is higher than a Master's degree.",
+            "HigherDegree(MSc, BA) ::: MSc is higher than a Bachelor's degree."
+        ],
+        [
+            "FacultyMember(x) ::: x is a faculty member."
+        ],
+        [
+            "ResearchMentor(x) ::: x is a research mentor."
+        ],
+        [
+            "HasCapability(John, ResearchMentor) ::: John has the capability to mentor research."
+        ],
+        [
+            "John(x) ::: John is a person."
+        ]
+    ],
+    "cluster_no_entity": [
+        [
+            "HigherDegreeThanBA(x) ::: x is a higher degree than a Bachelor's degree.",
+            "HigherThanMScDegree(x) ::: x is higher than a Master's degree."
+        ],
+        [
+            "HasPhD(DrJohn) ::: DrJohn has a PhD degree.",
+            "Person(DrJohn) ::: DrJohn is a person.",
+            "FacultyMember(DrJohn) ::: DrJohn is a faculty member.",
+            "Mentor(DrJohn) ::: Dr. John is a mentor.",
+            "NeedsAdditionalCertification(DrJohn) ::: Dr. John needs additional certification."
+        ],
+        [
+            "DegreeB(y) ::: y is a Bachelor's degree.",
+            "DegreeC(z) ::: z is a degree.",
+            "DegreeA(x) ::: x is a degree."
+        ],
+        [
+            "TeachesGraduateCourses(x) ::: x teaches graduate courses.",
+            "CanTeachUndergraduateCourses(x) ::: x can teach undergraduate courses.",
+            "CanTeachGraduateCourses(x) ::: x can teach graduate courses.",
+            "TeachesUndergraduateCourses(x) ::: x teaches undergraduate courses."
+        ],
+        [],
+        [
+            "FacultyMember(x) ::: x is a faculty member."
+        ],
+        [
+            "ResearchMentor(x) ::: x is a research mentor."
+        ],
+        [],
+        [
+            "John(x) ::: John is a person."
+        ]
+    ],
+    "all_map_entity": [
+        {
+            "HigherDegreeThanBA(x)": "Prefer(x, HigherDegree)",
+            "HigherThanMScDegree(x)": "Prefer(x, HigherThanMasters)"
+        },
+        {
+            "Prefer(x, English)": "Prefer(x, Sci)",
+            "PreferEngish(x)": "Prefer(x, English)",
+            "PreferSci(x)": "Prefer(x, Sci)",
+            "HasPhD(DrJohn)": "Prefer(DrJohn, PhD)",
+            "Person(DrJohn)": "Prefer(DrJohn, Person)",
+            "FacultyMember(DrJohn)": "Prefer(DrJohn, FacultyMember)",
+            "NeedsAdditionalCertification(DrJohn)": "Prefer(DrJohn, AdditionalCertification)"
+        },
+        {
+            "PreferEngish(x)": "Prefer(x, English)",
+            "PreferSci(x)": "Prefer(x, Sci)"
+        },
+        {
+            "Prefer(x, English)": "Prefer(x, Sci)",
+            "PreferEngish(x)": "Prefer(x, English)",
+            "PreferSci(x)": "Prefer(x, Sci)",
+            "TeachesGraduateCourses(x)": "Prefer(x, GraduateCourses)",
+            "CanTeachUndergraduateCourses(x)": "Prefer(x, UndergraduateCourses)",
+            "CanTeachGraduateCourses(x)": "Prefer(x, GraduateCourses)",
+            "TeachesUndergraduateCourses(x)": "Prefer(x, UndergraduateCourses)"
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "cluster": [
+        [
+            "PythonProject(x) ::: x is a project written in Python",
+            "PythonCode(x) ::: x is Python code"
+        ],
+        [
+            "OptimizedProject(x) ::: x is a project that has been optimized for performance",
+            "Optimized(x) ::: x is optimized"
+        ],
+        [
+            "FollowsPEP8Standards(x) ::: x follows the Python coding standards outlined in PEP 8",
+            "FollowsBestPractices(x) ::: x follows best practices in software development",
+            "PEP8Standards(x) ::: x adheres to the Python coding standards outlined in PEP 8"
+        ],
+        [
+            "EasyToMaintain(x) ::: x is easy to maintain"
+        ],
+        [
+            "WellStructured(x) ::: x is well-structured"
+        ],
+        [
+            "WellTested(x) ::: x is well-tested"
+        ],
+        [
+            "CleanCode(x) ::: x is clean code",
+            "ReadableCode(x) ::: x is readable code",
+            "Clean(x) ::: x is clean."
+        ],
+        [
+            "Readable(x) ::: x is readable."
+        ]
+    ]
+}

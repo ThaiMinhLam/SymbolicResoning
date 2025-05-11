@@ -1,0 +1,66 @@
+from solver.run_solver import Prover9_K
+from solver.prover9_solver import FOL_Prover9_Program
+
+fol_premises = [
+   "∀x (FacultyMember(x) ∧ TaughtForAtLeast5Years(x) → ExtendedLibraryAccess(x))",
+   "∀x (ExtendedLibraryAccess(x) ∧ PublishedAcademicPaper(x) → CanAccessRestrictedArchives(x))",
+   "∀x (CanAccessRestrictedArchives(x) ∧ CompletedResearchEthicsTraining(x) → CanSubmitResearchProposals(x))",
+   "∀x (CanSubmitResearchProposals(x) ∧ HasDepartmentalEndorsement(x) → CanApplyForCollaborativeResearchProjects(x))",
+   "FacultyMember(John) ∧ TaughtForAtLeast5Years(John)",
+   "PublishedAcademicPaper(John)",
+   "CompletedResearchEthicsTraining(John)",
+   "HasDepartmentalEndorsement(John)",
+   "DrJohn(x)"
+]
+
+
+question_fol = [
+    "A CanAccessRestrictedArchives(John) ∧ ¬CanSubmitResearchProposals(John)\n"
+    "B CanApplyForCollaborativeResearchProjects(John)\n"
+    "C NeedsMorePublications(John) → CanAccessRestrictedArchives(John)\n"
+    "D ExtendedLibraryAccess(John) ∧ ¬CanApplyForCollaborativeResearchProjects(John)"
+]
+
+
+# "new-fol": [
+#         "∀x (FacultyMember(x) ∧ TaughtForAtLeast5Years(x) → ExtendedLibraryAccess(x))",
+#         "∀x (Person(x) ∧ ExtendedLibraryAccess(x) ∧ PublishedAcademicPaper(x) → CanAccessArchives(x))",
+#         "∀x (CanAccessArchives(x) ∧ CompletedResearchEthicsTraining(x) → CanSubmitResearchProposals(x))",
+#         "∀x (CanSubmitResearchProposals(x) ∧ HasDepartmentalEndorsement(x) → CanApplyForCollaborativeResearchProjects(x))",
+#         "Person(John) ∧ Person(John) ∧ TaughtForAtLeastYears(John, 5)",
+#         "HasPublishedAcademicPaper(John) ∧ ∃x (AcademicPaper(x) ∧ PublishedBy(x, John))",
+#         "∀x (Professor(x) ∧ Person(x) → CompletedResearchEthicsTraining(x))",
+#         "HasDepartmentalEndorsement(John)"
+#     ]
+
+
+# que-fol = "CorrectConclusion(ProfessorJohn) ↔ (RenownedExpert(ProfessorJohn) ∧ PublishedNumerousPapersInPrestigiousJournals(ProfessorJohn) ∧ ReceivedNumerousAwardsForContributions(ProfessorJohn))
+# \nA ∀x (Person(x) ∧ Person(x) → (CanAccessArchives(x) ∧ ¬SubmitProposals(x)))
+# \nB ∀x (Person(x) → CanApplyForCollaborativeResearchProjects(x))
+# \nC ∀x (NeedsMorePublications(x) → CanAccessArchives(x))
+# \nD ∀x (ExtendedLibraryAccess(x) → ¬ApplyForProjects(x)):"
+
+# "premises-nl": [
+#         "If a faculty member has taught for at least 5 years, they are eligible for extended library access.",
+#         "If someone has extended library access and has published at least one academic paper, they can access restricted archives.",
+#         "If someone can access restricted archives and has completed research ethics training, they can submit research proposals.",
+#         "If someone can submit research proposals and has a departmental endorsement, they can apply for collaborative research projects.",
+#         "Professor John has taught for at least 5 years.",
+#         "Professor John has published at least one academic paper.",
+#         "Professor John has completed research ethics training.",
+#         "Professor John has a departmental endorsement."
+#     ]
+
+# "questions": [
+#         "Based on the premises, what is the correct conclusion about Professor John?
+# \nA. He can access restricted archives but cannot submit proposals
+# \nB. He can apply for collaborative research projects
+# \nC. He needs more publications to access archives
+# \nD. He is eligible for extended library access but cannot apply for projects",
+#         "Does the logical chain demonstrate that Professor John meets all requirements for collaborative research projects?"
+#     ]
+
+
+prover9 = Prover9_K(solver=FOL_Prover9_Program)
+ans = prover9.solving_questions(fol_premises, question_fol)
+print(ans)

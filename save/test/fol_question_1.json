@@ -1,0 +1,6 @@
+{
+    "fol": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\n ∀x (PythonProject(x) ∧ ¬Optimized(x) → ¬WellTested(x))\n ∀x (PythonProject(x) ∧ Optimized(x) → WellStructured(x))\n ∀x (PythonProject(x) ∧ WellTested(x) → (Clean(x) ∧ Readable(x)))\n ∀x (PythonProject(x) ∧ ¬Optimized(x) → ¬FollowsPEP8Standards(x)):",
+        "∀x (PythonProject(x) ∧ WellStructured(x) → Optimized(x))"
+    ]
+}

@@ -1,0 +1,165 @@
+{
+    "premises-nl": [
+        "If a curriculum is well-structured and has exercises, it enhances student engagement.",
+        "If a curriculum enhances student engagement and provides access to advanced resources, it enhances critical thinking.",
+        "If a faculty prioritizes pedagogical training and curriculum development, the curriculum is well-structured.",
+        "The faculty prioritizes pedagogical training and curriculum development.",
+        "The curriculum has practical exercises.",
+        "The curriculum provides access to advanced resources."
+    ],
+    "fol_premises": [
+        "ForAll(c, (well_structured(c) ∧ has_exercises(c)) → enhances_engagement(c))",
+        "ForAll(c, (enhances_engagement(c) ∧ advanced_resources(c)) → enhances_critical_thinking(c))",
+        "ForAll(f, (pedagogical_training(f) ∧ curriculum_development(f)) → well_structured(curriculum))",
+        "pedagogical_training(faculty) ∧ curriculum_development(faculty)",
+        "has_exercises(curriculum)",
+        "advanced_resources(curriculum)"
+    ],
+    "questions": [
+        "\n Based on the premises, we can conclude that the curriculum enhances student engagement but does not enhance critical thinking. \n Based on the premises, we can conclude that the curriculum enhances critical thinking. \n Based on the premises, it can be concluded that the curriculum needs more resources to enhance critical thinking. \n Based on the premises, we can conclude that the curriculum is well-structured, but lacks exercises.",
+        "The combination of faculty priorities and curriculum features leads to enhanced critical thinking."
+    ],
+    "reasonings": [
+        "Premise 4 and premise 3 confirm the curriculum is well-structured due to faculty priorities in pedagogical training and curriculum development. Premise 5 provides exercises, so premise 1 implies the curriculum enhances student engagement. Premise 6 adds advanced resources, and premise 2 confirms the curriculum enhances critical thinking, supporting option B. Option A is false because it enhances critical thinking. Option C is false because resources are sufficient. Option D is false because the curriculum has exercises.",
+        "Faculty priorities in premise 4 (pedagogical training and curriculum development) satisfy premise 3, making the curriculum well-structured. Curriculum features in premise 5 (exercises) and premise 1 lead to enhanced engagement, and with premise 6 (advanced resources), premise 2 confirms enhanced critical thinking, supporting the statement."
+    ],
+    "answers": [
+        "B",
+        "Yes"
+    ],
+    "LLM-FOL": [
+        "∀x (Curriculum(x) ∧ WellStructured(x) ∧ HasExercises(x) → EnhancesStudentEngagement(x))",
+        "∀x (Curriculum(x) ∧ EnhancesStudentEngagement(x) ∧ ProvidesAccessToAdvancedResources(x) → EnhancesCriticalThinking(x))",
+        "∀x (Faculty(x) ∧ PrioritizesPedagogicalTraining(x) ∧ DevelopsCurriculum(x) → WellStructuredCurriculum(x))",
+        "Prioritizes(Faculty, PedagogicalTraining) ∧ Prioritizes(Faculty, CurriculumDevelopment)",
+        "∃x (Curriculum(x) ∧ PracticalExercises(x))",
+        "∀x (Curriculum(x) → ProvidesAccessToAdvancedResources(x))"
+    ],
+    "question-FOL": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\n ∀x (Curriculum(x) → (EnhancesStudentEngagement(x) ∧ ¬EnhancesCriticalThinking(x)))\n ∀x (Curriculum(x) ∧ EnhancesCriticalThinking(x) → CanConclude(y))\n\nWhere y is the conclusion that the curriculum enhances critical thinking.\n ∀x (Curriculum(x) ∧ NeedsResources(x) → EnhancesCriticalThinking(x))\n ∀x (Curriculum(x) ∧ WellStructured(x) → ¬∃y (Exercises(y) ∧ AssignedTo(y, x))):",
+        "∀x ∀y (FacultyPriorities(x) ∧ CurriculumFeatures(y) → EnhancedCriticalThinking(x, y))"
+    ],
+    "logic_program": [
+        "DevelopsCurriculum(x) ::: X develops curriculum.",
+        "Prioritizes(Faculty, CurriculumDevelopment) ::: Faculty prioritizes curriculum development.",
+        "Faculty(x) ::: X is a faculty member.",
+        "EnhancesCriticalThinking(x) ::: X enhances critical thinking.",
+        "WellStructuredCurriculum(x) ::: Curriculum is well structured.",
+        "Curriculum(x) ::: X is a curriculum.",
+        "PrioritizesPedagogicalTraining(x) ::: Faculty prioritizes pedagogical training.",
+        "Prioritizes(Faculty, PedagogicalTraining) ::: Faculty prioritizes pedagogical training.",
+        "EnhancesStudentEngagement(x) ::: X enhances student engagement.",
+        "WellStructured(x) ::: X is well structured.",
+        "HasExercises(x) ::: X has exercises.",
+        "PracticalExercises(x) ::: X has practical exercises.",
+        "ProvidesAccessToAdvancedResources(x) ::: X provides access to advanced resources.",
+        "Exercises(y) ::: A set of activities designed to improve physical or mental fitness.",
+        "NeedsResources(x) ::: The state of requiring resources or support to function.",
+        "AssignedTo(y, x) ::: The relationship where one entity (y) is assigned to perform an action or task for another entity (x).",
+        "CanConclude(y) ::: The ability to draw a logical conclusion based on a set of premises or evidence."
+    ],
+    "new-fol": [
+        "∀x (IsCurriculum(x) ∧ WellStructured(x) ∧ HasExercises(x) → PromotesStudentEngagement(x))",
+        "∀x (IsCurriculum(x) ∧ PromotesStudentEngagement(x) ∧ ProvidesAccessToAdvancedResources(x) → EnhancesThinkingSkills(x))",
+        "∀x (Faculty(x) ∧ PrioritizesPedagogicalTraining(x) ∧ DevelopsCurriculum(x) → WellStructuredCurriculum(x))",
+        "Prioritizes(Faculty, PedagogicalTraining) ∧ Prioritizes(Faculty, CurriculumDevelopment)",
+        "∃x (IsCurriculum(x) ∧ PracticalExercises(x))",
+        "∀x (IsCurriculum(x) → ProvidesAccessToAdvancedResources(x))"
+    ],
+    "maps": [
+        {},
+        {
+            "Curriculum(x)": "IsCurriculum(x)"
+        },
+        {
+            "EnhancesCriticalThinking(x)": "EnhancesThinkingSkills(x)",
+            "EnhancesStudentEngagement(x)": "PromotesStudentEngagement(x)"
+        },
+        {}
+    ],
+    "q_ids": null,
+    "logic_program_premise": [
+        "DevelopsCurriculum(x) ::: X develops curriculum.",
+        "Prioritizes(Faculty, CurriculumDevelopment) ::: Faculty prioritizes curriculum development.",
+        "Faculty(x) ::: X is a faculty member.",
+        "EnhancesCriticalThinking(x) ::: X enhances critical thinking.",
+        "WellStructuredCurriculum(x) ::: Curriculum is well structured.",
+        "Curriculum(x) ::: X is a curriculum.",
+        "PrioritizesPedagogicalTraining(x) ::: Faculty prioritizes pedagogical training.",
+        "Prioritizes(Faculty, PedagogicalTraining) ::: Faculty prioritizes pedagogical training.",
+        "EnhancesStudentEngagement(x) ::: X enhances student engagement.",
+        "WellStructured(x) ::: X is well structured.",
+        "HasExercises(x) ::: X has exercises.",
+        "PracticalExercises(x) ::: X has practical exercises.",
+        "ProvidesAccessToAdvancedResources(x) ::: X provides access to advanced resources."
+    ],
+    "logic_program_question": [
+        "Exercises(y) ::: A set of activities designed to improve physical or mental fitness.",
+        "EnhancesCriticalThinking(x) ::: The ability to think critically and make sound judgments.",
+        "NeedsResources(x) ::: The state of requiring resources or support to function.",
+        "AssignedTo(y, x) ::: The relationship where one entity (y) is assigned to perform an action or task for another entity (x).",
+        "Curriculum(x) ::: A set of courses or educational content designed to achieve a specific educational goal.",
+        "EnhancesStudentEngagement(x) ::: The ability to increase student motivation and participation in learning.",
+        "WellStructured(x) ::: A set of rules or guidelines that are clear, consistent, and easy to follow.",
+        "CanConclude(y) ::: The ability to draw a logical conclusion based on a set of premises or evidence."
+    ],
+    "new-question-FOL": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\n ∀x (IsIsIsIsCurriculum(x) → (PromotesStudentEngagement(x) ∧ ¬EnhancesThinkingSkills(x)))\n ∀x (IsIsIsIsCurriculum(x) ∧ EnhancesThinkingSkills(x) → CanConclude(y))\n\nWhere y is the conclusion that the curriculum enhances critical thinking.\n ∀x (IsIsIsIsCurriculum(x) ∧ NeedsResources(x) → EnhancesThinkingSkills(x))\n ∀x (IsIsIsIsCurriculum(x) ∧ WellStructured(x) → ¬∃y (Exercises(y) ∧ AssignedTo(y, x))):",
+        "∀x ∀y (FacultyPriorities(x) ∧ CurriculumFeatures(y) → EnhancedCriticalThinking(x, y))"
+    ],
+    "clusters": [
+        [
+            "DevelopsCurriculum(x) ::: X develops curriculum.",
+            "WellStructuredCurriculum(x) ::: Curriculum is well structured."
+        ],
+        [
+            "Prioritizes(Faculty, CurriculumDevelopment) ::: Faculty prioritizes curriculum development.",
+            "Curriculum(x) ::: X is a curriculum.",
+            "PrioritizesPedagogicalTraining(x) ::: Faculty prioritizes pedagogical training.",
+            "Prioritizes(Faculty, PedagogicalTraining) ::: Faculty prioritizes pedagogical training."
+        ],
+        [
+            "Faculty(x) ::: X is a faculty member."
+        ],
+        [
+            "EnhancesCriticalThinking(x) ::: X enhances critical thinking.",
+            "EnhancesStudentEngagement(x) ::: X enhances student engagement."
+        ],
+        [
+            "WellStructured(x) ::: X is well structured."
+        ],
+        [
+            "HasExercises(x) ::: X has exercises.",
+            "PracticalExercises(x) ::: X has practical exercises.",
+            "Exercises(y) ::: A set of activities designed to improve physical or mental fitness."
+        ],
+        [
+            "ProvidesAccessToAdvancedResources(x) ::: X provides access to advanced resources."
+        ],
+        [
+            "NeedsResources(x) ::: The state of requiring resources or support to function."
+        ],
+        [
+            "AssignedTo(y, x) ::: The relationship where one entity (y) is assigned to perform an action or task for another entity (x)."
+        ],
+        [
+            "CanConclude(y) ::: The ability to draw a logical conclusion based on a set of premises or evidence."
+        ]
+    ],
+    "solver": [
+        {
+            "final_ans": "A",
+            "idx_final_ans": [],
+            "dic_idx_wrong_options": {},
+            "proof_final_ans": [],
+            "dic_proof_wrong_options": {}
+        },
+        {
+            "final_ans": "No",
+            "idx_final_ans": [],
+            "dic_idx_wrong_options": {},
+            "proof_final_ans": [],
+            "dic_proof_wrong_options": {}
+        }
+    ]
+}

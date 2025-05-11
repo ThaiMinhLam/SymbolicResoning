@@ -1,0 +1,191 @@
+{
+    "premises-nl": [
+        "Faculty members with a degree higher than BA can teach undergraduate courses.",
+        "Faculty members with a degree higher than MSc can teach graduate courses.",
+        "Anyone who teaches graduate courses can be a research mentor.",
+        "If degree A is higher than B, and B is higher than C, then A is higher than C.",
+        "MSc is higher than BA.",
+        "PhD is higher than MSc.",
+        "DrJohn is a faculty member.",
+        "DrJohn has a PhD."
+    ],
+    "fol_premises": [
+        "ForAll(x, ForAll(d, (faculty_member(x) ∧ has_degree(x, d) ∧ higher(d, BA)) → teach_undergrad(x)))",
+        "ForAll(x, ForAll(d, (faculty_member(x) ∧ has_degree(x, d) ∧ higher(d, MSc)) → teach_graduate(x)))",
+        "ForAll(x, teach_graduate(x) → research_mentor(x))",
+        "ForAll(a, ForAll(b, ForAll(c, (higher(a, b) ∧ higher(b, c)) → higher(a, c))))",
+        "higher(MSc, BA)",
+        "higher(PhD, MSc)",
+        "faculty_member(dr_john)",
+        "has_degree(dr_john, PhD)"
+    ],
+    "questions": [
+        "\n DrJohn has the capability to teach undergraduate courses only. \n DrJohn has the capability to be a research mentor. \n DrJohn has the capability to teach undergraduate courses but cannot teach graduate courses. \n DrJohn needs additional certification to mentor.",
+        "DrJohn's PhD qualification makes him eligible to be a research mentor."
+    ],
+    "reasonings": [
+        "Premises 7 and 8 confirm Dr. John is a faculty member with a PhD. Premise 6 states PhD is higher than MSc, so premise 2 allows him to teach graduate courses. Premise 3 confirms that teaching graduate courses qualifies him as a research mentor, supporting option B. Option A is false because he can teach graduate courses. Option C is false because he can teach graduate courses. Option D is false because no additional certification is required.",
+        "Premise 8 confirms Dr. John’s PhD, and premise 7 confirms his faculty status. Premise 6 establishes PhD is higher than MSc, so premise 2 qualifies him to teach graduate courses. Premise 3 confirms that graduate teaching implies research mentorship eligibility, so his PhD qualification entails mentorship eligibility."
+    ],
+    "answers": [
+        "B",
+        "Yes"
+    ],
+    "LLM-FOL": [
+        "∀x (FacultyMember(x) ∧ HigherDegreeThanBA(x) → CanTeachUndergraduateCourses(x))",
+        "∀x (FacultyMember(x) ∧ HigherThanMScDegree(x) → CanTeachGraduateCourses(x))",
+        "∀x (TeachesGraduateCourses(x) → ResearchMentor(x))",
+        "∀x ∀y ∀z (DegreeA(x) ∧ DegreeB(y) ∧ DegreeC(z) ∧ HigherThan(x, y) ∧ HigherThan(y, z) → HigherThan(x, z))",
+        "HigherDegree(MSc, BA)",
+        "HigherDegree(PhD, MSc)",
+        "Person(DrJohn) ∧ FacultyMember(DrJohn)",
+        "Person(DrJohn) ∧ HasPhD(DrJohn)"
+    ],
+    "question-FOL": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\n ∀x (Dr. John(x) → TeachesUndergraduateCourses(x))\n HasCapability(John, ResearchMentor)\n ∀x (Dr. John(x) → (TeachesUndergraduateCourses(x) ∧ ¬TeachesGraduateCourses(x)))\n NeedsAdditionalCertification(DrJohn) ↔ Mentor(DrJohn):",
+        "∀x (PhDQualification(x) ∧ DrJohn(x) → ResearchMentor(x))"
+    ],
+    "logic_program": [
+        "HigherThan(x, y) ::: x is higher than y",
+        "HigherThanMScDegree(x) ::: x has a higher MSc degree than any other degree",
+        "CanTeachGraduateCourses(x) ::: x can teach graduate courses",
+        "Person(DrJohn) ::: DrJohn is a person",
+        "FacultyMember(DrJohn) ::: DrJohn is a faculty member",
+        "CanTeachUndergraduateCourses(x) ::: x can teach undergraduate courses",
+        "HigherThan(x, z) ::: x is higher than z",
+        "HigherDegree(PhD, MSc) ::: PhD is higher than MSc",
+        "DegreeA(x) ::: x has a degree A",
+        "DegreeC(z) ::: z has a degree C",
+        "ResearchMentor(x) ::: x is a research mentor",
+        "HigherDegree(MSc, BA) ::: MSc is higher than BA",
+        "HigherThan(y, z) ::: y is higher than z",
+        "DegreeB(y) ::: y has a degree B",
+        "HasPhD(DrJohn) ::: DrJohn has a PhD",
+        "FacultyMember(x) ::: x is a faculty member",
+        "NeedsAdditionalCertification(DrJohn) ::: DrJohn needs additional certification.",
+        "TeachesGraduateCourses(x) ::: x teaches graduate courses.",
+        "HasCapability(John, ResearchMentor) ::: John has the capability to mentor research.",
+        "John(x) ::: x is Dr. John.",
+        "TeachesUndergraduateCourses(x) ::: x teaches undergraduate courses.",
+        "Mentor(DrJohn) ::: DrJohn mentors."
+    ],
+    "new-fol": [
+        "∀x (FacultyMember(x) ∧ HigherDegreeThanBA(x) → CanTeachUndergraduateCourses(x))",
+        "∀x (FacultyMember(x) ∧ HigherThan(y, z) → CanTeachGraduateCourses(x))",
+        "∀x (TeachesGraduateCourses(x) → ResearchMentor(x))",
+        "∀x ∀y ∀z (DegreeB(x) ∧ DegreeB(y) ∧ DegreeB(z) ∧ HigherThan(y, z) ∧ HigherThan(y, z) → HigherThan(y, z))",
+        "HigherDegree(MSc, BA)",
+        "HigherDegree(PhD, MSc)",
+        "FacultyMember(DrJohn) ∧ FacultyMember(DrJohn)",
+        "FacultyMember(DrJohn) ∧ HasPhD(DrJohn)"
+    ],
+    "maps": [
+        {
+            "HigherThan(x, y)": "HigherThan(y, z)",
+            "HigherThan(x, z)": "HigherThan(y, z)",
+            "HigherThanMScDegree(x)": "HigherThan(y, z)"
+        },
+        {},
+        {
+            "Person(DrJohn)": "FacultyMember(DrJohn)",
+            "Mentor(DrJohn)": "FacultyMember(DrJohn)"
+        },
+        {
+            "HigherDegree(PhD, MSc)": "HigherDegree(MSc, PhD)",
+            "HigherDegree(MSc, BA)": "HigherDegree(BA, MSc)"
+        },
+        {
+            "DegreeA(x)": "DegreeB(x)",
+            "DegreeC(z)": "DegreeB(z)"
+        }
+    ],
+    "q_ids": null,
+    "logic_program_premise": [
+        "HigherThan(x, y) ::: x is higher than y",
+        "HigherThanMScDegree(x) ::: x has a higher MSc degree than any other degree",
+        "CanTeachGraduateCourses(x) ::: x can teach graduate courses",
+        "Person(DrJohn) ::: DrJohn is a person",
+        "FacultyMember(DrJohn) ::: DrJohn is a faculty member",
+        "CanTeachUndergraduateCourses(x) ::: x can teach undergraduate courses",
+        "HigherThan(x, z) ::: x is higher than z",
+        "HigherDegree(PhD, MSc) ::: PhD is higher than MSc",
+        "DegreeA(x) ::: x has a degree A",
+        "DegreeC(z) ::: z has a degree C",
+        "ResearchMentor(x) ::: x is a research mentor",
+        "HigherDegree(MSc, BA) ::: MSc is higher than BA",
+        "HigherThan(y, z) ::: y is higher than z",
+        "DegreeB(y) ::: y has a degree B",
+        "HasPhD(DrJohn) ::: DrJohn has a PhD",
+        "FacultyMember(x) ::: x is a faculty member"
+    ],
+    "logic_program_question": [
+        "NeedsAdditionalCertification(DrJohn) ::: DrJohn needs additional certification.",
+        "TeachesGraduateCourses(x) ::: x teaches graduate courses.",
+        "HasCapability(John, ResearchMentor) ::: John has the capability to mentor research.",
+        "John(x) ::: x is Dr. John.",
+        "TeachesUndergraduateCourses(x) ::: x teaches undergraduate courses.",
+        "Mentor(DrJohn) ::: DrJohn mentors."
+    ],
+    "new-question-FOL": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\n ∀x (Dr. John(x) → TeachesUndergraduateCourses(x))\n HasCapability(John, ResearchMentor)\n ∀x (Dr. John(x) → (TeachesUndergraduateCourses(x) ∧ ¬TeachesGraduateCourses(x)))\n NeedsAdditionalCertification(DrJohn) ↔ FacultyMember(DrJohn):",
+        "∀x (PhDQualification(x) ∧ DrJohn(x) → ResearchMentor(x))"
+    ],
+    "clusters": [
+        [
+            "HigherThan(x, y) ::: x is higher than y",
+            "HigherThanMScDegree(x) ::: x has a higher MSc degree than any other degree",
+            "HigherThan(x, z) ::: x is higher than z",
+            "HigherThan(y, z) ::: y is higher than z"
+        ],
+        [
+            "CanTeachGraduateCourses(x) ::: x can teach graduate courses",
+            "CanTeachUndergraduateCourses(x) ::: x can teach undergraduate courses",
+            "TeachesGraduateCourses(x) ::: x teaches graduate courses.",
+            "TeachesUndergraduateCourses(x) ::: x teaches undergraduate courses."
+        ],
+        [
+            "Person(DrJohn) ::: DrJohn is a person",
+            "FacultyMember(DrJohn) ::: DrJohn is a faculty member",
+            "HasPhD(DrJohn) ::: DrJohn has a PhD",
+            "NeedsAdditionalCertification(DrJohn) ::: DrJohn needs additional certification.",
+            "Mentor(DrJohn) ::: DrJohn mentors."
+        ],
+        [
+            "HigherDegree(PhD, MSc) ::: PhD is higher than MSc",
+            "HigherDegree(MSc, BA) ::: MSc is higher than BA"
+        ],
+        [
+            "DegreeA(x) ::: x has a degree A",
+            "DegreeC(z) ::: z has a degree C",
+            "DegreeB(y) ::: y has a degree B"
+        ],
+        [
+            "ResearchMentor(x) ::: x is a research mentor"
+        ],
+        [
+            "FacultyMember(x) ::: x is a faculty member"
+        ],
+        [
+            "HasCapability(John, ResearchMentor) ::: John has the capability to mentor research."
+        ],
+        [
+            "John(x) ::: x is Dr. John."
+        ]
+    ],
+    "solver": [
+        {
+            "final_ans": "A",
+            "idx_final_ans": [],
+            "dic_idx_wrong_options": {},
+            "proof_final_ans": [],
+            "dic_proof_wrong_options": {}
+        },
+        {
+            "final_ans": "No",
+            "idx_final_ans": [],
+            "dic_idx_wrong_options": {},
+            "proof_final_ans": [],
+            "dic_proof_wrong_options": {}
+        }
+    ]
+}

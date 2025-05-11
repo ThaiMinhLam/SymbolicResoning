@@ -1,0 +1,56 @@
+{
+    "cluster": [
+        [
+            "Professor(x) ::: x is a Professor",
+            "John(x) ::: x is John",
+            "Person(x) ::: x is a person",
+            "FacultyMember(x) ::: x is a faculty member",
+            "Teacher(John) ::: John is a teacher"
+        ],
+        [
+            "CompletedResearchEthicsTraining(x) ::: x has completed research ethics training"
+        ],
+        [
+            "CanAccessRestrictedArchives(x) ::: x can access restricted archives",
+            "CanSubmitResearchProposals(x) ::: x can submit research proposals",
+            "AccessRestrictedArchives(x) ::: x accesses restricted archives."
+        ],
+        [
+            "HasDepartmentalEndorsement(x) ::: x has departmental endorsement",
+            "HasDepartmentalEndorsement(John) ::: John has departmental endorsement"
+        ],
+        [
+            "PublishedBy(x, John) ::: x was published by John",
+            "PublishedAcademicPaper(x) ::: x has published an academic paper",
+            "Person(John) ::: John is a person"
+        ],
+        [
+            "AcademicPaper(x) ::: x is an academic paper"
+        ],
+        [
+            "EligibleForExtendedLibraryAccess(x) ::: x is eligible for extended library access",
+            "ExtendedLibraryAccess(x) ::: x has extended library access",
+            "EligibleForExtendedLibraryAccess(John) ::: John is eligible for extended library access."
+        ],
+        [
+            "TaughtForAtLeast5Years(x) ::: x has taught for at least 5 years"
+        ],
+        [
+            "TaughtForAtLeastYears(John, 5) ::: John has taught for at least 5 years",
+            "ApplyForProjects(John) ::: John applies for projects."
+        ],
+        [
+            "HasPublishedAcademicPaper(John) ::: John has published an academic paper",
+            "NeedsMorePublications(John) ::: John needs more publications."
+        ],
+        [
+            "CanApplyForCollaborativeResearchProjects(x) ::: x can apply for collaborative research projects"
+        ],
+        [
+            "SubmitProposals(x) ::: x submits proposals."
+        ],
+        [
+            "AccessArchives(John) ::: John accesses archives."
+        ]
+    ]
+}

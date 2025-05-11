@@ -1,0 +1,221 @@
+{
+    "premises-nl": [
+        "If a driver has passed vehicle inspection and has the appropriate license, they can transport standard goods.",
+        "If a driver can transport standard goods and has completed hazmat training and received a safety endorsement, they can transport hazardous materials.",
+        "If a driver can transport hazardous materials and has an interstate permit, they can cross state lines with hazardous cargo.",
+        "John has passed vehicle inspection.",
+        "John has the appropriate license.",
+        "John has completed hazmat training.",
+        "John has not received a safety endorsement.",
+        "John has an interstate permit."
+    ],
+    "fol_premises": [
+        "ForAll(x, (passed_vehicle_inspection(x) ∧ has_appropriate_license(x)) → can_transport_standard_goods(x))",
+        "ForAll(x, (can_transport_standard_goods(x) ∧ completed_hazmat_training(x) ∧ received_safety_endorsement(x)) → can_transport_hazardous_materials(x))",
+        "ForAll(x, (can_transport_hazardous_materials(x) ∧ has_interstate_permit(x)) → can_cross_state_lines(x))",
+        "passed_vehicle_inspection(John)",
+        "has_appropriate_license(John)",
+        "completed_hazmat_training(John)",
+        "¬received_safety_endorsement(John)",
+        "has_interstate_permit(John)"
+    ],
+    "questions": [
+        "\n John has qualifications to transport hazardous materials, but he cannot cross state lines. \n John is qualified to transport hazardous cargo across state lines. \n Based on the premises, we can conclude that John cannot transport hazardous materials. \n Based on the premises, we can conclude that John is not qualified to transport any kind of goods.",
+        "John meets all requirements to cross state lines with hazardous cargo."
+    ],
+    "reasonings": [
+        "Premises 4 and 5 confirm John passed vehicle inspection and has a license, satisfying premise 1 for transporting standard goods. However, premise 6 confirms hazmat training, but premise 7 states he lacks a safety endorsement, so premise 2 prevents him from transporting hazardous materials, supporting option C. Option A is false because he cannot transport hazardous materials. Option B is false because he cannot cross state lines without hazardous material capability. Option D is false because he can transport standard goods.",
+        "Crossing state lines with hazardous cargo per premise 3 requires the ability to transport hazardous materials and an interstate permit. Premise 2 requires standard goods capability, hazmat training, and a safety endorsement for hazardous materials. Premises 1, 4, 5, and 6 confirm standard goods and training, and premise 8 confirms the permit, but premise 7’s lack of endorsement prevents hazardous material transport, so John does not meet all requirements."
+    ],
+    "answers": [
+        "C",
+        "No"
+    ],
+    "LLM-FOL": [
+        "∀x (Driver(x) ∧ PassedVehicleInspection(x) ∧ HasAppropriateLicense(x) → CanTransportStandardGoods(x))",
+        "∀x (Driver(x) ∧ CanTransportStandardGoods(x) ∧ CompletedHazmatTraining(x) ∧ ReceivedSafetyEndorsement(x) → CanTransportHazardousMaterials(x))",
+        "∀x (Driver(x) ∧ CanTransportHazardousMaterials(x) ∧ HasInterstatePermit(x) → CanCrossStateLinesWithHazardousCargo(x))",
+        "HasPassedVehicleInspection(John)",
+        "HasAppropriateLicense(John) ↔ (LicenseValid(John) ∧ ValidForActivity(John))",
+        "∀x (Person(x) ∧ HasCompletedHazmatTraining(x) → KnowledgeableAboutHazardousMaterials(x))",
+        "HasNotReceivedSafetyEndorsement(John) ∧ IssuedByGovernmentAgency(SafetyEndorsement)",
+        "HasInterstatePermit(John) ∧ SpecificTypeOfPermit(InterstatePermit)"
+    ],
+    "question-FOL": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\n ∀x (Person(x) ∧ HasQualificationsForTransportingHazardousMaterials(x) → ¬CanCrossStateLines(x))\n ∀x ∀y (John(x) ∧ HazardousCargo(y) → QualifiedToTransportAcrossStateLines(x, y))\n ∀x (Premise(x) → ¬CanTransportHazardousMaterials(John))\n ∀x (Premise(x) → ¬QualifiedToTransportGoods(John)):",
+        "∀x (MeetsRequirements(John, HazardousCargo) → CanCrossStateLines(John))"
+    ],
+    "logic_program": [
+        "HasAppropriateLicense(John) ::: John has an appropriate driver's license.",
+        "HasPassedVehicleInspection(John) ::: John has passed a vehicle inspection.",
+        "SpecificTypeOfPermit(InterstatePermit) ::: Interstate permit is a specific type of permit.",
+        "CanTransportStandardGoods(x) ::: x can transport standard goods.",
+        "CanTransportHazardousMaterials(x) ::: x can transport hazardous materials.",
+        "Person(x) ::: x is a person.",
+        "IssuedByGovernmentAgency(SafetyEndorsement) ::: Safety endorsement is issued by a government agency.",
+        "Driver(x) ::: x is a driver.",
+        "HasInterstatePermit(x) ::: x has an interstate permit.",
+        "CompletedHazmatTraining(x) ::: x has completed hazmat training.",
+        "HasCompletedHazmatTraining(x) ::: x has completed hazmat training.",
+        "LicenseValid(John) ::: John's driver's license is valid.",
+        "HasAppropriateLicense(x) ::: x has an appropriate driver's license.",
+        "HasNotReceivedSafetyEndorsement(John) ::: John has not received a safety endorsement.",
+        "PassedVehicleInspection(x) ::: x has passed a vehicle inspection.",
+        "ValidForActivity(John) ::: John is valid for driving.",
+        "KnowledgeableAboutHazardousMaterials(x) ::: x is knowledgeable about hazardous materials.",
+        "ReceivedSafetyEndorsement(x) ::: x has received a safety endorsement.",
+        "HasInterstatePermit(John) ::: John has an interstate permit.",
+        "CanCrossStateLinesWithHazardousCargo(x) ::: x can cross state lines with hazardous cargo.",
+        "QualifiedToTransportGoods(John) ::: John is qualified to transport goods.",
+        "HazardousCargo(y) ::: y is hazardous cargo.",
+        "John(x) ::: x is John.",
+        "QualifiedToTransportAcrossStateLines(x, y) ::: x is qualified to transport goods across state lines and y is a recipient state.",
+        "CanTransportHazardousMaterials(John) ::: John is qualified to transport hazardous materials.",
+        "HasQualificationsForTransportingHazardousMaterials(x) ::: x has qualifications for transporting hazardous materials.",
+        "Premise(x) ::: x is a premise.",
+        "CanCrossStateLines(x) ::: x can cross state lines."
+    ],
+    "new-fol": [
+        "∀x (Driver(x) ∧ PassedVehicleInspection(x) ∧ HasAppropriateLicense(x) → CanTransportStandardGoods(x))",
+        "∀x (Driver(x) ∧ CanTransportStandardGoods(x) ∧ HasCompletedHazmatTraining(x) ∧ ReceivedSafetyEndorsement(x) → CanTransportHazardousMaterials(x))",
+        "∀x (Driver(x) ∧ CanTransportHazardousMaterials(x) ∧ HasInterstatePermit(x) → CanCrossStateLinesWithHazardousCargo(x))",
+        "PassedVehicleInspection(John)",
+        "LicenseValid(John) ↔ (LicenseValid(John) ∧ ValidForActivity(John))",
+        "∀x (Person(x) ∧ HasCompletedHazmatTraining(x) → KnowledgeableAboutHazardousMaterials(x))",
+        "HasNotReceivedSafetyEndorsement(John) ∧ IssuedByGovernmentAgency(SafetyEndorsement)",
+        "HasInterstatePermit(John) ∧ HasInterstatePermit(x)"
+    ],
+    "maps": [
+        {
+            "HasAppropriateLicense(John)": "LicenseValid(John)",
+            "HasPassedVehicleInspection(John)": "PassedVehicleInspection(John)",
+            "HasInterstatePermit(John)": "InterstatePermit(John)",
+            "QualifiedToTransportGoods(John)": "TransportGoods(John)"
+        },
+        {
+            "SpecificTypeOfPermit(InterstatePermit)": "HasInterstatePermit(x)"
+        },
+        {},
+        {
+            "CompletedHazmatTraining(x)": "HasCompletedHazmatTraining(x)"
+        },
+        {
+            "CanTransportHazardousMaterials(x)": "KnowledgeableAboutHazardousMaterials(x)",
+            "QualifiedToTransportHazardousMaterials(John)": "CanTransportHazardousMaterials(John)"
+        }
+    ],
+    "q_ids": null,
+    "logic_program_premise": [
+        "HasAppropriateLicense(John) ::: John has an appropriate driver's license.",
+        "HasPassedVehicleInspection(John) ::: John has passed a vehicle inspection.",
+        "SpecificTypeOfPermit(InterstatePermit) ::: Interstate permit is a specific type of permit.",
+        "CanTransportStandardGoods(x) ::: x can transport standard goods.",
+        "CanTransportHazardousMaterials(x) ::: x can transport hazardous materials.",
+        "Person(x) ::: x is a person.",
+        "IssuedByGovernmentAgency(SafetyEndorsement) ::: Safety endorsement is issued by a government agency.",
+        "Driver(x) ::: x is a driver.",
+        "HasInterstatePermit(x) ::: x has an interstate permit.",
+        "CompletedHazmatTraining(x) ::: x has completed hazmat training.",
+        "HasCompletedHazmatTraining(x) ::: x has completed hazmat training.",
+        "LicenseValid(John) ::: John's driver's license is valid.",
+        "HasAppropriateLicense(x) ::: x has an appropriate driver's license.",
+        "HasNotReceivedSafetyEndorsement(John) ::: John has not received a safety endorsement.",
+        "PassedVehicleInspection(x) ::: x has passed a vehicle inspection.",
+        "ValidForActivity(John) ::: John is valid for driving.",
+        "KnowledgeableAboutHazardousMaterials(x) ::: x is knowledgeable about hazardous materials.",
+        "ReceivedSafetyEndorsement(x) ::: x has received a safety endorsement.",
+        "HasInterstatePermit(John) ::: John has an interstate permit.",
+        "CanCrossStateLinesWithHazardousCargo(x) ::: x can cross state lines with hazardous cargo."
+    ],
+    "logic_program_question": [
+        "QualifiedToTransportGoods(John) ::: John is qualified to transport goods.",
+        "HazardousCargo(y) ::: y is hazardous cargo.",
+        "John(x) ::: x is John.",
+        "QualifiedToTransportAcrossStateLines(x, y) ::: x is qualified to transport goods across state lines and y is a recipient state.",
+        "CanTransportHazardousMaterials(John) ::: John is qualified to transport hazardous materials.",
+        "Person(x) ::: x is a person.",
+        "HasQualificationsForTransportingHazardousMaterials(x) ::: x has qualifications for transporting hazardous materials.",
+        "Premise(x) ::: x is a premise.",
+        "CanCrossStateLines(x) ::: x can cross state lines."
+    ],
+    "new-question-FOL": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\n ∀x (Person(x) ∧ HasQualificationsForTransportingHazardousMaterials(x) → ¬CanCrossStateLines(x))\n ∀x ∀y (John(x) ∧ HazardousCargo(y) → QualifiedToTransportAcrossStateLines(x, y))\n ∀x (Premise(x) → ¬CanTransportHazardousMaterials(John))\n ∀x (Premise(x) → ¬TransportGoods(John)):",
+        "∀x (MeetsRequirements(John, HazardousCargo) → CanCrossStateLines(John))"
+    ],
+    "clusters": [
+        [
+            "HasAppropriateLicense(John) ::: John has an appropriate driver's license.",
+            "HasPassedVehicleInspection(John) ::: John has passed a vehicle inspection.",
+            "LicenseValid(John) ::: John's driver's license is valid.",
+            "HasAppropriateLicense(x) ::: x has an appropriate driver's license.",
+            "HasNotReceivedSafetyEndorsement(John) ::: John has not received a safety endorsement.",
+            "HasInterstatePermit(John) ::: John has an interstate permit.",
+            "QualifiedToTransportGoods(John) ::: John is qualified to transport goods.",
+            "John(x) ::: x is John."
+        ],
+        [
+            "SpecificTypeOfPermit(InterstatePermit) ::: Interstate permit is a specific type of permit.",
+            "HasInterstatePermit(x) ::: x has an interstate permit."
+        ],
+        [
+            "CanTransportStandardGoods(x) ::: x can transport standard goods.",
+            "CanTransportHazardousMaterials(x) ::: x can transport hazardous materials.",
+            "CanCrossStateLinesWithHazardousCargo(x) ::: x can cross state lines with hazardous cargo.",
+            "CanCrossStateLines(x) ::: x can cross state lines."
+        ],
+        [
+            "Person(x) ::: x is a person."
+        ],
+        [
+            "IssuedByGovernmentAgency(SafetyEndorsement) ::: Safety endorsement is issued by a government agency."
+        ],
+        [
+            "Driver(x) ::: x is a driver."
+        ],
+        [
+            "CompletedHazmatTraining(x) ::: x has completed hazmat training.",
+            "HasCompletedHazmatTraining(x) ::: x has completed hazmat training."
+        ],
+        [
+            "PassedVehicleInspection(x) ::: x has passed a vehicle inspection."
+        ],
+        [
+            "ValidForActivity(John) ::: John is valid for driving."
+        ],
+        [
+            "KnowledgeableAboutHazardousMaterials(x) ::: x is knowledgeable about hazardous materials.",
+            "CanTransportHazardousMaterials(John) ::: John is qualified to transport hazardous materials."
+        ],
+        [
+            "ReceivedSafetyEndorsement(x) ::: x has received a safety endorsement."
+        ],
+        [
+            "HazardousCargo(y) ::: y is hazardous cargo."
+        ],
+        [
+            "QualifiedToTransportAcrossStateLines(x, y) ::: x is qualified to transport goods across state lines and y is a recipient state."
+        ],
+        [
+            "HasQualificationsForTransportingHazardousMaterials(x) ::: x has qualifications for transporting hazardous materials."
+        ],
+        [
+            "Premise(x) ::: x is a premise."
+        ]
+    ],
+    "solver": [
+        {
+            "final_ans": "A",
+            "idx_final_ans": [],
+            "dic_idx_wrong_options": {},
+            "proof_final_ans": [],
+            "dic_proof_wrong_options": {}
+        },
+        {
+            "final_ans": "Uncertain",
+            "idx_final_ans": [],
+            "dic_idx_wrong_options": {},
+            "proof_final_ans": "============================== prooftrans ============================\nProver9 (64) version 2009-11A, November 2009.\nProcess 2333673 was started by npl on uit-dgx01,\nFri May  9 02:59:14 2025\nThe command was \"/data/npl/ICEK/News/Qwen_evaluate/LADR-2009-11A/bin/prover9\".\n============================== end of head ===========================\n\n============================== end of input ==========================",
+            "dic_proof_wrong_options": {}
+        }
+    ]
+}

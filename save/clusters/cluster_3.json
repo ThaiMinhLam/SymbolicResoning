@@ -1,0 +1,65 @@
+{
+    "cluster": [
+        [
+            "CompletedCoreCurriculum(x) ::: x has completed the core curriculum of their academic program."
+        ],
+        [
+            "CompletedResearchMethodology(x) ::: x has completed a research methodology course."
+        ],
+        [
+            "Person(x) ::: x is a person.",
+            "Student(x) ::: x is a student.",
+            "Person(Sophia) ::: Sophia is a person."
+        ],
+        [
+            "NameSophia(x) ::: x has the name Sophia."
+        ],
+        [
+            "ReceivedFacultyRecommendation(x) ::: x has received a faculty recommendation."
+        ],
+        [
+            "CompletedCapstoneProject(x) ::: x has completed a capstone project.",
+            "HasCompletedCapstoneProject(Sophia) ::: Sophia has completed a capstone project."
+        ],
+        [
+            "HasCompleted(Sophia, ResearchMethodologyCourse) ::: Sophia has completed a research methodology course.",
+            "NeedsFacultyRecommendation(Sophia) ::: Sophia needs a faculty recommendation."
+        ],
+        [
+            "PassedScienceAssessment(Sophia) ::: Sophia has passed a science assessment.",
+            "PassedScienceAssessment(x) ::: x has passed a science assessment.",
+            "QualifyForScholarship(Sophia) ::: Sophia qualifies for a scholarship.",
+            "StudentAtUniversity(Sophia) ::: Sophia is a student at a university.",
+            "QualifiesForScholarship(Sophia) ::: Sophia qualifies for a scholarship.",
+            "UniversityScholarship(Sophia) ::: Sophia is a university scholarship recipient.",
+            "EligibleForInternationalProgram(Sophia) ::: Sophia is eligible for an international program."
+        ],
+        [
+            "QualifiesForUniversityScholarship(x) ::: x qualifies for a university scholarship."
+        ],
+        [
+            "PassedLanguageProficiencyExam(x) ::: x has passed a language proficiency exam.",
+            "NeedsLanguageProficiencyExam(Sophia) ::: Sophia needs to take a language proficiency exam."
+        ],
+        [
+            "QualifiedForAdvancedCourses(x) ::: x is qualified for advanced courses.",
+            "EligibleForInternationalProgram(x) ::: x is eligible for an international program."
+        ],
+        [
+            "CompletedCommunityService(x) ::: x has completed community service.",
+            "CompletedCommunityServiceHours(x) ::: x has completed community service hours."
+        ],
+        [
+            "AwardedHonorsDiploma(x) ::: x has been awarded an honors diploma."
+        ],
+        [
+            "AtSophiaUniversity(x) ::: x is at Sophia University."
+        ],
+        [
+            "InternationalProgram(Sophia) ::: Sophia is enrolled in an international program."
+        ],
+        [
+            "HonorsDiploma(Sophia) ::: Sophia has a honors diploma."
+        ]
+    ]
+}

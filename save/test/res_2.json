@@ -1,0 +1,63 @@
+{
+    "res": {
+        "premises-nl": [
+            "Students who have completed the core curriculum and passed the science assessment are qualified for advanced courses.",
+            "Students who are qualified for advanced courses and have completed research methodology are eligible for the international program.",
+            "Students who have passed the language proficiency exam are eligible for the international program.",
+            "Students who are eligible for the international program and have completed a capstone project are awarded an honors diploma.",
+            "Students who have been awarded an honors diploma and have completed community service qualify for the university scholarship.",
+            "Students who have been awarded an honors diploma and have received a faculty recommendation qualify for the university scholarship.",
+            "Sophia has completed the core curriculum.",
+            "Sophia has passed the science assessment.",
+            "Sophia has completed the research methodology course.",
+            "Sophia has completed her capstone project.",
+            "Sophia has completed the required community service hours."
+        ],
+        "fol_premises": [
+            "ForAll(x, (completed_core_curriculum(x) ∧ passed_science_assessment(x)) → qualified_for_advanced_courses(x))",
+            "ForAll(x, (qualified_for_advanced_courses(x) ∧ completed_research_methodology(x)) → eligible_for_international_program(x))",
+            "ForAll(x, passed_language_proficiency(x) → eligible_for_international_program(x))",
+            "ForAll(x, (eligible_for_international_program(x) ∧ completed_capstone_project(x)) → awarded_honors_diploma(x))",
+            "ForAll(x, (awarded_honors_diploma(x) ∧ completed_community_service(x)) → qualifies_for_scholarship(x))",
+            "ForAll(x, (awarded_honors_diploma(x) ∧ received_faculty_recommendation(x)) → qualifies_for_scholarship(x))",
+            "completed_core_curriculum(Sophia)",
+            "passed_science_assessment(Sophia)",
+            "completed_research_methodology(Sophia)",
+            "completed_capstone_project(Sophia)",
+            "completed_community_service(Sophia)"
+        ],
+        "questions": [
+            "\nA. Sophia qualifies for the university scholarship. \nB. Sophia needs a faculty recommendation to qualify for the scholarship. \nC. Sophia is eligible for the international program. \nD. Sophia needs to pass the language proficiency exam to get an honors diploma.",
+            "Sophia qualifies for the university scholarship."
+        ],
+        "reasonings": [
+            "Premises 7 and 8 confirm Sophia completed the core curriculum and passed the science assessment, satisfying premise 1 for advanced courses. Premise 9’s research methodology and premise 2 make her eligible for the international program. Premise 10’s capstone project and premise 4 award her an honors diploma. Premise 11’s community service and premise 5 qualify her for the university scholarship, making A the strongest conclusion. Option B is false because community service suffices without a recommendation. Option C is true but weaker, as scholarship implies international program eligibility. Option D is false because language proficiency is not required via premise 2’s path.",
+            "The university scholarship per premise 5 requires an honors diploma and community service. Premise 4 requires international program eligibility and a capstone project, premise 2 requires advanced course qualification and research methodology, and premise 1 requires core curriculum and science assessment. Premises 7–11 confirm Sophia’s curriculum, assessment, methodology, capstone, and service, satisfying all conditions for the scholarship."
+        ],
+        "answers": [
+            "A",
+            "Yes"
+        ],
+        "LLM-FOL": [
+            "∀x (Student(x) ∧ CompletedCoreCurriculum(x) ∧ PassedScienceAssessment(x) → QualifiedForAdvancedCourses(x))",
+            "∀x (Student(x) ∧ QualifiedForAdvancedCourses(x) ∧ CompletedResearchMethodology(x) → EligibleForInternationalProgram(x))",
+            "∀x (Student(x) ∧ PassedLanguageProficiencyExam(x) → EligibleForInternationalProgram(x))",
+            "∀x (Student(x) ∧ EligibleForInternationalProgram(x) ∧ CompletedCapstoneProject(x) → AwardedHonorsDiploma(x))",
+            "∀x (Student(x) ∧ AwardedHonorsDiploma(x) ∧ CompletedCommunityService(x) → QualifiesForUniversityScholarship(x))",
+            "∀x (Student(x) ∧ AwardedHonorsDiploma(x) ∧ ReceivedFacultyRecommendation(x) → QualifiesForUniversityScholarship(x))",
+            "∀x (Student(x) ∧ AtSophiaUniversity(x) → CompletedCoreCurriculum(x))",
+            "PassedScienceAssessment(Sophia)",
+            "HasCompleted(Sophia, ResearchMethodologyCourse)",
+            "HasCompletedCapstoneProject(Sophia)",
+            "∀x (Person(x) ∧ NameSophia(x) → CompletedCommunityServiceHours(x))"
+        ],
+        "question-FOL": [
+            "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\nA QualifiesForScholarship(Sophia) ↔ (StudentAtUniversity(Sophia) ∧ UniversityScholarship(Sophia))\nB ∀x (NeedsFacultyRecommendation(Sophia) → QualifyForScholarship(Sophia))\nC ∀x (Person(Sophia) ∧ EligibleForInternationalProgram(Sophia) → InternationalProgram(Sophia))\nD ∀x (NeedsLanguageProficiencyExam(Sophia) → HonorsDiploma(Sophia)):",
+            "QualifiesForScholarship(Sophia) ↔ (StudentAtUniversity(Sophia) ∧ HighAcademicAchievement(Sophia))"
+        ],
+        "logic_program": null,
+        "new-fol": null,
+        "maps": null,
+        "q_ids": null
+    }
+}

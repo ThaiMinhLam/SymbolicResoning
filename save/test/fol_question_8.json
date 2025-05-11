@@ -1,0 +1,6 @@
+{
+    "fol": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hires(x, y)))\n ∀x (Curriculum(x) → (EnhancesStudentEngagement(x) ∧ ¬EnhancesCriticalThinking(x)))\n ∀x (Curriculum(x) ∧ EnhancesCriticalThinking(x) → CanConclude(y))\n\nWhere y is the conclusion that the curriculum enhances critical thinking.\n ∀x (Curriculum(x) ∧ NeedsResources(x) → EnhancesCriticalThinking(x))\n ∀x (Curriculum(x) ∧ WellStructured(x) → ¬∃y (Exercises(y) ∧ AssignedTo(y, x))):",
+        "∀x ∀y (FacultyPriorities(x) ∧ CurriculumFeatures(y) → EnhancedCriticalThinking(x, y))"
+    ]
+}

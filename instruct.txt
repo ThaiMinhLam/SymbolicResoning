@@ -1,0 +1,3 @@
+# Scrolling
+Ctrl + B then button "["
+Quit using q

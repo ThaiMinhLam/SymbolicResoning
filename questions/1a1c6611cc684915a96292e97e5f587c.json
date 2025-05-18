@@ -1,0 +1,42 @@
+{
+    "premises-NL": [
+        "Every course contains knowledge.",
+        "If a student takes a course and passes the exam, they acquire knowledge."
+    ],
+    "questions": [
+        "Does a course contain knowledge?",
+        "Does a course contain knowledge?",
+        "Does a course contain knowledge?",
+        "Does a course contain knowledge?"
+    ],
+    "answers": [
+        "Yes",
+        "Yes",
+        "Yes",
+        "Yes"
+    ],
+    "idx": [
+        [
+            1,
+            2
+        ],
+        [
+            1,
+            2
+        ],
+        [
+            1,
+            2
+        ],
+        [
+            1,
+            2
+        ]
+    ],
+    "explanations": [
+        "Premises 1 and 2 support the positive answer Yes.",
+        "Premises 1 and 2 support the positive answer Yes.",
+        "Premises 1 and 2 support the positive answer Yes.",
+        "Premises 1 and 2 support the positive answer Yes."
+    ]
+}

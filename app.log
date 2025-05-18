@@ -1,0 +1,97 @@
+nohup: ignoring input
+['CanAccessRestrictedArchives(John) ∧ ¬CanSubmitResearchProposals(John)', 'CanApplyForCollaborativeResearchProjects(John)', 'NeedsMorePublications(John) → CanAccessRestrictedArchives(John)', 'ExtendedLibraryAccess(John) ∧ ¬CanApplyForCollaborativeResearchProjects(John)']
+None
+
+
+===========================================================================
+NLTK was unable to find the prover9 file!
+Use software specific configuration parameters or set the PROVER9 environment variable.
+
+  Searched in:
+    - /usr/local/bin/prover9
+    - /usr/local/bin/prover9/bin
+    - /usr/local/bin
+    - /usr/bin
+    - /usr/local/prover9
+    - /usr/local/share/prover9
+
+  For more information on prover9, see:
+    <https://www.cs.unm.edu/~mccune/prover9/>
+===========================================================================
+None
+
+
+===========================================================================
+NLTK was unable to find the prover9 file!
+Use software specific configuration parameters or set the PROVER9 environment variable.
+
+  Searched in:
+    - /usr/local/bin/prover9
+    - /usr/local/bin/prover9/bin
+    - /usr/local/bin
+    - /usr/bin
+    - /usr/local/prover9
+    - /usr/local/share/prover9
+
+  For more information on prover9, see:
+    <https://www.cs.unm.edu/~mccune/prover9/>
+===========================================================================
+None
+
+
+===========================================================================
+NLTK was unable to find the prover9 file!
+Use software specific configuration parameters or set the PROVER9 environment variable.
+
+  Searched in:
+    - /usr/local/bin/prover9
+    - /usr/local/bin/prover9/bin
+    - /usr/local/bin
+    - /usr/bin
+    - /usr/local/prover9
+    - /usr/local/share/prover9
+
+  For more information on prover9, see:
+    <https://www.cs.unm.edu/~mccune/prover9/>
+===========================================================================
+None
+
+
+===========================================================================
+NLTK was unable to find the prover9 file!
+Use software specific configuration parameters or set the PROVER9 environment variable.
+
+  Searched in:
+    - /usr/local/bin/prover9
+    - /usr/local/bin/prover9/bin
+    - /usr/local/bin
+    - /usr/bin
+    - /usr/local/prover9
+    - /usr/local/share/prover9
+
+  For more information on prover9, see:
+    <https://www.cs.unm.edu/~mccune/prover9/>
+===========================================================================
+{'final_ans': 'A', 'idx_final_ans': [], 'dic_idx_wrong_options': {}, 'proof_final_ans': [], 'dic_proof_wrong_options': {}}
+
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]
+Loading checkpoint shards: 100%|██████████| 2/2 [00:00<00:00, 32.94it/s]
+Device set to use cuda:0
+
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]
+Loading checkpoint shards:  33%|███▎      | 1/3 [00:01<00:02,  1.04s/it]
+Loading checkpoint shards:  67%|██████▋   | 2/3 [00:02<00:01,  1.10s/it]
+Loading checkpoint shards: 100%|██████████| 3/3 [00:03<00:00,  1.06s/it]
+Loading checkpoint shards: 100%|██████████| 3/3 [00:03<00:00,  1.07s/it]
+Device set to use cuda:0
+/venv/main/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:631: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.1` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/venv/main/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:636: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.75` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+/venv/main/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:653: UserWarning: `do_sample` is set to `False`. However, `top_k` is set to `40` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_k`. This was detected when initializing the generation config instance, which means the corresponding file may hold incorrect parameterization and should be fixed.
+  warnings.warn(
+ngrok tunnel URL: NgrokTunnel: "https://magical-wise-toucan.ngrok-free.app" -> "http://localhost:43210"
+INFO:     Started server process [330635]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:43210 (Press CTRL+C to quit)

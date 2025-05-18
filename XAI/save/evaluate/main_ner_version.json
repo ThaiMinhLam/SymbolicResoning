@@ -1,0 +1,21 @@
+[
+    [
+        {
+            "premises": [
+                "There exists a student who is careful with the food at the university canteen.",
+                "If x does not consume food at the canteen, then x does not get sick from eating the food.",
+                "There exists a student who eats food from the canteen.",
+                "If x is not careful with the food, then x is not careful with the food at the university canteen."
+            ],
+            "question": "Which of the following can be inferred about students based on the premises?\nA. All students who eat food from the canteen get sick.\nB. All students are careful with the food at the canteen.\nC. No students eat food from the canteen.\nD. Some students do not get sick from eating canteen food.",
+            "answers": "D",
+            "idx": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "explanation": "- Step 1: From P1, we know that there exists a student who is careful with food at the university canteen.\n           - Step 2: From P3, we know that there exists a student who eats food from the canteen.\n           - Step 3: From P2, we know that if a student does not consume food at the canteen, then they will not get sick from food.\n           - Step 4: Since neither P1 nor P3 implies that all students eat at the canteen or are careful with their food there, we cannot infer that all students are careful with food at the canteen (answer B) or that all students eat at the canteen (answer C).\n           - Step 5: From P2, we also know that if a student does not consume food at the canteen, they will not get sick from canteen food. However, P3 states that there is a student who eats at the canteen, but we don't have enough information to determine whether this student gets sick or not. Therefore, we cannot infer that all students who eat from the canteen get sick (answer A).\n           - Step 6: From P4, we know that if a student is not careful with their food at the canteen, then they are not careful with food there. This does not provide any information about students who are careful with their food at the canteen.\n           - Step 7: From P1, we know that there is at least one student who is careful with their food at the canteen. From P3, we know that there is a student who eats at the canteen. Since these two statements do not contradict each other, it is possible for some students to both eat at the canteen and not get sick from it. Therefore, the answer is D.\nBased on the given premises, we cannot infer that all students get sick from eating canteen food (answer A), all students are careful with their food at the canteen (answer B), or no students eat food from the canteen (answer C). However, we can infer that some students do not get sick from eating canteen food (answer D)."
+        }
+    ]
+]

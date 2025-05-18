@@ -1,0 +1,421 @@
+{
+    "premises-nl": [
+        "If a curriculum is well-structured and includes exercises, then it enhances student engagement.",
+        "If a curriculum enhances student engagement and provides access to advanced resources, then it enhances critical thinking.",
+        "If a faculty prioritizes pedagogical training and curriculum development, then the curriculum is well-structured.",
+        "If the faculty prioritizes pedagogical training and curriculum development, then they are more likely to provide high-quality education.",
+        "If the curriculum has practical exercises, then students are able to apply theoretical knowledge in a hands-on setting.",
+        "If the curriculum provides advanced resources, then access is granted to students."
+    ],
+    "fol_premises": [
+        "ForAll(c, (well_structured(c) ∧ has_exercises(c)) → enhances_engagement(c))",
+        "ForAll(c, (enhances_engagement(c) ∧ advanced_resources(c)) → enhances_critical_thinking(c))",
+        "ForAll(f, (pedagogical_training(f) ∧ curriculum_development(f)) → well_structured(curriculum))",
+        "pedagogical_training(faculty) ∧ curriculum_development(faculty)",
+        "has_exercises(curriculum)",
+        "advanced_resources(curriculum)"
+    ],
+    "questions": [
+        "Based on the premises, we can conclude that the curriculum enhances student engagement but does not enhance critical thinking. \n Based on the premises, we can conclude that the curriculum enhances critical thinking. \n Based on the premises, it can be concluded that the curriculum needs more resources to enhance critical thinking. \n Based on the premises, we can conclude that the curriculum is well-structured, but lacks exercises.",
+        "The combination of faculty priorities and curriculum features leads to enhanced critical thinking."
+    ],
+    "reasonings": [
+        "Premise 4 and premise 3 confirm the curriculum is well-structured due to faculty priorities in pedagogical training and curriculum development. Premise 5 provides exercises, so premise 1 implies the curriculum enhances student engagement. Premise 6 adds advanced resources, and premise 2 confirms the curriculum enhances critical thinking, supporting option B. Option A is false because it enhances critical thinking. Option C is false because resources are sufficient. Option D is false because the curriculum has exercises.",
+        "Faculty priorities in premise 4 (pedagogical training and curriculum development) satisfy premise 3, making the curriculum well-structured. Curriculum features in premise 5 (exercises) and premise 1 lead to enhanced engagement, and with premise 6 (advanced resources), premise 2 confirms enhanced critical thinking, supporting the statement."
+    ],
+    "ground_truth_answer": [
+        "B",
+        "Yes"
+    ],
+    "LLM-FOL": [
+        "∀x (RepresentsCurriculum(x) ∧ WellStructure(x) ∧ Include(x, exerciseorproblem) → EnhanceStudentEngagement(x))",
+        "∀x (RepresentsCurriculum(x) ∧ EnhanceStudentEngagement(x) ∧ ProvideAdvanceResource(x) → EnhanceCriticalThink(x))",
+        "∀x (Faculty(x) ∧ PrioritizePedagogicalTrain(x) ∧ DevelopCurriculum(x) → WellStructured(x))",
+        "∀x (PrioritizePedagogicalTrain(x) → ProvideHighQualityEducation(x))",
+        "∀x (CurriculumHaPracticalExercise(x) → ApplyTheoreticalKnowledgeInHandOnSet(x))",
+        "∀x (RepresentsCurriculum(x) ∧ ProvideAdvanceResource(x) → GrantAccessToStudent(x))"
+    ],
+    "question-FOL": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hire(x, y)))\n ∀x (RepresentsRepresentsRepresentsRepresentsCurriculum(x) ∧ EnhanceStudentEngagement(x) ∧ ¬EnhanceCriticalThink(x))\n ∀x (RepresentsRepresentsRepresentsRepresentsCurriculum(x) ∧ EnhanceCriticalThink(x) → CanConclude(y))\n\nWhere y is the conclusion that the curriculum enhances critical thinking.\n ∀x (RepresentsRepresentsRepresentsRepresentsCurriculum(x) ∧ NeedResource(x) → EnhanceCriticalThink(x))\n ∀x (RepresentsRepresentsRepresentsRepresentsCurriculum(x) ∧ WellStructure(x) → ¬∃y (Exercise(y) ∧ AssignTo(y, x)))",
+        "∀x ∀y (IsFacultyPriority(x) ∧ FeatureOfCurriculum(y) → EnhanceCriticalThink(x, y))"
+    ],
+    "logic_program": [
+        "Curriculum(x) ::: x represents a curriculum",
+        "DevelopCurriculum(x) ::: x is being developed into a curriculum",
+        "WellStructure(x) ::: The structure of x is well-organized",
+        "PrioritizePedagogicalTrain(x) ::: x prioritizes pedagogical training",
+        "IncludeExercise(x) ::: x includes exercises",
+        "EnhanceStudentEngagement(x) ::: x enhances student engagement",
+        "WellStructureCurriculum(x) ::: x is a well-structured curriculum",
+        "ApplyTheoreticalKnowledgeInHandOnSet(x) ::: Students are able to apply theoretical knowledge in a hands-on setting with x",
+        "GrantAccessToStudent(x) ::: Access to x is granted to students",
+        "EnhanceCriticalThink(x) ::: x enhances critical thinking skills",
+        "PrioritizePedagogicalTrainAndCurriculumDevelopment(x) ::: x prioritizes both pedagogical training and curriculum development",
+        "CurriculumHasPracticalExercise(x) ::: x has practical exercises",
+        "ProvideAdvanceResource(x) ::: x provides advanced resources",
+        "Faculty(x) ::: x represents a faculty member",
+        "ProvideAccessToAdvanceResource(x) ::: x provides access to advanced resources",
+        "ProvideHighQualityEducation(x) ::: The education provided by x is of high quality",
+        "AssignTo(y, x) ::: x is assigned to teach the subject y",
+        "FacultyPriority(x) ::: x is a faculty priority",
+        "CurriculumFeature(y) ::: y is a feature of a curriculum",
+        "Exercise(y) ::: y is an exercise or problem for students",
+        "EnhanceCriticalThink(x, y) ::: The curriculum x improves critical thinking with regard to y",
+        "NeedResource(x) ::: The curriculum x requires additional resources",
+        "CanConclude(y) ::: It is possible to draw a conclusion from y."
+    ],
+    "new_fol": null,
+    "maps": null,
+    "q_ids": null,
+    "old_questions": [
+        "Based on the premises, what can we conclude about the curriculum?\nA. It enhances student engagement but not critical thinking\nB. It enhances critical thinking\nC. It needs more resources to enhance critical thinking\nD. It is well-structured but lacks exercises",
+        "Does the combination of faculty priorities and curriculum features lead to enhanced critical thinking, according to the premises?"
+    ],
+    "logic_program_premise": [
+        "Curriculum(x) ::: x represents a curriculum",
+        "DevelopCurriculum(x) ::: x is being developed into a curriculum",
+        "WellStructure(x) ::: The structure of x is well-organized",
+        "PrioritizePedagogicalTrain(x) ::: x prioritizes pedagogical training",
+        "IncludeExercise(x) ::: x includes exercises",
+        "EnhanceStudentEngagement(x) ::: x enhances student engagement",
+        "WellStructureCurriculum(x) ::: x is a well-structured curriculum",
+        "ApplyTheoreticalKnowledgeInHandOnSet(x) ::: Students are able to apply theoretical knowledge in a hands-on setting with x",
+        "GrantAccessToStudent(x) ::: Access to x is granted to students",
+        "EnhanceCriticalThink(x) ::: x enhances critical thinking skills",
+        "PrioritizePedagogicalTrainAndCurriculumDevelopment(x) ::: x prioritizes both pedagogical training and curriculum development",
+        "CurriculumHasPracticalExercise(x) ::: x has practical exercises",
+        "ProvideAdvanceResource(x) ::: x provides advanced resources",
+        "Faculty(x) ::: x represents a faculty member",
+        "ProvideAccessToAdvanceResource(x) ::: x provides access to advanced resources",
+        "ProvideHighQualityEducation(x) ::: The education provided by x is of high quality"
+    ],
+    "logic_program_question": [
+        "AssignTo(y, x) ::: x is assigned to teach the subject y",
+        "WellStructure(x) ::: The curriculum x is well-organized and logically sound",
+        "Curriculum(x) ::: x represents a curriculum",
+        "EnhanceStudentEngagement(x) ::: The curriculum x effectively engages students",
+        "FacultyPriority(x) ::: x is a faculty priority",
+        "EnhanceCriticalThink(x) ::: The curriculum x fosters critical thinking skills",
+        "CurriculumFeature(y) ::: y is a feature of a curriculum",
+        "Exercise(y) ::: y is an exercise or problem for students",
+        "EnhanceCriticalThink(x, y) ::: The curriculum x improves critical thinking with regard to y",
+        "NeedResource(x) ::: The curriculum x requires additional resources",
+        "CanConclude(y) ::: It is possible to draw a conclusion from y."
+    ],
+    "clusters_name_similarity_before": [
+        [
+            "Curriculum(x) ::: x represents a curriculum",
+            "DevelopCurriculum(x) ::: x is being developed into a curriculum",
+            "CurriculumFeature(y) ::: y is a feature of a curriculum"
+        ],
+        [
+            "WellStructure(x) ::: The structure of x is well-organized",
+            "WellStructureCurriculum(x) ::: x is a well-structured curriculum"
+        ],
+        [
+            "PrioritizePedagogicalTrain(x) ::: x prioritizes pedagogical training"
+        ],
+        [
+            "IncludeExercise(x) ::: x includes exercises",
+            "Exercise(y) ::: y is an exercise or problem for students"
+        ],
+        [
+            "EnhanceStudentEngagement(x) ::: x enhances student engagement"
+        ],
+        [
+            "ApplyTheoreticalKnowledgeInHandOnSet(x) ::: Students are able to apply theoretical knowledge in a hands-on setting with x"
+        ],
+        [
+            "GrantAccessToStudent(x) ::: Access to x is granted to students"
+        ],
+        [
+            "EnhanceCriticalThink(x) ::: x enhances critical thinking skills",
+            "EnhanceCriticalThink(x, y) ::: The curriculum x improves critical thinking with regard to y"
+        ],
+        [
+            "CurriculumHasPracticalExercise(x) ::: x has practical exercises"
+        ],
+        [
+            "ProvideAdvanceResource(x) ::: x provides advanced resources"
+        ],
+        [
+            "Faculty(x) ::: x represents a faculty member",
+            "FacultyPriority(x) ::: x is a faculty priority"
+        ],
+        [
+            "ProvideHighQualityEducation(x) ::: The education provided by x is of high quality"
+        ],
+        [
+            "AssignTo(y, x) ::: x is assigned to teach the subject y"
+        ],
+        [
+            "NeedResource(x) ::: The curriculum x requires additional resources"
+        ],
+        [
+            "CanConclude(y) ::: It is possible to draw a conclusion from y."
+        ]
+    ],
+    "old_clusters": [
+        [
+            "Curriculum(x) ::: x represents a curriculum",
+            "DevelopCurriculum(x) ::: x is being developed into a curriculum",
+            "CurriculumFeature(y) ::: y is a feature of a curriculum"
+        ],
+        [
+            "WellStructure(x) ::: The structure of x is well-organized",
+            "WellStructureCurriculum(x) ::: x is a well-structured curriculum"
+        ],
+        [
+            "PrioritizePedagogicalTrain(x) ::: x prioritizes pedagogical training",
+            "PrioritizePedagogicalTrainAndCurriculumDevelopment(x) ::: x prioritizes both pedagogical training and curriculum development"
+        ],
+        [
+            "IncludeExercise(x) ::: x includes exercises",
+            "Exercise(y) ::: y is an exercise or problem for students"
+        ],
+        [
+            "EnhanceStudentEngagement(x) ::: x enhances student engagement"
+        ],
+        [
+            "ApplyTheoreticalKnowledgeInHandOnSet(x) ::: Students are able to apply theoretical knowledge in a hands-on setting with x"
+        ],
+        [
+            "GrantAccessToStudent(x) ::: Access to x is granted to students"
+        ],
+        [
+            "EnhanceCriticalThink(x) ::: x enhances critical thinking skills",
+            "EnhanceCriticalThink(x, y) ::: The curriculum x improves critical thinking with regard to y"
+        ],
+        [
+            "CurriculumHasPracticalExercise(x) ::: x has practical exercises"
+        ],
+        [
+            "ProvideAdvanceResource(x) ::: x provides advanced resources",
+            "ProvideAccessToAdvanceResource(x) ::: x provides access to advanced resources"
+        ],
+        [
+            "Faculty(x) ::: x represents a faculty member",
+            "FacultyPriority(x) ::: x is a faculty priority"
+        ],
+        [
+            "ProvideHighQualityEducation(x) ::: The education provided by x is of high quality"
+        ],
+        [
+            "AssignTo(y, x) ::: x is assigned to teach the subject y"
+        ],
+        [
+            "NeedResource(x) ::: The curriculum x requires additional resources"
+        ],
+        [
+            "CanConclude(y) ::: It is possible to draw a conclusion from y."
+        ]
+    ],
+    "clusters_name_similarity": [
+        [
+            "RepresentsCurriculum(x) ::: x represents a curriculum",
+            "DevelopCurriculum(x) ::: x is being developed into a curriculum",
+            "FeatureOfCurriculum(y) ::: y is a feature of a curriculum"
+        ],
+        [
+            "WellStructure(x) ::: The structure of x is well-organized",
+            "WellStructured(x) ::: x is a well-structured curriculum"
+        ],
+        [
+            "PrioritizePedagogicalTrain(x) ::: x prioritizes pedagogical training"
+        ],
+        [
+            "Include(x, exerciseorproblem) ::: x includes exercises",
+            "Exercise(y) ::: y is an exercise or problem for students"
+        ],
+        [
+            "EnhanceStudentEngagement(x) ::: x enhances student engagement"
+        ],
+        [
+            "ApplyTheoreticalKnowledgeInHandOnSet(x) ::: Students are able to apply theoretical knowledge in a hands-on setting with x"
+        ],
+        [
+            "GrantAccessToStudent(x) ::: Access to x is granted to students"
+        ],
+        [
+            "EnhanceCriticalThink(x) ::: x enhances critical thinking skills",
+            "EnhanceCriticalThink(x, y) ::: The curriculum x improves critical thinking with regard to y"
+        ],
+        [
+            "CurriculumHasPracticalExercise(x) ::: x has practical exercises"
+        ],
+        [
+            "ProvideAdvanceResource(x) ::: x provides advanced resources"
+        ],
+        [
+            "Faculty(x) ::: x represents a faculty member",
+            "IsFacultyPriority(x) ::: x is a faculty priority"
+        ],
+        [
+            "ProvideHighQualityEducation(x) ::: The education provided by x is of high quality"
+        ],
+        [
+            "AssignTo(y, x) ::: x is assigned to teach the subject y"
+        ],
+        [
+            "NeedResource(x) ::: The curriculum x requires additional resources"
+        ],
+        [
+            "CanConclude(y) ::: It is possible to draw a conclusion from y."
+        ]
+    ],
+    "common_convert_dic": [
+        {},
+        {},
+        {
+            "PrioritizePedagogicalTrain": "PrioritizePedagogicalTrain",
+            "PrioritizePedagogicalTrainAndCurriculumDevelopment": "PrioritizePedagogicalTrain"
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {
+            "ProvideAdvanceResource": "ProvideAdvanceResource",
+            "ProvideAccessToAdvanceResource": "ProvideAdvanceResource"
+        },
+        {},
+        {},
+        {},
+        {},
+        {}
+    ],
+    "new_premise_fol": [
+        "∀x (Represents(x, Curriculum) ∧ Structured(x, structure) ∧ Include(x, exerciseorproblem) → Enhance(x, studentengagement))",
+        "∀x (Represents(x, Curriculum) ∧ Enhance(x, studentengagement) ∧ Provide(x, advancedresources) → Enhance(x, criticalthinkingskills))",
+        "∀x (Faculty(x) ∧ PrioritizePedagogicalTrain(x) ∧ RepresentingAsCurriculum(x) → Structured(x, curriculum))",
+        "∀x (PrioritizePedagogicalTrain(x) → ProvideHighQualityEducation(x))",
+        "∀x (CurriculumHaPracticalExercise(x) → ApplyTheoreticalKnowledgeInHandOnSet(x))",
+        "∀x (Represents(x, Curriculum) ∧ Provide(x, advancedresources) → GrantAccessToStudent(x))"
+    ],
+    "new_question_fol": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hire(x, y)))\n ∀x (RepresentsRepresentsRepresentsRepresentsCurriculum(x) ∧ Enhance(x, studentengagement) ∧ ¬Enhance(x, criticalthinkingskills))\n ∀x (RepresentsRepresentsRepresentsRepresentsCurriculum(x) ∧ Enhance(x, criticalthinkingskills) → CanConclude(y))\n\nWhere y is the conclusion that the curriculum enhances critical thinking.\n ∀x (RepresentsRepresentsRepresentsRepresentsCurriculum(x) ∧ NeedResource(x) → Enhance(x, criticalthinkingskills))\n ∀x (RepresentsRepresentsRepresentsRepresentsCurriculum(x) ∧ Structured(x, structure) → ¬∃y (Exercise(y) ∧ AssignTo(y, x)))",
+        "∀x ∀y (IsFacultyPriority(x) ∧ HasFeature(curriculum, y) → EnhanceCriticalThink(x, y))"
+    ],
+    "new_logic_program": [
+        "Curriculum(x) ::: x represents a curriculum",
+        "RepresentingAsCurriculum(x) ::: x is being developed into a curriculum",
+        "Structured(x, structure) ::: The structure of x is well-organized",
+        "PrioritizePedagogicalTrain(x) ::: x prioritizes pedagogical training",
+        "IncludeExercise(x) ::: x includes exercises",
+        "Enhance(x, studentengagement) ::: x enhances student engagement",
+        "WellStructureCurriculum(x) ::: x is a well-structured curriculum",
+        "ApplyTheoreticalKnowledgeInHandOnSet(x) ::: Students are able to apply theoretical knowledge in a hands-on setting with x",
+        "GrantAccessToStudent(x) ::: Access to x is granted to students",
+        "Enhance(x, criticalthinkingskills) ::: x enhances critical thinking skills",
+        "PrioritizePedagogicalTrainAndCurriculumDevelopment(x) ::: x prioritizes both pedagogical training and curriculum development",
+        "CurriculumHasPracticalExercise(x) ::: x has practical exercises",
+        "Provide(x, advancedresources) ::: x provides advanced resources",
+        "Faculty(x) ::: x represents a faculty member",
+        "ProvideAccessToAdvanceResource(x) ::: x provides access to advanced resources",
+        "ProvideHighQualityEducation(x) ::: The education provided by x is of high quality",
+        "AssignTo(y, x) ::: x is assigned to teach the subject y",
+        "FacultyPriority(x) ::: x is a faculty priority",
+        "CurriculumFeature(y) ::: y is a feature of a curriculum",
+        "Exercise(y) ::: y is an exercise or problem for students",
+        "EnhanceCriticalThink(x, y) ::: The curriculum x improves critical thinking with regard to y",
+        "NeedResource(x) ::: The curriculum x requires additional resources",
+        "CanConclude(y) ::: It is possible to draw a conclusion from y."
+    ],
+    "new_clusters": [
+        [
+            "Represents(x, Curriculum) ::: x represents a curriculum",
+            "RepresentingAsCurriculum(x) ::: x is being developed into a curriculum",
+            "HasFeature(curriculum, y) ::: y is a feature of a curriculum"
+        ],
+        [],
+        [],
+        [
+            "Structured(x, structure) ::: The structure of x is well-organized",
+            "Structured(x, curriculum) ::: x is a well-structured curriculum"
+        ],
+        [],
+        [
+            "PrioritizePedagogicalTrain(x) ::: x prioritizes pedagogical training"
+        ],
+        [
+            "Include(x, exerciseorproblem) ::: x includes exercises"
+        ],
+        [
+            "Exercise(y) ::: y is an exercise or problem for students"
+        ],
+        [
+            "Enhance(x, studentengagement) ::: x enhances student engagement",
+            "Enhance(x, criticalthinkingskills) ::: x enhances critical thinking skills",
+            "EnhanceCriticalThink(x, y) ::: The curriculum x improves critical thinking with regard to y"
+        ],
+        [
+            "ApplyTheoreticalKnowledgeInHandOnSet(x) ::: Students are able to apply theoretical knowledge in a hands-on setting with x"
+        ],
+        [
+            "GrantAccessToStudent(x) ::: Access to x is granted to students"
+        ],
+        [],
+        [],
+        [
+            "CurriculumHasPracticalExercise(x) ::: x has practical exercises"
+        ],
+        [
+            "Provide(x, advancedresources) ::: x provides advanced resources",
+            "NeedResource(x) ::: The curriculum x requires additional resources"
+        ],
+        [
+            "Faculty(x) ::: x represents a faculty member"
+        ],
+        [
+            "IsFacultyPriority(x) ::: x is a faculty priority"
+        ],
+        [
+            "ProvideHighQualityEducation(x) ::: The education provided by x is of high quality"
+        ],
+        [
+            "AssignTo(y, x) ::: x is assigned to teach the subject y"
+        ],
+        [],
+        [
+            "CanConclude(y) ::: It is possible to draw a conclusion from y."
+        ]
+    ],
+    "mapping_info": [
+        {
+            "DevelopCurriculum(x)": "RepresentingAsCurriculum(x)",
+            "FeatureOfCurriculum(y)": "HasFeature(curriculum, y)",
+            "WellStructure(x)": "Structured(x, structure)",
+            "WellStructured(x)": "Structured(x, curriculum)",
+            "EnhanceStudentEngagement(x)": "Enhance(x, studentengagement)",
+            "EnhanceCriticalThink(x)": "Enhance(x, criticalthinkingskills)",
+            "ProvideAdvanceResource(x)": "Provide(x, advancedresources)"
+        },
+        {
+            "RepresentsCurriculum(x)": "Represents(x, Curriculum)"
+        }
+    ],
+    "solver": [],
+    "solver_info": {
+        "answers": [
+            "D. It is impossible to definitively conclude A, B, or C based on the given premises.",
+            "Yes"
+        ],
+        "idxs": [
+            [
+                1,
+                5
+            ],
+            [
+                1,
+                3,
+                5
+            ]
+        ],
+        "explanations": [
+            "- Step 1: From P1, we have that if a curriculum is represented, structured, and includes exercises or problems, then it enhances student engagement.\n           - Step 2: We want to determine if the curriculum enhances critical thinking or not. However, none of the given premises directly state that enhancing student engagement implies enhancing critical thinking. Therefore, we cannot directly use P1 to conclude that the curriculum enhances critical thinking.\n           - Step 3: We also consider P5, which states that if a curriculum has practical exercises, then students are able to apply theoretical knowledge in a hands-on setting. While this does not directly state that the curriculum enhances critical thinking, it does suggest that the curriculum may provide opportunities for students to engage in activities that could help develop their critical thinking skills.\nThe premises do not provide enough information to definitively conclude that the curriculum enhances student engagement but not critical thinking (A), enhances critical thinking (B), needs more resources to enhance critical thinking (C), or is well-structured but lacks exercises (D). While some premises suggest that certain conditions may lead to enhanced student engagement or potential opportunities for critical thinking development, none of them directly link these conditions to specific conclusions about the curriculum's impact on critical thinking.",
+            "- Step 1: From P1, we know that if a curriculum is represented, structured, and includes exercises or problems, then it enhances student engagement (Enhance(x, studentengagement)).\n           - Step 2: From P3, we know that faculty prioritizing pedagogical training leads to a structured curriculum (Structured(x, curriculum)).\n           - Step 3: From P5, we know that a curriculum with practical exercises (CurriculumHaPracticalExercise(x)) applies theoretical knowledge in a hands-on setting (ApplyTheoreticalKnowledgeInHandOnSet(x)), which can enhance critical thinking skills (Enhance(x, criticalthinkingskills)).\nAccording to the premises, faculty priorities leading to a structured curriculum (P3) and a curriculum featuring practical exercises (P5) results in a curriculum where students can apply theoretical knowledge in a hands-on setting (P5), which enhances critical thinking skills (P1 and P5)."
+        ]
+    }
+}

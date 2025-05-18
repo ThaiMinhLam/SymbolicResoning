@@ -1,0 +1,249 @@
+{
+    "idx": [
+        [
+            2,
+            3
+        ],
+        [
+            1,
+            4
+        ]
+    ],
+    "premises-nl": [
+        "If a student is careful with the food at the university canteen, then they are likely to save money on meals.",
+        "If x does not consume food at the canteen, then x does not get sick from eating the food.",
+        "If there exists a student, then they eat food from the canteen.",
+        "If x is not careful with food, then x is not careful with food at the university canteen."
+    ],
+    "fol_premises": [
+        "∃x (S(x) ∧ C(x))",
+        "∀x (¬E(x) → ¬K(x))",
+        "∃x (S(x) ∧ E(x))",
+        "∀x (¬F(x) → ¬C(x))"
+    ],
+    "questions": [
+        "All students who eat food from the canteen get sick. \n All students are careful with the food at the canteen. \n No students eat food from the canteen. \n Some students do not get sick from eating canteen food.",
+        "Some students are careful with food generally."
+    ],
+    "reasonings": [
+        "There exists a student who eats food from the canteen (premise 3), implying some students may not eat. If a student does not consume canteen food, they do not get sick from it (premise 2). Thus, some students do not get sick, derived through reasoning about eating and sickness.",
+        "There exists a student who is careful with the food at the university canteen (premise 1), and being careful with canteen food implies being careful with food generally (premise 4). Therefore, some students are careful with food generally, requiring multiple steps to connect canteen-specific to general carefulness."
+    ],
+    "ground_truth_answer": [
+        "D",
+        "Yes"
+    ],
+    "LLM-FOL": [
+        "∀x (Careful(x, Food, Canteen) → SaveMoneyOnMeal(x))",
+        "∀x (¬Consume(x, Food, Canteen) → ¬GetSick(x))",
+        "∃x (Student(x) ∧ Eats(x, canteenfood))",
+        "∀x (CarefulWithFood(x) → ¬CarefulWithFood(x))"
+    ],
+    "question-FOL": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hire(x, y)))\n ∀x (Student(x) ∧ Eats(x, canteenfood) → GetSick(x))\n ∀x (Student(x) → Careful(x, Food, Canteen))\n ¬∃x (Student(x) ∧ Eats(x, canteenfood))\n ∃x (Student(x) ∧ ¬GetsSick(x, canteenfood))",
+        "∃x (Student(x) ∧ CarefulWithFood(x))"
+    ],
+    "logic_program": [
+        "Student(x) ::: x is a Student",
+        "ConsumeFoodAtCanteen(x) ::: x consumes food at the canteen",
+        "EatFromCanteen(x) ::: x eats food from the canteen",
+        "NotCarefulWithFood(x) ::: x is not careful with food",
+        "GetSickFromFood(x) ::: x gets sick from eating the food",
+        "CarefulWithFoodAtUniversityCanteen(x) ::: x is careful with food at the university canteen",
+        "CarefulWithFoodAtCanteen(x) ::: x is careful with food at the canteen",
+        "SaveMoneyOnMeal(x) ::: x saves money on a meal by being careful with food at the canteen.",
+        "CarefulWithFood(x) ::: x is careful with food",
+        "EatFoodFromCanteen(x) ::: Student x eats food from the canteen",
+        "GetSick(x) ::: x gets sick",
+        "GetSickFromCanteenFood(x) ::: Student x gets sick from canteen food"
+    ],
+    "new_fol": null,
+    "maps": null,
+    "q_ids": null,
+    "old_questions": [
+        "Which of the following can be inferred about students based on the premises?\nA. All students who eat food from the canteen get sick.\nB. All students are careful with the food at the canteen.\nC. No students eat food from the canteen.\nD. Some students do not get sick from eating canteen food.",
+        "Is it true that some students are careful with food generally?"
+    ],
+    "logic_program_premise": [
+        "Student(x) ::: x is a Student",
+        "ConsumeFoodAtCanteen(x) ::: x consumes food at the canteen",
+        "EatFromCanteen(x) ::: x eats food from the canteen",
+        "NotCarefulWithFood(x) ::: x is not careful with food",
+        "GetSickFromFood(x) ::: x gets sick from eating the food",
+        "CarefulWithFoodAtUniversityCanteen(x) ::: x is careful with food at the university canteen",
+        "CarefulWithFoodAtCanteen(x) ::: x is careful with food at the canteen",
+        "SaveMoneyOnMeal(x) ::: x saves money on a meal by being careful with food at the canteen."
+    ],
+    "logic_program_question": [
+        "Student(x) ::: x is a Student",
+        "CarefulWithFood(x) ::: x is careful with food",
+        "CarefulWithFoodAtCanteen(x) ::: x is careful with food at the canteen",
+        "EatFoodFromCanteen(x) ::: Student x eats food from the canteen",
+        "GetSick(x) ::: x gets sick",
+        "GetSickFromCanteenFood(x) ::: Student x gets sick from canteen food"
+    ],
+    "clusters_name_similarity_before": [
+        [
+            "Student(x) ::: x is a Student"
+        ],
+        [
+            "ConsumeFoodAtCanteen(x) ::: x consumes food at the canteen",
+            "CarefulWithFoodAtCanteen(x) ::: x is careful with food at the canteen"
+        ],
+        [
+            "EatFromCanteen(x) ::: x eats food from the canteen",
+            "GetSickFromCanteenFood(x) ::: Student x gets sick from canteen food"
+        ],
+        [
+            "NotCarefulWithFood(x) ::: x is not careful with food",
+            "CarefulWithFood(x) ::: x is careful with food at the university canteen"
+        ],
+        [
+            "GetSickFromFood(x) ::: x gets sick from eating the food",
+            "GetSick(x) ::: x gets sick"
+        ],
+        [
+            "SaveMoneyOnMeal(x) ::: x saves money on a meal by being careful with food at the canteen."
+        ]
+    ],
+    "old_clusters": [
+        [
+            "Student(x) ::: x is a Student"
+        ],
+        [
+            "ConsumeFoodAtCanteen(x) ::: x consumes food at the canteen",
+            "CarefulWithFoodAtCanteen(x) ::: x is careful with food at the canteen"
+        ],
+        [
+            "EatFromCanteen(x) ::: x eats food from the canteen",
+            "EatFoodFromCanteen(x) ::: Student x eats food from the canteen",
+            "GetSickFromCanteenFood(x) ::: Student x gets sick from canteen food"
+        ],
+        [
+            "NotCarefulWithFood(x) ::: x is not careful with food",
+            "CarefulWithFoodAtUniversityCanteen(x) ::: x is careful with food at the university canteen",
+            "CarefulWithFood(x) ::: x is careful with food"
+        ],
+        [
+            "GetSickFromFood(x) ::: x gets sick from eating the food",
+            "GetSick(x) ::: x gets sick"
+        ],
+        [
+            "SaveMoneyOnMeal(x) ::: x saves money on a meal by being careful with food at the canteen."
+        ]
+    ],
+    "clusters_name_similarity": [
+        [
+            "Student(x) ::: x is a Student"
+        ],
+        [
+            "Consume(x, Food, Canteen) ::: x consumes food at the canteen",
+            "Careful(x, Food, Canteen) ::: x is careful with food at the canteen"
+        ],
+        [
+            "Eats(x, canteenfood) ::: x eats food from the canteen",
+            "GetsSick(x, canteenfood) ::: Student x gets sick from canteen food"
+        ],
+        [
+            "CarefulWithFood(x) ::: x is not careful with food"
+        ],
+        [
+            "GetSick(x) ::: x gets sick from eating the food"
+        ],
+        [
+            "SaveMoneyOnMeal(x) ::: x saves money on a meal by being careful with food at the canteen."
+        ]
+    ],
+    "logic_program_name_similarity": [
+        "Student(x) ::: x is a Student",
+        "Consume(x, Food, Canteen) ::: x consumes food at the canteen",
+        "Careful(x, Food, Canteen) ::: x is careful with food at the canteen",
+        "Eats(x, canteenfood) ::: x eats food from the canteen",
+        "GetsSick(x, canteenfood) ::: Student x gets sick from canteen food",
+        "CarefulWithFood(x) ::: x is not careful with food",
+        "GetSick(x) ::: x gets sick from eating the food",
+        "SaveMoneyOnMeal(x) ::: x saves money on a meal by being careful with food at the canteen."
+    ],
+    "common_convert_dic": [
+        {},
+        {},
+        {
+            "EatFromCanteen": "EatFromCanteen",
+            "EatFoodFromCanteen": "EatFromCanteen"
+        },
+        {
+            "CarefulWithFoodAtUniversityCanteen": "CarefulWithFood",
+            "CarefulWithFood": "CarefulWithFood"
+        },
+        {},
+        {}
+    ],
+    "new_premise_fol": [
+        "∀x (Careful(x, Food, Canteen) → SaveMoneyOnMeal(x))",
+        "∀x (¬Consume(x, Food, Canteen) → ¬GetSick(x))",
+        "∃x (Student(x) ∧ Eats(x, canteenfood))",
+        "∀x (CarefulWithFood(x) → ¬CarefulWithFood(x))"
+    ],
+    "new_question_fol": [
+        "∀x (Person(x) → ∃y (Organization(y) ∧ Hire(x, y)))\n ∀x (Student(x) ∧ Eats(x, canteenfood) → GetSick(x))\n ∀x (Student(x) → Careful(x, Food, Canteen))\n ¬∃x (Student(x) ∧ Eats(x, canteenfood))\n ∃x (Student(x) ∧ ¬GetsSick(x, canteenfood))",
+        "∃x (Student(x) ∧ CarefulWithFood(x))"
+    ],
+    "new_logic_program": [
+        "Student(x) ::: x is a Student",
+        "Consume(x, Food, Canteen) ::: x consumes food at the canteen",
+        "Careful(x, Food, Canteen) ::: x is careful with food at the canteen",
+        "Eats(x, canteenfood) ::: x eats food from the canteen",
+        "GetsSick(x, canteenfood) ::: Student x gets sick from canteen food",
+        "CarefulWithFood(x) ::: x is not careful with food",
+        "GetSick(x) ::: x gets sick from eating the food",
+        "SaveMoneyOnMeal(x) ::: x saves money on a meal by being careful with food at the canteen."
+    ],
+    "new_clusters": [
+        [
+            "Student(x) ::: x is a Student"
+        ],
+        [
+            "Consume(x, Food, Canteen) ::: x consumes food at the canteen",
+            "Careful(x, Food, Canteen) ::: x is careful with food at the canteen"
+        ],
+        [
+            "Eats(x, canteenfood) ::: x eats food from the canteen",
+            "GetsSick(x, canteenfood) ::: Student x gets sick from canteen food"
+        ],
+        [
+            "CarefulWithFood(x) ::: x is not careful with food"
+        ],
+        [
+            "GetSick(x) ::: x gets sick from eating the food"
+        ],
+        [
+            "SaveMoneyOnMeal(x) ::: x saves money on a meal by being careful with food at the canteen."
+        ]
+    ],
+    "mapping_info": [
+        {},
+        {}
+    ],
+    "solver": [],
+    "solver_info": {
+        "answers": [
+            "C / D",
+            "Yes"
+        ],
+        "idxs": [
+            [
+                1,
+                2,
+                3
+            ],
+            [
+                1,
+                3
+            ]
+        ],
+        "explanations": [
+            "- Step 1: From P1, we know that for all x, if x is careful with food at the canteen, then x saves money on a meal.\n           - Step 2: From P3, we know that there exists a student x who eats food from the canteen.\n           - Since P1 does not state that all students save money by being careful with food at the canteen, but only that it's a necessary condition, it doesn't follow that all students who eat from the canteen save money.\n           - Step 3: From P2, we know that for all x, if x doesn't consume food at the canteen, then x doesn't get sick.\n           - However, P2 doesn't state that all students don't consume food from the canteen, so it doesn't follow that all students don't get sick from canteen food.\nNeither option A nor option B can be inferred from the given premises. Option A is incorrect because some students may eat from the canteen and save money or not get sick. Option C is a possibility because some students might not eat from the canteen at all. Option D is also a possibility because some students might eat from the canteen and not get sick.",
+            "- Step 1: From premise P1, we know that for all x, if x is careful with food at the canteen, then x saves money on a meal. (P1)\n           - Step 2: We have a student (x) who eats food from the canteen (P3).\nBased on the given premises, it is true that some students are careful with food generally because if a student is careful with food at the canteen (as evidenced by their consumption of canteen food), then they save money on a meal (P1). Since we have identified a student (from premise P3) who eats from the canteen, it follows logically that this student is careful with food at the canteen and therefore saves money on meals."
+        ]
+    }
+}

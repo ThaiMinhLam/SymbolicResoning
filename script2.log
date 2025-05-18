@@ -1,0 +1,107 @@
+
+    You are an expert in First-Order Logic (FOL) reasoning tasked with solving logical inference problems. You will receive an input with:
+    - "premises-NL": A list of natural language statements.
+    - "premises-FOL": A list of corresponding FOL formulas (e.g., P(x) for "excellent student", U(x) for "receives scholarship").
+    - "questions": A list of questions (multiple-choice or true/false).
+
+    ### Tasks:
+    1. **Analyze Premises**:
+    - Parse FOL premises to identify logical structure (quantifiers: ForAll, Exists; operators: →, ¬, ∧).
+    - Define predicate meanings (e.g., P(x) = "x is excellent").
+    - Simplify complex premises and apply logical equivalences (e.g., contraposition: ¬A → ¬B ≡ B → A).
+
+    2. **Derive Inferences**:
+    - Use rules (modus ponens, modus tollens, instantiation) to draw conclusions.
+    - Focus on premises relevant to each question.
+    - Combine premises logically, avoiding unsupported assumptions.
+
+    3. **Answer Questions**:
+    - **Multiple-choice**: Evaluate options, select the most supported answer. 
+    - **Yes/No question**: Verify if the statement follows from premises using logical transformations (e.g., contraposition).
+    - **MUST** return answers as "A"/"B"/"C"/"D" or "Yes"/"No"/"Uncertain". If multiple choice question, DO NOT repeat the option.
+
+    4. **Provide Explanations**:
+    - Explain reasoning concisely, citing premise indices (e.g., premise 2).
+    - Highlight key logical steps (e.g., contraposition, implication).
+    - Avoid extraneous details.
+
+    5. **Format Your Output Exactly Like This**:
+    - "answer": "Yes" / "No" / "Uncertain" or one of ["A", "B", "C", "D"]
+    - "idx": [premise indices used, e.g., 2, 4, 7]
+    - "explanation": explanation strings.
+
+    6. **Error Handling**:
+    - Prioritize FOL over NL if ambiguous.
+    - If no conclusion, state "No inference possible" with reason.
+    - Double-check logic.
+
+
+    ⚠️ **Do not repeat the question. Do not return multiple outputs. Only one final answer block. Follow the exact format above.**
+    
+    ### Example:
+    **premises-NL**:
+    [   "Students who have completed the core curriculum and passed the science assessment are qualified for advanced courses.",
+        "Students who are qualified for advanced courses and have completed research methodology are eligible for the international program.",
+        "Students who have passed the language proficiency exam are eligible for the international program.",
+        "Students who are eligible for the international program and have completed a capstone project are awarded an honors diploma.",
+        "Students who have been awarded an honors diploma and have completed community service qualify for the university scholarship.",
+        "Students who have been awarded an honors diploma and have received a faculty recommendation qualify for the university scholarship.",
+        "Sophia has completed the core curriculum.",
+        "Sophia has passed the science assessment.",
+        "Sophia has completed the research methodology course.",
+        "Sophia has completed her capstone project.",
+        "Sophia has completed the required community service hours."
+        ]
+    **Question**:"Based on the above premises, which is the strongest conclusion?
+A. Sophia qualifies for the university scholarship
+B. Sophia needs a faculty recommendation to qualify for the scholarship
+C. Sophia is eligible for the international program
+D. Sophia needs to pass the language proficiency exam to get an honors diploma"
+    **answer**: "A",
+    **idx**: [1, 2, 4,5,7,8,9,10,11]
+    **explanation**: "Premises 7 and 8 confirm Sophia completed the core curriculum and passed the science assessment, satisfying premise 1 for advanced courses. Premise 9’s research methodology and premise 2 make her eligible for the international program. Premise 10’s capstone project and premise 4 award her an honors diploma. Premise 11’s community service and premise 5 qualify her for the university scholarship, making A the strongest conclusion. Option B is false because community service suffices without a recommendation. Option C is true but weaker, as scholarship implies international program eligibility. Option D is false because language proficiency is not required via premise 2’s path."
+
+    **Question**: "Does Sophia qualify for the university scholarship, according to the premises?"
+    **answer**:  "Yes"
+    **idx**: [1, 2, 4,5,7,8,9,10,11]
+    **explanation**: "The university scholarship per premise 5 requires an honors diploma and community service. Premise 4 requires international program eligibility and a capstone project, premise 2 requires advanced course qualification and research methodology, and premise 1 requires core curriculum and science assessment. Premises 7–11 confirm Sophia’s curriculum, assessment, methodology, capstone, and service, satisfying all conditions for the scholarship."
+       
+    ### Your Input:
+        **premise-NL:
+            
+        **premise-FOL:
+            
+        **question: Based on the premises, what is the correct conclusion about Professor John?
+A. He can teach undergraduate courses but cannot supervise graduates
+B. He can serve on curriculum committees but cannot propose courses
+C. He can propose new courses
+D. He needs more publications to serve on committees
+    ### Output:
+    **answer**: 
+    **idx**: 
+    **explanation**: 
+    
+    **Input:**
+    premises-NL:
+    [   "Professor John has taught undergraduate courses.",
+        "Professor John cannot supervise graduate students.",
+        "Professor John can serve on curriculum committees.",
+        "Professor John has not proposed any new courses."
+        ]
+    premises-FOL:
+    [   (∃x)(Professor(x) ∧ TaughtUndergrad(x)),
+        (∃x)(Professor(x) ∧ ¬CanSuperviseGrad(x)),
+        (∃x)(Professor(x) ∧ CanServeOnCommittee(x)),
+        (∃x)(Professor(x) ∧ ¬ProposedNewCourse(x))
+        ]
+    question: Based on the premises, what is the correct conclusion about Professor John?
+    A. He can teach undergraduate courses but cannot supervise graduates
+    B. He can serve on curriculum committees but cannot propose courses
+    C. He can propose new courses
+    D. He needs more publications to serve on committees
+
+    **Output:**
+    **answer**: "B. He can serve on curriculum committees but cannot propose courses"
+    **idx**: [2, 3]
+    **explanation**: "Premises 2 and 3 state that Professor John cannot supervise graduate students and can serve on curriculum committees, respectively. However, the ability to serve on committees does not require the ability to propose courses. Therefore, the correct conclusion is B."
+('B', [2, 3], 'Premises 2 and 3 state that Professor John cannot supervise graduate students and can serve on curriculum committees, respectively. However, the ability to serve on committees does not require the ability to propose courses. Therefore, the correct conclusion is B.')

@@ -1,0 +1,23 @@
+{
+    "premises-NL": [
+        "Students who have completed the core curriculum and passed the science assessment are qualified for advanced courses.",
+        "Students who are qualified for advanced courses and have completed research methodology are eligible for the international program.",
+        "Students who have passed the language proficiency exam are eligible for the international program.",
+        "Students who are eligible for the international program and have completed a capstone project are awarded an honors diploma.",
+        "Students who have been awarded an honors diploma and have completed community service qualify for the university scholarship.",
+        "Students who have been awarded an honors diploma and have received a faculty recommendation qualify for the university scholarship.",
+        "Sophia has completed the core curriculum.",
+        "Sophia has passed the science assessment.",
+        "Sophia has completed the research methodology course.",
+        "Sophia has completed her capstone project.",
+        "Sophia has completed the required community service hours."
+    ],
+    "questions": "Based on the above premises, which is the strongest conclusion?\nA. Sophia qualifies for the university scholarship\nB. Sophia needs a faculty recommendation to qualify for the scholarship\nC. Sophia is eligible for the international program\nD. Sophia needs to pass the language proficiency exam to get an honors diploma",
+    "answers": "A. Sophia qualifies for the university scholarship",
+    "idx": [
+        1,
+        5,
+        6
+    ],
+    "explanations": "- Step 1: From P1, we know that if a student has completed the core curriculum, passed the science assessment, and prefers Science, then they qualify for the university scholarship.\n           - Step 2: We are given that Sophia has passed the science assessment (P5).\n           - Step 3: We also know that Sophia is a student (Person(Sophia) implies Student(Sophia)). Since Student(Sophia) is not explicitly stated, but implied, it can be inferred from the given predicates.\n           - Step 4: Therefore, based on P1 and P5, we can conclude that Sophia qualifies for the university scholarship.\nThe final answer is \"A. Sophia qualifies for the university scholarship\" because, according to the given premises and the logical reasoning process outlined above, Sophia does indeed qualify for the university scholarship due to having completed the core curriculum and passing the science assessment."
+}

@@ -1,0 +1,21 @@
+{
+    "premises-NL": [
+        "Students who have completed the core curriculum and passed the science assessment are qualified for advanced courses.",
+        "Students who are qualified for advanced courses and have completed research methodology are eligible for the international program.",
+        "Students who have passed the language proficiency exam are eligible for the international program.",
+        "Students who are eligible for the international program and have completed a capstone project are awarded an honors diploma.",
+        "Students who have been awarded an honors diploma and have completed community service qualify for the university scholarship.",
+        "Students who have been awarded an honors diploma and have received a faculty recommendation qualify for the university scholarship.",
+        "Sophia has completed the core curriculum.",
+        "Sophia has passed the science assessment.",
+        "Sophia has completed the research methodology course.",
+        "Sophia has completed her capstone project.",
+        "Sophia has completed the required community service hours."
+    ],
+    "questions": "Based on the above premises, which is the strongest conclusion?\nA. Sophia qualifies for the university scholarship\nB. Sophia needs a faculty recommendation to qualify for the scholarship\nC. Sophia is eligible for the international program\nD. Sophia needs to pass the language proficiency exam to get an honors diploma",
+    "answers": "A. Sophia qualifies for the university scholarship",
+    "idx": [
+        "1, 5, 6, 7, 8, 10"
+    ],
+    "explanations": "- Step 1: From P1, we know that if a student is at the university, has completed the core curriculum, and passed the science assessment, then they qualify for something.\n           - Step 2: From P5, we know that having an award honor diploma and completing community service makes a student qualify for a scholarship.\n           - Step 3: From P6, we know that Sophia has completed the research methodology course.\n           - Step 4: From P7, we know that Sophia has completed her capstone project.\n           - Step 5: From P8, we know that Sophia's name is Sophia and she is a person.\n           - Step 6: From P10, we know that Sophia has completed community service.\nBased on the rationale, since Sophia is a student at the university (P8 and AtUniversity(Sophia)), she has completed the core curriculum and passed the science assessment (implied by P1), she has completed her research methodology course (HaComplete(Sophia, ResearchMethodologyCourse)), she has completed her capstone project (HaCompleteCapstoneProject(Sophia)), and she has completed community service (CompleteCommunityService(Sophia) and Selected Premises P5 and P10), she qualifies for the university scholarship according to P5."
+}

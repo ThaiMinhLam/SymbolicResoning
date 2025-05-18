@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "94f779aa-d1bf-43d7-8dcb-97bb607de70e",
+		"name": "XAI API Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44492278",
+		"_collection_link": "https://dinhvietcuong-1916100.postman.co/workspace/Dinh-Viet-Cuong's-Workspace~639ecff3-fc31-4fa4-8854-61343073983a/collection/44492278-94f779aa-d1bf-43d7-8dcb-97bb607de70e?action=share&source=collection_link&creator=44492278"
+	},
+	"item": [
+		{
+			"name": "Test XAI API",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer a6f58e8a1c3e61d6f02b6c7b56d7b255831bb7fa1f2447bd8f1ac9283f083d6b",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"premises-NL\": [\n    \"Every course contains knowledge.\",\n    \"If a student takes a course and passes the exam, they acquire knowledge.\"\n  ],\n  \"questions\": [\n    \"Does a course contain knowledge?\",\n    \"Does a course contain knowledge?\",\n    \"Does a course contain knowledge?\",\n    \"Does a course contain knowledge?\"\n  ]\n}"
+				},
+				"url": {
+					"raw": "171.226.158.102:49596/query",
+					"host": [
+						"171",
+						"226",
+						"158",
+						"102"
+					],
+					"port": "49596",
+					"path": [
+						"query"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Metrics",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/plain"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:43210/metrics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "43210",
+					"path": [
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

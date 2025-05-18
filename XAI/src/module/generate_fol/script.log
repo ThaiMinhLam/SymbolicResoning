@@ -1,0 +1,140 @@
+---Parse Tree---
+                  S                                
+      ____________|______________                   
+     |                           VP                
+     |             ______________|___               
+     |            |                  VP            
+     |            |        __________|___           
+     NP           |       |              NP        
+  ___|_____       |       |           ___|_____     
+ DT       NNS    VBP     VBN         DT       NNS  
+ |         |      |       |          |         |    
+All     students have completed     all     quizzes
+
+All students have completed all quizzes.
+['completed all quizzes']
+---Parse Tree---
+                                         S                                  
+      ___________________________________|____________                       
+     |                     |                          VP                    
+     |                     |              ____________|___                   
+    SBAR                   |             |               ADJP               
+  ___|____                 |             |      __________|____              
+ |        S                |             |     |               PP           
+ |    ____|_____           |             |     |       ________|____         
+ |   NP         VP         NP            |     |      |             NP      
+ |   |          |       ___|______       |     |      |    _________|____    
+ IN  NN        VBZ     DT         NN    VBZ    JJ     IN  DT        JJ   NN 
+ |   |          |      |          |      |     |      |   |         |    |   
+ If  x       finishes all     quizzes_x  is eligible for the      final exam
+
+If x finishes all quizzes, then x is eligible for the final exam.
+['is eligible for the final exam']
+---Parse Tree---
+                                             S                                            
+      _______________________________________|______________________                       
+     |                      |                |                      VP                    
+     |                      |                |          ____________|___                   
+    SBAR                    |                |         |               ADJP               
+  ___|____                  |                |         |      __________|____              
+ |        S                 |                |         |     |               PP           
+ |    ____|______           |                |         |     |       ________|____         
+ |   NP          VP        ADVP              NP        |     |      |             NP      
+ |   |           |       ___|_____           |         |     |      |    _________|____    
+ IN  NN         VBZ     RB        RB         NN       VBZ    JJ     IN  DT        JJ   NN 
+ |   |           |      |         |          |         |     |      |   |         |    |   
+ If  x       completes all      course requirements_x  is eligible for the      final exam
+
+If x completes all course requirements, then x is eligible for the final exam.
+['is eligible for the final exam']
+---Parse Tree---
+                                     S                                                    
+          ___________________________|_______________________________                      
+        SBAR                         |                               |                    
+  _______|____                       |                               |                     
+ |            S                      |                               VP                   
+ |    ________|___                   |                     __________|______               
+ |   |            VP                 |                    |   |             VP            
+ |   |    ________|______            |                    |   |       ______|___           
+ |   NP  |        |      VP          NP                   |   |      |          NP        
+ |   |   |        |      |       ____|__________          |   |      |       ___|_____     
+ IN  NN VBZ       RB    VBN     DT   NN         NN       VBZ  RB    VBN     DT       NNS  
+ |   |   |        |      |      |    |          |         |   |      |      |         |    
+ If  x  has      not completed all course requirements_x has not completed all     quizzes
+
+If x has not completed all course requirements, then x has not completed all quizzes.
+['completed all quizzes']
+---Parse Tree---
+                                          S                                             
+          ________________________________|_______________________                       
+        SBAR                       |                              VP                    
+  _______|____                     |              ________________|___                   
+ |            S                    |             |   |               ADJP               
+ |    ________|___                 |             |   |      __________|____              
+ |   |            VP               |             |   |     |               PP           
+ |   |    ________|_____           |             |   |     |       ________|____         
+ |   NP  |        |     VP         NP            |   |     |      |             NP      
+ |   |   |        |     |       ___|______       |   |     |      |    _________|____    
+ IN  NN VBZ       RB   VBN     DT         NN    VBZ  RB    JJ     IN  DT        JJ   NN 
+ |   |   |        |     |      |          |      |   |     |      |   |         |    |   
+ If  x  has      not finished all     quizzes_x  is not eligible for the      final exam
+
+If x has not finished all quizzes, then x is not eligible for the final exam.
+['finished', 'is not eligible for the final exam']
+---Parse Tree---
+                                                                                                                                                                S                                                                                                                                                                           
+                                  ______________________________________________________________________________________________________________________________|___________________________                                                                                                                                                 
+                                 |                                                                                                                                        |                 VP                                                                                                                                              
+                                 |                                                                                                                                        |             ____|______________________________                                                                                                                  
+                                 |                                                                                                                                        |            |    |                              VP                                                                                                               
+                                 |                                                                                                                                        |            |    |       _______________________|_________________________                                                                                        
+                                 |                                                                                                                                        |            |    |      |                                                 NP                                                                                     
+                                 |                                                                                                                                        |            |    |      |             ____________________________________|______________________                                                                 
+                                SBAR                                                                                                                                      |            |    |      |            |                                                          SBAR                                                             
+   ______________________________|__________________________________________                                                                                              |            |    |      |            |                                                           |                                                                
+  |                                                                        SINV                                                                                           |            |    |      |            |                                                           S                                                               
+  |         ________________________________________________________________|_________________________________________________________                                    |            |    |      |            |               ____________________________________________|_____                                                           
+  |        |                     VP                                                                                                   NP                                  |            |    |      |            |              |                                                  VP                                                        
+  |        |                  ___|______________                                                                 _____________________|______________                     |            |    |      |            |              |                      ____________________________|______________________________________________            
+  |        |                 |                  VP                                                              NP                                   |                    |            |    |      |            |              |                     VP                                                                  |       |          
+  |        |                 |    ______________|__________________                                _____________|______                              |                    |            |    |      |            |              |                _____|__________                                                         |       |           
+  |        |                 |   |                                 VP                             |                   SBAR                           |                    |            |    |      |            |              |               |               ADJP                                                      |       |          
+  |        |                 |   |       __________________________|____                          |                    |                             |                    |            |    |      |            |              |               |      __________|___________                                             |       |           
+  |        |                 |   |      |            |                  PP                        |                    S                             |                    |            |    |      |            |              |               |     |                      PP                                           |       |          
+  |        |                 |   |      |            |              ____|___                      |        ____________|________                     |                    |            |    |      |            |              |               |     |       _______________|_____                                       |       |           
+  |        PP                |   |      |            PP            |        PP                    |       |                     VP                   PP                   |            |    |      |            |              |               |     |      |                     NP                                     |       VP         
+  |     ___|___              |   |      |        ____|_____        |     ___|_________________    |       |                  ___|_____        _______|____                |            |    |      |            |              |               |     |      |          ___________|__________________________            |    ___|_____      
+ WHNP  |       NP            |   |      |       |          NP      |    |        NP           |   |       NP                |        ADJP    |            NP              NP           |    |      |            NP             NP              |     |      |         NP               NP                    NP          |   |   |    ADJP  
+  |    |    ___|______       |   |      |       |          |       |    |    ____|_____       |   |    ___|_____            |         |      |    ________|_____       ___|_____       |    |      |            |           ___|_______        |     |      |    _____|_____       ____|_____          ______|_____      |   |   |     |     
+ WDT   IN  DT        VBG     MD  VB    VBN      IN        NNS     VBN   IN  DT        NNS     .   DT  DT       NNS         VBP        JJ     IN  DT       JJ   NNP    DT       NNS    VBP   RB    VBN          NNS         NN         NNS     VBP    JJ     IN  DT    JJ   NNP    DT        NNS       JJ          NNS    CC VBP  RB    JJ   
+  |    |   |          |      |   |      |       |          |       |    |   |          |      |   |   |         |           |         |      |   |        |     |     |         |      |    |      |            |          |           |       |     |      |   |     |     |     |          |        |            |     |   |   |     |     
+Which  of the     following can  be  inferred about     students based  on the      premises  ?   A  All     students      are     eligible for the     final exam_B All     students have not completed course_requireme  C      No_students are eligible for the  final exam_D Some     students complete     quizzes but are not eligible
+                                                                                                                                                                                                               nts                                                                                                                          
+
+Which of the following can be inferred about students based on the premises?
+A. All students are eligible for the final exam.
+B. All students have not completed course requirements.
+C. No students are eligible for the final exam.
+D. Some students complete quizzes but are not eligible.
+['inferred about students based on the premises ?', 'are eligible for the final  Some students complete quizzes', 'are not eligible']
+---Parse Tree---
+                                SQ                                            
+  ______________________________|___________________________________________   
+ |   |       ADJP                                                           | 
+ |   |    ____|__________                                                   |  
+ |   |   |              SBAR                                                | 
+ |   |   |               |                                                  |  
+ |   |   |               S                                                  | 
+ |   |   |          _____|______________                                    |  
+ |   |   |         |                    VP                                  | 
+ |   |   |         |             _______|______                             |  
+ |   |   |         |            |              VP                           | 
+ |   |   |         |            |        ______|___________________         |  
+ |   NP  |         NP           |       |         ADVP             NP       | 
+ |   |   |     ____|_____       |       |       ___|_____          |        |  
+VBZ PRP  JJ   DT        NNS    VBP     VBN     RB        RB       NNS       . 
+ |   |   |    |          |      |       |      |         |         |        |  
+ Is  it true all      students have completed all      course requirements  ? 
+
+Is it true that all students have completed all course requirements?
+['completed all course requirements']

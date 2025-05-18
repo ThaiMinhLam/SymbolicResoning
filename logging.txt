@@ -1,0 +1,1946 @@
+2025-05-09 10:49:50 INFO Model initialized
+2025-05-09 10:49:55 INFO [1a1c6611cc684915a96292e97e5f587c] START /query – received 4 questions
+2025-05-09 10:49:55 INFO [1a1c6611cc684915a96292e97e5f587c] SUCCESS /query – processed in 0.000s
+2025-05-09 10:49:55 INFO Saved response to questions/1a1c6611cc684915a96292e97e5f587c.json
+2025-05-09 10:49:55 INFO POST /query -> 200 in 0.002s
+2025-05-10 15:49:13 INFO Use pytorch device_name: cuda:0
+2025-05-10 15:49:13 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-10 15:49:19 INFO Model initialized
+2025-05-10 15:55:03 INFO Use pytorch device_name: cuda:0
+2025-05-10 15:55:03 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-10 15:55:08 INFO Model initialized
+2025-05-10 15:55:16 INFO [b5e690362e3e4b7e9fb93a0b71741926] START /query – received 206 questions
+2025-05-10 15:55:51 ERROR [b5e690362e3e4b7e9fb93a0b71741926] ERROR /query – failed in 35.404s: 'nl_to_fol' object is not callable
+2025-05-10 15:55:51 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/./XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/./XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/./XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/XAI/main.py", line 172, in response
+    new_body = self.nl2fol(new_body)
+TypeError: 'nl_to_fol' object is not callable
+2025-05-10 16:10:04 INFO Use pytorch device_name: cuda:0
+2025-05-10 16:10:04 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-10 16:10:08 INFO Model initialized
+2025-05-10 16:10:17 INFO [18557f9e15e64ed6ba52cfd2383f7ed0] START /query – received 206 questions
+2025-05-10 16:10:28 ERROR [18557f9e15e64ed6ba52cfd2383f7ed0] ERROR /query – failed in 10.333s: 'nl_to_fol' object is not callable
+2025-05-10 16:10:28 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/./XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/./XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/./XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/XAI/main.py", line 172, in response
+    new_body = self.nl2fol(new_body)
+TypeError: 'nl_to_fol' object is not callable
+2025-05-10 16:23:06 INFO Use pytorch device_name: cuda:0
+2025-05-10 16:23:06 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-10 16:23:11 INFO Model initialized
+2025-05-10 16:23:16 INFO [f639eb700def49e5aefff3612b1635a7] START /query – received 206 questions
+2025-05-10 16:23:27 ERROR [f639eb700def49e5aefff3612b1635a7] ERROR /query – failed in 10.384s: 'nl_to_fol' object is not callable
+2025-05-10 16:23:27 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/./XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/./XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/./XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/XAI/main.py", line 173, in response
+    new_body = self.nl2fol(new_body)
+TypeError: 'nl_to_fol' object is not callable
+2025-05-10 16:26:22 INFO Use pytorch device_name: cuda:0
+2025-05-10 16:26:22 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-10 16:26:25 INFO Model initialized
+2025-05-10 16:27:31 INFO [3d6504c5bea14536ab8358f2ca0532ca] START /query – received 206 questions
+2025-05-10 16:27:43 ERROR [3d6504c5bea14536ab8358f2ca0532ca] ERROR /query – failed in 11.828s: CUDA out of memory. Tried to allocate 356.00 MiB. GPU 0 has a total capacity of 23.53 GiB of which 9.62 MiB is free. Including non-PyTorch memory, this process has 23.51 GiB memory in use. Of the allocated memory 20.56 GiB is allocated by PyTorch, and 2.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-05-10 16:27:43 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/./XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/./XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/./XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/XAI/main.py", line 173, in response
+    new_body = self.nl2fol.generate_sample(new_body)
+  File "/workspace/XAI/src/module/nl2fol/nl2fol_module.py", line 254, in generate_sample
+    full_str, resp_parts = batch_simple_generate(input_str=data_list)
+  File "/workspace/XAI/src/module/nl2fol/generatev2.py", line 75, in llama_batch_generate
+    gen_out = llama_model.generate(
+  File "/venv/main/lib/python3.10/site-packages/peft/peft_model.py", line 1875, in generate
+    outputs = self.base_model.generate(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/generation/utils.py", line 2465, in generate
+    result = self._sample(
+  File "/venv/main/lib/python3.10/site-packages/transformers/generation/utils.py", line 3431, in _sample
+    outputs = self(**model_inputs, return_dict=True)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/generic.py", line 965, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 821, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/generic.py", line 965, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 571, in forward
+    layer_outputs = decoder_layer(
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 334, in forward
+    hidden_states = self.mlp(hidden_states)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 172, in forward
+    down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 356.00 MiB. GPU 0 has a total capacity of 23.53 GiB of which 9.62 MiB is free. Including non-PyTorch memory, this process has 23.51 GiB memory in use. Of the allocated memory 20.56 GiB is allocated by PyTorch, and 2.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-05-10 16:34:35 INFO Use pytorch device_name: cuda:0
+2025-05-10 16:34:35 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-10 16:34:39 INFO Model initialized
+2025-05-10 16:34:46 INFO [760c52fb8eda45479bcc9470d39a7e91] START /query – received 206 questions
+2025-05-10 16:34:57 ERROR [760c52fb8eda45479bcc9470d39a7e91] ERROR /query – failed in 11.623s: CUDA out of memory. Tried to allocate 356.00 MiB. GPU 0 has a total capacity of 23.53 GiB of which 9.62 MiB is free. Including non-PyTorch memory, this process has 23.51 GiB memory in use. Of the allocated memory 20.56 GiB is allocated by PyTorch, and 2.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-05-10 16:34:57 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/./XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/./XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/./XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/XAI/main.py", line 173, in response
+    new_body = self.nl2fol.generate_sample(new_body)
+  File "/workspace/XAI/src/module/nl2fol/nl2fol_module.py", line 254, in generate_sample
+    full_str, resp_parts = batch_simple_generate(input_str=data_list)
+  File "/workspace/XAI/src/module/nl2fol/generatev2.py", line 75, in llama_batch_generate
+    gen_out = llama_model.generate(
+  File "/venv/main/lib/python3.10/site-packages/peft/peft_model.py", line 1875, in generate
+    outputs = self.base_model.generate(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/generation/utils.py", line 2465, in generate
+    result = self._sample(
+  File "/venv/main/lib/python3.10/site-packages/transformers/generation/utils.py", line 3431, in _sample
+    outputs = self(**model_inputs, return_dict=True)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/generic.py", line 965, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 821, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/generic.py", line 965, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 571, in forward
+    layer_outputs = decoder_layer(
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 334, in forward
+    hidden_states = self.mlp(hidden_states)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 172, in forward
+    down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 356.00 MiB. GPU 0 has a total capacity of 23.53 GiB of which 9.62 MiB is free. Including non-PyTorch memory, this process has 23.51 GiB memory in use. Of the allocated memory 20.56 GiB is allocated by PyTorch, and 2.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-05-10 16:43:00 INFO Use pytorch device_name: cuda:0
+2025-05-10 16:43:00 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-10 16:43:03 INFO Model initialized
+2025-05-10 16:43:52 INFO [f6c375813a404db8b498b2860ea466fa] START /query – received 206 questions
+2025-05-10 16:44:03 ERROR [f6c375813a404db8b498b2860ea466fa] ERROR /query – failed in 11.666s: CUDA out of memory. Tried to allocate 356.00 MiB. GPU 0 has a total capacity of 23.53 GiB of which 9.62 MiB is free. Including non-PyTorch memory, this process has 23.51 GiB memory in use. Of the allocated memory 20.56 GiB is allocated by PyTorch, and 2.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-05-10 16:44:03 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/./XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/./XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/./XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/XAI/main.py", line 173, in response
+    new_premises_NL = [clean_nl(premise) for premise in new_premises_NL]
+  File "/workspace/XAI/src/module/nl2fol/nl2fol_module.py", line 254, in generate_sample
+    full_str, resp_parts = batch_simple_generate(input_str=data_list)
+  File "/workspace/XAI/src/module/nl2fol/generatev2.py", line 75, in llama_batch_generate
+    gen_out = llama_model.generate(
+  File "/venv/main/lib/python3.10/site-packages/peft/peft_model.py", line 1875, in generate
+    outputs = self.base_model.generate(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/generation/utils.py", line 2465, in generate
+    result = self._sample(
+  File "/venv/main/lib/python3.10/site-packages/transformers/generation/utils.py", line 3431, in _sample
+    outputs = self(**model_inputs, return_dict=True)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/generic.py", line 965, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 821, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/generic.py", line 965, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 571, in forward
+    layer_outputs = decoder_layer(
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 334, in forward
+    hidden_states = self.mlp(hidden_states)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 172, in forward
+    down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 356.00 MiB. GPU 0 has a total capacity of 23.53 GiB of which 9.62 MiB is free. Including non-PyTorch memory, this process has 23.51 GiB memory in use. Of the allocated memory 20.56 GiB is allocated by PyTorch, and 2.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-05-10 17:37:31 INFO Use pytorch device_name: cuda:0
+2025-05-10 17:37:31 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-10 17:37:36 INFO Model initialized
+2025-05-10 17:37:43 INFO [b644111594c64b3c9debe147cbc14280] START /query – received 206 questions
+2025-05-10 17:37:55 ERROR [b644111594c64b3c9debe147cbc14280] ERROR /query – failed in 11.886s: CUDA out of memory. Tried to allocate 356.00 MiB. GPU 0 has a total capacity of 23.53 GiB of which 9.62 MiB is free. Including non-PyTorch memory, this process has 23.51 GiB memory in use. Of the allocated memory 20.56 GiB is allocated by PyTorch, and 2.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-05-10 17:37:55 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/./XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/./XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/./XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/XAI/main.py", line 249, in response
+    new_body = self.nl2fol.generate_sample(new_body)
+  File "/workspace/XAI/src/module/nl2fol/nl2fol_module.py", line 254, in generate_sample
+    full_str, resp_parts = batch_simple_generate(input_str=data_list)
+  File "/workspace/XAI/src/module/nl2fol/generatev2.py", line 75, in llama_batch_generate
+    gen_out = llama_model.generate(
+  File "/venv/main/lib/python3.10/site-packages/peft/peft_model.py", line 1875, in generate
+    outputs = self.base_model.generate(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/generation/utils.py", line 2465, in generate
+    result = self._sample(
+  File "/venv/main/lib/python3.10/site-packages/transformers/generation/utils.py", line 3431, in _sample
+    outputs = self(**model_inputs, return_dict=True)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/generic.py", line 965, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 821, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/generic.py", line 965, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 571, in forward
+    layer_outputs = decoder_layer(
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 334, in forward
+    hidden_states = self.mlp(hidden_states)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 172, in forward
+    down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 356.00 MiB. GPU 0 has a total capacity of 23.53 GiB of which 9.62 MiB is free. Including non-PyTorch memory, this process has 23.51 GiB memory in use. Of the allocated memory 20.56 GiB is allocated by PyTorch, and 2.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-05-10 17:43:05 INFO Use pytorch device_name: cuda:0
+2025-05-10 17:43:05 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-10 17:43:08 INFO Model initialized
+2025-05-10 17:43:32 INFO [85d41a041e56434b8efa02c601573f9e] START /query – received 206 questions
+2025-05-10 17:43:44 ERROR [85d41a041e56434b8efa02c601573f9e] ERROR /query – failed in 11.575s: CUDA out of memory. Tried to allocate 356.00 MiB. GPU 0 has a total capacity of 23.53 GiB of which 9.62 MiB is free. Including non-PyTorch memory, this process has 23.51 GiB memory in use. Of the allocated memory 20.56 GiB is allocated by PyTorch, and 2.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-05-10 17:43:44 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/./XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/./XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/./XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/XAI/main.py", line 249, in response
+    new_body = self.nl2fol.generate_sample(new_body)
+  File "/workspace/XAI/src/module/nl2fol/nl2fol_module.py", line 254, in generate_sample
+    full_str, resp_parts = batch_simple_generate(input_str=data_list)
+  File "/workspace/XAI/src/module/nl2fol/generatev2.py", line 75, in llama_batch_generate
+    gen_out = llama_model.generate(
+  File "/venv/main/lib/python3.10/site-packages/peft/peft_model.py", line 1875, in generate
+    outputs = self.base_model.generate(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/generation/utils.py", line 2465, in generate
+    result = self._sample(
+  File "/venv/main/lib/python3.10/site-packages/transformers/generation/utils.py", line 3431, in _sample
+    outputs = self(**model_inputs, return_dict=True)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/generic.py", line 965, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 821, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/generic.py", line 965, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 571, in forward
+    layer_outputs = decoder_layer(
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 334, in forward
+    hidden_states = self.mlp(hidden_states)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 172, in forward
+    down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 356.00 MiB. GPU 0 has a total capacity of 23.53 GiB of which 9.62 MiB is free. Including non-PyTorch memory, this process has 23.51 GiB memory in use. Of the allocated memory 20.56 GiB is allocated by PyTorch, and 2.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-05-10 17:49:39 INFO Use pytorch device_name: cuda:0
+2025-05-10 17:49:39 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-10 17:49:42 INFO Model initialized
+2025-05-10 17:49:48 INFO [da3dd5ce0b8b4c4cb799f42ff377c3d2] START /query – received 206 questions
+2025-05-10 17:50:00 ERROR [da3dd5ce0b8b4c4cb799f42ff377c3d2] ERROR /query – failed in 11.787s: CUDA out of memory. Tried to allocate 356.00 MiB. GPU 0 has a total capacity of 23.53 GiB of which 9.62 MiB is free. Including non-PyTorch memory, this process has 23.51 GiB memory in use. Of the allocated memory 20.56 GiB is allocated by PyTorch, and 2.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-05-10 17:50:00 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/./XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/./XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/./XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/XAI/main.py", line 251, in response
+    new_body = self.nl2fol.generate_sample(new_body)
+  File "/workspace/XAI/src/module/nl2fol/nl2fol_module.py", line 254, in generate_sample
+    full_str, resp_parts = batch_simple_generate(input_str=data_list)
+  File "/workspace/XAI/src/module/nl2fol/generatev2.py", line 75, in llama_batch_generate
+    gen_out = llama_model.generate(
+  File "/venv/main/lib/python3.10/site-packages/peft/peft_model.py", line 1875, in generate
+    outputs = self.base_model.generate(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/generation/utils.py", line 2465, in generate
+    result = self._sample(
+  File "/venv/main/lib/python3.10/site-packages/transformers/generation/utils.py", line 3431, in _sample
+    outputs = self(**model_inputs, return_dict=True)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/generic.py", line 965, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 821, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/generic.py", line 965, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 571, in forward
+    layer_outputs = decoder_layer(
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 334, in forward
+    hidden_states = self.mlp(hidden_states)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 172, in forward
+    down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 356.00 MiB. GPU 0 has a total capacity of 23.53 GiB of which 9.62 MiB is free. Including non-PyTorch memory, this process has 23.51 GiB memory in use. Of the allocated memory 20.56 GiB is allocated by PyTorch, and 2.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-05-10 17:52:41 INFO Use pytorch device_name: cuda:0
+2025-05-10 17:52:41 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-10 17:52:46 INFO Model initialized
+2025-05-10 17:52:49 INFO [e3ca9115826b40b395fd95c2a6e31cfc] START /query – received 206 questions
+2025-05-10 17:53:01 ERROR [e3ca9115826b40b395fd95c2a6e31cfc] ERROR /query – failed in 11.940s: CUDA out of memory. Tried to allocate 356.00 MiB. GPU 0 has a total capacity of 23.53 GiB of which 9.62 MiB is free. Including non-PyTorch memory, this process has 23.51 GiB memory in use. Of the allocated memory 20.56 GiB is allocated by PyTorch, and 2.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-05-10 17:53:01 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/./XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/./XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/./XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/XAI/main.py", line 252, in response
+    new_body = self.nl2fol.generate_sample(new_body)
+  File "/workspace/XAI/src/module/nl2fol/nl2fol_module.py", line 254, in generate_sample
+    full_str, resp_parts = batch_simple_generate(input_str=data_list)
+  File "/workspace/XAI/src/module/nl2fol/generatev2.py", line 75, in llama_batch_generate
+    gen_out = llama_model.generate(
+  File "/venv/main/lib/python3.10/site-packages/peft/peft_model.py", line 1875, in generate
+    outputs = self.base_model.generate(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/generation/utils.py", line 2465, in generate
+    result = self._sample(
+  File "/venv/main/lib/python3.10/site-packages/transformers/generation/utils.py", line 3431, in _sample
+    outputs = self(**model_inputs, return_dict=True)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/generic.py", line 965, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 821, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/utils/generic.py", line 965, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 571, in forward
+    layer_outputs = decoder_layer(
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 334, in forward
+    hidden_states = self.mlp(hidden_states)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/venv/main/lib/python3.10/site-packages/transformers/models/llama/modeling_llama.py", line 172, in forward
+    down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 356.00 MiB. GPU 0 has a total capacity of 23.53 GiB of which 9.62 MiB is free. Including non-PyTorch memory, this process has 23.51 GiB memory in use. Of the allocated memory 20.56 GiB is allocated by PyTorch, and 2.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-05-11 11:45:28 INFO Model initialized
+2025-05-11 11:46:14 INFO GET / -> 404 in 0.000s
+2025-05-11 11:46:31 INFO POST / -> 404 in 0.000s
+2025-05-11 11:46:50 INFO POST / -> 404 in 0.000s
+2025-05-11 11:48:59 INFO Model initialized
+2025-05-11 11:49:07 INFO POST / -> 404 in 0.000s
+2025-05-11 11:50:10 INFO GET / -> 404 in 0.000s
+2025-05-11 12:06:51 INFO Model initialized
+2025-05-11 14:06:12 INFO Use pytorch device_name: cuda:0
+2025-05-11 14:06:12 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 14:06:13 WARNING Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-05-11 14:06:15 INFO Model initialized
+2025-05-11 14:14:17 INFO Use pytorch device_name: cuda:0
+2025-05-11 14:14:17 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 14:14:18 INFO Model initialized
+2025-05-11 14:22:23 INFO POST /query -> 422 in 0.002s
+2025-05-11 14:23:03 INFO [49f9f678479d4c6d9c81ed7a9725b26e] START /query – received 32 questions
+2025-05-11 14:23:04 ERROR [49f9f678479d4c6d9c81ed7a9725b26e] ERROR /query – failed in 1.115s: local variable 'fact_indices' referenced before assignment
+2025-05-11 14:23:04 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/SymbolicResoning/XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/SymbolicResoning/XAI/main.py", line 302, in response
+    new_premises_NL, fact_indices = self.rewrite_premises.create_new_premises(premises_NL, fact_indices)
+UnboundLocalError: local variable 'fact_indices' referenced before assignment
+2025-05-11 14:30:00 INFO [e187a12e1bd34cc69a67804c73472497] START /query – received 32 questions
+2025-05-11 14:30:01 ERROR [e187a12e1bd34cc69a67804c73472497] ERROR /query – failed in 0.812s: local variable 'fact_indices' referenced before assignment
+2025-05-11 14:30:01 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/SymbolicResoning/XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/SymbolicResoning/XAI/main.py", line 302, in response
+    new_premises_NL, fact_indices = self.rewrite_premises.create_new_premises(premises_NL)
+UnboundLocalError: local variable 'fact_indices' referenced before assignment
+2025-05-11 14:31:09 INFO Use pytorch device_name: cuda:0
+2025-05-11 14:31:09 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 14:31:13 INFO Model initialized
+2025-05-11 14:31:57 INFO [af594565984b43858aa9eb0c670ba749] START /query – received 32 questions
+2025-05-11 14:32:06 ERROR [af594565984b43858aa9eb0c670ba749] ERROR /query – failed in 8.736s: 
+**********************************************************************
+  Resource [93mwordnet[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('wordnet')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mcorpora/wordnet[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/venv/main/nltk_data'
+    - '/venv/main/share/nltk_data'
+    - '/venv/main/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+2025-05-11 14:32:06 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/SymbolicResoning/XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/SymbolicResoning/XAI/main.py", line 321, in response
+    new_body['LLM-FOL'] = [lemmatize_word_fol(fol) for fol in new_body['LLM-FOL']]
+  File "/workspace/SymbolicResoning/XAI/main.py", line 321, in <listcomp>
+    new_body['LLM-FOL'] = [lemmatize_word_fol(fol) for fol in new_body['LLM-FOL']]
+  File "/workspace/SymbolicResoning/XAI/utils/utils.py", line 326, in lemmatize_word_fol
+    lemma_name = lemmatize_words(predicate_name)
+  File "/workspace/SymbolicResoning/XAI/utils/utils.py", line 312, in lemmatize_words
+    words = [lemmatizer.lemmatize(word.lower(), pos='r') for word in words]
+  File "/workspace/SymbolicResoning/XAI/utils/utils.py", line 312, in <listcomp>
+    words = [lemmatizer.lemmatize(word.lower(), pos='r') for word in words]
+  File "/venv/main/lib/python3.10/site-packages/nltk/stem/wordnet.py", line 85, in lemmatize
+    lemmas = self._morphy(word, pos)
+  File "/venv/main/lib/python3.10/site-packages/nltk/stem/wordnet.py", line 41, in _morphy
+    return wn._morphy(form, pos, check_exceptions)
+  File "/venv/main/lib/python3.10/site-packages/nltk/corpus/util.py", line 120, in __getattr__
+    self.__load()
+  File "/venv/main/lib/python3.10/site-packages/nltk/corpus/util.py", line 86, in __load
+    raise e
+  File "/venv/main/lib/python3.10/site-packages/nltk/corpus/util.py", line 81, in __load
+    root = nltk.data.find(f"{self.subdir}/{self.__name}")
+  File "/venv/main/lib/python3.10/site-packages/nltk/data.py", line 579, in find
+    raise LookupError(resource_not_found)
+LookupError: 
+**********************************************************************
+  Resource [93mwordnet[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('wordnet')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mcorpora/wordnet[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/venv/main/nltk_data'
+    - '/venv/main/share/nltk_data'
+    - '/venv/main/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+2025-05-11 14:34:16 INFO [c1adcea29f274d739c188a313e15cab6] START /query – received 317 questions
+2025-05-11 14:34:53 ERROR [c1adcea29f274d739c188a313e15cab6] ERROR /query – failed in 36.916s: 
+**********************************************************************
+  Resource [93mwordnet[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('wordnet')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mcorpora/wordnet[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/venv/main/nltk_data'
+    - '/venv/main/share/nltk_data'
+    - '/venv/main/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+2025-05-11 14:34:53 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/SymbolicResoning/XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/SymbolicResoning/XAI/main.py", line 321, in response
+    new_body['LLM-FOL'] = [lemmatize_word_fol(fol) for fol in new_body['LLM-FOL']]
+  File "/workspace/SymbolicResoning/XAI/main.py", line 321, in <listcomp>
+    new_body['LLM-FOL'] = [lemmatize_word_fol(fol) for fol in new_body['LLM-FOL']]
+  File "/workspace/SymbolicResoning/XAI/utils/utils.py", line 326, in lemmatize_word_fol
+    lemma_name = lemmatize_words(predicate_name)
+  File "/workspace/SymbolicResoning/XAI/utils/utils.py", line 312, in lemmatize_words
+    words = [lemmatizer.lemmatize(word.lower(), pos='r') for word in words]
+  File "/workspace/SymbolicResoning/XAI/utils/utils.py", line 312, in <listcomp>
+    words = [lemmatizer.lemmatize(word.lower(), pos='r') for word in words]
+  File "/venv/main/lib/python3.10/site-packages/nltk/stem/wordnet.py", line 85, in lemmatize
+    lemmas = self._morphy(word, pos)
+  File "/venv/main/lib/python3.10/site-packages/nltk/stem/wordnet.py", line 41, in _morphy
+    return wn._morphy(form, pos, check_exceptions)
+  File "/venv/main/lib/python3.10/site-packages/nltk/corpus/util.py", line 120, in __getattr__
+    self.__load()
+  File "/venv/main/lib/python3.10/site-packages/nltk/corpus/util.py", line 86, in __load
+    raise e
+  File "/venv/main/lib/python3.10/site-packages/nltk/corpus/util.py", line 81, in __load
+    root = nltk.data.find(f"{self.subdir}/{self.__name}")
+  File "/venv/main/lib/python3.10/site-packages/nltk/data.py", line 579, in find
+    raise LookupError(resource_not_found)
+LookupError: 
+**********************************************************************
+  Resource [93mwordnet[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('wordnet')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mcorpora/wordnet[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/venv/main/nltk_data'
+    - '/venv/main/share/nltk_data'
+    - '/venv/main/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+2025-05-11 14:39:08 INFO Use pytorch device_name: cuda:0
+2025-05-11 14:39:08 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 14:39:10 INFO Model initialized
+2025-05-11 14:39:43 INFO [994374fbc64a4ee88620c40936788259] START /query – received 317 questions
+2025-05-11 14:40:18 ERROR [994374fbc64a4ee88620c40936788259] ERROR /query – failed in 34.722s: 
+**********************************************************************
+  Resource [93mwordnet[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('wordnet')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mcorpora/wordnet[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/venv/main/nltk_data'
+    - '/venv/main/share/nltk_data'
+    - '/venv/main/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+2025-05-11 14:40:18 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/SymbolicResoning/XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/SymbolicResoning/XAI/main.py", line 321, in response
+    new_body['LLM-FOL'] = [lemmatize_word_fol(fol) for fol in new_body['LLM-FOL']]
+  File "/workspace/SymbolicResoning/XAI/main.py", line 321, in <listcomp>
+    new_body['LLM-FOL'] = [lemmatize_word_fol(fol) for fol in new_body['LLM-FOL']]
+  File "/workspace/SymbolicResoning/XAI/utils/utils.py", line 326, in lemmatize_word_fol
+    lemma_name = lemmatize_words(predicate_name)
+  File "/workspace/SymbolicResoning/XAI/utils/utils.py", line 312, in lemmatize_words
+    words = [lemmatizer.lemmatize(word.lower(), pos='r') for word in words]
+  File "/workspace/SymbolicResoning/XAI/utils/utils.py", line 312, in <listcomp>
+    words = [lemmatizer.lemmatize(word.lower(), pos='r') for word in words]
+  File "/venv/main/lib/python3.10/site-packages/nltk/stem/wordnet.py", line 85, in lemmatize
+    lemmas = self._morphy(word, pos)
+  File "/venv/main/lib/python3.10/site-packages/nltk/stem/wordnet.py", line 41, in _morphy
+    return wn._morphy(form, pos, check_exceptions)
+  File "/venv/main/lib/python3.10/site-packages/nltk/corpus/util.py", line 120, in __getattr__
+    self.__load()
+  File "/venv/main/lib/python3.10/site-packages/nltk/corpus/util.py", line 86, in __load
+    raise e
+  File "/venv/main/lib/python3.10/site-packages/nltk/corpus/util.py", line 81, in __load
+    root = nltk.data.find(f"{self.subdir}/{self.__name}")
+  File "/venv/main/lib/python3.10/site-packages/nltk/data.py", line 579, in find
+    raise LookupError(resource_not_found)
+LookupError: 
+**********************************************************************
+  Resource [93mwordnet[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('wordnet')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mcorpora/wordnet[0m
+
+  Searched in:
+    - '/root/nltk_data'
+    - '/venv/main/nltk_data'
+    - '/venv/main/share/nltk_data'
+    - '/venv/main/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+2025-05-11 14:44:09 INFO Use pytorch device_name: cuda:0
+2025-05-11 14:44:09 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 14:44:10 INFO Model initialized
+2025-05-11 14:44:16 INFO [be75f42659ff417d8aeeaa6412d0a92d] START /query – received 317 questions
+2025-05-11 14:45:15 ERROR [be75f42659ff417d8aeeaa6412d0a92d] ERROR /query – failed in 58.978s: name 'convert_common' is not defined
+2025-05-11 14:45:15 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/SymbolicResoning/XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/SymbolicResoning/XAI/main.py", line 348, in response
+    clusters = [convert_common(cluster) for cluster in clusters]
+  File "/workspace/SymbolicResoning/XAI/main.py", line 348, in <listcomp>
+    clusters = [convert_common(cluster) for cluster in clusters]
+NameError: name 'convert_common' is not defined. Did you mean: 'convert_common_lp'?
+2025-05-11 14:50:39 INFO Use pytorch device_name: cuda:0
+2025-05-11 14:50:39 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 14:50:40 INFO Model initialized
+2025-05-11 14:50:46 INFO [9773e8ee8b0749feac29a7a34ef4b3f3] START /query – received 317 questions
+2025-05-11 14:54:26 ERROR [9773e8ee8b0749feac29a7a34ef4b3f3] ERROR /query – failed in 219.641s: name 'data' is not defined
+2025-05-11 14:54:26 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/SymbolicResoning/XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/SymbolicResoning/XAI/main.py", line 400, in response
+    for i, (question_fol, _question) in enumerate(zip(list_questions_fol, data['old_questions'])):
+NameError: name 'data' is not defined
+2025-05-11 14:56:29 INFO Use pytorch device_name: cuda:0
+2025-05-11 14:56:29 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 14:56:35 INFO Model initialized
+2025-05-11 14:56:38 INFO [e04dca9f12bd49e586ee6ec230fa09cf] START /query – received 317 questions
+2025-05-11 15:00:43 ERROR [e04dca9f12bd49e586ee6ec230fa09cf] ERROR /query – failed in 244.478s: name 'prover9' is not defined
+2025-05-11 15:00:43 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/SymbolicResoning/XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/SymbolicResoning/XAI/main.py", line 402, in response
+    result_solver = prover9.solving_questions(list_premises_fol, fol)
+NameError: name 'prover9' is not defined. Did you mean: 'Prover9_K'?
+2025-05-11 15:00:43 INFO HEAD /query -> 405 in 0.000s
+2025-05-11 15:00:43 INFO HEAD /query -> 405 in 0.001s
+2025-05-11 15:02:12 INFO HEAD /query -> 405 in 0.000s
+2025-05-11 15:03:43 INFO Use pytorch device_name: cuda:0
+2025-05-11 15:03:43 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 15:03:44 INFO Model initialized
+2025-05-11 15:05:00 INFO [12fa2533a3c04884a35d4ff524dd86d0] START /query – received 317 questions
+2025-05-11 15:08:30 ERROR [12fa2533a3c04884a35d4ff524dd86d0] ERROR /query – failed in 209.324s: name 'reasoning_gate' is not defined
+2025-05-11 15:08:30 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/SymbolicResoning/XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/SymbolicResoning/XAI/main.py", line 409, in response
+    if reasoning_gate(list_premises_fol, num_numbers_threshold, num_premises_threshold):
+NameError: name 'reasoning_gate' is not defined. Did you mean: 'reasoning_hard'?
+2025-05-11 15:10:34 INFO Use pytorch device_name: cuda:0
+2025-05-11 15:10:34 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 15:10:35 INFO Model initialized
+2025-05-11 15:11:25 INFO [01b33edcfc2e4eda8a98d0a0778f94f2] START /query – received 317 questions
+2025-05-11 15:14:48 ERROR [01b33edcfc2e4eda8a98d0a0778f94f2] ERROR /query – failed in 203.019s: reasoning_hard() missing 2 required positional arguments: 'question' and 'config'
+2025-05-11 15:14:48 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/SymbolicResoning/XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/SymbolicResoning/XAI/main.py", line 409, in response
+    if reasoning_hard(list_premises_fol, num_numbers_threshold, num_premises_threshold):
+TypeError: reasoning_hard() missing 2 required positional arguments: 'question' and 'config'
+2025-05-11 15:18:24 INFO Use pytorch device_name: cuda:0
+2025-05-11 15:18:24 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 15:18:27 INFO Model initialized
+2025-05-11 15:19:19 INFO [09cef7eab9394c1fa0f59c3227f86816] START /query – received 317 questions
+2025-05-11 15:23:12 ERROR [09cef7eab9394c1fa0f59c3227f86816] ERROR /query – failed in 233.070s: name 'llm_mistral_model' is not defined
+2025-05-11 15:23:12 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/SymbolicResoning/XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/SymbolicResoning/XAI/main.py", line 412, in response
+    model=llm_mistral_model,
+NameError: name 'llm_mistral_model' is not defined
+2025-05-11 15:24:44 INFO Use pytorch device_name: cuda:0
+2025-05-11 15:24:44 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 15:24:44 INFO Model initialized
+2025-05-11 15:26:49 INFO [82f6dd33d4c247918ea3efe512a80d40] START /query – received 317 questions
+2025-05-11 15:30:36 INFO [82f6dd33d4c247918ea3efe512a80d40] SUCCESS /query – processed in 226.457s
+2025-05-11 15:30:36 ERROR [82f6dd33d4c247918ea3efe512a80d40] ERROR /query – failed in 226.457s: 3 validation errors for QueryResponse
+answers
+  Input should be a valid string [type=string_type, input_value=['C. Sophia is eligible f... international program'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+idx.0
+  Input should be a valid integer, unable to parse string as an integer [type=int_parsing, input_value='1, 2, 4, 7', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/int_parsing
+explanation
+  Input should be a valid string [type=string_type, input_value=['- Step 1: From P1, we k...international program.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+2025-05-11 15:30:36 INFO Saved response to questions/82f6dd33d4c247918ea3efe512a80d40.json
+2025-05-11 15:30:36 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/SymbolicResoning/XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 158, in query
+    return QueryResponse(answers=answers, idx=idx, explanation=explanations)
+  File "/venv/main/lib/python3.10/site-packages/pydantic/main.py", line 253, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 3 validation errors for QueryResponse
+answers
+  Input should be a valid string [type=string_type, input_value=['C. Sophia is eligible f... international program'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+idx.0
+  Input should be a valid integer, unable to parse string as an integer [type=int_parsing, input_value='1, 2, 4, 7', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/int_parsing
+explanation
+  Input should be a valid string [type=string_type, input_value=['- Step 1: From P1, we k...international program.'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.11/v/string_type
+2025-05-11 15:37:07 INFO Use pytorch device_name: cuda:0
+2025-05-11 15:37:07 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 15:37:08 INFO Model initialized
+2025-05-11 15:37:12 INFO [6e10696db24849e5947ddea1f70ee37b] START /query – received 317 questions
+2025-05-11 15:40:49 ERROR [6e10696db24849e5947ddea1f70ee37b] ERROR /query – failed in 217.344s: eval() arg 1 must be a string, bytes or code object
+2025-05-11 15:40:49 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/SymbolicResoning/XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/SymbolicResoning/XAI/main.py", line 455, in response
+    idx = eval(solver_info['idxs'])
+TypeError: eval() arg 1 must be a string, bytes or code object
+2025-05-11 15:44:59 INFO Use pytorch device_name: cuda:0
+2025-05-11 15:44:59 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 15:45:00 INFO Model initialized
+2025-05-11 15:45:14 INFO [211794bc7a6246048be9aae70cff18cd] START /query – received 317 questions
+2025-05-11 15:48:48 ERROR [211794bc7a6246048be9aae70cff18cd] ERROR /query – failed in 213.913s: malformed node or string: ['1, 2, 5, 6, 7']
+2025-05-11 15:48:48 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/SymbolicResoning/XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 151, in query
+    answers, idx, explanations = dummy_reasoning(body.premises_NL, body.questions, model)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 77, in dummy_reasoning
+    answers, idx, explanations = model.response(premises, questions)
+  File "/workspace/SymbolicResoning/XAI/main.py", line 456, in response
+    idx = ast.literal_eval(solver_info['idxs'])
+  File "/usr/lib/python3.10/ast.py", line 110, in literal_eval
+    return _convert(node_or_string)
+  File "/usr/lib/python3.10/ast.py", line 109, in _convert
+    return _convert_signed_num(node)
+  File "/usr/lib/python3.10/ast.py", line 83, in _convert_signed_num
+    return _convert_num(node)
+  File "/usr/lib/python3.10/ast.py", line 74, in _convert_num
+    _raise_malformed_node(node)
+  File "/usr/lib/python3.10/ast.py", line 71, in _raise_malformed_node
+    raise ValueError(msg + f': {node!r}')
+ValueError: malformed node or string: ['1, 2, 5, 6, 7']
+2025-05-11 16:00:14 INFO Use pytorch device_name: cuda:0
+2025-05-11 16:00:14 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 16:00:14 INFO Model initialized
+2025-05-11 16:01:34 INFO [099fe09d73164b8bbe535151bb50b967] START /query – received 317 questions
+2025-05-11 16:05:42 INFO [099fe09d73164b8bbe535151bb50b967] SUCCESS /query – processed in 247.956s
+2025-05-11 16:05:42 ERROR [099fe09d73164b8bbe535151bb50b967] ERROR /query – failed in 247.957s: 1 validation error for QueryResponse
+idx.0
+  Input should be a valid integer, unable to parse string as an integer [type=int_parsing, input_value='1, 5, 6, 7, 8, 10', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/int_parsing
+2025-05-11 16:05:42 INFO Saved response to questions/099fe09d73164b8bbe535151bb50b967.json
+2025-05-11 16:05:42 ERROR POST /query -> 500 (unhandled error)
+Traceback (most recent call last):
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 148, in call_next
+    message = await recv_stream.receive()
+  File "/venv/main/lib/python3.10/site-packages/anyio/streams/memory.py", line 126, in receive
+    raise EndOfStream from None
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/SymbolicResoning/XAI/app.py", line 115, in metrics_and_logging
+    response = await call_next(request)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 156, in call_next
+    raise app_exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/venv/main/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/venv/main/lib/python3.10/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/venv/main/lib/python3.10/site-packages/starlette/routing.py", line 73, in app
+    response = await f(request)
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "/venv/main/lib/python3.10/site-packages/fastapi/routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/workspace/SymbolicResoning/XAI/app.py", line 158, in query
+    return QueryResponse(answers=answers, idx=idx, explanation=explanations)
+  File "/venv/main/lib/python3.10/site-packages/pydantic/main.py", line 253, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for QueryResponse
+idx.0
+  Input should be a valid integer, unable to parse string as an integer [type=int_parsing, input_value='1, 5, 6, 7, 8, 10', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/int_parsing
+2025-05-11 16:09:02 INFO Use pytorch device_name: cuda:0
+2025-05-11 16:09:02 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 16:09:03 INFO Model initialized
+2025-05-11 16:15:05 INFO Use pytorch device_name: cuda:0
+2025-05-11 16:15:05 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 16:15:07 INFO Model initialized
+2025-05-11 16:19:04 INFO Use pytorch device_name: cuda:0
+2025-05-11 16:19:04 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 16:19:04 INFO Model initialized
+2025-05-11 16:20:51 INFO Use pytorch device_name: cuda:0
+2025-05-11 16:20:51 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-11 16:20:52 INFO Model initialized
+2025-05-11 16:21:20 INFO [a48d071358e74bde9c39323338c81464] START /query – received 317 questions
+2025-05-11 16:24:38 INFO [a48d071358e74bde9c39323338c81464] SUCCESS /query – processed in 197.292s
+2025-05-11 16:24:38 INFO Saved response to questions/a48d071358e74bde9c39323338c81464.json
+2025-05-11 16:24:38 INFO POST /query -> 200 in 197.294s
+2025-05-17 14:59:30 INFO Use pytorch device_name: cuda:0
+2025-05-17 14:59:30 INFO Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-05-17 14:59:31 INFO Model initialized
+2025-05-17 14:59:31 INFO Opening tunnel named: http-43210-99d0fd4b-b245-4715-8fb8-d7d0a78fab17
+2025-05-17 14:59:31 INFO Overriding default auth token
+2025-05-17 14:59:31 INFO t=2025-05-17T14:59:31+0000 lvl=info msg="no configuration paths supplied"
+2025-05-17 14:59:31 WARNING t=2025-05-17T14:59:31+0000 lvl=warn msg="ngrok config file found at both XDG and legacy locations, using XDG location" xdg_path=/root/.config/ngrok/ngrok.yml legacy_path=/root/.ngrok2/ngrok.yml
+2025-05-17 14:59:31 INFO t=2025-05-17T14:59:31+0000 lvl=info msg="using configuration at default config path" path=/root/.config/ngrok/ngrok.yml
+2025-05-17 14:59:31 INFO t=2025-05-17T14:59:31+0000 lvl=info msg="open config file" path=/root/.config/ngrok/ngrok.yml err=nil
+2025-05-17 14:59:31 INFO t=2025-05-17T14:59:31+0000 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
+2025-05-17 14:59:31 INFO t=2025-05-17T14:59:31+0000 lvl=info msg="client session established" obj=tunnels.session
+2025-05-17 14:59:31 INFO t=2025-05-17T14:59:31+0000 lvl=info msg="tunnel session started" obj=tunnels.session
+2025-05-17 14:59:31 INFO t=2025-05-17T14:59:31+0000 lvl=info msg=start pg=/api/tunnels id=138ba5e30c520c65
+2025-05-17 14:59:31 INFO t=2025-05-17T14:59:31+0000 lvl=info msg=end pg=/api/tunnels id=138ba5e30c520c65 status=200 dur=306.883µs
+2025-05-17 14:59:31 INFO t=2025-05-17T14:59:31+0000 lvl=info msg=start pg=/api/tunnels id=7d865a50863e2a0d
+2025-05-17 14:59:31 INFO t=2025-05-17T14:59:31+0000 lvl=info msg=end pg=/api/tunnels id=7d865a50863e2a0d status=200 dur=133.051µs
+2025-05-17 14:59:31 INFO t=2025-05-17T14:59:31+0000 lvl=info msg=start pg=/api/tunnels id=837657e25d9588e7
+2025-05-17 14:59:31 INFO t=2025-05-17T14:59:31+0000 lvl=info msg="started tunnel" obj=tunnels name=http-43210-99d0fd4b-b245-4715-8fb8-d7d0a78fab17 addr=http://localhost:43210 url=https://magical-wise-toucan.ngrok-free.app
+2025-05-17 14:59:31 INFO t=2025-05-17T14:59:31+0000 lvl=info msg=end pg=/api/tunnels id=837657e25d9588e7 status=201 dur=45.909884ms
+2025-05-17 15:03:36 ERROR t=2025-05-17T15:03:36+0000 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=53e51bce1e7c clientid=d34db4f5b94a38296c78e3579d8037e4
+2025-05-17 15:03:36 ERROR t=2025-05-17T15:03:36+0000 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=60770ac828bf err="session closed"
+2025-05-17 15:03:46 ERROR t=2025-05-17T15:03:46+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:03:56 ERROR t=2025-05-17T15:03:56+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:04:07 ERROR t=2025-05-17T15:04:07+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:04:19 ERROR t=2025-05-17T15:04:19+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:04:33 ERROR t=2025-05-17T15:04:33+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:04:51 ERROR t=2025-05-17T15:04:51+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:05:17 ERROR t=2025-05-17T15:05:17+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:05:57 ERROR t=2025-05-17T15:05:57+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:06:37 ERROR t=2025-05-17T15:06:37+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:07:17 ERROR t=2025-05-17T15:07:17+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:07:57 ERROR t=2025-05-17T15:07:57+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:08:37 ERROR t=2025-05-17T15:08:37+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:09:17 ERROR t=2025-05-17T15:09:17+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:09:57 ERROR t=2025-05-17T15:09:57+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:10:37 ERROR t=2025-05-17T15:10:37+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:11:17 ERROR t=2025-05-17T15:11:17+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:11:57 ERROR t=2025-05-17T15:11:57+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:12:37 ERROR t=2025-05-17T15:12:37+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:13:17 ERROR t=2025-05-17T15:13:17+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:13:57 ERROR t=2025-05-17T15:13:57+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:14:37 ERROR t=2025-05-17T15:14:37+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:15:17 ERROR t=2025-05-17T15:15:17+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:15:57 ERROR t=2025-05-17T15:15:57+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:16:37 ERROR t=2025-05-17T15:16:37+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:17:17 ERROR t=2025-05-17T15:17:17+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:17:57 ERROR t=2025-05-17T15:17:57+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:18:37 ERROR t=2025-05-17T15:18:37+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:19:17 ERROR t=2025-05-17T15:19:17+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:19:57 ERROR t=2025-05-17T15:19:57+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:20:37 ERROR t=2025-05-17T15:20:37+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:21:17 ERROR t=2025-05-17T15:21:17+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:21:57 ERROR t=2025-05-17T15:21:57+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:22:37 ERROR t=2025-05-17T15:22:37+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:23:17 ERROR t=2025-05-17T15:23:17+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:23:57 ERROR t=2025-05-17T15:23:57+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:24:37 ERROR t=2025-05-17T15:24:37+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:25:17 ERROR t=2025-05-17T15:25:17+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:25:57 ERROR t=2025-05-17T15:25:57+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:26:37 ERROR t=2025-05-17T15:26:37+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:27:17 ERROR t=2025-05-17T15:27:17+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:27:57 ERROR t=2025-05-17T15:27:57+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:28:37 ERROR t=2025-05-17T15:28:37+0000 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com: i/o timeout"
+2025-05-17 15:29:08 INFO t=2025-05-17T15:29:08+0000 lvl=info msg="client session established" obj=tunnels.session
+2025-05-17 15:29:08 INFO t=2025-05-17T15:29:08+0000 lvl=info msg="tunnel session started" obj=tunnels.session

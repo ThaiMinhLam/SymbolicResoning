@@ -1,0 +1,25 @@
+{
+    "premises-NL": [
+        "Students who have completed the core curriculum and passed the science assessment are qualified for advanced courses.",
+        "Students who are qualified for advanced courses and have completed research methodology are eligible for the international program.",
+        "Students who have passed the language proficiency exam are eligible for the international program.",
+        "Students who are eligible for the international program and have completed a capstone project are awarded an honors diploma.",
+        "Students who have been awarded an honors diploma and have completed community service qualify for the university scholarship.",
+        "Students who have been awarded an honors diploma and have received a faculty recommendation qualify for the university scholarship.",
+        "Sophia has completed the core curriculum.",
+        "Sophia has passed the science assessment.",
+        "Sophia has completed the research methodology course.",
+        "Sophia has completed her capstone project.",
+        "Sophia has completed the required community service hours."
+    ],
+    "questions": "Based on the above premises, which is the strongest conclusion?\nA. Sophia qualifies for the university scholarship\nB. Sophia needs a faculty recommendation to qualify for the scholarship\nC. Sophia is eligible for the international program\nD. Sophia needs to pass the language proficiency exam to get an honors diploma",
+    "answers": [
+        "C. Sophia is eligible for the international program"
+    ],
+    "idx": [
+        "1, 2, 4, 7"
+    ],
+    "explanations": [
+        "- Step 1: From P1, we know that if Sophia receives a scholarship and completes the core curriculum and prefers Science, then she qualifies for advanced courses. Since we know that Sophia receives a scholarship (from the given fact), and we also know that she prefers Science (given fact), we can infer that Sophia qualifies for advanced courses (P1).\n           - Step 2: From P2, we know that if Sophia receives a scholarship, qualifies for advanced courses, and completes research methodology, then she prefers the international program. Since we have already established that Sophia qualifies for advanced courses (from Step 1), and we know that she is at Sophia University where research methodology is likely a requirement (from P7), we can infer that Sophia prefers the international program (P2).\n           - Step 3: From P4, we know that if Sophia receives a scholarship and prefers the international program, then she is eligible for the international program. Since we have already inferred that Sophia prefers the international program (from Step 2), we can conclude that she is eligible for the international program (P4).\nBased on the given premises and the inferences made from them, the strongest conclusion is that Sophia is eligible for the international program. This is because we were able to establish that Sophia prefers the international program (Step 2), and since the premises state that if Sophia receives a scholarship and prefers the international program, then she is eligible for the international program (P4), we can conclude that Sophia is indeed eligible for the international program."
+    ]
+}

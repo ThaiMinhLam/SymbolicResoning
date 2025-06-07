@@ -19,7 +19,7 @@
 
 
 ## MOTIVATION
-The paper proposes a solution using GPT-4 to auto-correct incorrect entity names, employing two approaches: Naive and Chain-of-Thought (CoT). However, within the constraints of the competition, only models with fewer than 8 billion parameters are allowed. This limitation makes correction significantly more challenging. It served as the motivation for the team to develop a correction module based on LLMs with fewer than 8B parameters, rather than relying on GPT-4.
+The paper proposes a solution using GPT-3.5 to auto-correct incorrect entity names, employing two approaches: Naive and Chain-of-Thought (CoT). However, within the constraints of the competition, only models with fewer than 8 billion parameters are allowed. This limitation makes correction significantly more challenging. It served as the motivation for the team to develop a correction module based on LLMs with fewer than 8B parameters, rather than relying on GPT-3.5.
 
 ## MODULE EXPLAIN
 ```

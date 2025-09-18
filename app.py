@@ -47,7 +47,7 @@ REQUEST_FAILURES = Counter(
 # FastAPI app
 # ----------------------
 app = FastAPI()
-API_KEY = "a6f58e8a1c3e61d6f02b6c7b56d7b255831bb7fa1f2447bd8f1ac9283f083d6b"
+API_KEY = ""
 
 class QueryRequest(BaseModel):
     premises_NL: List[str] = Field(..., alias="premises-NL")
